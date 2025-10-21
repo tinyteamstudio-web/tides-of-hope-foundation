@@ -137,3 +137,33 @@ footer {
   width: 25px;
   margin: 0 5px;
 }
+
+/* ✨ FADE-IN ANIMATION */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: Smooth fade for hero text */
+.hero-text {
+  animation: fadeInHero 2s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInHero {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
