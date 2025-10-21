@@ -20,22 +20,13 @@ header {
   align-items: center;
 }
 
-.logo-section {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  width: 55px;
-  margin-right: 10px;
-}
-
 .logo-text h1 {
   margin: 0;
   font-size: 1.2rem;
   font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 1px;
 }
-
 .logo-text p {
   margin: 0;
   font-size: 0.8rem;
@@ -69,26 +60,19 @@ nav a:hover {
   box-shadow: 0 0 15px rgba(46, 196, 182, 0.6);
 }
 
-/* HERO */
-.hero {
-  background: linear-gradient(rgba(0, 75, 117, 0.85), rgba(0, 75, 117, 0.85)),
-    url('assets/banner.png') center/cover no-repeat;
-  text-align: center;
-  color: white;
-  padding: 6rem 2rem;
-}
 /* 🌊 Hero Logo Styling */
 .hero-logo {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .hero-logo img {
-  width: 120px;
-  height: 120px;
+  width: 85px;
+  height: 85px;
   object-fit: contain;
   animation: fadeInLogo 2s ease-in-out forwards;
   opacity: 0;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
 }
 
 /* Smooth fade-in animation for logo */
@@ -100,6 +84,14 @@ nav a:hover {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* 📱 Mobile Responsive Adjustment */
+@media (max-width: 768px) {
+  .hero-logo img {
+    width: 60px;
+    height: 60px;
   }
 
 
@@ -227,9 +219,18 @@ footer {
   align-items: center;
 }
 
-.social-icon {
-  width: 30px;
+.socials {
   margin-bottom: 0.5rem;
+}
+
+.social-icon {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.15);
 }
 
 /* RESPONSIVE DESIGN */
