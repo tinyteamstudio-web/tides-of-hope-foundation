@@ -60,6 +60,35 @@ nav a.active,
 nav a:hover {
   text-decoration: underline;
 }
+/* FACEBOOK BUTTON IN HEADER */
+.facebook-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.facebook-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.facebook-btn:hover {
+  background: #1877f2;
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(24, 119, 242, 0.5);
+}
+
+.facebook-btn:hover img {
+  filter: brightness(0) invert(1); /* makes the logo white */
+}
+
 
 /* HERO / BANNER */
 .hero {
