@@ -77,6 +77,31 @@ nav a:hover {
   color: white;
   padding: 6rem 2rem;
 }
+/* 🌊 Hero Logo Styling */
+.hero-logo {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.hero-logo img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  animation: fadeInLogo 2s ease-in-out forwards;
+  opacity: 0;
+}
+
+/* Smooth fade-in animation for logo */
+@keyframes fadeInLogo {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
 
 .hero-text {
   max-width: 800px;
