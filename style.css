@@ -48,7 +48,8 @@ nav a {
   font-weight: 500;
 }
 
-nav a.active, nav a:hover {
+nav a.active,
+nav a:hover {
   text-decoration: underline;
 }
 
@@ -73,6 +74,8 @@ nav a.active, nav a:hover {
   transform: translate(-50%, -50%);
   max-width: 700px;
   padding: 1rem;
+  animation: fadeInHero 2s ease-in-out forwards;
+  opacity: 0;
 }
 
 .hero-text h2 {
@@ -85,8 +88,7 @@ nav a.active, nav a:hover {
   line-height: 1.6;
 }
 
-.btn {
-  /* 🌊 JOIN THE CAUSE Button Animation */
+/* 🌊 JOIN THE CAUSE BUTTON */
 .btn {
   display: inline-block;
   margin-top: 1.5rem;
@@ -101,13 +103,12 @@ nav a.active, nav a:hover {
   animation: pulseGlow 3s infinite;
 }
 
-/* Glow Effect on Hover */
 .btn:hover {
   background: #3dd5c3;
   box-shadow: 0 0 25px rgba(46, 196, 182, 0.7);
 }
 
-/* ✨ Keyframes for the Pulse Animation */
+/* ✨ BUTTON PULSE ANIMATION */
 @keyframes pulseGlow {
   0% {
     box-shadow: 0 0 0 0 rgba(46, 196, 182, 0.5);
@@ -121,11 +122,6 @@ nav a.active, nav a:hover {
     box-shadow: 0 0 0 0 rgba(46, 196, 182, 0.5);
     transform: scale(1);
   }
-}
-
-
-.btn:hover {
-  background: #3dd5c3;
 }
 
 /* MISSION & VISION */
@@ -179,11 +175,6 @@ footer {
 }
 
 /* Optional: Smooth fade for hero text */
-.hero-text {
-  animation: fadeInHero 2s ease-in-out forwards;
-  opacity: 0;
-}
-
 @keyframes fadeInHero {
   0% {
     opacity: 0;
@@ -194,4 +185,3 @@ footer {
     transform: translateY(0);
   }
 }
-
