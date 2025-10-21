@@ -1,10 +1,9 @@
-/* GENERAL */
+/* BASIC */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: #ffffff;
   color: #1a1a1a;
-  line-height: 1.6;
 }
 
 /* HEADER */
@@ -24,13 +23,7 @@ header {
   margin: 0;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #ffffff;
   letter-spacing: 1px;
-}
-.logo-text p {
-  margin: 0;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
 }
 
 nav a {
@@ -40,30 +33,31 @@ nav a {
   font-weight: 500;
 }
 
-nav a.active,
-nav a:hover {
+nav a.active, nav a:hover {
   text-decoration: underline;
 }
 
 .highlight-btn {
   background: #2ec4b6;
   color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
+  transition: background 0.3s;
 }
 
 .highlight-btn:hover {
   background: #3dd5c3;
-  box-shadow: 0 0 15px rgba(46, 196, 182, 0.6);
 }
 
-/* 🌊 Hero Logo Styling */
-.hero-logo {
+/* HERO */
+.hero {
+  background: #2b6c8c;
   text-align: center;
-  margin-bottom: 0.5rem;
+  color: white;
+  padding: 3rem 1rem;
+  position: relative;
 }
 
 .hero-logo img {
@@ -75,57 +69,65 @@ nav a:hover {
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
 }
 
-/* Smooth fade-in animation for logo */
-@keyframes fadeInLogo {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 📱 Mobile Responsive Adjustment */
-@media (max-width: 768px) {
-  .hero-logo img {
-    width: 60px;
-    height: 60px;
-  }
-
-
 .hero-text {
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
+  animation: fadeInHero 2s ease-in-out forwards;
+  opacity: 0;
 }
 
 .hero-text h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-top: 1.2rem;
 }
 
 .hero-text p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 2rem;
 }
 
-/* BUTTONS */
 .btn {
+  display: inline-block;
+  margin-top: 1.5rem;
   background: #2ec4b6;
   color: white;
   padding: 0.8rem 1.5rem;
   border-radius: 8px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: bold;
   transition: all 0.3s ease-in-out;
-  display: inline-block;
+  animation: pulseGlow 3s infinite;
 }
 
 .btn:hover {
   background: #3dd5c3;
-  box-shadow: 0 0 20px rgba(46, 196, 182, 0.3);
+  box-shadow: 0 0 25px rgba(46, 196, 182, 0.7);
+}
+
+/* ANIMATIONS */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(46, 196, 182, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 15px 5px rgba(46, 196, 182, 0.6);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(46, 196, 182, 0.5);
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInHero {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLogo {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* MISSION & VISION */
@@ -134,12 +136,12 @@ nav a:hover {
   flex-wrap: wrap;
   justify-content: center;
   background: #f8f9fa;
-  padding: 4rem 1rem;
-  gap: 2rem;
+  padding: 3rem 1rem;
 }
 
 .section-box {
   width: 300px;
+  margin: 1rem;
   text-align: center;
 }
 
@@ -149,60 +151,83 @@ nav a:hover {
   margin-bottom: 1rem;
 }
 
-/* GET INVOLVED */
+/* 🌊 GET INVOLVED SECTION */
 .get-involved {
   text-align: center;
-  padding: 5rem 2rem;
-  background: #f9fafa;
+  padding: 3rem 1rem;
+  background: linear-gradient(180deg, #e7f9f7 0%, #ffffff 100%);
+  transition: background 0.5s ease;
 }
 
 .get-involved h2 {
-  color: #003d5b;
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
+  color: #004b75;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
 }
 
-.get-involved .intro-text {
-  max-width: 800px;
-  margin: 0 auto 3.5rem;
+.get-involved p {
   color: #333;
-  font-size: 1.1rem;
-  line-height: 1.7;
+  max-width: 750px;
+  margin: 0 auto 2rem auto;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-.card-container {
+
+.cards-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .card {
-  background: #ffffff;
+  background: #f8f9fa;
   border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  padding: 2rem;
-  width: 320px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem 1.5rem;
+  width: 280px;
   transition: all 0.3s ease;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 75, 117, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 75, 117, 0.2);
+}
+
+.card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
 }
 
 .card h3 {
   color: #003d5b;
-  font-size: 1.4rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem;
 }
 
 .card p {
-  font-size: 1rem;
-  color: #444;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.small-btn {
+  background: #2ec4b6;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.small-btn:hover {
+  background: #3dd5c3;
 }
 
 /* FOOTER */
@@ -224,8 +249,8 @@ footer {
 }
 
 .social-icon {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   transition: transform 0.3s ease;
 }
 
@@ -233,17 +258,23 @@ footer {
   transform: scale(1.15);
 }
 
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-  }
-
-  .card {
-    width: 90%;
+  .hero-logo img {
+    width: 60px;
+    height: 60px;
   }
 
   .hero-text h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
   }
 }
