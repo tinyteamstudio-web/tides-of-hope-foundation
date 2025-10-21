@@ -161,44 +161,83 @@ nav .donate-btn:hover {
   }
 }
 
-/* HERO SECTION */
+/* 🌊 HERO WAVE ANIMATION BACKGROUND */
 .hero {
+  position: relative;
   text-align: center;
   padding: 6rem 2rem;
-  background: linear-gradient(135deg, #004b75 0%, #006699 100%);
   color: white;
+  overflow: hidden;
+  background: linear-gradient(180deg, #004b75 0%, #006699 100%);
 }
 
 .hero-content {
+  position: relative;
+  z-index: 2;
   max-width: 800px;
   margin: 0 auto;
+  animation: fadeInHero 2s ease-in-out forwards;
 }
 
-.hero-content h2 {
+.hero h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  font-weight: 700;
 }
 
-.hero-content p {
+.hero p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
+  line-height: 1.6;
 }
 
-.btn {
-  display: inline-block;
-  background: #2ec4b6;
-  color: white;
-  padding: 0.8rem 1.6rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
+/* Wave layers */
+.waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 1;
 }
 
-.btn:hover {
-  background: #3dd5c3;
-  box-shadow: 0 0 15px rgba(46, 196, 182, 0.6);
+.wave {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat no-repeat;
+  background-size: 50% 100%;
+  opacity: 0.4;
+  animation: moveWaves 10s linear infinite;
 }
+
+/* Each wave has a slightly different speed and opacity */
+.wave1 {
+  background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0%, transparent 70%);
+  bottom: 0;
+  animation-duration: 10s;
+}
+
+.wave2 {
+  background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.25) 0%, transparent 70%);
+  bottom: 10px;
+  animation-duration: 14s;
+}
+
+.wave3 {
+  background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 70%);
+  bottom: 20px;
+  animation-duration: 18s;
+}
+
+@keyframes moveWaves {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 
 /* MISSION & VISION */
 .mission-vision {
