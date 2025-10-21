@@ -1,3 +1,4 @@
+/* BASIC */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -7,7 +8,7 @@ body {
 
 /* HEADER */
 header {
-  background-color: #003d5b;
+  background-color: #004b75;
   color: white;
   padding: 1rem 2rem;
 }
@@ -24,20 +25,20 @@ header {
 }
 
 .logo {
-  width: 50px;
+  width: 55px;
   margin-right: 10px;
 }
 
-.logo-section h1 {
-  font-size: 1.1rem;
-  line-height: 1.2;
+.logo-text h1 {
+  margin: 0;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 
-.logo-section span {
-  font-size: 0.9rem;
-  font-weight: 400;
-  letter-spacing: 1px;
+.logo-text p {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
 }
 
 nav a {
@@ -47,48 +48,52 @@ nav a {
   font-weight: 500;
 }
 
-nav a.active,
-nav a:hover {
+nav a.active, nav a:hover {
   text-decoration: underline;
 }
 
-/* HERO SECTION */
+/* HERO / BANNER */
 .hero {
-  background-color: #005f73;
-  color: white;
+  position: relative;
   text-align: center;
-  padding: 4rem 1rem;
+  color: white;
 }
 
-.hero-content {
+.banner {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  filter: brightness(0.75);
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-width: 700px;
-  margin: auto;
+  padding: 1rem;
 }
 
-.hero-logo {
-  width: 100px;
+.hero-text h2 {
+  font-size: 2.3rem;
   margin-bottom: 1rem;
 }
 
-.hero h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
+.hero-text p {
   font-size: 1.1rem;
   line-height: 1.6;
 }
 
 .btn {
   display: inline-block;
-  margin-top: 1.8rem;
+  margin-top: 1.5rem;
   background: #2ec4b6;
   color: white;
   padding: 0.8rem 1.5rem;
-  border-radius: 6px;
-  font-weight: bold;
+  border-radius: 8px;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .btn:hover {
@@ -118,14 +123,17 @@ nav a:hover {
 
 /* FOOTER */
 footer {
-  background: #003d5b;
+  background: #004b75;
   color: white;
   text-align: center;
   padding: 1.5rem 0;
 }
 
-footer .socials img {
-  width: 20px;
-  margin: 0 5px;
+.socials {
+  margin-bottom: 0.5rem;
 }
 
+.social-icon {
+  width: 25px;
+  margin: 0 5px;
+}
