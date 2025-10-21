@@ -214,4 +214,84 @@ footer {
   .section-box {
     width: 90%;
   }
+/* GET INVOLVED SECTION */
+.get-involved {
+  background: #ffffff;
+  text-align: center;
+  padding: 4rem 2rem;
 }
+
+.get-involved h2 {
+  color: #004b75;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.get-involved .intro-text {
+  color: #333;
+  font-size: 1rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.involve-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem 1.5rem;
+  width: 300px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 75, 117, 0.2);
+}
+
+.card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  color: #003d5b;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.small-btn {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .involve-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+}
+
