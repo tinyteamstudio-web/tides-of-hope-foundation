@@ -24,36 +24,55 @@
     </div>
   </header>
 
-  <!-- MEMBERSHIP FORM -->
-  <section class="membership-section fade-in">
-    <h2>Join the Tides of Hope Family 🌊</h2>
-    <p>Become a member and help us create waves of change through compassion, action, and empowerment.</p>
+  .membership-form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
 
-    <form 
-      class="membership-form"
-      action="https://docs.google.com/forms/d/e/1FAIpQLSeoy_pzjGayniUWIkyqIB4Y-WEG9KpyW3GCLjB-HpmSiO9Qsw/formResponse"
-      method="POST"
-      target="_blank"
-    >
+.membership-form label {
+  display: block;
+  text-align: left;
+  font-weight: 500;
+  margin: 10px 0 5px;
+}
 
-      <label>Full Name *</label>
-      <input type="text" name="entry.1959802141" placeholder="Enter your full name" required />
+.membership-form input,
+.membership-form select,
+.membership-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  margin-bottom: 15px;
+  display: block;
+}
 
-      <label>Email Address *</label>
-      <input type="email" name="entry.2097262250" placeholder="Enter your email address" required />
+.membership-form button {
+  width: 100%;
+  padding: 14px;
+  background: #00bfa5;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
 
-      <label>Phone Number *</label>
-      <input type="tel" name="entry.174411348" placeholder="Enter your contact number" required />
+.membership-form button:hover {
+  background: #009e8f;
+}
 
-      <label>Area of Interest *</label>
-      <select name="entry.1176030071" required>
-        <option value="" disabled selected>Select one</option>
-        <option value="Volunteering">Volunteering</option>
-        <option value="Community Outreach">Community Outreach</option>
-        <option value="Education and Awareness">Education and Awareness</option>
-        <option value="Fundraising">Fundraising</option>
-        <option value="Partnership Opportunities">Partnership Opportunities</option>
-      </select>
 
       <label>Message or Comment (Optional)</label>
       <textarea name="entry.1000000001" placeholder="Tell us how you'd like to help"></textarea>
