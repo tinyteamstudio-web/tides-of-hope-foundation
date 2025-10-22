@@ -12,6 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }, options);
 
   fadeEls.forEach(el => appearOnScroll.observe(el));
+
+  // --- MOBILE MENU TOGGLE ---
+  const toggle = document.getElementById("menu-toggle");
+  const navMenu = document.getElementById("nav-menu");
+
+  if (toggle && navMenu) {
+    toggle.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+  }
 });
 
 // 🌫️ Optional: Parallax Wave Motion (if you add wave background)
@@ -21,15 +31,4 @@ window.addEventListener('scroll', () => {
   waves.forEach(wave => {
     wave.style.transform = `translateX(-${scrollY / 10}px)`;
   });
-
-  // --- MOBILE MENU TOGGLE ---
-document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.getElementById("menu-toggle");
-  const navMenu = document.getElementById("nav-menu");
-
-  // Toggle mobile menu visibility
-  toggle.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
-  });
 });
-
