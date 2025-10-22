@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fadeEls.forEach(el => appearOnScroll.observe(el));
 
   // --- MOBILE MENU TOGGLE ---
+ document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.getElementById("menu-toggle");
   const navMenu = document.getElementById("nav-menu");
 
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
 
 // 🌫️ Optional: Parallax Wave Motion (if you add wave background)
 window.addEventListener('scroll', () => {
