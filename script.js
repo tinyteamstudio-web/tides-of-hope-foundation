@@ -21,4 +21,15 @@ window.addEventListener('scroll', () => {
   waves.forEach(wave => {
     wave.style.transform = `translateX(-${scrollY / 10}px)`;
   });
+
+  // --- MOBILE MENU TOGGLE ---
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("menu-toggle");
+  const navMenu = document.getElementById("nav-menu");
+
+  // Toggle mobile menu visibility
+  toggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
 });
+
