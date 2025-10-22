@@ -24,29 +24,30 @@
     </div>
   </header>
 
-  <!-- MEMBERSHIP FORM -->
+  <!-- MEMBERSHIP FORM SECTION -->
   <section class="membership-section fade-in">
     <h2>Join the Tides of Hope Family 🌊</h2>
-    <p>Become a member and help us create waves of change through compassion, action, and empowerment.</p>
+    <p>
+      Become a member and help us create waves of change through compassion, action, and empowerment.
+    </p>
 
-    <form 
+    <form
       class="membership-form"
       action="https://docs.google.com/forms/d/e/1FAIpQLSeoy_pzjGayniUWIkyqIB4Y-WEG9KpyW3GCLjB-HpmSiO9Qsw/formResponse"
       method="POST"
       target="_blank"
     >
+      <label for="name">Full Name *</label>
+      <input type="text" name="entry.1959802141" id="name" placeholder="Enter your full name" required />
 
-      <label>Full Name *</label>
-      <input type="text" name="entry.1959802141" placeholder="Enter your full name" required />
+      <label for="email">Email Address *</label>
+      <input type="email" name="entry.2097262250" id="email" placeholder="Enter your email address" required />
 
-      <label>Email Address *</label>
-      <input type="email" name="entry.2097262250" placeholder="Enter your email address" required />
+      <label for="phone">Phone Number *</label>
+      <input type="tel" name="entry.174411348" id="phone" placeholder="Enter your contact number" required />
 
-      <label>Phone Number *</label>
-      <input type="tel" name="entry.174411348" placeholder="Enter your contact number" required />
-
-      <label>Area of Interest *</label>
-      <select name="entry.1176030071" required>
+      <label for="interest">Area of Interest *</label>
+      <select name="entry.1176030071" id="interest" required>
         <option value="" disabled selected>Select one</option>
         <option value="Volunteering">Volunteering</option>
         <option value="Community Outreach">Community Outreach</option>
@@ -55,8 +56,8 @@
         <option value="Partnership Opportunities">Partnership Opportunities</option>
       </select>
 
-      <label>Message or Comment (Optional)</label>
-      <textarea name="entry.1000000001" placeholder="Tell us how you'd like to help"></textarea>
+      <label for="message">Message or Comment (Optional)</label>
+      <textarea name="entry.1000000001" id="message" placeholder="Tell us how you'd like to help"></textarea>
 
       <button type="submit" class="btn">Submit Application</button>
     </form>
@@ -72,6 +73,5 @@
     <p>© 2025 Tides of Hope Foundation. All Rights Reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
