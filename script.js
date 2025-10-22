@@ -1,7 +1,10 @@
-// 🌊 Fade-in Scroll Animation
+// 🌊 Tides of Hope Foundation Script
 document.addEventListener("DOMContentLoaded", () => {
+  /* ------------------------------
+     FADE-IN SCROLL ANIMATION
+  ------------------------------ */
   const fadeEls = document.querySelectorAll('.fade-in');
-  const options = { threshold: 0.2 };
+  const observerOptions = { threshold: 0.2 };
 
   const appearOnScroll = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -9,28 +12,33 @@ document.addEventListener("DOMContentLoaded", () => {
       entry.target.classList.add('visible');
       observer.unobserve(entry.target);
     });
-  }, options);
+  }, observerOptions);
 
   fadeEls.forEach(el => appearOnScroll.observe(el));
 
-  // --- MOBILE MENU TOGGLE ---
- document.addEventListener("DOMContentLoaded", () => {
+  /* ------------------------------
+     MOBILE MENU TOGGLE
+  ------------------------------ */
   const toggle = document.getElementById("menu-toggle");
   const navMenu = document.getElementById("nav-menu");
 
   if (toggle && navMenu) {
     toggle.addEventListener("click", () => {
       navMenu.classList.toggle("active");
+
+      // Change icon ☰ ↔ ✖ for better UX
+      toggle.textContent = navMenu.classList.contains("active") ? "✖" : "☰";
     });
   }
-});
 
-
-// 🌫️ Optional: Parallax Wave Motion (if you add wave background)
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  const waves = document.querySelectorAll('.wave, .wave2');
-  waves.forEach(wave => {
-    wave.style.transform = `translateX(-${scrollY / 10}px)`;
+  /* ------------------------------
+     OPTIONAL PARALLAX WAVE EFFECT
+  ------------------------------ */
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const waves = document.querySelectorAll('.wave, .wave2');
+    waves.forEach(wave => {
+      wave.style.transform = `translateX(-${scrollY / 10}px)`;
+    });
   });
 });
