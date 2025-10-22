@@ -4,6 +4,149 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* --- HERO SECTION --- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 80px 20px;
+  background: #ffffff;
+  color: #004f63;
+}
+
+.hero-logo img {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.hero-text h2 {
+  font-size: 32px;
+  color: #007c91;
+  margin-bottom: 15px;
+}
+
+.hero-text p {
+  max-width: 800px;
+  margin: 0 auto 25px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.btn {
+  background: #00bfa5;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #009e8f;
+}
+
+/* --- MISSION & VISION --- */
+.mission-vision {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px 20px;
+  background: #f6f9fa;
+  color: #004f63;
+}
+
+.section-box {
+  flex: 1 1 300px;
+  max-width: 450px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.section-box h3 {
+  color: #007c91;
+  margin-bottom: 10px;
+}
+
+/* --- GET INVOLVED --- */
+.get-involved {
+  text-align: center;
+  padding: 60px 20px;
+  background: #ffffff;
+  color: #004f63;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  background: #e8f5f7;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 25px;
+  max-width: 300px;
+}
+
+.card img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: #007c91;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.small-btn {
+  display: inline-block;
+  background: #00bfa5;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.small-btn:hover {
+  background: #009e8f;
+}
+
+/* --- HIGHLIGHT BUTTON IN NAV --- */
+.highlight-btn {
+  background: #00bfa5;
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+
+.highlight-btn:hover {
+  background: #009e8f;
+}
+
+/* --- RESPONSIVE FIXES --- */
+@media (max-width: 768px) {
+  .hero-text h2 {
+    font-size: 26px;
+  }
+  .mission-vision, .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav a {
+    margin-left: 10px;
+  }
 
 body {
   font-family: 'Poppins', sans-serif;
