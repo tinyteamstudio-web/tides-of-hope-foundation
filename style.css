@@ -1,16 +1,27 @@
-/* BASIC */
-body {
+/* --- GLOBAL RESET --- */
+* {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #ffffff;
-  color: #1a1a1a;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* HEADER */
-header {
-  background-color: #004b75;
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #004f63;
   color: white;
-  padding: 1rem 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* --- HEADER --- */
+header {
+  background: #004f63;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .header-container {
@@ -20,339 +31,156 @@ header {
 }
 
 .logo-text h1 {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 24px;
+  color: #fff;
   letter-spacing: 1px;
 }
 
+.logo-text p {
+  font-size: 12px;
+  margin-top: -4px;
+  color: #cce;
+}
+
 nav a {
-  color: white;
+  color: #fff;
   text-decoration: none;
-  margin: 0 1rem;
+  margin-left: 20px;
   font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-nav a.active, nav a:hover {
-  text-decoration: underline;
+nav a:hover,
+nav a.active {
+  color: #00bfa5;
 }
 
-.highlight-btn {
-  background: #2ec4b6;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-
-.highlight-btn:hover {
-  background: #3dd5c3;
-}
-
-/* HERO */
-.hero {
-  background: #2b6c8c;
-  text-align: center;
-  color: white;
-  padding: 3rem 1rem;
-  position: relative;
-}
-
-.hero-logo img {
-  width: 85px;
-  height: 85px;
-  object-fit: contain;
-  animation: fadeInLogo 2s ease-in-out forwards;
-  opacity: 0;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
-}
-
-.hero-text {
-  max-width: 700px;
-  margin: 0 auto;
-  animation: fadeInHero 2s ease-in-out forwards;
-  opacity: 0;
-}
-
-.hero-text h2 {
-  font-size: 2rem;
-  margin-top: 1.2rem;
-}
-
-.hero-text p {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  background: #2ec4b6;
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
-  animation: pulseGlow 3s infinite;
-}
-
-.btn:hover {
-  background: #3dd5c3;
-  box-shadow: 0 0 25px rgba(46, 196, 182, 0.7);
-}
-
-/* ANIMATIONS */
-@keyframes pulseGlow {
-  0% {
-    box-shadow: 0 0 0 0 rgba(46, 196, 182, 0.5);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 0 15px 5px rgba(46, 196, 182, 0.6);
-    transform: scale(1.05);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(46, 196, 182, 0.5);
-    transform: scale(1);
-  }
-}
-
-@keyframes fadeInHero {
-  0% { opacity: 0; transform: translateY(40px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInLogo {
-  0% { opacity: 0; transform: translateY(-20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* MISSION & VISION */
-.mission-vision {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  background: #f8f9fa;
-  padding: 3rem 1rem;
-}
-
-.section-box {
-  width: 300px;
-  margin: 1rem;
-  text-align: center;
-}
-
-.section-box h3 {
-  color: #003d5b;
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-}
-
-/* 🌊 GET INVOLVED SECTION */
-.get-involved {
-  text-align: center;
-  padding: 3rem 1rem;
-  background: linear-gradient(180deg, #e7f9f7 0%, #ffffff 100%);
-  transition: background 0.5s ease;
-}
-
-.get-involved h2 {
-  color: #004b75;
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.get-involved p {
-  color: #333;
-  max-width: 750px;
-  margin: 0 auto 2rem auto;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.card {
-  background: #f8f9fa;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  padding: 2rem 1.5rem;
-  width: 280px;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0, 75, 117, 0.2);
-}
-
-.card img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 1rem;
-}
-
-.card h3 {
-  color: #003d5b;
-  margin-bottom: 0.5rem;
-}
-
-.card p {
-  font-size: 0.95rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.small-btn {
-  background: #2ec4b6;
-  color: white;
-  padding: 0.5rem 1.2rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.small-btn:hover {
-  background: #3dd5c3;
-}
-
-/* FOOTER */
-footer {
-  background: #004b75;
-  color: white;
-  text-align: center;
-  padding: 1.5rem 0;
-}
-
-.footer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.socials {
-  margin-bottom: 0.5rem;
-}
-
-.social-icon {
-  width: 32px;
-  height: 32px;
-  transition: transform 0.3s ease;
-}
-
-.social-icon:hover {
-  transform: scale(1.15);
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .hero-logo img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .hero-text h2 {
-    font-size: 1.5rem;
-  }
-
-  .hero-text p {
-    font-size: 0.9rem;
-  }
-
-  .cards-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  /* MEMBERSHIP FORM */
+/* --- MEMBERSHIP SECTION --- */
 .membership-section {
-  max-width: 600px;
-  margin: 4rem auto;
-  background: #f8f9fa;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 75, 117, 0.1);
-  padding: 2rem 2.5rem;
   text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+  color: #004f63;
 }
 
 .membership-section h2 {
-  color: #004b75;
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #007c91;
 }
 
 .membership-section p {
-  color: #333;
-  margin-bottom: 2rem;
-  font-size: 1rem;
+  font-size: 16px;
+  margin-bottom: 30px;
 }
 
+/* --- FORM --- */
 .membership-form {
+  background: rgba(0, 124, 145, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  max-width: 500px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  text-align: left;
+  align-items: stretch;
 }
 
 .membership-form label {
-  font-weight: 600;
-  color: #003d5b;
+  display: block;
+  text-align: left;
+  font-weight: 500;
+  margin: 10px 0 5px;
 }
 
 .membership-form input,
 .membership-form select,
 .membership-form textarea {
-  padding: 0.8rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-family: inherit;
-  font-size: 1rem;
   width: 100%;
-  transition: all 0.2s ease;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  margin-bottom: 15px;
+  display: block;
+  background-color: #f6f9fa;
+  color: #004f63;
 }
 
 .membership-form input:focus,
 .membership-form select:focus,
 .membership-form textarea:focus {
-  border-color: #2ec4b6;
-  outline: none;
-  box-shadow: 0 0 6px rgba(46, 196, 182, 0.3);
+  box-shadow: 0 0 0 2px #00bfa5;
 }
 
-.membership-form textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-.membership-form .btn {
-  align-self: center;
-  margin-top: 1rem;
-  background: #2ec4b6;
-  color: white;
-  padding: 0.8rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
+.membership-form button {
+  width: 100%;
+  padding: 14px;
+  background: #00bfa5;
   border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: background 0.3s ease;
+  margin-top: 10px;
 }
 
-.membership-form .btn:hover {
-  background: #3dd5c3;
-  box-shadow: 0 0 15px rgba(46, 196, 182, 0.5);
+.membership-form button:hover {
+  background: #009e8f;
 }
 
+/* --- FOOTER --- */
+footer {
+  text-align: center;
+  padding: 25px 10px;
+  background: #004f63;
+  color: white;
+}
+
+footer .socials {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+footer .social-icon {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+footer .social-icon:hover {
+  transform: scale(1.1);
+  filter: brightness(1) invert(0);
+}
+
+/* --- ANIMATION --- */
+.fade-in {
+  animation: fadeIn 1.2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 600px) {
+  .membership-section {
+    padding: 40px 15px;
+  }
+  .membership-form {
+    padding: 20px;
+  }
+  .membership-section h2 {
+    font-size: 24px;
+  }
+}
