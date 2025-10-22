@@ -371,35 +371,46 @@ footer .social-icon:hover {
 /* --- MOBILE MENU ICON STYLE --- */
 .menu-toggle {
   display: none;
-  font-size: 28px;
+  font-size: 30px;
   color: #fff;
   cursor: pointer;
 }
 
-/* Mobile layout for menu toggle */
+/* --- MOBILE DROPDOWN MENU --- */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
   }
 
-  nav {
-    display: none;
+  #nav-menu {
+    display: flex;
     flex-direction: column;
     background: #004f63;
     position: absolute;
-    top: 60px;
+    top: 70px;
     right: 0;
     width: 100%;
     text-align: center;
     padding: 20px 0;
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: all 0.35s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
-  nav.active {
-    display: flex;
+  #nav-menu.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
-  nav a {
+  #nav-menu a {
     margin: 10px 0;
     font-size: 16px;
+  }
+
+  .highlight-btn {
+    margin-top: 10px;
   }
 }
