@@ -4,6 +4,69 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* --- BASE STYLES --- */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #004f63;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* --- HEADER --- */
+header {
+  background: #004f63;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-text h1 {
+  font-size: 24px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.logo-text p {
+  font-size: 12px;
+  margin-top: -4px;
+  color: #cce;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: #00bfa5;
+}
+
+/* --- HIGHLIGHT BUTTON IN NAV --- */
+.highlight-btn {
+  background: #00bfa5;
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+
+.highlight-btn:hover {
+  background: #009e8f;
+}
+
 /* --- HERO SECTION --- */
 .hero {
   display: flex;
@@ -63,7 +126,7 @@
   background: white;
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .section-box h3 {
@@ -90,13 +153,15 @@
 .card {
   background: #e8f5f7;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   padding: 25px;
   max-width: 300px;
 }
 
 .card img {
-  width: 60px;
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
   margin-bottom: 15px;
 }
 
@@ -124,80 +189,6 @@
   background: #009e8f;
 }
 
-/* --- HIGHLIGHT BUTTON IN NAV --- */
-.highlight-btn {
-  background: #00bfa5;
-  padding: 8px 16px;
-  border-radius: 6px;
-}
-
-.highlight-btn:hover {
-  background: #009e8f;
-}
-
-/* --- RESPONSIVE FIXES --- */
-@media (max-width: 768px) {
-  .hero-text h2 {
-    font-size: 26px;
-  }
-  .mission-vision, .cards-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  nav a {
-    margin-left: 10px;
-  }
-}
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #004f63;
-  color: white;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* --- HEADER --- */
-header {
-  background: #004f63;
-  padding: 15px 30px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-text h1 {
-  font-size: 24px;
-  color: #fff;
-  letter-spacing: 1px;
-}
-
-.logo-text p {
-  font-size: 12px;
-  margin-top: -4px;
-  color: #cce;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 20px;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-nav a:hover,
-nav a.active {
-  color: #00bfa5;
-}
-
 /* --- MEMBERSHIP SECTION --- */
 .membership-section {
   text-align: center;
@@ -217,12 +208,11 @@ nav a.active {
   margin-bottom: 30px;
 }
 
-/* --- FORM --- */
 .membership-form {
   background: rgba(0, 124, 145, 0.1);
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   max-width: 500px;
   margin: 0 auto;
   display: flex;
@@ -247,7 +237,6 @@ nav a.active {
   font-size: 15px;
   outline: none;
   margin-bottom: 15px;
-  display: block;
   background-color: #f6f9fa;
   color: #004f63;
 }
@@ -294,16 +283,15 @@ footer .socials {
 footer .social-icon {
   width: 32px;
   height: 32px;
-  filter: brightness(0) invert(1);
-  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: none; /* always visible */
+  transition: transform 0.3s ease;
 }
 
 footer .social-icon:hover {
   transform: scale(1.1);
-  filter: brightness(1) invert(0);
 }
 
-/* --- ANIMATION --- */
+/* --- ANIMATIONS --- */
 .fade-in {
   animation: fadeIn 1.2s ease forwards;
   opacity: 0;
@@ -315,7 +303,21 @@ footer .social-icon:hover {
   }
 }
 
-/* --- RESPONSIVE --- */
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+  .hero-text h2 {
+    font-size: 26px;
+  }
+  .mission-vision,
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav a {
+    margin-left: 10px;
+  }
+}
+
 @media (max-width: 600px) {
   .membership-section {
     padding: 40px 15px;
