@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documents · Tides of Hope Foundation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo-text">
+        <h1>TIDES OF HOPE</h1>
+        <p>FOUNDATION</p>
+      </div>
+
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+
+      <nav id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="membership.html">Membership</a>
+        <a href="donate.html">Donate</a>
+        <a href="contact.html">Contact</a>
+        <a href="index.html#get-involved" class="highlight-btn">Be Part of Our Journey</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <h2>Legal & Public Documents</h2>
+    <p>
+      We are preparing our official public copies of legal documents for transparency.
+      These will be published here once finalized.
+    </p>
+  </section>
+
+  <section class="donate-section">
+    <div class="cards-container">
+
+      <div class="card">
+        <h3>Articles of Incorporation</h3>
+        <p>Official document — will be posted here once the public copy is prepared.</p>
+        <p class="small-note">Status: To be uploaded</p>
+      </div>
+
+      <div class="card">
+        <h3>By-Laws</h3>
+        <p>Official document — will be posted here once the public copy is prepared.</p>
+        <p class="small-note">Status: To be uploaded</p>
+      </div>
+
+      <div class="card">
+        <h3>SEC Registration</h3>
+        <p>
+          SEC Registration No.: <strong>2025120229353-01</strong><br />
+          Type: <strong>Non-stock, Non-profit Organization</strong>
+        </p>
+        <a class="btn" href="contact.html?topic=general">Request Verification</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="socials">
+      <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener">
+        <img src="facebook-logo.png" alt="Facebook" class="social-icon" />
+      </a>
+    </div>
+
+    <p class="fineprint">
+      SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
+    </p>
+
+    <p>© 2025 Tides of Hope Foundation. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav-menu");
+    if (toggle && nav) toggle.addEventListener("click", () => nav.classList.toggle("active"));
+  </script>
+
+</body>
+</html>
