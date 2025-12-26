@@ -9,26 +9,26 @@
 <body>
 
   <!-- HEADER -->
- <header>
-  <div class="header-container">
-    <div class="logo-text">
-      <h1>TIDES OF HOPE</h1>
-      <p>FOUNDATION</p>
+  <header>
+    <div class="header-container">
+      <div class="logo-text">
+        <h1>TIDES OF HOPE</h1>
+        <p>FOUNDATION</p>
+      </div>
+
+      <!-- Mobile menu toggle -->
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+
+      <!-- Navigation menu -->
+      <nav id="nav-menu">
+        <a href="index.html" class="active">Home</a>
+        <a href="membership.html">Membership</a>
+        <a href="contact.html">Contact</a>
+        <!-- CTA scrolls to Get Involved -->
+        <a href="#get-involved" class="highlight-btn">Be Part of Our Journey</a>
+      </nav>
     </div>
-
-    <!-- Mobile menu toggle -->
-    <div class="menu-toggle" id="menu-toggle">☰</div>
-
-    <!-- Navigation menu -->
-    <nav id="nav-menu">
-      <a href="index.html" class="active">Home</a>
-      <a href="membership.html">Membership</a>
-      <a href="contact.html">Contact</a>
-      <a href="donate.html" class="highlight-btn">Be Part of Our Journey</a>
-    </nav>
-  </div>
-</header>
-
+  </header>
 
   <!-- HERO SECTION -->
   <section class="hero">
@@ -83,7 +83,7 @@
           Join our community of volunteers and bring positive change to people’s lives
           through compassion and action.
         </p>
-        <a href="membership.html" class="small-btn">Join as Volunteer</a>
+        <a href="membership.html#volunteer" class="small-btn">Join as Volunteer</a>
       </div>
 
       <!-- Partner Card -->
@@ -94,7 +94,7 @@
           Collaborate with Tides of Hope to expand impact. Together, we can reach more
           communities in need.
         </p>
-        <a href="contact.html" class="small-btn">Partner With Us</a>
+        <a href="contact.html?topic=partnership" class="small-btn">Partner With Us</a>
       </div>
 
       <!-- Donate Card -->
@@ -113,14 +113,21 @@
   <!-- FOOTER -->
   <footer>
     <div class="socials">
-      <a href="https://facebook.com" target="_blank">
+      <a href="https://facebook.com" target="_blank" rel="noopener">
         <img src="facebook-logo.png" alt="Facebook" class="social-icon" />
       </a>
     </div>
+
+    <p class="fineprint">
+      SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
+    </p>
+
     <p>© 2025 Tides of Hope Foundation. All Rights Reserved.</p>
   </footer>
 
- <script src="script.js"></script>
- 
+  <!-- If you don't have script.js yet, remove this line OR create script.js -->
+  <!-- <script src="script.js"></script> -->
+
 </body>
 </html>
+
