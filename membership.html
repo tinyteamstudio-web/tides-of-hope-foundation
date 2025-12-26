@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Membership | Tides of Hope Foundation</title>
+  <title>Membership · Tides of Hope Foundation</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -15,20 +15,32 @@
         <h1>TIDES OF HOPE</h1>
         <p>FOUNDATION</p>
       </div>
-      <nav>
+
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+
+      <nav id="nav-menu">
         <a href="index.html">Home</a>
         <a href="membership.html" class="active">Membership</a>
-        <a href="donate.html">Donate</a>
         <a href="contact.html">Contact</a>
+        <a href="index.html#get-involved" class="highlight-btn">Be Part of Our Journey</a>
       </nav>
     </div>
   </header>
 
-  <!-- MEMBERSHIP FORM SECTION -->
-  <section class="membership-section fade-in">
+  <!-- PAGE HERO -->
+  <section class="page-hero">
     <h2>Join the Tides of Hope Family 🌊</h2>
     <p>
       Become a member and help us create waves of change through compassion, action, and empowerment.
+      Your time, skills, and support can help communities rise with every tide.
+    </p>
+  </section>
+
+  <!-- MEMBERSHIP FORM SECTION -->
+  <section id="volunteer" class="membership-section fade-in">
+    <h2>Membership Application</h2>
+    <p>
+      Please complete the form below. Once submitted, you’ll be redirected to Google Forms in a new tab.
     </p>
 
     <form
@@ -57,21 +69,46 @@
       </select>
 
       <label for="message">Message or Comment (Optional)</label>
-      <textarea name="entry.1000000001" id="message" placeholder="Tell us how you'd like to help"></textarea>
+      <!-- NOTE: Replace entry.1000000001 with your real Google Forms entry id for this field -->
+      <textarea
+        name="entry.1000000001"
+        id="message"
+        placeholder="Tell us how you'd like to help (skills, availability, ideas, etc.)"
+      ></textarea>
 
-      <button type="submit" class="btn">Submit Application</button>
+      <button type="submit">Submit Application</button>
+
+      <p class="small-note">
+        By submitting this form, you agree that Tides of Hope Foundation may contact you regarding membership,
+        volunteering opportunities, and related updates.
+      </p>
     </form>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="socials">
-      <a href="https://facebook.com" target="_blank">
+      <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener">
         <img src="facebook-logo.png" alt="Facebook" class="social-icon" />
       </a>
     </div>
+
+    <p class="fineprint">
+      SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
+    </p>
+
     <p>© 2025 Tides of Hope Foundation. All Rights Reserved.</p>
   </footer>
 
+  <!-- Optional: only needed if you want mobile menu toggle -->
+  <script>
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav-menu");
+    if (toggle && nav) {
+      toggle.addEventListener("click", () => nav.classList.toggle("active"));
+    }
+  </script>
+
 </body>
 </html>
+
