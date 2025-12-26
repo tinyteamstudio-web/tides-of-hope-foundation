@@ -1,3 +1,8 @@
+/* =========================================================
+   Tides of Hope Foundation — UI/UX Polished Styles
+   Brand: Deep Blue + Hope Green + White
+   ========================================================= */
+
 /* --- GLOBAL RESET --- */
 * {
   margin: 0;
@@ -5,271 +10,566 @@
   box-sizing: border-box;
 }
 
+/* --- THEME TOKENS --- */
+:root {
+  --blue: #0D3B66;          /* Deep Sea Blue */
+  --blue-2: #0A2F52;        /* Darker blue for hover */
+  --green: #4CAF50;         /* Hope Green */
+  --green-2: #3F9B44;       /* Darker green for hover */
+  --white: #FFFFFF;
+  --bg-soft: #F5F9FC;
+  --card: #FFFFFF;
+  --text: #0B1F33;
+  --muted: rgba(11, 31, 51, 0.75);
+  --line: rgba(13, 59, 102, 0.12);
+  --shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --max: 1100px;
+}
+
 /* --- BASE STYLES --- */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Poppins', sans-serif;
-  background: #004f63;
-  color: white;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--blue);
+  color: var(--white);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-/* --- HEADER --- */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(76, 175, 80, 0.35);
+}
+
+/* =========================================================
+   HEADER / NAV
+   ========================================================= */
 header {
-  background: #004f63;
-  padding: 15px 30px;
+  background: var(--blue);
+  padding: 14px 24px;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 50;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .header-container {
+  max-width: var(--max);
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative; /* for mobile dropdown */
 }
 
 .logo-text h1 {
-  font-size: 24px;
-  color: #fff;
+  font-size: 22px;
   letter-spacing: 1px;
+  line-height: 1.1;
 }
 
 .logo-text p {
   font-size: 12px;
-  margin-top: -4px;
-  color: #cce;
+  margin-top: 2px;
+  color: rgba(255,255,255,0.80);
+  letter-spacing: 1.6px;
 }
 
-nav a {
-  color: #fff;
+/* desktop nav */
+nav#nav-menu a {
+  color: rgba(255,255,255,0.92);
   text-decoration: none;
-  margin-left: 20px;
+  margin-left: 18px;
   font-weight: 500;
-  transition: color 0.3s ease;
+  padding: 8px 6px;
+  border-radius: 8px;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
-nav a:hover,
-nav a.active {
-  color: #00bfa5;
+nav#nav-menu a:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.08);
 }
 
-/* --- HIGHLIGHT BUTTON IN NAV --- */
+nav#nav-menu a.active {
+  color: var(--white);
+  background: rgba(255,255,255,0.12);
+}
+
+/* CTA button in nav */
 .highlight-btn {
-  background: #00bfa5;
-  padding: 8px 16px;
-  border-radius: 6px;
+  background: var(--green);
+  color: var(--white) !important;
+  padding: 10px 14px !important;
+  border-radius: 10px;
+  margin-left: 18px;
+  box-shadow: 0 10px 18px rgba(76,175,80,0.25);
 }
 
 .highlight-btn:hover {
-  background: #009e8f;
+  background: var(--green-2);
+  transform: translateY(-1px);
 }
 
-/* --- HERO SECTION --- */
+/* Focus accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(76, 175, 80, 0.55);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* --- MOBILE MENU ICON --- */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: var(--white);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* =========================================================
+   SECTIONS GLOBAL
+   ========================================================= */
+section {
+  width: 100%;
+}
+
+.section-wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 56px 20px;
+}
+
+.small-note {
+  font-size: 13px;
+  color: rgba(11, 31, 51, 0.70);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.fineprint {
+  margin-top: 10px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   HERO (Home)
+   ========================================================= */
 .hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background: var(--white);
+  color: var(--text);
+  padding: 72px 20px;
   text-align: center;
-  padding: 80px 20px;
-  background: #ffffff;
-  color: #004f63;
 }
 
 .hero-logo img {
-  width: 200px;
-  margin-bottom: 20px;
+  width: 180px;
+  margin: 0 auto 18px;
+}
+
+.hero-text {
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .hero-text h2 {
-  font-size: 32px;
-  color: #007c91;
-  margin-bottom: 15px;
+  font-size: 34px;
+  line-height: 1.2;
+  color: var(--blue);
+  margin-bottom: 14px;
+  letter-spacing: 0.2px;
 }
 
 .hero-text p {
-  max-width: 800px;
-  margin: 0 auto 25px;
+  max-width: 820px;
+  margin: 0 auto 26px;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.75;
+  color: rgba(11, 31, 51, 0.82);
 }
 
+/* Primary button */
 .btn {
-  background: #00bfa5;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
+  display: inline-block;
+  background: var(--green);
+  color: var(--white);
+  padding: 12px 22px;
+  border-radius: 12px;
   text-decoration: none;
-  transition: background 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 14px 22px rgba(76,175,80,0.22);
 }
 
 .btn:hover {
-  background: #009e8f;
+  background: var(--green-2);
+  transform: translateY(-2px);
 }
 
-/* --- MISSION & VISION --- */
+/* =========================================================
+   MISSION & VISION
+   ========================================================= */
 .mission-vision {
+  background: var(--bg-soft);
+  color: var(--text);
+  padding: 56px 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
-  padding: 60px 20px;
-  background: #f6f9fa;
-  color: #004f63;
+  gap: 22px;
 }
 
 .section-box {
-  flex: 1 1 300px;
-  max-width: 450px;
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  flex: 1 1 320px;
+  max-width: 520px;
+  background: var(--card);
+  padding: 26px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
 }
 
 .section-box h3 {
-  color: #007c91;
+  color: var(--blue);
+  margin-bottom: 10px;
+  letter-spacing: 0.6px;
+}
+
+.section-box p {
+  color: rgba(11, 31, 51, 0.82);
+  line-height: 1.75;
+}
+
+/* =========================================================
+   GET INVOLVED + CARDS
+   ========================================================= */
+.get-involved {
+  background: var(--white);
+  color: var(--text);
+  text-align: center;
+  padding: 56px 20px 72px;
+}
+
+.get-involved h2 {
+  font-size: 30px;
+  color: var(--blue);
   margin-bottom: 10px;
 }
 
-/* --- GET INVOLVED --- */
-.get-involved {
-  text-align: center;
-  padding: 60px 20px;
-  background: #ffffff;
-  color: #004f63;
+.get-involved > p {
+  max-width: 820px;
+  margin: 0 auto;
+  color: rgba(11, 31, 51, 0.78);
+  line-height: 1.7;
 }
 
 .cards-container {
+  max-width: var(--max);
+  margin: 38px auto 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
-  margin-top: 40px;
+  gap: 22px;
 }
 
 .card {
-  background: #e8f5f7;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 25px;
-  max-width: 300px;
+  background: #EAF4FF; /* soft ocean tint */
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 26px;
+  max-width: 320px;
+  width: 100%;
+  border: 1px solid rgba(13, 59, 102, 0.10);
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(0,0,0,0.12);
 }
 
 .card img {
   width: 70px;
   height: 70px;
   object-fit: contain;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
 .card h3 {
-  color: #007c91;
+  color: var(--blue);
   margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .card p {
   font-size: 15px;
-  margin-bottom: 20px;
+  color: rgba(11, 31, 51, 0.80);
+  line-height: 1.65;
+  margin-bottom: 18px;
 }
 
+/* Secondary button */
 .small-btn {
   display: inline-block;
-  background: #00bfa5;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 6px;
+  background: var(--green);
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 10px;
   text-decoration: none;
-  transition: background 0.3s ease;
+  font-weight: 600;
+  transition: transform 0.25s ease, background 0.25s ease;
 }
 
 .small-btn:hover {
-  background: #009e8f;
+  background: var(--green-2);
+  transform: translateY(-2px);
 }
 
-/* --- MEMBERSHIP SECTION --- */
+/* =========================================================
+   MEMBERSHIP PAGE (your existing class)
+   ========================================================= */
 .membership-section {
+  background: var(--white);
+  color: var(--text);
   text-align: center;
-  padding: 60px 20px;
-  background: #fff;
-  color: #004f63;
+  padding: 56px 20px;
 }
 
 .membership-section h2 {
-  font-size: 28px;
-  margin-bottom: 15px;
-  color: #007c91;
+  font-size: 30px;
+  color: var(--blue);
+  margin-bottom: 10px;
 }
 
 .membership-section p {
+  color: rgba(11, 31, 51, 0.78);
   font-size: 16px;
-  margin-bottom: 30px;
+  line-height: 1.7;
+  margin-bottom: 26px;
 }
 
+/* Form container */
 .membership-form {
-  background: rgba(0, 124, 145, 0.1);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  max-width: 500px;
+  background: var(--bg-soft);
+  padding: 28px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  max-width: 560px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  text-align: left;
 }
 
 .membership-form label {
   display: block;
-  text-align: left;
-  font-weight: 500;
-  margin: 10px 0 5px;
+  font-weight: 600;
+  color: rgba(11, 31, 51, 0.86);
+  margin: 12px 0 6px;
+  font-size: 14px;
 }
 
 .membership-form input,
 .membership-form select,
 .membership-form textarea {
   width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
+  padding: 12px 12px;
+  border: 1px solid rgba(13, 59, 102, 0.16);
+  border-radius: 12px;
   font-size: 15px;
   outline: none;
-  margin-bottom: 15px;
-  background-color: #f6f9fa;
-  color: #004f63;
+  background-color: var(--white);
+  color: var(--text);
 }
 
 .membership-form input:focus,
 .membership-form select:focus,
 .membership-form textarea:focus {
-  box-shadow: 0 0 0 2px #00bfa5;
+  border-color: rgba(76, 175, 80, 0.65);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.18);
 }
 
 .membership-form button {
   width: 100%;
-  padding: 14px;
-  background: #00bfa5;
+  padding: 13px;
+  background: var(--green);
   border: none;
-  color: white;
+  color: var(--white);
   font-size: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-weight: 700;
+  transition: background 0.25s ease, transform 0.25s ease;
   margin-top: 10px;
 }
 
 .membership-form button:hover {
-  background: #009e8f;
+  background: var(--green-2);
+  transform: translateY(-1px);
 }
 
-/* --- FOOTER --- */
-footer {
+/* =========================================================
+   CONTACT + DONATE PAGES (new classes used)
+   ========================================================= */
+.page-hero {
+  background: var(--white);
+  color: var(--text);
+  padding: 54px 20px 36px;
   text-align: center;
-  padding: 25px 10px;
-  background: #004f63;
-  color: white;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-hero h2 {
+  color: var(--blue);
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.page-hero p {
+  max-width: 820px;
+  margin: 0 auto;
+  color: rgba(11, 31, 51, 0.78);
+  line-height: 1.7;
+}
+
+/* Contact form section */
+.form-section,
+.donate-section {
+  background: var(--bg-soft);
+  color: var(--text);
+  padding: 44px 20px 64px;
+}
+
+.form-card {
+  max-width: 820px;
+  margin: 0 auto;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  padding: 28px;
+}
+
+.form-card h3 {
+  color: var(--blue);
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 16px;
+  margin-top: 14px;
+}
+
+.form-field label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: rgba(11, 31, 51, 0.86);
+  margin-bottom: 6px;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 12px 12px;
+  border: 1px solid rgba(13, 59, 102, 0.16);
+  border-radius: 12px;
+  font-size: 15px;
+  background: var(--white);
+  color: var(--text);
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+.alt-contact {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: rgba(11, 31, 51, 0.80);
+}
+
+.alt-contact a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.alt-contact a:hover {
+  color: var(--blue-2);
+}
+
+/* Donate specific */
+.donate-section .cards-container {
+  margin-top: 0;
+}
+
+.donation-details {
+  margin-top: 10px;
+  line-height: 1.7;
+  color: rgba(11, 31, 51, 0.82);
+}
+
+/* Trust section */
+.trust-section {
+  background: var(--white);
+  color: var(--text);
+  padding: 34px 20px 44px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+}
+
+.trust-section p {
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.7;
+  color: rgba(11, 31, 51, 0.78);
+}
+
+.trust-section .fineprint {
+  color: rgba(11, 31, 51, 0.70);
+  margin-top: 10px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer {
+  background: var(--blue);
+  color: var(--white);
+  text-align: center;
+  padding: 22px 12px;
+  margin-top: auto;
 }
 
 footer .socials {
@@ -281,136 +581,120 @@ footer .socials {
 }
 
 footer .social-icon {
-  width: 32px;
-  height: 32px;
-  filter: none; /* always visible */
-  transition: transform 0.3s ease;
+  width: 34px;
+  height: 34px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  opacity: 0.95;
 }
 
 footer .social-icon:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
+  opacity: 1;
 }
 
-/* --- ANIMATIONS --- */
+/* =========================================================
+   ANIMATIONS (light & calm)
+   ========================================================= */
 .fade-in {
-  animation: fadeIn 1.2s ease forwards;
+  animation: fadeIn 0.9s ease forwards;
   opacity: 0;
 }
 
 @keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+  to { opacity: 1; }
 }
 
-/* --- RESPONSIVE DESIGN --- */
-@media (max-width: 768px) {
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 900px) {
   .hero-text h2 {
-    font-size: 26px;
+    font-size: 30px;
   }
-  .mission-vision,
-  .cards-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  nav a {
-    margin-left: 10px;
-  }
-}
-
-@media (max-width: 600px) {
-  .membership-section {
-    padding: 40px 15px;
-  }
-  .membership-form {
-    padding: 20px;
-  }
-  .membership-section h2 {
-    font-size: 24px;
-  }
-}
-/* --- MOBILE HEADER FIX FOR SMALL SCREENS --- */
-@media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    align-items: flex-start;
+  .card {
     text-align: left;
-    padding: 10px 15px;
-  }
-
-  .logo-text h1 {
-    font-size: 18px;
-    line-height: 1.2;
-  }
-
-  .logo-text p {
-    font-size: 10px;
-    margin-top: 2px;
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  nav a {
-    font-size: 14px;
-    margin: 5px 0;
-  }
-
-  .highlight-btn {
-    display: inline-block;
-    padding: 6px 10px;
-    font-size: 13px;
-    text-align: center;
   }
 }
 
-/* --- MOBILE MENU ICON STYLE --- */
-.menu-toggle {
-  display: none;
-  font-size: 30px;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* --- MOBILE DROPDOWN MENU --- */
 @media (max-width: 768px) {
+  /* header layout */
   .menu-toggle {
     display: block;
   }
 
-  #nav-menu {
+  nav#nav-menu {
     display: flex;
     flex-direction: column;
-    background: #004f63;
+    gap: 10px;
+    background: var(--blue);
     position: absolute;
-    top: 70px;
+    top: 64px;
     right: 0;
     width: 100%;
-    text-align: center;
-    padding: 20px 0;
+    padding: 18px 18px 20px;
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-16px);
     pointer-events: none;
-    transition: all 0.35s ease-in-out;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.28s ease-in-out;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+    border-top: 1px solid rgba(255,255,255,0.08);
   }
 
-  #nav-menu.active {
+  nav#nav-menu.active {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
   }
 
-  #nav-menu a {
-    margin: 10px 0;
-    font-size: 16px;
+  nav#nav-menu a {
+    margin-left: 0;
+    text-align: center;
+    padding: 10px 12px;
   }
 
   .highlight-btn {
-    margin-top: 10px;
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* sections */
+  .mission-vision,
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero {
+    padding: 56px 18px;
+  }
+
+  .hero-logo img {
+    width: 160px;
+  }
+
+  .hero-text h2 {
+    font-size: 26px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-card {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 420px) {
+  .logo-text h1 {
+    font-size: 18px;
+  }
+  .page-hero h2 {
+    font-size: 26px;
+  }
+  .btn, .small-btn {
+    width: 100%;
+    text-align: center;
   }
 }
