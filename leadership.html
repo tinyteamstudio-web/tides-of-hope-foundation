@@ -8,6 +8,7 @@
 </head>
 <body>
 
+  <!-- HEADER -->
   <header>
     <div class="header-container">
       <div class="logo-text">
@@ -27,27 +28,54 @@
     </div>
   </header>
 
+  <!-- PAGE HERO -->
   <section class="page-hero">
     <h2>Leadership & Officers</h2>
     <p>
-      We are currently finalizing our official leadership directory and profiles for transparency and public reference.
+      Meet the people behind Tides of Hope Inc. — committed to service, integrity,
+      and community-driven impact.
     </p>
   </section>
 
-  <section class="trust-section">
-    <p>
-      Roles to be published here include: President, Vice President, Secretary, Treasurer, Auditor, and Board of Trustees.
-      For urgent partnership or verification requests, please contact us.
-    </p>
+  <!-- CAROUSEL -->
+  <section class="leadership-section">
+    <div class="leadership-shell">
+      <div class="leadership-header">
+        <h3>Our Officers & Board</h3>
+        <p class="leadership-sub">
+          Leadership profiles are presented here for transparency. Names and official details will be finalized and updated.
+        </p>
+      </div>
 
-    <a class="btn" href="contact.html?topic=partnership">Contact for Partnership / Verification</a>
+      <div class="carousel" aria-label="Leadership Carousel">
+        <button class="carousel-btn prev" type="button" aria-label="Previous">‹</button>
 
-    <p class="fineprint">
-      SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
-    </p>
+        <div class="carousel-viewport" id="carousel-viewport">
+          <div class="carousel-track" id="carousel-track"></div>
+        </div>
+
+        <button class="carousel-btn next" type="button" aria-label="Next">›</button>
+      </div>
+
+      <div class="carousel-dots" id="carousel-dots" aria-label="Carousel Pagination"></div>
+
+      <div class="leadership-note">
+        <a class="btn" href="contact.html?topic=general">Request Verification</a>
+        <p class="fineprint">
+          SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
+        </p>
+      </div>
+    </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
+    <div class="footer-links">
+      <a href="leadership.html">Leadership</a>
+      <a href="documents.html">Legal & Documents</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
     <div class="socials">
       <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener">
         <img src="facebook-logo.png" alt="Facebook" class="social-icon" />
@@ -62,9 +90,121 @@
   </footer>
 
   <script>
+    // Mobile menu
     const toggle = document.getElementById("menu-toggle");
     const nav = document.getElementById("nav-menu");
     if (toggle && nav) toggle.addEventListener("click", () => nav.classList.toggle("active"));
+
+    // Officers list (photos assumed to exist; fallback to placeholder.jpg)
+    const officers = [
+      { name: "To be updated", role: "President", img: "officers/president.jpg" },
+      { name: "To be updated", role: "Vice President", img: "officers/vice-president.jpg" },
+      { name: "To be updated", role: "Secretary", img: "officers/secretary.jpg" },
+      { name: "To be updated", role: "Treasurer", img: "officers/treasurer.jpg" },
+      { name: "To be updated", role: "Auditor", img: "officers/auditor.jpg" },
+
+      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-01.jpg" },
+      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-02.jpg" },
+      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-03.jpg" },
+      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-04.jpg" },
+      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-05.jpg" },
+      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-06.jpg" },
+      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-07.jpg" },
+      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-08.jpg" },
+      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-09.jpg" },
+      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-10.jpg" }
+    ];
+
+    const track = document.getElementById("carousel-track");
+    const viewport = document.getElementById("carousel-viewport");
+    const dotsWrap = document.getElementById("carousel-dots");
+    const prevBtn = document.querySelector(".carousel-btn.prev");
+    const nextBtn = document.querySelector(".carousel-btn.next");
+
+    function renderCards() {
+      track.innerHTML = officers.map(o => `
+        <article class="leader-card">
+          <div class="leader-photo">
+            <img src="${o.img}" alt="${o.role}" onerror="this.src='officers/placeholder.jpg';" />
+          </div>
+          <div class="leader-info">
+            <h4>${o.name}</h4>
+            <p class="leader-role">${o.role}</p>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function cardsPerView() {
+      const w = window.innerWidth;
+      if (w <= 520) return 1;
+      if (w <= 1024) return 2;
+      return 4;
+    }
+
+    let index = 0;
+    let pageCount = 1;
+
+    function calcPages() {
+      const per = cardsPerView();
+      pageCount = Math.ceil(officers.length / per);
+      index = Math.min(index, pageCount - 1);
+      index = Math.max(index, 0);
+      renderDots();
+      snapToIndex();
+    }
+
+    function renderDots() {
+      dotsWrap.innerHTML = "";
+      for (let i = 0; i < pageCount; i++) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "dot" + (i === index ? " active" : "");
+        b.setAttribute("aria-label", `Go to slide ${i + 1}`);
+        b.addEventListener("click", () => { index = i; snapToIndex(); });
+        dotsWrap.appendChild(b);
+      }
+    }
+
+    function snapToIndex() {
+      const per = cardsPerView();
+      const first = track.querySelector(".leader-card");
+      if (!first) return;
+
+      const gap = parseFloat(getComputedStyle(track).gap || "0");
+      const cardWidth = first.getBoundingClientRect().width;
+      const shift = index * (per * (cardWidth + gap));
+
+      track.style.transform = `translateX(${-shift}px)`;
+
+      prevBtn.disabled = index <= 0;
+      nextBtn.disabled = index >= pageCount - 1;
+
+      const dots = dotsWrap.querySelectorAll(".dot");
+      dots.forEach((d, i) => d.classList.toggle("active", i === index));
+    }
+
+    prevBtn.addEventListener("click", () => { index = Math.max(0, index - 1); snapToIndex(); });
+    nextBtn.addEventListener("click", () => { index = Math.min(pageCount - 1, index + 1); snapToIndex(); });
+
+    // Autoplay (pause on hover)
+    let autoplay = setInterval(() => {
+      index = (index + 1) % pageCount;
+      snapToIndex();
+    }, 4500);
+
+    viewport.addEventListener("mouseenter", () => clearInterval(autoplay));
+    viewport.addEventListener("mouseleave", () => {
+      autoplay = setInterval(() => {
+        index = (index + 1) % pageCount;
+        snapToIndex();
+      }, 4500);
+    });
+
+    window.addEventListener("resize", calcPages);
+
+    renderCards();
+    calcPages();
   </script>
 
 </body>
