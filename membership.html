@@ -49,15 +49,61 @@
       method="POST"
       target="_blank"
     >
+
+      <!-- BASIC INFO -->
       <label for="name">Full Name *</label>
-      <input type="text" name="entry.1959802141" id="name" placeholder="Enter your full name" required />
+      <input
+        type="text"
+        name="entry.1959802141"
+        id="name"
+        placeholder="Enter your full name"
+        required
+      />
 
       <label for="email">Email Address *</label>
-      <input type="email" name="entry.2097262250" id="email" placeholder="Enter your email address" required />
+      <input
+        type="email"
+        name="entry.2097262250"
+        id="email"
+        placeholder="Enter your email address"
+        required
+      />
 
       <label for="phone">Phone Number *</label>
-      <input type="tel" name="entry.174411348" id="phone" placeholder="Enter your contact number" required />
+      <input
+        type="tel"
+        name="entry.174411348"
+        id="phone"
+        placeholder="Enter your contact number"
+        required
+      />
 
+      <!-- SOCIAL MEDIA LINKS (OPTIONAL) -->
+      <label for="facebook">Facebook Profile or Page (Optional)</label>
+      <input
+        type="url"
+        name="entry.1111111111"
+        id="facebook"
+        placeholder="https://www.facebook.com/yourprofile"
+      />
+
+      <label for="instagram">Instagram Profile (Optional)</label>
+      <input
+        type="url"
+        name="entry.2222222222"
+        id="instagram"
+        placeholder="https://www.instagram.com/yourusername"
+      />
+
+      <label for="other-social">Other Social Media Link (Optional)</label>
+      <input
+        type="url"
+        name="entry.3333333333"
+        id="other-social"
+        placeholder="LinkedIn, X, Website, etc."
+      />
+
+      <!-- INTEREST -->
       <label for="interest">Area of Interest *</label>
       <select name="entry.1176030071" id="interest" required>
         <option value="" disabled selected>Select one</option>
@@ -68,8 +114,8 @@
         <option value="Partnership Opportunities">Partnership Opportunities</option>
       </select>
 
+      <!-- MESSAGE -->
       <label for="message">Message or Comment (Optional)</label>
-      <!-- NOTE: Replace entry.1000000001 with your real Google Forms entry id for this field -->
       <textarea
         name="entry.1000000001"
         id="message"
@@ -82,31 +128,32 @@
         By submitting this form, you agree that Tides of Hope Inc. may contact you regarding membership,
         volunteering opportunities, and related updates.
       </p>
+
     </form>
   </section>
 
-<footer>
-  <div class="footer-links">
-    <a href="leadership.html">Leadership</a>
-    <a href="documents.html">Legal & Documents</a>
-    <a href="contact.html">Contact</a>
-  </div>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="leadership.html">Leadership</a>
+      <a href="documents.html">Legal & Documents</a>
+      <a href="contact.html">Contact</a>
+    </div>
 
-  <div class="socials">
-    <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener">
-      <img src="facebook-logo.png" alt="Facebook" class="social-icon" />
-    </a>
-  </div>
+    <div class="socials">
+      <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener">
+        <img src="facebook-logo.png" alt="Facebook" class="social-icon" />
+      </a>
+    </div>
 
-  <p class="fineprint">
-    SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
-  </p>
+    <p class="fineprint">
+      SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
+    </p>
 
-  <p>© 2025 Tides of Hope Inc. All Rights Reserved.</p>
-</footer>
+    <p>© 2025 Tides of Hope Inc. All Rights Reserved.</p>
+  </footer>
 
-
-  <!-- Optional: only needed if you want mobile menu toggle -->
+  <!-- MOBILE MENU TOGGLE -->
   <script>
     const toggle = document.getElementById("menu-toggle");
     const nav = document.getElementById("nav-menu");
@@ -117,4 +164,3 @@
 
 </body>
 </html>
-
