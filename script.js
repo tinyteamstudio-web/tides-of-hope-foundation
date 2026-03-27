@@ -137,7 +137,7 @@ Please replace these entries in your script.js with this exact block:
       buttonLink: "membership.html"
     },
 "women-solo-parent-empowerment": {
-  image: "assets/images/programs/future-women-empowerment.JPG",
+  image: "assets/images/programs/future-women-empowerment.png",
   title: "Women & Solo Parent Empowerment",
   description: "Creating opportunities for women and solo parents through skills development, livelihood support, digital opportunities, and confidence-building programs.",
   focus: "Empowerment, online work pathways, digital skills, and livelihood support",
@@ -164,29 +164,29 @@ Please replace these entries in your script.js with this exact block:
       focus: "Marine care, mangrove protection, and ecological sustainability",
       buttonLink: "membership.html"
     },
-  "ai-basics": {
-  image: "assets/images/programs/future-ai-skills.JPG",
+ "ai-basics": {
+  image: "assets/images/programs/future-ai-skills.jpg",
   title: "AI Basics",
   description: "Introducing learners to the fundamentals of artificial intelligence in a simple, practical, and age-appropriate way to spark future-ready thinking.",
   focus: "AI awareness, digital understanding, and future-readiness",
   buttonLink: "membership.html"
 },
 "web-building": {
-  image: "assets/images/programs/future-web-building.JPG",
+  image: "assets/images/programs/future-web-building.jpg",
   title: "Web Building",
   description: "Helping learners explore how websites are created and how digital spaces can be used for learning, creativity, and opportunity.",
   focus: "Website basics, digital creativity, and practical skills",
   buttonLink: "membership.html"
 },
- "basic-coding": {
-  image: "assets/images/programs/future-basic-coding.JPG",
+"basic-coding": {
+  image: "assets/images/programs/future-basic-coding.png",
   title: "Basic Coding",
   description: "Teaching simple coding concepts in a beginner-friendly way so youth and learners can build confidence in digital problem-solving and creation.",
   focus: "Coding basics, logic building, and beginner digital skills",
   buttonLink: "membership.html"
 },
-  "business-literacy": {
-  image: "assets/images/programs/future-business-literacy.JPG",
+ "business-literacy": {
+  image: "assets/images/programs/future-business-literacy.png",
   title: "Business Literacy",
   description: "Introducing practical business ideas and entrepreneurial thinking to help individuals understand value creation, initiative, and opportunity.",
   focus: "Entrepreneurship, business basics, and opportunity mindset",
@@ -199,8 +199,8 @@ Please replace these entries in your script.js with this exact block:
       focus: "Budgeting, saving, smart money habits, and financial awareness",
       buttonLink: "membership.html"
     },
-   "kids-digital-literacy": {
-  image: "assets/images/programs/future-kids-digital-literacy.JPG",
+  "kids-digital-literacy": {
+  image: "assets/images/programs/future-kids-digital-literacy.png",
   title: "Kids Digital Literacy",
   description: "Giving children a guided and safe introduction to digital tools, creative learning, and responsible use of technology.",
   focus: "Child-friendly digital learning, safety, and creativity",
