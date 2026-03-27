@@ -116,13 +116,13 @@ document.addEventListener("DOMContentLoaded", () => {
       focus: "Water access, sanitation awareness, and community health",
       buttonLink: "membership.html"
     },
-    "women-solo-parent-empowerment": {
-      image: "assets/images/programs/future-women-empowerment.JPG",
-      title: "Women & Solo Parent Empowerment",
-      description: "Creating opportunities for women and solo parents through skills development, livelihood support, digital opportunities, and confidence-building programs.",
-      focus: "Empowerment, online work pathways, digital skills, and livelihood support",
-      buttonLink: "membership.html"
-    },
+  "women-solo-parent-empowerment": {
+  image: "assets/images/programs/future-women-empowerment.JPG",
+  title: "Women & Solo Parent Empowerment",
+  description: "Creating opportunities for women and solo parents through skills development, livelihood support, digital opportunities, and confidence-building programs.",
+  focus: "Empowerment, online work pathways, digital skills, and livelihood support",
+  buttonLink: "contact.html?topic=women-solo-parent-program"
+},
     "blood-donation": {
       image: "assets/images/programs/program-blood-donation.JPG",
       title: "Blood Donation",
@@ -144,20 +144,20 @@ document.addEventListener("DOMContentLoaded", () => {
       focus: "Marine care, mangrove protection, and ecological sustainability",
       buttonLink: "membership.html"
     },
-    "ai-basics": {
-      image: "assets/images/programs/future-ai-skills.JPG",
-      title: "AI Basics",
-      description: "Introducing learners to the fundamentals of artificial intelligence in a simple, practical, and age-appropriate way to spark future-ready thinking.",
-      focus: "AI awareness, digital understanding, and future-readiness",
-      buttonLink: "membership.html"
-    },
-    "web-building": {
-      image: "assets/images/programs/future-web-building.JPG",
-      title: "Web Building",
-      description: "Helping learners explore how websites are created and how digital spaces can be used for learning, creativity, and opportunity.",
-      focus: "Website basics, digital creativity, and practical skills",
-      buttonLink: "membership.html"
-    },
+   "ai-basics": {
+  image: "assets/images/programs/future-ai-skills.JPG",
+  title: "AI Basics",
+  description: "Introducing learners to the fundamentals of artificial intelligence in a simple, practical, and age-appropriate way to spark future-ready thinking.",
+  focus: "AI awareness, digital understanding, and future-readiness",
+  buttonLink: "membership.html"
+},
+"web-building": {
+  image: "assets/images/programs/future-web-building.JPG",
+  title: "Web Building",
+  description: "Helping learners explore how websites are created and how digital spaces can be used for learning, creativity, and opportunity.",
+  focus: "Website basics, digital creativity, and practical skills",
+  buttonLink: "membership.html"
+},
     "basic-coding": {
       image: "assets/images/programs/future-basic-coding.JPG",
       title: "Basic Coding",
@@ -165,13 +165,13 @@ document.addEventListener("DOMContentLoaded", () => {
       focus: "Coding basics, logic building, and beginner digital skills",
       buttonLink: "membership.html"
     },
-    "business-literacy": {
-      image: "assets/images/programs/future-business-literacy.JPG",
-      title: "Business Literacy",
-      description: "Introducing practical business ideas and entrepreneurial thinking to help individuals understand value creation, initiative, and opportunity.",
-      focus: "Entrepreneurship, business basics, and opportunity mindset",
-      buttonLink: "membership.html"
-    },
+   "business-literacy": {
+  image: "assets/images/programs/future-business-literacy.JPG",
+  title: "Business Literacy",
+  description: "Introducing practical business ideas and entrepreneurial thinking to help individuals understand value creation, initiative, and opportunity.",
+  focus: "Entrepreneurship, business basics, and opportunity mindset",
+  buttonLink: "membership.html"
+},
     "financial-literacy": {
       image: "assets/images/programs/future-financial-literacy.JPG",
       title: "Financial Literacy",
