@@ -714,3 +714,124 @@ footer .social-icon:hover {
 .footer-links a:hover {
   text-decoration: underline;
 }
+
+/* ============================= */
+/* EXPLORE PROGRAMS SECTION */
+/* ============================= */
+
+.explore-programs {
+  padding: 80px 20px;
+  background: #f9fbfd;
+}
+
+.explore-programs-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  gap: 40px;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+/* LEFT SIDE */
+.explore-programs-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.section-tag {
+  font-size: 12px;
+  font-weight: bold;
+  color: #0b3d2e;
+  letter-spacing: 1px;
+}
+
+.explore-programs-left h2 {
+  margin: 10px 0;
+  font-size: 32px;
+  color: #0b3d2e;
+}
+
+.explore-programs-left p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.program-select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.program-helper-text {
+  font-size: 13px;
+  margin-top: 10px;
+  color: #888;
+}
+
+/* RIGHT SIDE */
+.explore-programs-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.program-preview-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.program-preview-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.program-preview-content {
+  padding: 20px;
+}
+
+.program-preview-label {
+  font-size: 11px;
+  color: #999;
+  letter-spacing: 1px;
+}
+
+.program-preview-content h3 {
+  margin: 10px 0;
+  color: #0b3d2e;
+}
+
+.program-preview-content p {
+  color: #555;
+  font-size: 14px;
+}
+
+.program-focus-box {
+  background: #f1f5f9;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.program-focus-box h4 {
+  margin: 0;
+  font-size: 13px;
+  color: #0b3d2e;
+}
+
+.program-focus-box p {
+  margin: 5px 0 0;
+  font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .explore-programs-container {
+    flex-direction: column;
+  }
+}
