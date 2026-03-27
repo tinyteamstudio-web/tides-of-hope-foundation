@@ -53,13 +53,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const previewButton = document.getElementById("program-preview-button");
 
   const programData = {
-    "future-ready-kids-youth": {
-      image: "assets/images/programs/future-ai-skills.JPG",
-      title: "Future-Ready Kids & Youth",
-      description: "Helping children and youth prepare for the future through creative, digital, and practical learning experiences that build confidence, curiosity, and life-ready skills.",
-      focus: "AI basics, web building, basic coding, digital creation, and business literacy",
-      buttonLink: "membership.html"
-    },
+    Got it, Partner Prof.
+
+These are the selections with no image showing:
+
+Future-Ready Kids & Youth
+Women & Solo Parent Empowerment
+AI Basics
+Web Building
+Basic Coding
+Business Literacy
+Kids Digital Literacy
+
+That means all the broken ones are using the future-... files.
+
+So the most likely cause is that the filenames in script.js do not exactly match the real uploaded filenames.
+
+Use these exact image paths
+
+Please replace these entries in your script.js with this exact block:
+
+"future-ready-kids-youth": {
+  image: "assets/images/programs/future-ai-skills.JPG",
+  title: "Future-Ready Kids & Youth",
+  description: "Helping children and youth prepare for the future through creative, digital, and practical learning experiences that build confidence, curiosity, and life-ready skills.",
+  focus: "AI basics, web building, basic coding, digital creation, and business literacy",
+  buttonLink: "membership.html"
+},
     "digital-literacy-for-all": {
       image: "assets/images/programs/program-digital-literacy.JPG",
       title: "Digital Literacy for All",
@@ -116,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
       focus: "Water access, sanitation awareness, and community health",
       buttonLink: "membership.html"
     },
-  "women-solo-parent-empowerment": {
+"women-solo-parent-empowerment": {
   image: "assets/images/programs/future-women-empowerment.JPG",
   title: "Women & Solo Parent Empowerment",
   description: "Creating opportunities for women and solo parents through skills development, livelihood support, digital opportunities, and confidence-building programs.",
@@ -144,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
       focus: "Marine care, mangrove protection, and ecological sustainability",
       buttonLink: "membership.html"
     },
-   "ai-basics": {
+  "ai-basics": {
   image: "assets/images/programs/future-ai-skills.JPG",
   title: "AI Basics",
   description: "Introducing learners to the fundamentals of artificial intelligence in a simple, practical, and age-appropriate way to spark future-ready thinking.",
@@ -158,14 +178,14 @@ document.addEventListener("DOMContentLoaded", () => {
   focus: "Website basics, digital creativity, and practical skills",
   buttonLink: "membership.html"
 },
-    "basic-coding": {
-      image: "assets/images/programs/future-basic-coding.JPG",
-      title: "Basic Coding",
-      description: "Teaching simple coding concepts in a beginner-friendly way so youth and learners can build confidence in digital problem-solving and creation.",
-      focus: "Coding basics, logic building, and beginner digital skills",
-      buttonLink: "membership.html"
-    },
-   "business-literacy": {
+ "basic-coding": {
+  image: "assets/images/programs/future-basic-coding.JPG",
+  title: "Basic Coding",
+  description: "Teaching simple coding concepts in a beginner-friendly way so youth and learners can build confidence in digital problem-solving and creation.",
+  focus: "Coding basics, logic building, and beginner digital skills",
+  buttonLink: "membership.html"
+},
+  "business-literacy": {
   image: "assets/images/programs/future-business-literacy.JPG",
   title: "Business Literacy",
   description: "Introducing practical business ideas and entrepreneurial thinking to help individuals understand value creation, initiative, and opportunity.",
@@ -179,13 +199,13 @@ document.addEventListener("DOMContentLoaded", () => {
       focus: "Budgeting, saving, smart money habits, and financial awareness",
       buttonLink: "membership.html"
     },
-    "kids-digital-literacy": {
-      image: "assets/images/programs/future-kids-digital-literacy.JPG",
-      title: "Kids Digital Literacy",
-      description: "Giving children a guided and safe introduction to digital tools, creative learning, and responsible use of technology.",
-      focus: "Child-friendly digital learning, safety, and creativity",
-      buttonLink: "membership.html"
-    },
+   "kids-digital-literacy": {
+  image: "assets/images/programs/future-kids-digital-literacy.JPG",
+  title: "Kids Digital Literacy",
+  description: "Giving children a guided and safe introduction to digital tools, creative learning, and responsible use of technology.",
+  focus: "Child-friendly digital learning, safety, and creativity",
+  buttonLink: "membership.html"
+},
     "online-jobs": {
       image: "assets/images/programs/future-online-jobs.JPG",
       title: "Online Jobs",
