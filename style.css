@@ -1677,9 +1677,8 @@ background:
 /* ===== FORCE FIX: TESTIMONIALS + PARTNERS TEXT VISIBILITY ===== */
 
 /* TESTIMONIALS */
-.testimonials-video-section,
-.testimonials-video-section * {
-  color: #123f6b;
+.testimonials-video-section {
+  color: #123f6b !important;
 }
 
 .testimonials-heading h2 {
@@ -1707,9 +1706,8 @@ background:
 }
 
 /* PARTNERS */
-.partners-section,
-.partners-section * {
-  color: #123f6b;
+.partners-section {
+  color: #123f6b !important;
 }
 
 .partners-section h2 {
@@ -1777,4 +1775,32 @@ background:
 .partners-section {
   padding-top: 80px;
   padding-bottom: 80px;
+}
+
+/* ===== DIRECT FIX FOR TESTIMONIALS TEXT ===== */
+.testimonials-video-section h2,
+.testimonials-video-section h3,
+.testimonials-video-section h4,
+.testimonials-video-section p,
+.testimonials-video-section span,
+.testimonials-video-section div {
+  color: #123f6b !important;
+}
+
+.testimonials-video-section .video-placeholder {
+  color: #5a6f82 !important;
+}
+
+/* ===== DIRECT FIX FOR PARTNERS TEXT ===== */
+.partners-section h2,
+.partners-section h3,
+.partners-section h4,
+.partners-section p,
+.partners-section span,
+.partners-section div {
+  color: #123f6b !important;
+}
+
+.partners-section p {
+  color: #5a6f82 !important;
 }
