@@ -1216,3 +1216,31 @@ footer .social-icon:hover {
   border: 1px solid white;
   color: white;
 }
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-text strong {
+  font-size: 16px;
+  color: white;
+}
+
+.logo-text span {
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+}
