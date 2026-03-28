@@ -1244,3 +1244,10 @@ footer .social-icon:hover {
   font-size: 10px;
   color: rgba(255,255,255,0.7);
 }
+
+.footer-social-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  margin-top: 8px;
+}
