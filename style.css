@@ -1049,3 +1049,74 @@ footer .social-icon:hover {
   position: relative;
   z-index: 1;
 }
+
+.section-shell {
+  position: relative;
+  padding: 80px 20px;
+  overflow: hidden;
+}
+
+.impact-preview {
+  background:
+    radial-gradient(circle at top left, rgba(103, 178, 255, 0.16), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(122, 214, 170, 0.14), transparent 30%),
+    linear-gradient(180deg, #f8fbff 0%, #eef5fb 100%);
+}
+
+.impact-grid {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(27, 75, 122, 0.08);
+  border-radius: 24px;
+  padding: 30px 24px;
+  text-align: center;
+  box-shadow: 0 14px 34px rgba(18, 44, 74, 0.08);
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(18, 44, 74, 0.12);
+}
+
+.stat-card h3 {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1;
+  color: #123f6b;
+}
+
+.stat-card p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #5a6f82;
+}
+
+@media (max-width: 900px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .section-shell {
+    padding: 65px 16px;
+  }
+
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 24px 20px;
+  }
+}
