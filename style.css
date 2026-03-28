@@ -1120,3 +1120,99 @@ footer .social-icon:hover {
     padding: 24px 20px;
   }
 }
+
+/* IMPACT STATS */
+.impact-stats {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #eaf6ff, #fdfefe);
+}
+.impact-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+.impact-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+}
+.impact-card h2 {
+  font-size: 2rem;
+  color: #123f6b;
+}
+.impact-card p {
+  color: #5a6f82;
+}
+
+/* HOW WE HELP */
+.how-we-help {
+  padding: 80px 20px;
+}
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.how-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+/* TESTIMONIALS */
+.video-placeholder {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf4fb;
+  border-radius: 20px;
+}
+.testimonials-video-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+/* PARTNERS */
+.partners-section {
+  padding: 80px 20px;
+  background: #f4f9fc;
+}
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.partner-card {
+  background: white;
+  padding: 40px;
+  text-align: center;
+  border-radius: 16px;
+}
+
+/* CTA */
+.final-cta {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #123f6b, #1f6fa5);
+  color: white;
+}
+.cta-buttons a {
+  margin: 10px;
+  padding: 12px 25px;
+  display: inline-block;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.btn-primary {
+  background: white;
+  color: #123f6b;
+}
+.btn-secondary {
+  border: 1px solid white;
+  color: white;
+}
