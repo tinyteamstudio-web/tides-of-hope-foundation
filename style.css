@@ -173,8 +173,8 @@ section {
 .hero {
   position: relative;
   background:
-    linear-gradient(rgba(6, 28, 55, 0.35), rgba(6, 28, 55, 0.35)),
-    url("assets/images/header-hero.png") center top / cover no-repeat;
+    linear-gradient(rgba(6, 28, 55, 0.25), rgba(6, 28, 55, 0.25)),
+    url("assets/images/hero-main.png") center center / cover no-repeat;
   color: #ffffff;
   padding: 110px 20px 160px;
   text-align: center;
