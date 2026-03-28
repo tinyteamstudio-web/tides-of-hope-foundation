@@ -1673,3 +1673,108 @@ background:
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== FORCE FIX: TESTIMONIALS + PARTNERS TEXT VISIBILITY ===== */
+
+/* TESTIMONIALS */
+.testimonials-video-section,
+.testimonials-video-section * {
+  color: #123f6b;
+}
+
+.testimonials-heading h2 {
+  color: #123f6b !important;
+}
+
+.testimonials-heading p {
+  color: #5a6f82 !important;
+}
+
+.featured-video-content h3 {
+  color: #123f6b !important;
+}
+
+.featured-video-content p {
+  color: #5a6f82 !important;
+}
+
+.testimonial-quote-card h4 {
+  color: #123f6b !important;
+}
+
+.testimonial-quote-card p {
+  color: #5a6f82 !important;
+}
+
+/* PARTNERS */
+.partners-section,
+.partners-section * {
+  color: #123f6b;
+}
+
+.partners-section h2 {
+  color: #123f6b !important;
+}
+
+.partners-section p {
+  color: #5a6f82 !important;
+}
+
+.partner-card {
+  color: #123f6b !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  border: 1px solid rgba(18, 63, 107, 0.08) !important;
+  box-shadow: 0 14px 34px rgba(18, 44, 74, 0.08) !important;
+}
+
+/* KEEP CARDS VISIBLE */
+.featured-video-card,
+.testimonial-quote-card {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border: 1px solid rgba(18, 63, 107, 0.08) !important;
+  box-shadow: 0 14px 34px rgba(18, 44, 74, 0.08) !important;
+}
+
+/* ===== FIX VERTICAL BALANCE ===== */
+
+/* tighten top gap after hero */
+.hero + .stats {
+  margin-top: -40px;
+}
+
+/* consistent spacing between sections */
+.stats,
+.mission-vision,
+.get-involved,
+.programs-section,
+.testimonials-video-section,
+.partners-section,
+.events-section {
+  margin-bottom: 60px;
+}
+
+/* center containers properly */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* fix uneven card spacing */
+.stats-grid,
+.involvement-grid,
+.programs-grid,
+.partners-grid {
+  gap: 25px;
+}
+
+/* testimonials spacing */
+.testimonials-video-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* partnerships spacing */
+.partners-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
