@@ -1370,8 +1370,9 @@ footer .social-icon:hover {
   justify-content: center;
   text-align: center;
   overflow: hidden;
-background:
-  url("assets/images/programs/hero-main.png") center center / cover no-repeat;
+  background:
+    url("assets/images/programs/hero-main.png") center center / cover no-repeat;
+}
 
 .hero-overlay {
   position: absolute;
