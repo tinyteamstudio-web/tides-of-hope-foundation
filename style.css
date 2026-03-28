@@ -949,3 +949,52 @@ footer .social-icon:hover {
 .buildframe-credit p {
   margin: 4px 0;
 }
+
+/* PROGRAM INSIGHT BOX */
+.program-insight-box {
+  margin-top: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 10px 24px rgba(15, 61, 102, 0.08);
+  border: 1px solid rgba(15, 61, 102, 0.08);
+}
+
+.program-insight-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #1f8a8a;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.program-insight-box h3 {
+  margin: 0 0 16px;
+  font-size: 22px;
+  color: #0f3d66;
+}
+
+.program-insight-item {
+  padding: 12px 0;
+  border-top: 1px solid #e5eef5;
+}
+
+.program-insight-item:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.program-insight-item h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: #0f3d66;
+}
+
+.program-insight-item p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #516173;
+}
