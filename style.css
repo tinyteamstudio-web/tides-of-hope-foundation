@@ -35,7 +35,11 @@ html {
 
 body {
   font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: var(--blue);
+  background:
+    radial-gradient(circle at 12% 22%, rgba(255, 204, 229, 0.10), transparent 26%),
+    radial-gradient(circle at 82% 18%, rgba(173, 216, 255, 0.16), transparent 28%),
+    radial-gradient(circle at 70% 72%, rgba(185, 255, 220, 0.10), transparent 24%),
+    linear-gradient(180deg, #0D3B66 0%, #0D3B66 19%, #eef6fb 19%, #f8fbfe 100%);
   color: var(--white);
   min-height: 100vh;
   display: flex;
@@ -73,7 +77,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative; /* for mobile dropdown */
+  position: relative;
 }
 
 .logo-text h1 {
@@ -89,7 +93,6 @@ header {
   letter-spacing: 1.6px;
 }
 
-/* desktop nav */
 nav#nav-menu a {
   color: rgba(255,255,255,0.92);
   text-decoration: none;
@@ -110,7 +113,6 @@ nav#nav-menu a.active {
   background: rgba(255,255,255,0.12);
 }
 
-/* CTA button in nav */
 .highlight-btn {
   background: var(--green);
   color: var(--white) !important;
@@ -125,7 +127,6 @@ nav#nav-menu a.active {
   transform: translateY(-1px);
 }
 
-/* Focus accessibility */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -136,7 +137,6 @@ textarea:focus-visible {
   border-radius: 10px;
 }
 
-/* --- MOBILE MENU ICON --- */
 .menu-toggle {
   display: none;
   font-size: 28px;
@@ -207,7 +207,6 @@ section {
   color: rgba(11, 31, 51, 0.82);
 }
 
-/* Primary button */
 .btn {
   display: inline-block;
   background: var(--green);
@@ -230,7 +229,12 @@ section {
    MISSION & VISION
    ========================================================= */
 .mission-vision {
-  background: var(--bg-soft);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255, 214, 232, 0.10), transparent 24%),
+    radial-gradient(circle at 88% 18%, rgba(176, 220, 255, 0.14), transparent 24%),
+    linear-gradient(180deg, #eef6fb 0%, #f7fbfe 100%);
   color: var(--text);
   padding: 56px 20px;
   display: flex;
@@ -264,7 +268,12 @@ section {
    GET INVOLVED + CARDS
    ========================================================= */
 .get-involved {
-  background: var(--white);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 28%, rgba(188, 233, 255, 0.10), transparent 24%),
+    radial-gradient(circle at 78% 18%, rgba(255, 217, 233, 0.08), transparent 22%),
+    linear-gradient(180deg, #ffffff 0%, #f7fbfe 100%);
   color: var(--text);
   text-align: center;
   padding: 56px 20px 72px;
@@ -293,7 +302,7 @@ section {
 }
 
 .card {
-  background: #EAF4FF; /* soft ocean tint */
+  background: #EAF4FF;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 26px;
@@ -329,7 +338,6 @@ section {
   margin-bottom: 18px;
 }
 
-/* Secondary button */
 .small-btn {
   display: inline-block;
   background: var(--green);
@@ -347,7 +355,7 @@ section {
 }
 
 /* =========================================================
-   MEMBERSHIP PAGE (your existing class)
+   MEMBERSHIP PAGE
    ========================================================= */
 .membership-section {
   background: var(--white);
@@ -369,7 +377,6 @@ section {
   margin-bottom: 26px;
 }
 
-/* Form container */
 .membership-form {
   background: var(--bg-soft);
   padding: 28px;
@@ -429,7 +436,7 @@ section {
 }
 
 /* =========================================================
-   CONTACT + DONATE PAGES (new classes used)
+   CONTACT + DONATE PAGES
    ========================================================= */
 .page-hero {
   background: var(--white);
@@ -452,7 +459,6 @@ section {
   line-height: 1.7;
 }
 
-/* Contact form section */
 .form-section,
 .donate-section {
   background: var(--bg-soft);
@@ -529,7 +535,6 @@ section {
   color: var(--blue-2);
 }
 
-/* Donate specific */
 .donate-section .cards-container {
   margin-top: 0;
 }
@@ -540,7 +545,6 @@ section {
   color: rgba(11, 31, 51, 0.82);
 }
 
-/* Trust section */
 .trust-section {
   background: var(--white);
   color: var(--text);
@@ -593,7 +597,7 @@ footer .social-icon:hover {
 }
 
 /* =========================================================
-   ANIMATIONS (light & calm)
+   ANIMATIONS
    ========================================================= */
 .fade-in {
   animation: fadeIn 0.9s ease forwards;
@@ -611,13 +615,13 @@ footer .social-icon:hover {
   .hero-text h2 {
     font-size: 30px;
   }
+
   .card {
     text-align: left;
   }
 }
 
 @media (max-width: 768px) {
-  /* header layout */
   .menu-toggle {
     display: block;
   }
@@ -658,7 +662,6 @@ footer .social-icon:hover {
     text-align: center;
   }
 
-  /* sections */
   .mission-vision,
   .cards-container {
     flex-direction: column;
@@ -690,14 +693,18 @@ footer .social-icon:hover {
   .logo-text h1 {
     font-size: 18px;
   }
+
   .page-hero h2 {
     font-size: 26px;
   }
-  .btn, .small-btn {
+
+  .btn,
+  .small-btn {
     width: 100%;
     text-align: center;
   }
 }
+
 .footer-links {
   display: flex;
   justify-content: center;
@@ -720,8 +727,14 @@ footer .social-icon:hover {
 /* ============================= */
 
 .explore-programs {
+  position: relative;
+  overflow: hidden;
   padding: 80px 20px;
-  background: #eef5fb;
+  background:
+    radial-gradient(circle at 14% 20%, rgba(255, 214, 232, 0.11), transparent 24%),
+    radial-gradient(circle at 86% 18%, rgba(175, 222, 255, 0.15), transparent 26%),
+    radial-gradient(circle at 66% 78%, rgba(201, 255, 234, 0.10), transparent 22%),
+    linear-gradient(180deg, #eef5fb 0%, #f8fbfe 100%);
 }
 
 .explore-programs-container {
@@ -865,70 +878,6 @@ footer .social-icon:hover {
   }
 }
 
-/* RIGHT SIDE */
-.explore-programs-right {
-  flex: 1;
-  min-width: 300px;
-}
-
-.program-preview-card {
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-.program-preview-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: contain;
-}
-
-.program-preview-content {
-  padding: 20px;
-}
-
-.program-preview-label {
-  font-size: 11px;
-  color: #999;
-  letter-spacing: 1px;
-}
-
-.program-preview-content h3 {
-  margin: 10px 0;
-  color: #0b3d2e;
-}
-
-.program-preview-content p {
-  color: #555;
-  font-size: 14px;
-}
-
-.program-focus-box {
-  background: #f1f5f9;
-  padding: 12px;
-  border-radius: 8px;
-  margin-top: 15px;
-}
-
-.program-focus-box h4 {
-  margin: 0;
-  font-size: 13px;
-  color: #0b3d2e;
-}
-
-.program-focus-box p {
-  margin: 5px 0 0;
-  font-size: 13px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .explore-programs-container {
-    flex-direction: column;
-  }
-}
-
 /* ============================= */
 /* BUILDFRAME CREDIT */
 /* ============================= */
@@ -1001,7 +950,13 @@ footer .social-icon:hover {
 
 /* EVENTS MINI GALLERY */
 .events-mini-gallery {
+  position: relative;
+  overflow: hidden;
   padding: 80px 20px;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(184, 224, 255, 0.12), transparent 25%),
+    radial-gradient(circle at 82% 24%, rgba(255, 220, 232, 0.10), transparent 22%),
+    linear-gradient(180deg, #ffffff 0%, #f5fafd 100%);
 }
 
 .events-mini-gallery-container {
@@ -1089,4 +1044,13 @@ footer .social-icon:hover {
   .events-mini-gallery-heading h2 {
     font-size: 30px;
   }
+}
+
+/* Keep content above decorative backgrounds */
+.mission-vision > *,
+.get-involved > *,
+.explore-programs > *,
+.events-mini-gallery > * {
+  position: relative;
+  z-index: 1;
 }
