@@ -1352,7 +1352,7 @@ footer .social-icon:hover {
   text-align: center;
   overflow: hidden;
   background:
-    url("banner.png") center center / cover no-repeat;
+    url("banurl("assets/images/programs/hero-main.png")ner.png") center center / cover no-repeat;
 }
 
 .hero-overlay {
