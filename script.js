@@ -50,16 +50,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const previewFocus = document.getElementById("program-preview-focus");
   const previewButton = document.getElementById("program-preview-button");
 
+  const insightTitle = document.getElementById("program-insight-title");
+const insightWhy = document.getElementById("program-insight-why");
+const insightHow = document.getElementById("program-insight-how");
+const insightPartners = document.getElementById("program-insight-partners");
+
   const programData = {
-    "future-ready-kids-youth": {
-      image: "assets/images/programs/future-ai-skills.jpg",
-      title: "Future-Ready Kids & Youth",
-      description:
-        "Helping children and youth prepare for the future through creative, digital, and practical learning experiences that build confidence, curiosity, and life-ready skills.",
-      focus:
-        "AI basics, web building, basic coding, digital creation, and business literacy",
-      buttonLink: "membership.html"
-    },
+ "future-ready-kids-youth": {
+  image: "assets/images/programs/future-ai-skills.jpg",
+  title: "Future-Ready Kids & Youth",
+  description:
+    "Helping children and youth prepare for the future through creative, digital, and practical learning experiences that build confidence, curiosity, and life-ready skills.",
+  focus:
+    "AI basics, web building, basic coding, digital creation, and business literacy",
+  buttonLink: "membership.html",
+  insightTitle: "Future-ready learning starts early",
+  why:
+    "This program helps prepare children and youth for a fast-changing world by building confidence, curiosity, and practical future-ready skills.",
+  how:
+    "It can be delivered through guided learning sessions, community workshops, digital skill exposure, and creative hands-on activities.",
+  partners:
+    "Schools, teachers, youth leaders, parents, education advocates, and technology mentors."
+},
     "digital-literacy-for-all": {
       image: "assets/images/programs/program-digital-literacy.JPG",
       title: "Digital Literacy for All",
@@ -78,15 +90,22 @@ document.addEventListener("DOMContentLoaded", () => {
         "Greener communities, environmental care, and sustainability action",
       buttonLink: "contact.html?topic=tree-planting"
     },
-    "coastal-cleanup": {
-      image: "assets/images/programs/program-coastal-cleanup.JPG",
-      title: "Coastal Cleanup",
-      description:
-        "Mobilizing volunteers and communities to protect shorelines, reduce waste, and preserve coastal ecosystems through meaningful environmental action.",
-      focus:
-        "Shoreline care, waste reduction, and environmental awareness",
-      buttonLink: "contact.html?topic=coastal-cleanup"
-    },
+   "coastal-cleanup": {
+  image: "assets/images/programs/program-coastal-cleanup.JPG",
+  title: "Coastal Cleanup",
+  description:
+    "Mobilizing volunteers and communities to protect shorelines, reduce waste, and preserve coastal ecosystems through meaningful environmental action.",
+  focus:
+    "Shoreline care, waste reduction, and environmental awareness",
+  buttonLink: "contact.html?topic=coastal-cleanup",
+  insightTitle: "Protecting coasts protects communities",
+  why:
+    "Coastal areas are essential to community life, marine ecosystems, and local livelihoods. Keeping them clean protects both people and nature.",
+  how:
+    "This can work through cleanup drives, volunteer teams, waste collection coordination, and awareness activities led by local groups.",
+  partners:
+    "Barangays, schools, youth organizations, environmental groups, local businesses, and coastal communities."
+},
     "hope-pantry": {
       image: "assets/images/programs/program-hope-pantry.JPG",
       title: "Hope Pantry",
@@ -123,24 +142,38 @@ document.addEventListener("DOMContentLoaded", () => {
         "Eco-bricks, recycling, sustainability, and practical reuse",
       buttonLink: "contact.html?topic=eco-bricks"
     },
-    "clean-water-for-life": {
-      image: "assets/images/programs/future-clean-water.JPG",
-      title: "Clean Water for Life",
-      description:
-        "Promoting access to safer and cleaner water through awareness, practical support, and community-based initiatives for healthier living.",
-      focus:
-        "Water access, sanitation awareness, and community health",
-      buttonLink: "contact.html?topic=clean-water"
-    },
+   "clean-water-for-life": {
+  image: "assets/images/programs/future-clean-water.JPG",
+  title: "Clean Water for Life",
+  description:
+    "Promoting access to safer and cleaner water through awareness, practical support, and community-based initiatives for healthier living.",
+  focus:
+    "Water access, sanitation awareness, and community health",
+  buttonLink: "contact.html?topic=clean-water",
+  insightTitle: "Clean water supports health and dignity",
+  why:
+    "Access to clean water is essential for health, hygiene, and safe daily living in every community.",
+  how:
+    "This can work through sanitation education, local clean water support, awareness campaigns, and partnership-led community solutions.",
+  partners:
+    "Health workers, NGOs, water advocates, barangays, donors, and community volunteers."
+},
     "women-solo-parent-empowerment": {
-      image: "assets/images/programs/future-women-empowerment.png",
-      title: "Women & Solo Parent Empowerment",
-      description:
-        "Creating opportunities for women and solo parents through skills development, livelihood support, digital opportunities, and confidence-building programs.",
-      focus:
-        "Empowerment, online work pathways, digital skills, and livelihood support",
-      buttonLink: "contact.html?topic=women-solo-parent-program"
-    },
+  image: "assets/images/programs/future-women-empowerment.png",
+  title: "Women & Solo Parent Empowerment",
+  description:
+    "Creating opportunities for women and solo parents through skills development, livelihood support, digital opportunities, and confidence-building programs.",
+  focus:
+    "Empowerment, online work pathways, digital skills, and livelihood support",
+  buttonLink: "contact.html?topic=women-solo-parent-program",
+  insightTitle: "Empowerment creates stable pathways",
+  why:
+    "Women and solo parents need access to support, flexible opportunities, and skills that help them build stable and dignified lives.",
+  how:
+    "This can work through digital skills training, online job guidance, livelihood sessions, and supportive community-based programs.",
+  partners:
+    "Women’s groups, LGUs, livelihood advocates, training mentors, NGOs, and private sponsors."
+},
     "blood-donation": {
       image: "assets/images/programs/program-blood-donation.JPG",
       title: "Blood Donation",
@@ -260,17 +293,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  function updateProgramPreview(programKey) {
-    const selectedProgram = programData[programKey];
-    if (!selectedProgram) return;
+ function updateProgramPreview(programKey) {
+  const selectedProgram = programData[programKey];
+  if (!selectedProgram) return;
 
-    previewImage.src = selectedProgram.image;
-    previewImage.alt = selectedProgram.title;
-    previewTitle.textContent = selectedProgram.title;
-    previewDescription.textContent = selectedProgram.description;
-    previewFocus.textContent = selectedProgram.focus;
-    previewButton.href = selectedProgram.buttonLink;
+  previewImage.src = selectedProgram.image;
+  previewImage.alt = selectedProgram.title;
+  previewTitle.textContent = selectedProgram.title;
+  previewDescription.textContent = selectedProgram.description;
+  previewFocus.textContent = selectedProgram.focus;
+  previewButton.href = selectedProgram.buttonLink;
+
+  if (insightTitle) {
+    insightTitle.textContent =
+      selectedProgram.insightTitle || "Program Insight";
   }
+
+  if (insightWhy) {
+    insightWhy.textContent =
+      selectedProgram.why || "This program creates meaningful impact in communities through shared action and support.";
+  }
+
+  if (insightHow) {
+    insightHow.textContent =
+      selectedProgram.how || "This can work through organized activities, partnerships, and practical community participation.";
+  }
+
+  if (insightPartners) {
+    insightPartners.textContent =
+      selectedProgram.partners || "Community groups, volunteers, partners, and local supporters.";
+  }
+}
 
   if (
     programSelect &&
