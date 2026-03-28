@@ -12,10 +12,10 @@
 
 /* --- THEME TOKENS --- */
 :root {
-  --blue: #0D3B66;          /* Deep Sea Blue */
-  --blue-2: #0A2F52;        /* Darker blue for hover */
-  --green: #4CAF50;         /* Hope Green */
-  --green-2: #3F9B44;       /* Darker green for hover */
+  --blue: #0D3B66;
+  --blue-2: #0A2F52;
+  --green: #4CAF50;
+  --green-2: #3F9B44;
   --white: #FFFFFF;
   --bg-soft: #F5F9FC;
   --card: #FFFFFF;
@@ -35,11 +35,7 @@ html {
 
 body {
   font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background:
-    radial-gradient(circle at 12% 22%, rgba(255, 204, 229, 0.10), transparent 26%),
-    radial-gradient(circle at 82% 18%, rgba(173, 216, 255, 0.16), transparent 28%),
-    radial-gradient(circle at 70% 72%, rgba(185, 255, 220, 0.10), transparent 24%),
-    linear-gradient(180deg, #0D3B66 0%, #0D3B66 19%, #eef6fb 19%, #f8fbfe 100%);
+  background: #f7fbff;
   color: var(--white);
   min-height: 100vh;
   display: flex;
@@ -172,31 +168,56 @@ section {
 }
 
 /* =========================================================
-   HERO (Home)
+   HERO (Home Header Only)
    ========================================================= */
 .hero {
-  background: var(--white);
-  color: var(--text);
-  padding: 72px 20px;
+  position: relative;
+  background:
+    linear-gradient(rgba(6, 28, 55, 0.35), rgba(6, 28, 55, 0.35)),
+    url("assets/images/header-hero.png") center top / cover no-repeat;
+  color: #ffffff;
+  padding: 110px 20px 160px;
   text-align: center;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 180px;
+  background:
+    radial-gradient(120% 140px at 10% 0, rgba(255,255,255,0.95), transparent 65%),
+    radial-gradient(120% 150px at 35% 0, rgba(240,248,255,0.85), transparent 65%),
+    radial-gradient(120% 140px at 60% 0, rgba(255,255,255,0.95), transparent 65%),
+    radial-gradient(120% 140px at 85% 0, rgba(240,248,255,0.85), transparent 65%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .hero-logo img {
   width: 180px;
   margin: 0 auto 18px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-text {
   max-width: 860px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-text h2 {
-  font-size: 34px;
-  line-height: 1.2;
-  color: var(--blue);
-  margin-bottom: 14px;
+  font-size: 52px;
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 16px;
   letter-spacing: 0.2px;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.18);
 }
 
 .hero-text p {
@@ -204,7 +225,7 @@ section {
   margin: 0 auto 26px;
   font-size: 16px;
   line-height: 1.75;
-  color: rgba(11, 31, 51, 0.82);
+  color: rgba(255,255,255,0.92);
 }
 
 .btn {
@@ -218,6 +239,8 @@ section {
   letter-spacing: 0.3px;
   transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
   box-shadow: 0 14px 22px rgba(76,175,80,0.22);
+  position: relative;
+  z-index: 2;
 }
 
 .btn:hover {
@@ -226,15 +249,56 @@ section {
 }
 
 /* =========================================================
+   SOFT WAVES + SUBTLE RAINBOW BACKGROUND BELOW HERO
+   ========================================================= */
+.mission-vision,
+.get-involved,
+.explore-programs,
+.events-mini-gallery {
+  position: relative;
+  overflow: hidden;
+}
+
+.mission-vision::before,
+.get-involved::before,
+.explore-programs::before,
+.events-mini-gallery::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 182, 193, 0.18), transparent 30%),
+    radial-gradient(circle at 85% 20%, rgba(135, 206, 250, 0.18), transparent 32%),
+    radial-gradient(circle at 65% 80%, rgba(152, 251, 152, 0.14), transparent 28%),
+    radial-gradient(circle at 30% 70%, rgba(255, 218, 185, 0.12), transparent 28%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mission-vision::after,
+.get-involved::after,
+.explore-programs::after,
+.events-mini-gallery::after {
+  content: "";
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  bottom: 0;
+  height: 140px;
+  background:
+    radial-gradient(80% 120px at 10% 100%, rgba(180, 220, 255, 0.25), transparent 70%),
+    radial-gradient(80% 120px at 40% 100%, rgba(255, 200, 230, 0.20), transparent 70%),
+    radial-gradient(80% 120px at 70% 100%, rgba(200, 255, 230, 0.20), transparent 70%),
+    radial-gradient(80% 120px at 95% 100%, rgba(180, 210, 255, 0.22), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =========================================================
    MISSION & VISION
    ========================================================= */
 .mission-vision {
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 12% 20%, rgba(255, 214, 232, 0.10), transparent 24%),
-    radial-gradient(circle at 88% 18%, rgba(176, 220, 255, 0.14), transparent 24%),
-    linear-gradient(180deg, #eef6fb 0%, #f7fbfe 100%);
+  background: linear-gradient(180deg, #eef6fb 0%, #f8fcff 100%);
   color: var(--text);
   padding: 56px 20px;
   display: flex;
@@ -268,12 +332,7 @@ section {
    GET INVOLVED + CARDS
    ========================================================= */
 .get-involved {
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 18% 28%, rgba(188, 233, 255, 0.10), transparent 24%),
-    radial-gradient(circle at 78% 18%, rgba(255, 217, 233, 0.08), transparent 22%),
-    linear-gradient(180deg, #ffffff 0%, #f7fbfe 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fcff 100%);
   color: var(--text);
   text-align: center;
   padding: 56px 20px 72px;
@@ -613,7 +672,7 @@ footer .social-icon:hover {
    ========================================================= */
 @media (max-width: 900px) {
   .hero-text h2 {
-    font-size: 30px;
+    font-size: 40px;
   }
 
   .card {
@@ -669,7 +728,8 @@ footer .social-icon:hover {
   }
 
   .hero {
-    padding: 56px 18px;
+    padding: 72px 18px 120px;
+    background-position: center top;
   }
 
   .hero-logo img {
@@ -677,7 +737,7 @@ footer .social-icon:hover {
   }
 
   .hero-text h2 {
-    font-size: 26px;
+    font-size: 34px;
   }
 
   .form-grid {
@@ -696,6 +756,10 @@ footer .social-icon:hover {
 
   .page-hero h2 {
     font-size: 26px;
+  }
+
+  .hero-text h2 {
+    font-size: 28px;
   }
 
   .btn,
@@ -727,14 +791,8 @@ footer .social-icon:hover {
 /* ============================= */
 
 .explore-programs {
-  position: relative;
-  overflow: hidden;
   padding: 80px 20px;
-  background:
-    radial-gradient(circle at 14% 20%, rgba(255, 214, 232, 0.11), transparent 24%),
-    radial-gradient(circle at 86% 18%, rgba(175, 222, 255, 0.15), transparent 26%),
-    radial-gradient(circle at 66% 78%, rgba(201, 255, 234, 0.10), transparent 22%),
-    linear-gradient(180deg, #eef5fb 0%, #f8fbfe 100%);
+  background: linear-gradient(180deg, #eef5fb 0%, #f9fcff 100%);
 }
 
 .explore-programs-container {
@@ -948,15 +1006,11 @@ footer .social-icon:hover {
   color: #516173;
 }
 
-/* EVENTS MINI GALLERY */
+/* EVENTS MINI GALLERY
+   Keeping background-ready only for now */
 .events-mini-gallery {
-  position: relative;
-  overflow: hidden;
   padding: 80px 20px;
-  background:
-    radial-gradient(circle at 22% 18%, rgba(184, 224, 255, 0.12), transparent 25%),
-    radial-gradient(circle at 82% 24%, rgba(255, 220, 232, 0.10), transparent 22%),
-    linear-gradient(180deg, #ffffff 0%, #f5fafd 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
 }
 
 .events-mini-gallery-container {
@@ -980,70 +1034,6 @@ footer .social-icon:hover {
   font-size: 16px;
   line-height: 1.7;
   color: #516173;
-}
-
-.events-mini-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.event-mini-card {
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 10px 24px rgba(15, 61, 102, 0.08);
-  border: 1px solid rgba(15, 61, 102, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.event-mini-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 30px rgba(15, 61, 102, 0.12);
-}
-
-.event-mini-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-}
-
-.event-mini-card-content {
-  padding: 16px 18px;
-}
-
-.event-mini-card-content h3 {
-  margin: 0 0 6px;
-  font-size: 18px;
-  color: #0f3d66;
-}
-
-.event-mini-card-content p {
-  margin: 0;
-  font-size: 14px;
-  color: #64748b;
-}
-
-.events-mini-gallery-action {
-  text-align: center;
-  margin-top: 32px;
-}
-
-@media (max-width: 992px) {
-  .events-mini-gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .events-mini-gallery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .events-mini-gallery-heading h2 {
-    font-size: 30px;
-  }
 }
 
 /* Keep content above decorative backgrounds */
