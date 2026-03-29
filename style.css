@@ -35,11 +35,30 @@ html {
 
 body {
   font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: #f7fbff;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 182, 193, 0.05),
+    rgba(255, 223, 186, 0.05),
+    rgba(255, 255, 204, 0.05),
+    rgba(204, 255, 229, 0.05),
+    rgba(204, 229, 255, 0.05),
+    rgba(229, 204, 255, 0.05)
+  );
+
+  background-size: 300% 300%;
+  animation: softFlow 25s ease infinite;
+
   color: var(--white);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+@keyframes softFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 img {
@@ -55,6 +74,9 @@ a {
   background: rgba(76, 175, 80, 0.35);
 }
 
+section {
+  background: transparent;
+}
 /* =========================================================
    HEADER / NAV
    ========================================================= */
