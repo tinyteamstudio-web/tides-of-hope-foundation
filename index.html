@@ -431,5 +431,109 @@
 
   <script src="script.js"></script>
 
+  <script>
+
+// COMMUNITY DATA
+const communityPrograms = {
+  tree: {
+    title: "Tree Planting",
+    desc: "Empowering communities to protect nature through tree planting.",
+    focus: "Environment, sustainability, teamwork",
+    img: "assets/images/programs/tree.jpg"
+  },
+  cleanup: {
+    title: "Coastal Cleanup",
+    desc: "Protecting oceans through community cleanups.",
+    focus: "Clean environment, teamwork",
+    img: "assets/images/programs/cleanup.jpg"
+  },
+  pantry: {
+    title: "Hope Pantry",
+    desc: "Providing food support to families in need.",
+    focus: "Food security, compassion",
+    img: "assets/images/programs/pantry.jpg"
+  },
+  medical: {
+    title: "Medical Missions",
+    desc: "Bringing healthcare to communities.",
+    focus: "Health, outreach",
+    img: "assets/images/programs/medical.jpg"
+  },
+  water: {
+    title: "Clean Water for Life",
+    desc: "Ensuring access to clean water.",
+    focus: "Water, sanitation",
+    img: "assets/images/programs/water.jpg"
+  },
+  women: {
+    title: "Women & Solo Parent",
+    desc: "Supporting women and solo parents.",
+    focus: "Empowerment, livelihood",
+    img: "assets/images/programs/women.jpg"
+  }
+};
+
+function updateCommunityProgram() {
+  const val = document.getElementById("communitySelect").value;
+  const data = communityPrograms[val];
+
+  document.getElementById("communityTitle").innerText = data.title;
+  document.getElementById("communityDesc").innerText = data.desc;
+  document.getElementById("communityFocus").innerText = data.focus;
+  document.getElementById("communityImage").src = data.img;
+}
+
+
+// FUTURE DATA
+const futurePrograms = {
+  ai: {
+    title: "AI Basics",
+    desc: "Learn artificial intelligence fundamentals.",
+    focus: "AI tools, future skills",
+    img: "assets/images/programs/ai.jpg"
+  },
+  web: {
+    title: "Web Building",
+    desc: "Learn how to create websites.",
+    focus: "HTML, CSS, design",
+    img: "assets/images/programs/web.jpg"
+  },
+  coding: {
+    title: "Basic Coding",
+    desc: "Introduction to programming.",
+    focus: "Logic, coding skills",
+    img: "assets/images/programs/coding.jpg"
+  },
+  digital: {
+    title: "Digital Literacy",
+    desc: "Understanding the digital world.",
+    focus: "Internet, safety",
+    img: "assets/images/programs/digital.jpg"
+  },
+  business: {
+    title: "Business Literacy",
+    desc: "Learn how business works.",
+    focus: "Entrepreneurship",
+    img: "assets/images/programs/business.jpg"
+  },
+  online: {
+    title: "Online Jobs",
+    desc: "Work opportunities online.",
+    focus: "Freelancing, remote work",
+    img: "assets/images/programs/online.jpg"
+  }
+};
+
+function updateFutureProgram() {
+  const val = document.getElementById("futureSelect").value;
+  const data = futurePrograms[val];
+
+  document.getElementById("futureTitle").innerText = data.title;
+  document.getElementById("futureDesc").innerText = data.desc;
+  document.getElementById("futureFocus").innerText = data.focus;
+  document.getElementById("futureImage").src = data.img;
+}
+
+</script>
 </body>
 </html>
