@@ -176,199 +176,267 @@
       <h2>Explore Our Programs</h2>
       <p>
         Discover the programs of Tides of Hope that bring care, healing, learning,
-        sustainability, and opportunity to communities. Browse our community programs
-        first, then explore future-ready pathways for children and youth.
+        sustainability, and opportunity to communities. Explore our community programs
+        and future-ready pathways for children and youth.
       </p>
     </div>
 
     <!-- COMMUNITY PROGRAMS -->
-    <div class="program-category-block community-block">
-      <div class="program-category-header">
-        <div>
-          <span class="program-category-tag">COMMUNITY CARE</span>
-          <h3>Community Programs</h3>
-          <p>
-            These programs focus on care, outreach, compassion, sustainability,
-            and uplifting communities through direct action.
-          </p>
-        </div>
+    <div class="program-showcase-block community-showcase">
+      <div class="program-showcase-heading">
+        <span class="program-showcase-tag">COMMUNITY PROGRAMS</span>
+        <h3>Programs for Care, Outreach, and Community Action</h3>
+        <p>
+          These programs focus on compassion, environment, health, outreach,
+          sustainability, and direct community impact.
+        </p>
       </div>
 
-      <div class="program-category-grid">
-        <!-- LEFT -->
-        <div class="program-category-left">
-          <label for="community-program-select">Choose a community program</label>
-          <select id="community-program-select" class="program-select">
-            <option value="tree-planting">Tree Planting</option>
-            <option value="coastal-cleanup">Coastal Cleanup</option>
-            <option value="hope-pantry">Hope Pantry</option>
-            <option value="medical-missions">Medical Missions</option>
-            <option value="youth-leadership-volunteerism">Youth Leadership & Volunteerism</option>
-            <option value="eco-bricks-for-hope">Eco-Bricks for Hope</option>
-            <option value="clean-water-for-life">Clean Water for Life</option>
-            <option value="women-solo-parent-empowerment">Women & Solo Parent Empowerment</option>
-            <option value="blood-donation">Blood Donation</option>
-            <option value="mental-health-awareness">Mental Health Awareness</option>
-            <option value="reef-and-mangrove-utilization">Reef and Mangrove Utilization</option>
-          </select>
+      <div class="program-cards-grid" id="community-program-cards">
+        <button class="program-card active" data-program="tree-planting" data-group="community" type="button">
+          <img src="assets/images/programs/program-tree-planting.JPG" alt="Tree Planting">
+          <span>Tree Planting</span>
+        </button>
 
-          <p class="program-helper-text">
-            A simple way for visitors to preview the heart, purpose, and community impact of each initiative.
+        <button class="program-card" data-program="coastal-cleanup" data-group="community" type="button">
+          <img src="assets/images/programs/program-coastal-cleanup.JPG" alt="Coastal Cleanup">
+          <span>Coastal Cleanup</span>
+        </button>
+
+        <button class="program-card" data-program="hope-pantry" data-group="community" type="button">
+          <img src="assets/images/programs/program-hope-pantry.JPG" alt="Hope Pantry">
+          <span>Hope Pantry</span>
+        </button>
+
+        <button class="program-card" data-program="medical-missions" data-group="community" type="button">
+          <img src="assets/images/programs/program-medical-mission.JPG" alt="Medical Missions">
+          <span>Medical Missions</span>
+        </button>
+
+        <button class="program-card" data-program="youth-leadership-volunteerism" data-group="community" type="button">
+          <img src="assets/images/programs/program-youth-leadership.JPG" alt="Youth Leadership & Volunteerism">
+          <span>Youth Leadership</span>
+        </button>
+
+        <button class="program-card" data-program="eco-bricks-for-hope" data-group="community" type="button">
+          <img src="assets/images/programs/program-eco-bricks.JPG" alt="Eco-Bricks for Hope">
+          <span>Eco-Bricks</span>
+        </button>
+
+        <button class="program-card" data-program="clean-water-for-life" data-group="community" type="button">
+          <img src="assets/images/programs/future-clean-water.JPG" alt="Clean Water for Life">
+          <span>Clean Water</span>
+        </button>
+
+        <button class="program-card" data-program="women-solo-parent-empowerment" data-group="community" type="button">
+          <img src="assets/images/programs/future-women-empowerment.png" alt="Women & Solo Parent Empowerment">
+          <span>Women & Solo Parents</span>
+        </button>
+
+        <button class="program-card" data-program="blood-donation" data-group="community" type="button">
+          <img src="assets/images/programs/program-blood-donation.JPG" alt="Blood Donation">
+          <span>Blood Donation</span>
+        </button>
+
+        <button class="program-card" data-program="mental-health-awareness" data-group="community" type="button">
+          <img src="assets/images/programs/program-mental-health-awareness.JPG" alt="Mental Health Awareness">
+          <span>Mental Health</span>
+        </button>
+
+        <button class="program-card" data-program="reef-and-mangrove-utilization" data-group="community" type="button">
+          <img src="assets/images/programs/program-reef-and-mangrove-utilization.JPG" alt="Reef and Mangrove Utilization">
+          <span>Reef & Mangroves</span>
+        </button>
+      </div>
+
+      <div class="program-preview-panel community-preview-panel">
+        <div class="program-preview-media">
+          <img
+            id="community-preview-image"
+            src="assets/images/programs/program-tree-planting.JPG"
+            alt="Tree Planting"
+          />
+        </div>
+
+        <div class="program-preview-body">
+          <span class="program-preview-label">COMMUNITY PROGRAM PREVIEW</span>
+          <h3 id="community-preview-title">Tree Planting</h3>
+          <p id="community-preview-description">
+            Encouraging communities to restore greener spaces and protect the environment
+            through active participation in tree planting and local care initiatives.
           </p>
 
-          <div class="program-insight-box community-insight-box">
+          <div class="program-focus-box">
+            <h4>Key Focus</h4>
+            <p id="community-preview-focus">
+              Greener communities, environmental care, and sustainability action
+            </p>
+          </div>
+
+          <div class="program-insight-box">
             <span class="program-insight-label">COMMUNITY INSIGHT</span>
-            <h3 id="community-insight-title">Why this matters</h3>
 
             <div class="program-insight-item">
               <h4>Why this matters</h4>
               <p id="community-insight-why">
-                This program helps strengthen communities through compassion, shared responsibility, and meaningful action.
+                Tree planting helps restore greener spaces, improve air quality,
+                and support healthier communities for future generations.
               </p>
             </div>
 
             <div class="program-insight-item">
               <h4>How this can work</h4>
               <p id="community-insight-how">
-                It can be carried out through volunteer drives, outreach activities, local partnerships, and community-led participation.
+                This can work through organized planting drives, local care teams,
+                follow-up maintenance, and community-based environmental education.
               </p>
             </div>
 
             <div class="program-insight-item">
               <h4>Ideal partners</h4>
               <p id="community-insight-partners">
-                Local leaders, volunteers, schools, families, barangays, nonprofits, and civic groups.
+                Schools, barangays, environmental groups, youth volunteers,
+                local businesses, and civic organizations.
               </p>
             </div>
           </div>
-        </div>
 
-        <!-- RIGHT -->
-        <div class="program-category-right">
-          <div class="program-preview-card community-preview-card">
-            <img
-              id="community-preview-image"
-              src="assets/images/programs/tree-planting.jpg"
-              alt="Tree Planting"
-            />
-
-            <div class="program-preview-content">
-              <span class="program-preview-label">COMMUNITY PROGRAM PREVIEW</span>
-              <h3 id="community-preview-title">Tree Planting</h3>
-              <p id="community-preview-description">
-                Encouraging communities to care for the environment by planting trees and helping restore greener, healthier spaces.
-              </p>
-
-              <div class="program-focus-box">
-                <h4>Key Focus</h4>
-                <p id="community-preview-focus">
-                  Environmental care, shared action, sustainability, and stewardship
-                </p>
-              </div>
-
-              <a id="community-preview-button" href="membership.html" class="small-btn">
-                Learn More
-              </a>
-            </div>
-          </div>
+          <a id="community-preview-button" href="contact.html?topic=tree-planting" class="small-btn">
+            Learn More
+          </a>
         </div>
       </div>
     </div>
 
     <!-- FUTURE PROGRAMS -->
-    <div class="program-category-block future-block">
-      <div class="program-category-header">
-        <div>
-          <span class="program-category-tag future-tag">NEXTGEN LEARNING LAB</span>
-          <h3>Future Programs</h3>
-          <p>
-            These programs are designed especially for kids and youth, helping them
-            discover digital skills, creative thinking, and future-ready pathways.
-          </p>
-        </div>
+    <div class="program-showcase-block future-showcase">
+      <div class="program-showcase-heading">
+        <span class="program-showcase-tag future-showcase-tag">NEXTGEN SKILLS HUB</span>
+        <h3>Future Programs for Kids and Youth</h3>
+        <p>
+          These programs help children and youth build digital confidence,
+          creativity, practical skills, and future-ready opportunities.
+        </p>
       </div>
 
-      <div class="program-category-grid">
-        <!-- LEFT -->
-        <div class="program-category-left">
-          <label for="future-program-select">Launch a future pathway</label>
-          <select id="future-program-select" class="program-select future-select">
-            <option value="future-ready-kids-youth">Future-Ready Kids & Youth</option>
-            <option value="digital-literacy-for-all">Digital Literacy for All</option>
-            <option value="ai-basics">AI Basics</option>
-            <option value="web-building">Web Building</option>
-            <option value="basic-coding">Basic Coding</option>
-            <option value="business-literacy">Business Literacy</option>
-            <option value="financial-literacy">Financial Literacy</option>
-            <option value="kids-digital-literacy">Kids Digital Literacy</option>
-            <option value="online-jobs">Online Jobs</option>
-            <option value="online-jobs-solo-parent">Online Jobs for Solo Parents</option>
-            <option value="online-selling">Online Selling</option>
-            <option value="online-vlogging">Online Vlogging</option>
-          </select>
+      <div class="program-cards-grid" id="future-program-cards">
+        <button class="program-card active" data-program="future-ready-kids-youth" data-group="future" type="button">
+          <img src="assets/images/programs/future-ai-skills.jpg" alt="Future-Ready Kids & Youth">
+          <span>Future-Ready Kids</span>
+        </button>
 
-          <p class="program-helper-text">
-            A youth-friendly preview of programs that build confidence, digital readiness,
-            creativity, and practical future opportunities.
+        <button class="program-card" data-program="digital-literacy-for-all" data-group="future" type="button">
+          <img src="assets/images/programs/program-digital-literacy.JPG" alt="Digital Literacy for All">
+          <span>Digital Literacy</span>
+        </button>
+
+        <button class="program-card" data-program="ai-basics" data-group="future" type="button">
+          <img src="assets/images/programs/future-ai-skills.jpg" alt="AI Basics">
+          <span>AI Basics</span>
+        </button>
+
+        <button class="program-card" data-program="web-building" data-group="future" type="button">
+          <img src="assets/images/programs/future-web-building.jpg" alt="Web Building">
+          <span>Web Building</span>
+        </button>
+
+        <button class="program-card" data-program="basic-coding" data-group="future" type="button">
+          <img src="assets/images/programs/future-basic-coding.png" alt="Basic Coding">
+          <span>Basic Coding</span>
+        </button>
+
+        <button class="program-card" data-program="business-literacy" data-group="future" type="button">
+          <img src="assets/images/programs/future-business-literacy.png" alt="Business Literacy">
+          <span>Business Literacy</span>
+        </button>
+
+        <button class="program-card" data-program="financial-literacy" data-group="future" type="button">
+          <img src="assets/images/programs/future-financial-literacy.JPG" alt="Financial Literacy">
+          <span>Financial Literacy</span>
+        </button>
+
+        <button class="program-card" data-program="kids-digital-literacy" data-group="future" type="button">
+          <img src="assets/images/programs/future-kids-digital-literacy.png" alt="Kids Digital Literacy">
+          <span>Kids Digital Literacy</span>
+        </button>
+
+        <button class="program-card" data-program="online-jobs" data-group="future" type="button">
+          <img src="assets/images/programs/future-online-jobs.JPG" alt="Online Jobs">
+          <span>Online Jobs</span>
+        </button>
+
+        <button class="program-card" data-program="online-jobs-solo-parent" data-group="future" type="button">
+          <img src="assets/images/programs/future-online-jobs-solo-parent.JPG" alt="Online Jobs for Solo Parents">
+          <span>Online Jobs for Solo Parents</span>
+        </button>
+
+        <button class="program-card" data-program="online-selling" data-group="future" type="button">
+          <img src="assets/images/programs/future-online-selling.JPG" alt="Online Selling">
+          <span>Online Selling</span>
+        </button>
+
+        <button class="program-card" data-program="online-vlogging" data-group="future" type="button">
+          <img src="assets/images/programs/future-online-vlogging.JPG" alt="Online Vlogging">
+          <span>Online Vlogging</span>
+        </button>
+      </div>
+
+      <div class="program-preview-panel future-preview-panel">
+        <div class="program-preview-media">
+          <img
+            id="future-preview-image"
+            src="assets/images/programs/future-ai-skills.jpg"
+            alt="Future-Ready Kids & Youth"
+          />
+        </div>
+
+        <div class="program-preview-body">
+          <span class="program-preview-label">FUTURE PROGRAM PREVIEW</span>
+          <h3 id="future-preview-title">Future-Ready Kids & Youth</h3>
+          <p id="future-preview-description">
+            Helping children and youth prepare for the future through creative,
+            digital, and practical learning experiences that build confidence,
+            curiosity, and life-ready skills.
           </p>
 
-          <div class="program-insight-box future-insight-box">
+          <div class="program-focus-box">
+            <h4>Key Focus</h4>
+            <p id="future-preview-focus">
+              AI basics, web building, basic coding, digital creation, and business literacy
+            </p>
+          </div>
+
+          <div class="program-insight-box">
             <span class="program-insight-label">FUTURE INSIGHT</span>
-            <h3 id="future-insight-title">Why this matters</h3>
 
             <div class="program-insight-item">
               <h4>Why this matters</h4>
               <p id="future-insight-why">
-                This program helps prepare children and youth for a fast-changing world by building confidence, curiosity, and practical future-ready skills.
+                This program helps prepare children and youth for a fast-changing world
+                by building confidence, curiosity, and practical future-ready skills.
               </p>
             </div>
 
             <div class="program-insight-item">
               <h4>How this can work</h4>
               <p id="future-insight-how">
-                It can be delivered through guided learning sessions, community workshops, digital skill exposure, and creative hands-on activities.
+                It can be delivered through guided learning sessions, community workshops,
+                digital skill exposure, and creative hands-on activities.
               </p>
             </div>
 
             <div class="program-insight-item">
               <h4>Ideal partners</h4>
               <p id="future-insight-partners">
-                Schools, teachers, youth leaders, parents, education advocates, and technology mentors.
+                Schools, teachers, youth leaders, parents, education advocates,
+                and technology mentors.
               </p>
             </div>
           </div>
-        </div>
 
-        <!-- RIGHT -->
-        <div class="program-category-right">
-          <div class="program-preview-card future-preview-card">
-            <img
-              id="future-preview-image"
-              src="assets/images/programs/future-ai-skills.JPG"
-              alt="Future-Ready Kids & Youth"
-            />
-
-            <div class="program-preview-content">
-              <span class="program-preview-label">FUTURE PROGRAM PREVIEW</span>
-              <h3 id="future-preview-title">Future-Ready Kids & Youth</h3>
-              <p id="future-preview-description">
-                Helping children and youth prepare for the future through creative,
-                digital, and practical learning experiences that build confidence,
-                curiosity, and life-ready skills.
-              </p>
-
-              <div class="program-focus-box">
-                <h4>Key Focus</h4>
-                <p id="future-preview-focus">
-                  AI basics, web building, basic coding, digital creation, and business literacy
-                </p>
-              </div>
-
-              <a id="future-preview-button" href="membership.html" class="small-btn">
-                Learn More
-              </a>
-            </div>
-          </div>
+          <a id="future-preview-button" href="membership.html" class="small-btn">
+            Learn More
+          </a>
         </div>
       </div>
     </div>
