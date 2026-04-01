@@ -565,3 +565,99 @@ document.addEventListener("DOMContentLoaded", () => {
       updateFutureProgramPreview(event.target.value);
     });
   }
+
+                          /* ================= PROGRAM SYSTEM ================= */
+
+const programs = {
+  community: {
+    youth: {
+      title: "Children & Youth Development",
+      description: "Mentorship, education support, leadership training, and youth empowerment programs.",
+      why: "Youth are the future of every community and investing in them builds stronger societies.",
+      how: "Workshops, mentoring, school partnerships, leadership camps.",
+      partners: "Schools, teachers, youth leaders, education advocates.",
+      image: "assets/images/programs/youth.jpg",
+      link: "program-youth.html"
+    },
+
+    women: {
+      title: "Women Empowerment",
+      description: "Skills training, livelihood programs, and leadership development for women.",
+      why: "Empowered women strengthen families and communities.",
+      how: "Training programs, mentoring, small business support.",
+      partners: "Women's groups, NGOs, local businesses.",
+      image: "assets/images/programs/women.jpg",
+      link: "program-women.html"
+    },
+
+    seniors: {
+      title: "Senior Citizens Support",
+      description: "Care programs, wellness activities, and community engagement for senior citizens.",
+      why: "Seniors deserve dignity, care, and community connection.",
+      how: "Health programs, social events, support services.",
+      partners: "Health organizations, community groups.",
+      image: "assets/images/programs/seniors.jpg",
+      link: "program-seniors.html"
+    }
+  },
+
+  future: {
+    digital: {
+      title: "Digital Literacy & Technology Education",
+      description: "Preparing communities for the digital world through technology education.",
+      why: "Digital skills are essential for future jobs and opportunities.",
+      how: "Computer classes, digital literacy workshops, online learning.",
+      partners: "Schools, tech companies, mentors.",
+      image: "assets/images/programs/digital.jpg",
+      link: "program-digital.html"
+    },
+
+    coding: {
+      title: "Coding & Innovation for Youth",
+      description: "Teaching coding, robotics, and innovation skills to youth.",
+      why: "Innovation and technology drive the future economy.",
+      how: "Coding camps, robotics workshops, innovation labs.",
+      partners: "Tech companies, universities, mentors.",
+      image: "assets/images/programs/coding.jpg",
+      link: "program-coding.html"
+    }
+  }
+};
+
+const categorySelect = document.getElementById("programCategory");
+const programSelect = document.getElementById("programSelect");
+
+function loadPrograms() {
+  const category = categorySelect.value;
+  const categoryPrograms = programs[category];
+
+  programSelect.innerHTML = "";
+
+  for (let key in categoryPrograms) {
+    let option = document.createElement("option");
+    option.value = key;
+    option.textContent = categoryPrograms[key].title;
+    programSelect.appendChild(option);
+  }
+
+  updateProgramPreview();
+}
+
+function updateProgramPreview() {
+  const category = categorySelect.value;
+  const programKey = programSelect.value;
+  const program = programs[category][programKey];
+
+  document.getElementById("programTitle").textContent = program.title;
+  document.getElementById("programDescription").textContent = program.description;
+  document.getElementById("programWhy").textContent = program.why;
+  document.getElementById("programHow").textContent = program.how;
+  document.getElementById("programPartners").textContent = program.partners;
+  document.getElementById("programImage").src = program.image;
+  document.getElementById("learnMoreBtn").href = program.link;
+}
+
+categorySelect.addEventListener("change", loadPrograms);
+programSelect.addEventListener("change", updateProgramPreview);
+
+loadPrograms();
