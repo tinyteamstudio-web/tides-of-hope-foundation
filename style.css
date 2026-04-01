@@ -36,30 +36,13 @@ html {
 body {
   font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
- background: linear-gradient(
-  180deg,
-  rgba(255, 0, 0, 0.18),
-  rgba(255, 127, 0, 0.18),
-  rgba(255, 255, 0, 0.18),
-  rgba(0, 255, 0, 0.18),
-  rgba(0, 0, 255, 0.18),
-  rgba(75, 0, 130, 0.18),
-  rgba(148, 0, 211, 0.18)
-);
-
-  background-size: 300% 300%;
-  animation: softFlow 25s ease infinite;
-
-  color: var(--white);
+body {
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #f6f1e8; /* light beige */
+  color: var(--text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-@keyframes softFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 img {
@@ -182,24 +165,6 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* 🌈 RAINBOW GLOW (NEW) */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background:
-    radial-gradient(circle at 80% 95%, rgba(255, 200, 200, 0.35), transparent 40%),
-    radial-gradient(circle at 70% 100%, rgba(255, 255, 200, 0.35), transparent 40%),
-    radial-gradient(circle at 60% 105%, rgba(200, 255, 200, 0.35), transparent 40%),
-    radial-gradient(circle at 50% 110%, rgba(200, 255, 255, 0.35), transparent 40%),
-    radial-gradient(circle at 40% 115%, rgba(200, 200, 255, 0.35), transparent 40%),
-    radial-gradient(circle at 30% 120%, rgba(255, 200, 255, 0.35), transparent 40%);
-
-  pointer-events: none;
-  z-index: 1;
 }
 
 /* 🌊 WAVE EFFECT (KEEP THIS) */
@@ -325,7 +290,7 @@ textarea:focus-visible {
    MISSION & VISION
    ========================================================= */
 .mission-vision {
-  background: linear-gradient(180deg, #eef6fb 0%, #f8fcff 100%);
+  background: linear-gradient(180deg, #f6f1e8 0%, #fbf7f1 100%);
   color: var(--text);
   padding: 56px 20px;
   display: flex;
@@ -388,7 +353,8 @@ textarea:focus-visible {
 }
 
 .card {
-  background: #EAF4FF;
+.card {
+  background: #ffffff;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 26px;
@@ -820,7 +786,7 @@ footer .social-icon:hover {
 
 .explore-programs {
   padding: 90px 20px;
-  background: linear-gradient(180deg, #eef5fb 0%, #f9fcff 100%);
+  background: linear-gradient(180deg, #f6f1e8 0%, #fbf7f1 100%);
 }
 
 .explore-programs-main {
@@ -1233,7 +1199,7 @@ footer .social-icon:hover {
    Keeping background-ready only for now */
 .events-mini-gallery {
   padding: 80px 20px;
-  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  background: linear-gradient(180deg, #fbf7f1 0%, #f3ede3 100%);
 }
 
 .events-mini-gallery-container {
