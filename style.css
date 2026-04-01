@@ -1989,3 +1989,39 @@ footer .social-icon:hover {
 .partners-section p {
   color: #5a6f82 !important;
 }
+
+   /* PROGRAM SELECTORS */
+.program-selectors {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.program-selectors select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* PROGRAM PREVIEW */
+.program-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 30px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+}
+
+.program-image-box img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.program-insight {
+  margin-top: 20px;
+  background: #f4efe6;
+  padding: 15px;
+  border-radius: 10px;
+}
