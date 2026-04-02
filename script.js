@@ -530,3 +530,111 @@ function showFuture() {
   document.getElementById("community-programs").style.display = "none";
   document.getElementById("future-programs").style.display = "block";
 }
+
+// PROGRAM TYPE TOGGLE
+function showCommunity() {
+  document.getElementById("community-programs").style.display = "block";
+  document.getElementById("future-programs").style.display = "none";
+
+  const tabs = document.querySelectorAll(".program-tab");
+  tabs[0].classList.add("active");
+  tabs[1].classList.remove("active");
+
+  updateProgramPreview("tree-planting");
+}
+
+function showFuture() {
+  document.getElementById("community-programs").style.display = "none";
+  document.getElementById("future-programs").style.display = "block";
+
+  const tabs = document.querySelectorAll(".program-tab");
+  tabs[1].classList.add("active");
+  tabs[0].classList.remove("active");
+
+  updateProgramPreview("future-ready-kids-youth");
+}
+
+// PROGRAM DATA
+const programData = {
+  "tree-planting": {
+    title: "Tree Planting",
+    description: "Helping restore nature and protect the environment through community tree planting activities.",
+    focus: "Environment, sustainability, climate action",
+    why: "Trees help protect the environment, prevent floods, and improve air quality.",
+    how: "Organize community planting events with volunteers and local partners.",
+    partners: "LGU, DENR, Schools, Environmental Groups",
+    image: "assets/images/programs/tree-planting.jpg"
+  },
+
+  "coastal-cleanup": {
+    title: "Coastal Cleanup",
+    description: "Protecting marine life and coastal communities through cleanup drives.",
+    focus: "Marine protection, environment, community action",
+    why: "Ocean waste harms marine life and coastal communities.",
+    how: "Community cleanup events and awareness campaigns.",
+    partners: "LGU, Environmental NGOs, Fisherfolk Groups",
+    image: "assets/images/programs/coastal-cleanup.jpg"
+  },
+
+  "hope-pantry": {
+    title: "Hope Pantry",
+    description: "Providing food and essentials to families in need.",
+    focus: "Food security, relief support",
+    why: "Many families struggle with daily food needs.",
+    how: "Community pantry and donation drives.",
+    partners: "Donors, Volunteers, Community Leaders",
+    image: "assets/images/programs/hope-pantry.jpg"
+  },
+
+  "future-ready-kids-youth": {
+    title: "Future-Ready Kids & Youth",
+    description: "Preparing youth for the digital future through technology and innovation programs.",
+    focus: "Digital literacy, AI, coding, web development",
+    why: "Technology skills open new opportunities for youth.",
+    how: "Training workshops, digital classes, mentorship.",
+    partners: "Tech Companies, Schools, Developers",
+    image: "assets/images/programs/future-ai-skills.JPG"
+  },
+
+  "digital-literacy-for-all": {
+    title: "Digital Literacy for All",
+    description: "Teaching basic computer, internet, and online safety skills.",
+    focus: "Computer skills, internet skills",
+    why: "Digital knowledge is essential in modern life.",
+    how: "Community digital literacy training.",
+    partners: "Schools, IT Volunteers, NGOs",
+    image: "assets/images/programs/digital-literacy.jpg"
+  }
+};
+
+// UPDATE RIGHT SIDE + INSIGHT BOX
+function updateProgramPreview(programKey) {
+  const program = programData[programKey];
+
+  if (!program) return;
+
+  document.getElementById("program-preview-title").innerText = program.title;
+  document.getElementById("program-preview-description").innerText = program.description;
+  document.getElementById("program-preview-focus").innerText = program.focus;
+  document.getElementById("program-insight-why").innerText = program.why;
+  document.getElementById("program-insight-how").innerText = program.how;
+  document.getElementById("program-insight-partners").innerText = program.partners;
+  document.getElementById("program-preview-image").src = program.image;
+}
+
+// SELECT DROPDOWN EVENTS
+document.addEventListener("DOMContentLoaded", function () {
+  const communitySelect = document.getElementById("community-programs");
+  const futureSelect = document.getElementById("future-programs");
+
+  communitySelect.addEventListener("change", function () {
+    updateProgramPreview(this.value);
+  });
+
+  futureSelect.addEventListener("change", function () {
+    updateProgramPreview(this.value);
+  });
+
+  // DEFAULT LOAD
+  updateProgramPreview("tree-planting");
+});
