@@ -1828,3 +1828,22 @@ footer .social-icon:hover {
 .partners-section p {
   color: #5a6f82 !important;
 }
+
+.program-type-toggle {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.program-tab {
+  padding: 10px 20px;
+  border: none;
+  background: #ddd;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.program-tab.active {
+  background: #1F7A8C;
+  color: white;
+}
