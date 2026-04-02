@@ -40,39 +40,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-    /* ------------------------------
-     EXPLORE OUR PROGRAMS
-     COMMUNITY + FUTURE
+  /* ------------------------------
+     EXPLORE OUR PROGRAMS DROPDOWN
   ------------------------------ */
+  const programSelect = document.getElementById("program-select");
+  const previewImage = document.getElementById("program-preview-image");
+  const previewTitle = document.getElementById("program-preview-title");
+  const previewDescription = document.getElementById("program-preview-description");
+  const previewFocus = document.getElementById("program-preview-focus");
+  const previewButton = document.getElementById("program-preview-button");
 
-  // COMMUNITY ELEMENTS
-  const communitySelect = document.getElementById("community-program-select");
-  const communityPreviewImage = document.getElementById("community-preview-image");
-  const communityPreviewTitle = document.getElementById("community-preview-title");
-  const communityPreviewDescription = document.getElementById("community-preview-description");
-  const communityPreviewFocus = document.getElementById("community-preview-focus");
-  const communityPreviewButton = document.getElementById("community-preview-button");
+  const insightTitle = document.getElementById("program-insight-title");
+  const insightWhy = document.getElementById("program-insight-why");
+  const insightHow = document.getElementById("program-insight-how");
+  const insightPartners = document.getElementById("program-insight-partners");
 
-  const communityInsightTitle = document.getElementById("community-insight-title");
-  const communityInsightWhy = document.getElementById("community-insight-why");
-  const communityInsightHow = document.getElementById("community-insight-how");
-  const communityInsightPartners = document.getElementById("community-insight-partners");
+  const programData = {
+    "future-ready-kids-youth": {
+      image: "assets/images/programs/future-ai-skills.jpg",
+      title: "Future-Ready Kids & Youth",
+      description:
+        "Helping children and youth prepare for the future through creative, digital, and practical learning experiences that build confidence, curiosity, and life-ready skills.",
+      focus:
+        "AI basics, web building, basic coding, digital creation, and business literacy",
+      buttonLink: "membership.html",
+      insightTitle: "Future-ready learning starts early",
+      why:
+        "This program helps prepare children and youth for a fast-changing world by building confidence, curiosity, and practical future-ready skills.",
+      how:
+        "It can be delivered through guided learning sessions, community workshops, digital skill exposure, and creative hands-on activities.",
+      partners:
+        "Schools, teachers, youth leaders, parents, education advocates, and technology mentors."
+    },
 
-  // FUTURE ELEMENTS
-  const futureSelect = document.getElementById("future-program-select");
-  const futurePreviewImage = document.getElementById("future-preview-image");
-  const futurePreviewTitle = document.getElementById("future-preview-title");
-  const futurePreviewDescription = document.getElementById("future-preview-description");
-  const futurePreviewFocus = document.getElementById("future-preview-focus");
-  const futurePreviewButton = document.getElementById("future-preview-button");
+    "digital-literacy-for-all": {
+      image: "assets/images/programs/program-digital-literacy.JPG",
+      title: "Digital Literacy for All",
+      description:
+        "Opening access to digital knowledge for all ages by teaching practical tools, safe online practices, and the confidence to use technology meaningfully in daily life.",
+      focus:
+        "Digital basics, online safety, practical tech use, and confidence building",
+      buttonLink: "membership.html",
+      insightTitle: "Digital access should empower everyone",
+      why:
+        "Digital literacy helps people navigate modern life with more confidence, safety, and opportunity.",
+      how:
+        "This can work through beginner-friendly sessions on digital tools, online safety, communication, and practical everyday technology use.",
+      partners:
+        "Schools, teachers, youth leaders, community trainers, digital volunteers, and education advocates."
+    },
 
-  const futureInsightTitle = document.getElementById("future-insight-title");
-  const futureInsightWhy = document.getElementById("future-insight-why");
-  const futureInsightHow = document.getElementById("future-insight-how");
-  const futureInsightPartners = document.getElementById("future-insight-partners");
-
-  // COMMUNITY PROGRAM DATA
-  const communityProgramData = {
     "tree-planting": {
       image: "assets/images/programs/program-tree-planting.JPG",
       title: "Tree Planting",
@@ -258,43 +275,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "This can work through awareness efforts, coastal education, mangrove care, community protection activities, and environmental partnerships.",
       partners:
         "Environmental groups, coastal communities, schools, barangays, marine advocates, and local volunteers."
-    }
-  };
-
-  // FUTURE PROGRAM DATA
-  const futureProgramData = {
-    "future-ready-kids-youth": {
-      image: "assets/images/programs/future-ai-skills.jpg",
-      title: "Future-Ready Kids & Youth",
-      description:
-        "Helping children and youth prepare for the future through creative, digital, and practical learning experiences that build confidence, curiosity, and life-ready skills.",
-      focus:
-        "AI basics, web building, basic coding, digital creation, and business literacy",
-      buttonLink: "membership.html",
-      insightTitle: "Future-ready learning starts early",
-      why:
-        "This program helps prepare children and youth for a fast-changing world by building confidence, curiosity, and practical future-ready skills.",
-      how:
-        "It can be delivered through guided learning sessions, community workshops, digital skill exposure, and creative hands-on activities.",
-      partners:
-        "Schools, teachers, youth leaders, parents, education advocates, and technology mentors."
-    },
-
-    "digital-literacy-for-all": {
-      image: "assets/images/programs/program-digital-literacy.JPG",
-      title: "Digital Literacy for All",
-      description:
-        "Opening access to digital knowledge for all ages by teaching practical tools, safe online practices, and the confidence to use technology meaningfully in daily life.",
-      focus:
-        "Digital basics, online safety, practical tech use, and confidence building",
-      buttonLink: "membership.html",
-      insightTitle: "Digital access should empower everyone",
-      why:
-        "Digital literacy helps people navigate modern life with more confidence, safety, and opportunity.",
-      how:
-        "This can work through beginner-friendly sessions on digital tools, online safety, communication, and practical everyday technology use.",
-      partners:
-        "Schools, teachers, youth leaders, community trainers, digital volunteers, and education advocates."
     },
 
     "ai-basics": {
@@ -468,196 +448,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  function updateCommunityProgramPreview(programKey) {
-    const selectedProgram = communityProgramData[programKey];
+  function updateProgramPreview(programKey) {
+    const selectedProgram = programData[programKey];
     if (!selectedProgram) return;
 
-    if (communityPreviewImage) {
-      communityPreviewImage.src = selectedProgram.image;
-      communityPreviewImage.alt = selectedProgram.title;
-    }
-    if (communityPreviewTitle) {
-      communityPreviewTitle.textContent = selectedProgram.title;
-    }
-    if (communityPreviewDescription) {
-      communityPreviewDescription.textContent = selectedProgram.description;
-    }
-    if (communityPreviewFocus) {
-      communityPreviewFocus.textContent = selectedProgram.focus;
-    }
-    if (communityPreviewButton) {
-      communityPreviewButton.href = selectedProgram.buttonLink;
-    }
-    if (communityInsightTitle) {
-      communityInsightTitle.textContent = selectedProgram.insightTitle || "Community Insight";
-    }
-    if (communityInsightWhy) {
-      communityInsightWhy.textContent = selectedProgram.why || "";
-    }
-    if (communityInsightHow) {
-      communityInsightHow.textContent = selectedProgram.how || "";
-    }
-    if (communityInsightPartners) {
-      communityInsightPartners.textContent = selectedProgram.partners || "";
-    }
-  }
+    previewImage.src = selectedProgram.image;
+    previewImage.alt = selectedProgram.title;
+    previewTitle.textContent = selectedProgram.title;
+    previewDescription.textContent = selectedProgram.description;
+    previewFocus.textContent = selectedProgram.focus;
+    previewButton.href = selectedProgram.buttonLink;
 
-  function updateFutureProgramPreview(programKey) {
-    const selectedProgram = futureProgramData[programKey];
-    if (!selectedProgram) return;
+    if (insightTitle) {
+      insightTitle.textContent =
+        selectedProgram.insightTitle || "Program Insight";
+    }
 
-    if (futurePreviewImage) {
-      futurePreviewImage.src = selectedProgram.image;
-      futurePreviewImage.alt = selectedProgram.title;
+    if (insightWhy) {
+      insightWhy.textContent =
+        selectedProgram.why ||
+        "This program creates meaningful impact in communities through shared action and support.";
     }
-    if (futurePreviewTitle) {
-      futurePreviewTitle.textContent = selectedProgram.title;
+
+    if (insightHow) {
+      insightHow.textContent =
+        selectedProgram.how ||
+        "This can work through organized activities, partnerships, and practical community participation.";
     }
-    if (futurePreviewDescription) {
-      futurePreviewDescription.textContent = selectedProgram.description;
-    }
-    if (futurePreviewFocus) {
-      futurePreviewFocus.textContent = selectedProgram.focus;
-    }
-    if (futurePreviewButton) {
-      futurePreviewButton.href = selectedProgram.buttonLink;
-    }
-    if (futureInsightTitle) {
-      futureInsightTitle.textContent = selectedProgram.insightTitle || "Future Insight";
-    }
-    if (futureInsightWhy) {
-      futureInsightWhy.textContent = selectedProgram.why || "";
-    }
-    if (futureInsightHow) {
-      futureInsightHow.textContent = selectedProgram.how || "";
-    }
-    if (futureInsightPartners) {
-      futureInsightPartners.textContent = selectedProgram.partners || "";
+
+    if (insightPartners) {
+      insightPartners.textContent =
+        selectedProgram.partners ||
+        "Community groups, volunteers, partners, and local supporters.";
     }
   }
 
   if (
-    communitySelect &&
-    communityPreviewImage &&
-    communityPreviewTitle &&
-    communityPreviewDescription &&
-    communityPreviewFocus &&
-    communityPreviewButton
+    programSelect &&
+    previewImage &&
+    previewTitle &&
+    previewDescription &&
+    previewFocus &&
+    previewButton
   ) {
-    updateCommunityProgramPreview(communitySelect.value);
+    updateProgramPreview(programSelect.value);
 
-    communitySelect.addEventListener("change", (event) => {
-      updateCommunityProgramPreview(event.target.value);
+    programSelect.addEventListener("change", (event) => {
+      updateProgramPreview(event.target.value);
     });
   }
-
-  if (
-    futureSelect &&
-    futurePreviewImage &&
-    futurePreviewTitle &&
-    futurePreviewDescription &&
-    futurePreviewFocus &&
-    futurePreviewButton
-  ) {
-    updateFutureProgramPreview(futureSelect.value);
-
-    futureSelect.addEventListener("change", (event) => {
-      updateFutureProgramPreview(event.target.value);
-    });
-  }
-
-                          /* ================= PROGRAM SYSTEM ================= */
-
-const programs = {
-  community: {
-    youth: {
-      title: "Children & Youth Development",
-      description: "Mentorship, education support, leadership training, and youth empowerment programs.",
-      why: "Youth are the future of every community and investing in them builds stronger societies.",
-      how: "Workshops, mentoring, school partnerships, leadership camps.",
-      partners: "Schools, teachers, youth leaders, education advocates.",
-      image: "assets/images/programs/youth.jpg",
-      link: "program-youth.html"
-    },
-
-    women: {
-      title: "Women Empowerment",
-      description: "Skills training, livelihood programs, and leadership development for women.",
-      why: "Empowered women strengthen families and communities.",
-      how: "Training programs, mentoring, small business support.",
-      partners: "Women's groups, NGOs, local businesses.",
-      image: "assets/images/programs/women.jpg",
-      link: "program-women.html"
-    },
-
-    seniors: {
-      title: "Senior Citizens Support",
-      description: "Care programs, wellness activities, and community engagement for senior citizens.",
-      why: "Seniors deserve dignity, care, and community connection.",
-      how: "Health programs, social events, support services.",
-      partners: "Health organizations, community groups.",
-      image: "assets/images/programs/seniors.jpg",
-      link: "program-seniors.html"
-    }
-  },
-
-  future: {
-    digital: {
-      title: "Digital Literacy & Technology Education",
-      description: "Preparing communities for the digital world through technology education.",
-      why: "Digital skills are essential for future jobs and opportunities.",
-      how: "Computer classes, digital literacy workshops, online learning.",
-      partners: "Schools, tech companies, mentors.",
-      image: "assets/images/programs/digital.jpg",
-      link: "program-digital.html"
-    },
-
-    coding: {
-      title: "Coding & Innovation for Youth",
-      description: "Teaching coding, robotics, and innovation skills to youth.",
-      why: "Innovation and technology drive the future economy.",
-      how: "Coding camps, robotics workshops, innovation labs.",
-      partners: "Tech companies, universities, mentors.",
-      image: "assets/images/programs/coding.jpg",
-      link: "program-coding.html"
-    }
-  }
-};
-
-const categorySelect = document.getElementById("programCategory");
-const programSelect = document.getElementById("programSelect");
-
-function loadPrograms() {
-  const category = categorySelect.value;
-  const categoryPrograms = programs[category];
-
-  programSelect.innerHTML = "";
-
-  for (let key in categoryPrograms) {
-    let option = document.createElement("option");
-    option.value = key;
-    option.textContent = categoryPrograms[key].title;
-    programSelect.appendChild(option);
-  }
-
-  updateProgramPreview();
-}
-
-function updateProgramPreview() {
-  const category = categorySelect.value;
-  const programKey = programSelect.value;
-  const program = programs[category][programKey];
-
-  document.getElementById("programTitle").textContent = program.title;
-  document.getElementById("programDescription").textContent = program.description;
-  document.getElementById("programWhy").textContent = program.why;
-  document.getElementById("programHow").textContent = program.how;
-  document.getElementById("programPartners").textContent = program.partners;
-  document.getElementById("programImage").src = program.image;
-  document.getElementById("learnMoreBtn").href = program.link;
-}
-
-categorySelect.addEventListener("change", loadPrograms);
-programSelect.addEventListener("change", updateProgramPreview);
-
-loadPrograms();
+});
