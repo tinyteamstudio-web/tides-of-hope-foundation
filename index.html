@@ -8,13 +8,28 @@
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
+<header class="main-header">
+  <div class="header-container">
+
+    <!-- LEFT: LOGO + NAME -->
+    <div class="logo">
+      <img src="round-logo.png" class="logo-img" alt="Tides of Hope Logo">
       <div class="logo-text">
-        <h1>TIDES OF HOPE</h1>
-        <p>INCORPORATED</p>
+        <strong>TIDES OF HOPE</strong>
+        <span>INCORPORATED</span>
       </div>
+    </div>
+
+    <!-- RIGHT: NAV -->
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="membership.html">Membership</a>
+      <a href="contact.html">Contact</a>
+      <a href="#" class="nav-cta">Be Part of Our Journey</a>
+    </nav>
+
+  </div>
+</header>
 
       <!-- Mobile menu toggle -->
       <div class="menu-toggle" id="menu-toggle">☰</div>
@@ -31,13 +46,13 @@
 
   <!-- HERO SECTION -->
 <section class="hero">
+  <div class="hero-overlay"></div>
 
   <div class="hero-content">
-    <h2>Building Waves of Hope Through Compassion and Action</h2>
-
+    <h2>Together, We Rise with Every Tide</h2>
     <p>
-      Tides of Hope Inc. is committed to uplifting communities, empowering individuals,
-      and creating meaningful opportunities through service, partnership, and care.
+      Tides of Hope Inc. is dedicated to uplifting communities through compassion,
+      education, empowerment, and meaningful partnerships that create lasting impact.
     </p>
 
     <div class="hero-buttons">
@@ -45,9 +60,29 @@
       <a href="#explore-programs" class="btn btn-secondary">Explore Programs</a>
     </div>
   </div>
-
 </section>
 
+  <section class="impact-stats">
+  <div class="impact-container">
+    <div class="impact-card">
+      <h2>1,200+</h2>
+      <p>Lives Reached</p>
+    </div>
+    <div class="impact-card">
+      <h2>35+</h2>
+      <p>Community Programs</p>
+    </div>
+    <div class="impact-card">
+      <h2>50+</h2>
+      <p>Volunteers</p>
+    </div>
+    <div class="impact-card">
+      <h2>12+</h2>
+      <p>Partner Organizations</p>
+    </div>
+  </div>
+</section>
+  
   <!-- MISSION & VISION -->
   <section class="mission-vision">
     <div class="section-box fade-in">
@@ -111,8 +146,40 @@
     </div>
   </section>
 
+  <section class="how-we-help">
+  <div class="how-container">
+    <div class="section-heading">
+      <span class="section-tag">HOW WE HELP</span>
+      <h2>Empowering Communities Through Action</h2>
+      <p>We focus on real, sustainable solutions that create long-term impact.</p>
+    </div>
+
+    <div class="how-grid">
+      <div class="how-card">
+        <h3>Community Support</h3>
+        <p>Providing immediate assistance and essential needs to communities.</p>
+      </div>
+
+      <div class="how-card">
+        <h3>Education & Training</h3>
+        <p>Equipping individuals with skills for better opportunities.</p>
+      </div>
+
+      <div class="how-card">
+        <h3>Livelihood Programs</h3>
+        <p>Creating sustainable income sources for families.</p>
+      </div>
+
+      <div class="how-card">
+        <h3>Partnership Initiatives</h3>
+        <p>Collaborating with organizations to expand our reach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+  
   <!-- EXPLORE OUR PROGRAMS -->
-  <section class="explore-programs">
+  <section class="explore-programs" id="explore-programs">
     <div class="explore-programs-container">
 
       <!-- LEFT SIDE -->
@@ -218,6 +285,59 @@
     </div>
   </section>
 
+  <section class="testimonials-video-section">
+  <div class="testimonials-video-container">
+    <div class="testimonials-heading">
+      <span class="section-tag">VOICES OF HOPE</span>
+      <h2>Stories That Speak Hope</h2>
+      <p>Approved member testimonials will appear here.</p>
+    </div>
+
+    <div class="testimonials-video-grid">
+      <div class="featured-video-card">
+        <div class="video-placeholder">
+          Featured testimonial video will appear here
+        </div>
+
+        <div class="featured-video-content">
+          <span class="mini-label">FEATURED TESTIMONIAL</span>
+          <h3>A Voice from the Community</h3>
+          <p>This section will display real member-uploaded testimonials.</p>
+        </div>
+      </div>
+
+      <div class="testimonial-side-cards">
+        <div class="testimonial-quote-card">
+          <p>“Stories from the community will appear here.”</p>
+          <h4>Community Member</h4>
+        </div>
+
+        <div class="testimonial-quote-card">
+          <p>“Real voices. Real impact. Real hope.”</p>
+          <h4>Volunteer</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="partners-section">
+  <div class="partners-container">
+    <div class="section-heading">
+      <span class="section-tag">PARTNERSHIPS</span>
+      <h2>Working Together for Greater Impact</h2>
+      <p>We collaborate with organizations and communities to expand our reach.</p>
+    </div>
+
+    <div class="partners-grid">
+      <div class="partner-card">Partner Logo</div>
+      <div class="partner-card">Partner Logo</div>
+      <div class="partner-card">Partner Logo</div>
+      <div class="partner-card">Partner Logo</div>
+    </div>
+  </div>
+</section>
+  
    <!-- EVENTS MINI GALLERY (temporary display only) -->
 <section class="events-mini-gallery">
   <div class="events-mini-gallery-container">
@@ -227,6 +347,18 @@
       <p>
         This section will soon display approved event uploads from members and officers.
       </p>
+    </div>
+  </div>
+</section>
+
+  <section class="final-cta">
+  <div class="cta-container">
+    <h2>Be Part of the Movement</h2>
+    <p>Together, we can create lasting change and bring hope to more communities.</p>
+
+    <div class="cta-buttons">
+      <a href="#" class="btn-primary">Join Us</a>
+      <a href="#" class="btn-secondary">Support Our Mission</a>
     </div>
   </div>
 </section>
@@ -240,7 +372,7 @@
 
     <div class="socials">
       <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener">
-        <img src="facebook-logo.png" alt="Facebook" class="social-icon" />
+        <img src="facebook-logo.png" class="footer-social-icon" alt="Facebook">
       </a>
     </div>
 
