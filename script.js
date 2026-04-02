@@ -498,3 +498,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// PROGRAM TYPE SWITCH
+const tabs = document.querySelectorAll(".program-tab");
+const communitySelect = document.getElementById("community-programs");
+const futureSelect = document.getElementById("future-programs");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+
+    const type = tab.dataset.type;
+
+    if (type === "community") {
+      communitySelect.style.display = "block";
+      futureSelect.style.display = "none";
+    } else {
+      communitySelect.style.display = "none";
+      futureSelect.style.display = "block";
+    }
+  });
+});
