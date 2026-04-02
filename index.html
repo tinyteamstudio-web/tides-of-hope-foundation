@@ -178,36 +178,73 @@
   </div>
 </section>
   
-<!-- COMMUNITY PROGRAMS -->
-<select id="community-programs" class="program-select">
-  <option value="tree-planting">Tree Planting</option>
-  <option value="coastal-cleanup">Coastal Cleanup</option>
-  <option value="hope-pantry">Hope Pantry</option>
-  <option value="medical-missions">Medical Missions</option>
-  <option value="youth-leadership-volunteerism">Youth Leadership & Volunteerism</option>
-  <option value="eco-bricks-for-hope">Eco-Bricks for Hope</option>
-  <option value="clean-water-for-life">Clean Water for Life</option>
-  <option value="women-solo-parent-empowerment">Women & Solo Parent Empowerment</option>
-  <option value="blood-donation">Blood Donation</option>
-  <option value="mental-health-awareness">Mental Health Awareness</option>
-  <option value="reef-and-mangrove-utilization">Reef and Mangrove Utilization</option>
-</select>
+<!-- EXPLORE OUR PROGRAMS -->
 
-<!-- FUTURE PROGRAMS -->
-<select id="future-programs" class="program-select" style="display:none;">
-  <option value="future-ready-kids-youth">Future-Ready Kids & Youth</option>
-  <option value="digital-literacy-for-all">Digital Literacy for All</option>
-  <option value="ai-basics">AI Basics</option>
-  <option value="web-building">Web Building</option>
-  <option value="basic-coding">Basic Coding</option>
-  <option value="business-literacy">Business Literacy</option>
-  <option value="financial-literacy">Financial Literacy</option>
-  <option value="kids-digital-literacy">Kids Digital Literacy</option>
-  <option value="online-jobs">Online Jobs</option>
-  <option value="online-jobs-solo-parent">Online Jobs for Solo Parents</option>
-  <option value="online-selling">Online Selling</option>
-  <option value="online-vlogging">Online Vlogging</option>
-</select>
+<section class="explore-programs" id="explore-programs">
+  <div class="explore-programs-container">
+
+```
+<!-- LEFT SIDE -->
+<div class="explore-programs-left">
+  <span class="section-tag">OUR IMPACT PROGRAMS</span>
+  <h2>Explore Our Programs</h2>
+
+  <p>
+    Discover the programs of Tides of Hope that bring learning, care,
+    sustainability, and opportunity to communities.
+  </p>
+
+  <!-- TOGGLE -->
+  <div class="program-type-toggle">
+    <button class="program-tab active" onclick="showCommunity()">Community Programs</button>
+    <button class="program-tab" onclick="showFuture()">Future Tech & NextGen</button>
+  </div>
+
+  <!-- COMMUNITY -->
+  <select id="community-programs" class="program-select">
+    <option value="tree-planting">Tree Planting</option>
+    <option value="coastal-cleanup">Coastal Cleanup</option>
+    <option value="hope-pantry">Hope Pantry</option>
+    <option value="medical-missions">Medical Missions</option>
+    <option value="youth-leadership-volunteerism">Youth Leadership & Volunteerism</option>
+    <option value="eco-bricks-for-hope">Eco-Bricks for Hope</option>
+    <option value="clean-water-for-life">Clean Water for Life</option>
+    <option value="women-solo-parent-empowerment">Women & Solo Parent Empowerment</option>
+    <option value="blood-donation">Blood Donation</option>
+    <option value="mental-health-awareness">Mental Health Awareness</option>
+  </select>
+
+  <!-- FUTURE -->
+  <select id="future-programs" class="program-select" style="display:none;">
+    <option value="future-ready-kids-youth">Future-Ready Kids & Youth</option>
+    <option value="digital-literacy-for-all">Digital Literacy for All</option>
+    <option value="ai-basics">AI Basics</option>
+    <option value="web-building">Web Building</option>
+    <option value="basic-coding">Basic Coding</option>
+    <option value="business-literacy">Business Literacy</option>
+    <option value="financial-literacy">Financial Literacy</option>
+    <option value="online-jobs">Online Jobs</option>
+    <option value="online-selling">Online Selling</option>
+    <option value="online-vlogging">Online Vlogging</option>
+  </select>
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="explore-programs-right">
+  <div class="program-preview-card">
+    <span class="program-preview-label">PROGRAM PREVIEW</span>
+    <h3 id="program-preview-title">Select a Program</h3>
+    <p id="program-preview-description">
+      Program details will appear here when a program is selected.
+    </p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
 
   <section class="testimonials-video-section">
   <div class="testimonials-video-container">
