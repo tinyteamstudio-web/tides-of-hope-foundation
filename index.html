@@ -8,39 +8,36 @@
 </head>
 <body>
 
-<header class="main-header">
-  <div class="header-container">
-
-    <!-- LEFT: LOGO + NAME -->
-    <div class="logo">
-      <img src="round-logo.png" class="logo-img" alt="Tides of Hope Logo">
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
       <div class="logo-text">
-        <strong>TIDES OF HOPE</strong>
-        <span>INCORPORATED</span>
+        <h1>TIDES OF HOPE</h1>
+        <p>INCORPORATED</p>
       </div>
+
+      <!-- Mobile menu toggle -->
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+
+      <!-- Navigation menu -->
+      <nav id="nav-menu">
+        <a href="index.html" class="active">Home</a>
+        <a href="membership.html">Membership</a>
+        <a href="contact.html">Contact</a>
+        <a href="#get-involved" class="highlight-btn">Be Part of Our Journey</a>
+      </nav>
     </div>
-
-    <!-- RIGHT: NAV -->
-    <nav class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="membership.html">Membership</a>
-      <a href="contact.html">Contact</a>
-      <a href="#" class="nav-cta">Be Part of Our Journey</a>
-    </nav>
-
-  </div>
-</header>
-
+  </header>
 
   <!-- HERO SECTION -->
 <section class="hero">
-  <div class="hero-overlay"></div>
 
   <div class="hero-content">
-    <h2>Together, We Rise with Every Tide</h2>
+    <h2>Building Waves of Hope Through Compassion and Action</h2>
+
     <p>
-      Tides of Hope Inc. is dedicated to uplifting communities through compassion,
-      education, empowerment, and meaningful partnerships that create lasting impact.
+      Tides of Hope Inc. is committed to uplifting communities, empowering individuals,
+      and creating meaningful opportunities through service, partnership, and care.
     </p>
 
     <div class="hero-buttons">
@@ -48,29 +45,9 @@
       <a href="#explore-programs" class="btn btn-secondary">Explore Programs</a>
     </div>
   </div>
+
 </section>
 
-  <section class="impact-stats">
-  <div class="impact-container">
-    <div class="impact-card">
-      <h2>1,200+</h2>
-      <p>Lives Reached</p>
-    </div>
-    <div class="impact-card">
-      <h2>35+</h2>
-      <p>Community Programs</p>
-    </div>
-    <div class="impact-card">
-      <h2>50+</h2>
-      <p>Volunteers</p>
-    </div>
-    <div class="impact-card">
-      <h2>12+</h2>
-      <p>Partner Organizations</p>
-    </div>
-  </div>
-</section>
-  
   <!-- MISSION & VISION -->
   <section class="mission-vision">
     <div class="section-box fade-in">
@@ -134,83 +111,113 @@
     </div>
   </section>
 
-  <section class="how-we-help">
-  <div class="how-container">
-    <div class="section-heading">
-      <span class="section-tag">HOW WE HELP</span>
-      <h2>Empowering Communities Through Action</h2>
-      <p>We focus on real, sustainable solutions that create long-term impact.</p>
-    </div>
-
-    <div class="how-grid">
-      <div class="how-card">
-        <h3>Community Support</h3>
-        <p>Providing immediate assistance and essential needs to communities.</p>
-      </div>
-
-      <div class="how-card">
-        <h3>Education & Training</h3>
-        <p>Equipping individuals with skills for better opportunities.</p>
-      </div>
-
-      <div class="how-card">
-        <h3>Livelihood Programs</h3>
-        <p>Creating sustainable income sources for families.</p>
-      </div>
-
-      <div class="how-card">
-        <h3>Partnership Initiatives</h3>
-        <p>Collaborating with organizations to expand our reach.</p>
-      </div>
-    </div>
-  </div>
-</section>
-  
-<!-- EXPLORE OUR PROGRAMS -->
-<section class="explore-programs">
-  <div class="container">
-
-    <h5 class="section-subtitle">OUR IMPACT PROGRAMS</h5>
-    <h2 class="section-title">Explore Our Programs</h2>
-
-    <!-- PROGRAM SELECTORS -->
-    <div class="program-selectors">
-      <select id="programCategory">
-        <option value="community">Community & Outreach Programs</option>
-        <option value="future">💻 Tech for Tomorrow – NextGen Programs</option>
-      </select>
-
-      <select id="programSelect">
-      </select>
-    </div>
-
-    <!-- PROGRAM PREVIEW -->
-    <div class="program-preview">
+  <!-- EXPLORE OUR PROGRAMS -->
+  <section class="explore-programs">
+    <div class="explore-programs-container">
 
       <!-- LEFT SIDE -->
-      <div class="program-info">
-        <h3 id="programTitle">Program Title</h3>
-        <p id="programDescription">
-          Select a program to see details.
+      <div class="explore-programs-left">
+        <span class="section-tag">OUR IMPACT PROGRAMS</span>
+        <h2>Explore Our Programs</h2>
+        <p>
+          Discover the programs of Tides of Hope that bring learning, care,
+          sustainability, and opportunity to communities. Select a program below
+          to preview its mission, focus, and impact.
         </p>
 
-        <div class="program-insight">
-          <p><strong>Why it matters:</strong> <span id="programWhy"></span></p>
-          <p><strong>How it works:</strong> <span id="programHow"></span></p>
-          <p><strong>Ideal partners:</strong> <span id="programPartners"></span></p>
-        </div>
+        <label for="program-select">Choose a program to explore</label>
+        <select id="program-select" class="program-select">
+          <option value="future-ready-kids-youth">Future-Ready Kids & Youth</option>
+          <option value="digital-literacy-for-all">Digital Literacy for All</option>
+          <option value="tree-planting">Tree Planting</option>
+          <option value="coastal-cleanup">Coastal Cleanup</option>
+          <option value="hope-pantry">Hope Pantry</option>
+          <option value="medical-missions">Medical Missions</option>
+          <option value="youth-leadership-volunteerism">Youth Leadership & Volunteerism</option>
+          <option value="eco-bricks-for-hope">Eco-Bricks for Hope</option>
+          <option value="clean-water-for-life">Clean Water for Life</option>
+          <option value="women-solo-parent-empowerment">Women & Solo Parent Empowerment</option>
+          <option value="blood-donation">Blood Donation</option>
+          <option value="mental-health-awareness">Mental Health Awareness</option>
+          <option value="reef-and-mangrove-utilization">Reef and Mangrove Utilization</option>
+          <option value="ai-basics">AI Basics</option>
+          <option value="web-building">Web Building</option>
+          <option value="basic-coding">Basic Coding</option>
+          <option value="business-literacy">Business Literacy</option>
+          <option value="financial-literacy">Financial Literacy</option>
+          <option value="kids-digital-literacy">Kids Digital Literacy</option>
+          <option value="online-jobs">Online Jobs</option>
+          <option value="online-jobs-solo-parent">Online Jobs for Solo Parents</option>
+          <option value="online-selling">Online Selling</option>
+          <option value="online-vlogging">Online Vlogging</option>
+        </select>
+
+        <p class="program-helper-text">
+          This section is designed to help visitors quickly understand the heart of each initiative.
+        </p>
+
+        <div class="program-insight-box">
+  <span class="program-insight-label">PROGRAM INSIGHT</span>
+  <h3 id="program-insight-title">Why this matters</h3>
+
+  <div class="program-insight-item">
+    <h4>Why this matters</h4>
+    <p id="program-insight-why">
+      This program helps prepare children and youth for a fast-changing world by building confidence, curiosity, and practical future-ready skills.
+    </p>
+  </div>
+
+  <div class="program-insight-item">
+    <h4>How this can work</h4>
+    <p id="program-insight-how">
+      It can be delivered through guided learning sessions, community workshops, digital skill exposure, and creative hands-on activities.
+    </p>
+  </div>
+
+  <div class="program-insight-item">
+    <h4>Ideal partners</h4>
+    <p id="program-insight-partners">
+      Schools, teachers, youth leaders, parents, education advocates, and technology mentors.
+    </p>
+  </div>
+</div>
       </div>
 
       <!-- RIGHT SIDE -->
-      <div class="program-image-box">
-        <img id="programImage" src="assets/images/programs/default.jpg">
-        <a id="learnMoreBtn" class="btn">Learn More</a>
+      <div class="explore-programs-right">
+        <div class="program-preview-card">
+          <img
+            id="program-preview-image"
+            src="assets/images/programs/future-ai-skills.JPG"
+            alt="Future-Ready Kids & Youth"
+          />
+
+          <div class="program-preview-content">
+            <span class="program-preview-label">PROGRAM PREVIEW</span>
+            <h3 id="program-preview-title">Future-Ready Kids & Youth</h3>
+            <p id="program-preview-description">
+              Helping children and youth prepare for the future through creative,
+              digital, and practical learning experiences that build confidence,
+              curiosity, and life-ready skills.
+            </p>
+
+            <div class="program-focus-box">
+              <h4>Key Focus</h4>
+              <p id="program-preview-focus">
+                AI basics, web building, basic coding, digital creation, and business literacy
+              </p>
+            </div>
+
+            <a id="program-preview-button" href="membership.html" class="small-btn">
+              Learn More
+            </a>
+          </div>
+        </div>
       </div>
 
     </div>
+  </section>
 
-  </div>
-</section>
    <!-- EVENTS MINI GALLERY (temporary display only) -->
 <section class="events-mini-gallery">
   <div class="events-mini-gallery-container">
@@ -220,18 +227,6 @@
       <p>
         This section will soon display approved event uploads from members and officers.
       </p>
-    </div>
-  </div>
-</section>
-
-  <section class="final-cta">
-  <div class="cta-container">
-    <h2>Be Part of the Movement</h2>
-    <p>Together, we can create lasting change and bring hope to more communities.</p>
-
-    <div class="cta-buttons">
-      <a href="#" class="btn-primary">Join Us</a>
-      <a href="#" class="btn-secondary">Support Our Mission</a>
     </div>
   </div>
 </section>
@@ -245,7 +240,7 @@
 
     <div class="socials">
       <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener">
-        <img src="facebook-logo.png" class="footer-social-icon" alt="Facebook">
+        <img src="facebook-logo.png" alt="Facebook" class="social-icon" />
       </a>
     </div>
 
@@ -266,109 +261,5 @@
 
   <script src="script.js"></script>
 
-  <script>
-
-// COMMUNITY DATA
-const communityPrograms = {
-  tree: {
-    title: "Tree Planting",
-    desc: "Empowering communities to protect nature through tree planting.",
-    focus: "Environment, sustainability, teamwork",
-    img: "assets/images/programs/tree.jpg"
-  },
-  cleanup: {
-    title: "Coastal Cleanup",
-    desc: "Protecting oceans through community cleanups.",
-    focus: "Clean environment, teamwork",
-    img: "assets/images/programs/cleanup.jpg"
-  },
-  pantry: {
-    title: "Hope Pantry",
-    desc: "Providing food support to families in need.",
-    focus: "Food security, compassion",
-    img: "assets/images/programs/pantry.jpg"
-  },
-  medical: {
-    title: "Medical Missions",
-    desc: "Bringing healthcare to communities.",
-    focus: "Health, outreach",
-    img: "assets/images/programs/medical.jpg"
-  },
-  water: {
-    title: "Clean Water for Life",
-    desc: "Ensuring access to clean water.",
-    focus: "Water, sanitation",
-    img: "assets/images/programs/water.jpg"
-  },
-  women: {
-    title: "Women & Solo Parent",
-    desc: "Supporting women and solo parents.",
-    focus: "Empowerment, livelihood",
-    img: "assets/images/programs/women.jpg"
-  }
-};
-
-function updateCommunityProgram() {
-  const val = document.getElementById("communitySelect").value;
-  const data = communityPrograms[val];
-
-  document.getElementById("communityTitle").innerText = data.title;
-  document.getElementById("communityDesc").innerText = data.desc;
-  document.getElementById("communityFocus").innerText = data.focus;
-  document.getElementById("communityImage").src = data.img;
-}
-
-
-// FUTURE DATA
-const futurePrograms = {
-  ai: {
-    title: "AI Basics",
-    desc: "Learn artificial intelligence fundamentals.",
-    focus: "AI tools, future skills",
-    img: "assets/images/programs/ai.jpg"
-  },
-  web: {
-    title: "Web Building",
-    desc: "Learn how to create websites.",
-    focus: "HTML, CSS, design",
-    img: "assets/images/programs/web.jpg"
-  },
-  coding: {
-    title: "Basic Coding",
-    desc: "Introduction to programming.",
-    focus: "Logic, coding skills",
-    img: "assets/images/programs/coding.jpg"
-  },
-  digital: {
-    title: "Digital Literacy",
-    desc: "Understanding the digital world.",
-    focus: "Internet, safety",
-    img: "assets/images/programs/digital.jpg"
-  },
-  business: {
-    title: "Business Literacy",
-    desc: "Learn how business works.",
-    focus: "Entrepreneurship",
-    img: "assets/images/programs/business.jpg"
-  },
-  online: {
-    title: "Online Jobs",
-    desc: "Work opportunities online.",
-    focus: "Freelancing, remote work",
-    img: "assets/images/programs/online.jpg"
-  }
-};
-
-function updateFutureProgram() {
-  const val = document.getElementById("futureSelect").value;
-  const data = futurePrograms[val];
-
-  document.getElementById("futureTitle").innerText = data.title;
-  document.getElementById("futureDesc").innerText = data.desc;
-  document.getElementById("futureFocus").innerText = data.focus;
-  document.getElementById("futureImage").src = data.img;
-}
-
-</script>
 </body>
 </html>
