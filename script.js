@@ -520,3 +520,13 @@ tabs.forEach(tab => {
     }
   });
 });
+
+function showCommunity() {
+  document.getElementById("community-programs").style.display = "block";
+  document.getElementById("future-programs").style.display = "none";
+}
+
+function showFuture() {
+  document.getElementById("community-programs").style.display = "none";
+  document.getElementById("future-programs").style.display = "block";
+}
