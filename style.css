@@ -1847,3 +1847,75 @@ footer .social-icon:hover {
   background: #1F7A8C;
   color: white;
 }
+
+/* GLOBAL SECTION SPACING */
+section {
+  padding: 80px 0;
+}
+
+/* Reduce spacing for small sections if needed */
+.impact-stats {
+  padding: 50px 0;
+}
+
+.mission-vision {
+  padding: 60px 0;
+}
+
+.get-involved {
+  padding: 80px 0;
+}
+
+.how-we-help {
+  padding: 80px 0;
+}
+
+.explore-programs {
+  padding: 90px 0;
+}
+
+.testimonials-video-section {
+  padding: 80px 0;
+}
+
+.partners-section {
+  padding: 80px 0;
+}
+
+.events-mini-gallery {
+  padding: 80px 0;
+}
+
+.final-cta {
+  padding: 90px 0;
+}
+
+.explore-programs-container {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+.explore-programs-left {
+  width: 50%;
+}
+
+.explore-programs-right {
+  width: 50%;
+}
+
+.program-preview-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.program-insight-box {
+  margin-top: 25px;
+}
+
+.program-select {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+  width: 100%;
+}
