@@ -3,263 +3,404 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tides of Hope Inc.</title>
+  <title>Tides of Hope Incorporated</title>
+  <meta
+    name="description"
+    content="Tides of Hope Incorporated — Building pathways of hope through compassionate programs, community support, and meaningful partnerships."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <div class="logo-text">
-        <h1>TIDES OF HOPE</h1>
-        <p>INCORPORATED</p>
-      </div>
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#hero" class="brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-title">Tides of Hope</span>
+          <span class="brand-subtitle">Incorporated</span>
+        </div>
+      </a>
 
-      <!-- Mobile menu toggle -->
-      <div class="menu-toggle" id="menu-toggle">☰</div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-      <!-- Navigation menu -->
-      <nav id="nav-menu">
-        <a href="index.html" class="active">Home</a>
-        <a href="membership.html">Membership</a>
-        <a href="contact.html">Contact</a>
-        <a href="#get-involved" class="highlight-btn">Be Part of Our Journey</a>
+      <nav class="site-nav" id="siteNav">
+        <a href="#hero">Home</a>
+        <a href="#impact">Impact</a>
+        <a href="#mission-vision">Mission & Vision</a>
+        <a href="#get-involved">Get Involved</a>
+        <a href="#how-we-help">How We Help</a>
+        <a href="#programs">Programs</a>
+        <a href="#partnerships">Partnerships</a>
+        <a href="#gallery">Moments</a>
+        <a href="#cta" class="nav-cta">Support Us</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-<section class="hero">
+  <main>
 
-  <div class="hero-content">
-    <h2>Building Waves of Hope Through Compassion and Action</h2>
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="hero" id="hero">
+      <div class="hero-wave"></div>
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <span class="section-label">Compassion in Action</span>
+          <h1>Creating calmer, stronger, and more hopeful communities.</h1>
+          <p>
+            Tides of Hope Incorporated exists to serve with dignity, uplift lives
+            through meaningful programs, and build partnerships that create
+            lasting change.
+          </p>
 
-    <p>
-      Tides of Hope Inc. is committed to uplifting communities, empowering individuals,
-      and creating meaningful opportunities through service, partnership, and care.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="#get-involved" class="btn btn-primary">Join the Mission</a>
-      <a href="#explore-programs" class="btn btn-secondary">Explore Programs</a>
-    </div>
-  </div>
-
-</section>
-
-  <!-- MISSION & VISION -->
-  <section class="mission-vision">
-    <div class="section-box fade-in">
-      <h3>MISSION</h3>
-      <p>
-        Tides of Hope Inc. empowers communities affected by crisis and hardship by providing
-        relief, rebuilding lives, and restoring dignity through compassion, collaboration,
-        and sustainable action.
-      </p>
-    </div>
-    <div class="section-box fade-in">
-      <h3>VISION</h3>
-      <p>
-        A world where every wave of challenge is met with a Tide of Hope Inc. — where resilience,
-        compassion, and opportunity uplift every person and community.
-      </p>
-    </div>
-  </section>
-
-  <!-- GET INVOLVED -->
-  <section id="get-involved" class="get-involved">
-    <h2>Get Involved</h2>
-    <p>
-      Be part of the movement. Every helping hand makes a difference — through your time,
-      partnership, or generosity, you help us create waves of hope that reach far beyond.
-    </p>
-
-    <div class="cards-container">
-      <!-- Volunteer Card -->
-      <div class="card">
-        <img src="volunteer.png" alt="Volunteer" />
-        <h3>Volunteer</h3>
-        <p>
-          Join our community of volunteers and bring positive change to people’s lives
-          through compassion and action.
-        </p>
-        <a href="membership.html#volunteer" class="small-btn">Join as Volunteer</a>
-      </div>
-
-      <!-- Partner Card -->
-      <div class="card">
-        <img src="partner.png" alt="Partner" />
-        <h3>Partner With Us</h3>
-        <p>
-          Collaborate with Tides of Hope Inc. to expand impact. Together, we can reach more
-          communities in need.
-        </p>
-        <a href="contact.html?topic=partnership" class="small-btn">Partner With Us</a>
-      </div>
-
-      <!-- Donate Card -->
-      <div class="card">
-        <img src="donate.png" alt="Donate" />
-        <h3>Donate</h3>
-        <p>
-          Your financial support helps us rebuild lives and restore dignity. Every donation
-          is a ripple of hope.
-        </p>
-        <a href="donate.html" class="small-btn">Donate Now</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPLORE OUR PROGRAMS -->
-  <section class="explore-programs">
-    <div class="explore-programs-container">
-
-      <!-- LEFT SIDE -->
-      <div class="explore-programs-left">
-        <span class="section-tag">OUR IMPACT PROGRAMS</span>
-        <h2>Explore Our Programs</h2>
-        <p>
-          Discover the programs of Tides of Hope that bring learning, care,
-          sustainability, and opportunity to communities. Select a program below
-          to preview its mission, focus, and impact.
-        </p>
-
-        <label for="program-select">Choose a program to explore</label>
-        <select id="program-select" class="program-select">
-          <option value="future-ready-kids-youth">Future-Ready Kids & Youth</option>
-          <option value="digital-literacy-for-all">Digital Literacy for All</option>
-          <option value="tree-planting">Tree Planting</option>
-          <option value="coastal-cleanup">Coastal Cleanup</option>
-          <option value="hope-pantry">Hope Pantry</option>
-          <option value="medical-missions">Medical Missions</option>
-          <option value="youth-leadership-volunteerism">Youth Leadership & Volunteerism</option>
-          <option value="eco-bricks-for-hope">Eco-Bricks for Hope</option>
-          <option value="clean-water-for-life">Clean Water for Life</option>
-          <option value="women-solo-parent-empowerment">Women & Solo Parent Empowerment</option>
-          <option value="blood-donation">Blood Donation</option>
-          <option value="mental-health-awareness">Mental Health Awareness</option>
-          <option value="reef-and-mangrove-utilization">Reef and Mangrove Utilization</option>
-          <option value="ai-basics">AI Basics</option>
-          <option value="web-building">Web Building</option>
-          <option value="basic-coding">Basic Coding</option>
-          <option value="business-literacy">Business Literacy</option>
-          <option value="financial-literacy">Financial Literacy</option>
-          <option value="kids-digital-literacy">Kids Digital Literacy</option>
-          <option value="online-jobs">Online Jobs</option>
-          <option value="online-jobs-solo-parent">Online Jobs for Solo Parents</option>
-          <option value="online-selling">Online Selling</option>
-          <option value="online-vlogging">Online Vlogging</option>
-        </select>
-
-        <p class="program-helper-text">
-          This section is designed to help visitors quickly understand the heart of each initiative.
-        </p>
-
-        <div class="program-insight-box">
-  <span class="program-insight-label">PROGRAM INSIGHT</span>
-  <h3 id="program-insight-title">Why this matters</h3>
-
-  <div class="program-insight-item">
-    <h4>Why this matters</h4>
-    <p id="program-insight-why">
-      This program helps prepare children and youth for a fast-changing world by building confidence, curiosity, and practical future-ready skills.
-    </p>
-  </div>
-
-  <div class="program-insight-item">
-    <h4>How this can work</h4>
-    <p id="program-insight-how">
-      It can be delivered through guided learning sessions, community workshops, digital skill exposure, and creative hands-on activities.
-    </p>
-  </div>
-
-  <div class="program-insight-item">
-    <h4>Ideal partners</h4>
-    <p id="program-insight-partners">
-      Schools, teachers, youth leaders, parents, education advocates, and technology mentors.
-    </p>
-  </div>
-</div>
-      </div>
-
-      <!-- RIGHT SIDE -->
-      <div class="explore-programs-right">
-        <div class="program-preview-card">
-          <img
-            id="program-preview-image"
-            src="assets/images/programs/future-ai-skills.JPG"
-            alt="Future-Ready Kids & Youth"
-          />
-
-          <div class="program-preview-content">
-            <span class="program-preview-label">PROGRAM PREVIEW</span>
-            <h3 id="program-preview-title">Future-Ready Kids & Youth</h3>
-            <p id="program-preview-description">
-              Helping children and youth prepare for the future through creative,
-              digital, and practical learning experiences that build confidence,
-              curiosity, and life-ready skills.
-            </p>
-
-            <div class="program-focus-box">
-              <h4>Key Focus</h4>
-              <p id="program-preview-focus">
-                AI basics, web building, basic coding, digital creation, and business literacy
-              </p>
-            </div>
-
-            <a id="program-preview-button" href="membership.html" class="small-btn">
-              Learn More
-            </a>
+          <div class="hero-actions">
+            <a href="#get-involved" class="btn btn-primary">Get Involved</a>
+            <a href="#programs" class="btn btn-secondary">Explore Programs</a>
           </div>
         </div>
       </div>
+    </section>
 
+    <!-- =========================
+         IMPACT STATS
+    ========================== -->
+    <section class="impact-section" id="impact">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="section-label">Impact Snapshot</span>
+          <h2>Hope becomes real through action.</h2>
+          <p>
+            These spaces can later be connected to real numbers, reports, and
+            community milestones.
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <h3>1,250+</h3>
+            <p>Individuals reached through community support initiatives</p>
+          </article>
+
+          <article class="stat-card">
+            <h3>18</h3>
+            <p>Programs and outreach efforts delivered with compassion</p>
+          </article>
+
+          <article class="stat-card">
+            <h3>35+</h3>
+            <p>Partners, volunteers, and advocates helping move the mission</p>
+          </article>
+
+          <article class="stat-card">
+            <h3>12</h3>
+            <p>Communities engaged through direct service and collaboration</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         MISSION AND VISION
+    ========================== -->
+    <section class="mission-vision-section" id="mission-vision">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">Our Foundation</span>
+          <h2>Mission and Vision</h2>
+          <p>
+            Our work is rooted in service, guided by hope, and shaped by the
+            belief that communities deserve care, opportunity, and dignity.
+          </p>
+        </div>
+
+        <div class="mission-vision-grid">
+          <article class="info-card">
+            <h3>Our Mission</h3>
+            <p>
+              To serve communities through compassionate programs, responsive
+              support systems, and meaningful initiatives that uplift lives,
+              strengthen families, and create pathways toward opportunity.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>Our Vision</h3>
+            <p>
+              A future where every individual and community has access to hope,
+              support, and opportunities that help them grow with dignity,
+              resilience, and shared purpose.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         GET INVOLVED
+    ========================== -->
+    <section class="get-involved-section" id="get-involved">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="section-label">Join the Mission</span>
+          <h2>Get Involved</h2>
+          <p>
+            There are many ways to stand with Tides of Hope and become part of
+            a mission that changes lives.
+          </p>
+        </div>
+
+        <div class="action-grid">
+          <article class="action-card">
+            <h3>Donate</h3>
+            <p>
+              Support outreach, relief, community care, and future programs
+              through purposeful giving.
+            </p>
+            <a href="#cta" class="text-link">Support this mission</a>
+          </article>
+
+          <article class="action-card">
+            <h3>Volunteer</h3>
+            <p>
+              Share your time, energy, and heart through hands-on service and
+              community-based involvement.
+            </p>
+            <a href="#cta" class="text-link">Join as a volunteer</a>
+          </article>
+
+          <article class="action-card">
+            <h3>Partner</h3>
+            <p>
+              Work with us through advocacy, sponsorship, outreach, and
+              collaborative service projects.
+            </p>
+            <a href="#partnerships" class="text-link">Build a partnership</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         HOW WE HELP
+    ========================== -->
+    <section class="how-we-help-section" id="how-we-help">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">What We Do</span>
+          <h2>How We Help</h2>
+          <p>
+            Our programs focus on practical, compassionate support that answers
+            real needs while building long-term hope.
+          </p>
+        </div>
+
+        <div class="help-grid">
+          <article class="help-card">
+            <h3>Community Care</h3>
+            <p>
+              Programs that respond to urgent needs and provide care where it is
+              needed most.
+            </p>
+          </article>
+
+          <article class="help-card">
+            <h3>Education Support</h3>
+            <p>
+              Learning-centered initiatives that open access to knowledge,
+              skills, and development.
+            </p>
+          </article>
+
+          <article class="help-card">
+            <h3>Livelihood Pathways</h3>
+            <p>
+              Practical opportunities that support resilience, growth, and
+              long-term sustainability.
+            </p>
+          </article>
+
+          <article class="help-card">
+            <h3>Advocacy & Partnerships</h3>
+            <p>
+              Collaborative efforts that multiply impact and strengthen
+              communities through unity.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         EXPLORE OUR PROGRAMS
+    ========================== -->
+    <section class="programs-section" id="programs">
+      <div class="container programs-layout">
+        <div class="programs-intro">
+          <span class="section-label">Program Focus</span>
+          <h2>Explore Our Programs</h2>
+          <p>
+            These program cards can later be connected to real activities,
+            dedicated pages, or partner-led initiatives. For now, this gives
+            the homepage a clean and strong structure.
+          </p>
+          <a href="#cta" class="btn btn-primary">Support Our Programs</a>
+        </div>
+
+        <div class="programs-grid">
+          <article class="program-card">
+            <h3>Community Outreach</h3>
+            <p>Direct support initiatives designed to respond to local needs with dignity and care.</p>
+          </article>
+
+          <article class="program-card">
+            <h3>Hope Pantry</h3>
+            <p>Relief-centered giving programs that help families during difficult seasons.</p>
+          </article>
+
+          <article class="program-card">
+            <h3>Youth Development</h3>
+            <p>Programs that guide young people through growth, learning, and future opportunities.</p>
+          </article>
+
+          <article class="program-card">
+            <h3>Women & Family Support</h3>
+            <p>Support systems that strengthen homes, empower women, and uplift caregivers.</p>
+          </article>
+
+          <article class="program-card">
+            <h3>Digital Literacy</h3>
+            <p>Learning opportunities that help communities build confidence in modern tools and skills.</p>
+          </article>
+
+          <article class="program-card">
+            <h3>Clean Water & Wellness</h3>
+            <p>Partner-driven service efforts focused on health, water access, and community well-being.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         PARTNERSHIPS
+    ========================== -->
+    <section class="partnerships-section" id="partnerships">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="section-label">Working Together</span>
+          <h2>Partnerships</h2>
+          <p>
+            We believe lasting impact is stronger when communities, advocates,
+            organizations, and supporters work together.
+          </p>
+        </div>
+
+        <div class="partners-grid">
+          <div class="partner-card">Partner Name</div>
+          <div class="partner-card">Partner Name</div>
+          <div class="partner-card">Partner Name</div>
+          <div class="partner-card">Partner Name</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         MOMENTS / GALLERY
+    ========================== -->
+    <section class="gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">Moments of Hope</span>
+          <h2>Moments / Gallery</h2>
+          <p>
+            A quiet visual section for future outreach photos, events, service
+            moments, and partnership highlights.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-card">Moment 1</div>
+          <div class="gallery-card">Moment 2</div>
+          <div class="gallery-card">Moment 3</div>
+          <div class="gallery-card">Moment 4</div>
+          <div class="gallery-card">Moment 5</div>
+          <div class="gallery-card">Moment 6</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         FINAL CALL TO ACTION
+    ========================== -->
+    <section class="cta-section" id="cta">
+      <div class="container cta-box">
+        <span class="section-label light">Stand With Us</span>
+        <h2>Help us bring hope where it is needed most.</h2>
+        <p>
+          Whether through support, partnership, or service, your involvement can
+          help create real and lasting impact.
+        </p>
+
+        <div class="cta-actions">
+          <a href="#get-involved" class="btn btn-primary">Join the Mission</a>
+          <a href="#partnerships" class="btn btn-secondary light-btn">Partner With Us</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo" />
+        <h3>Tides of Hope Incorporated</h3>
+        <p>
+          Serving with compassion, building with hope, and creating pathways
+          toward stronger communities.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#mission-vision">Mission & Vision</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#partnerships">Partnerships</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: info@tidesofhopeinc.org</p>
+        <p>Facebook: Tides of Hope Incorporated</p>
+        <p>Community-centered. Hope-driven.</p>
+      </div>
     </div>
-  </section>
 
-   <!-- EVENTS MINI GALLERY (temporary display only) -->
-<section class="events-mini-gallery">
-  <div class="events-mini-gallery-container">
-    <div class="events-mini-gallery-heading">
-      <span class="section-tag">EVENTS IN ACTION</span>
-      <h2>Moments of Hope in Action</h2>
-      <p>
-        This section will soon display approved event uploads from members and officers.
-      </p>
+    <div class="footer-bottom">
+      <p>© 2026 Tides of Hope Incorporated. All rights reserved.</p>
     </div>
-  </div>
-</section>
-  
-  <footer>
-    <div class="footer-links">
-      <a href="leadership.html">Leadership</a>
-      <a href="documents.html">Legal & Documents</a>
-      <a href="contact.html">Contact</a>
-    </div>
-
-    <div class="socials">
-      <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener">
-        <img src="facebook-logo.png" alt="Facebook" class="social-icon" />
-      </a>
-    </div>
-
-    <p class="fineprint">
-      SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
-    </p>
-
-    <p>© 2025 Tides of Hope Inc. All Rights Reserved.</p>
-
-<div class="buildframe-credit">
-  <p><strong>Powered by BuildFrame Digital System Builder</strong></p>
-  <p>
-    📧 buildframe.digitalsystem@gmail.com |
-    chinveloso.consmaterials@gmail.com
-  </p>
-</div>
   </footer>
 
   <script src="script.js"></script>
-
 </body>
 </html>
