@@ -3,164 +3,513 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact · Tides of Hope Inc.</title>
+  <title>Contact | Tides of Hope Incorporated</title>
+  <meta
+    name="description"
+    content="Contact Tides of Hope Incorporated for partnerships, donations, volunteering, and general inquiries."
+  />
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Page-only support styles -->
+  <style>
+    .page-hero-contact {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(238, 247, 251, 0.96), rgba(231, 247, 247, 0.92)),
+        linear-gradient(180deg, #f8fcfd 0%, #edf8fb 100%);
+      padding: 78px 0 88px;
+    }
+
+    .page-hero-contact::before {
+      content: "";
+      position: absolute;
+      top: -90px;
+      right: -90px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(46, 167, 160, 0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    .page-hero-contact .section-heading {
+      margin-bottom: 0;
+      max-width: 760px;
+    }
+
+    .contact-main-section {
+      background: #ffffff;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .contact-info-card,
+    .contact-form-card {
+      background: #ffffff;
+      border: 1px solid var(--border-soft, #dbe9ef);
+      border-radius: 24px;
+      box-shadow: var(--shadow-card, 0 8px 22px rgba(12, 46, 78, 0.07));
+    }
+
+    .contact-info-card {
+      padding: 28px 24px;
+      background: linear-gradient(180deg, #f8fcfd 0%, #f1fafb 100%);
+    }
+
+    .contact-info-card h3,
+    .contact-form-card h3 {
+      color: var(--deep-blue, #0d3b66);
+      margin-bottom: 12px;
+      font-size: 1.35rem;
+    }
+
+    .contact-info-card p,
+    .contact-form-card p,
+    .contact-info-card li {
+      color: var(--text-soft, #5f7382);
+    }
+
+    .contact-info-list {
+      list-style: none;
+      margin-top: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-info-list strong {
+      display: block;
+      color: var(--deep-blue, #0d3b66);
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    .contact-info-list a {
+      color: var(--teal, #1b8f95);
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    .contact-info-list a:hover {
+      color: var(--deep-blue, #0d3b66);
+    }
+
+    .contact-form-card {
+      padding: 30px 24px;
+    }
+
+    .small-note {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact-field-full {
+      grid-column: 1 / -1;
+    }
+
+    .contact-field label {
+      color: var(--deep-blue, #0d3b66);
+      font-weight: 700;
+      font-size: 0.94rem;
+    }
+
+    .contact-field input,
+    .contact-field select,
+    .contact-field textarea {
+      width: 100%;
+      border: 1px solid var(--border-soft, #dbe9ef);
+      border-radius: 14px;
+      padding: 13px 14px;
+      font: inherit;
+      color: var(--text-main, #163447);
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .contact-field input:focus,
+    .contact-field select:focus,
+    .contact-field textarea:focus {
+      border-color: rgba(27, 143, 149, 0.45);
+      box-shadow: 0 0 0 4px rgba(27, 143, 149, 0.08);
+    }
+
+    .contact-field textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .contact-form-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-extra-note {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(13, 59, 102, 0.08);
+    }
+
+    .contact-extra-note p + p {
+      margin-top: 10px;
+    }
+
+    .contact-facebook-link {
+      color: var(--teal, #1b8f95);
+      font-weight: 700;
+    }
+
+    .contact-facebook-link:hover {
+      color: var(--deep-blue, #0d3b66);
+    }
+
+    .contact-fineprint {
+      font-size: 0.92rem;
+      color: var(--text-soft, #5f7382);
+    }
+
+    @media (max-width: 980px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .contact-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-hero-contact {
+        padding: 64px 0 72px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <div class="logo-text">
-        <h1>TIDES OF HOPE </h1>
-        <p>INC</p>
-      </div>
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="site-header">
+    <div class="container header-inner">
 
-      <div class="menu-toggle" id="menu-toggle">☰</div>
+      <a href="index.html" class="brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-title">Tides of Hope</span>
+          <span class="brand-subtitle">Incorporated</span>
+        </div>
+      </a>
 
-      <nav id="nav-menu">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav">
         <a href="index.html">Home</a>
         <a href="membership.html">Membership</a>
-        <a href="contact.html" class="active">Contact</a>
-        <a href="index.html#get-involved" class="highlight-btn">Be Part of Our Journey</a>
+        <a href="contact.html">Contact</a>
+        <a href="donate.html" class="nav-cta">Support Us</a>
       </nav>
     </div>
   </header>
 
-  <!-- PAGE HERO -->
-  <section class="page-hero">
-    <h2>Contact Us</h2>
-    <p>
-      For partnerships, donations, volunteering, or general inquiries,
-      please send us a message and our team will respond as soon as possible.
-    </p>
-  </section>
+  <main>
 
-  <!-- CONTACT FORM -->
-  <section class="form-section">
-    <div class="form-card">
-      <h3>Send a Message</h3>
-      <p class="small-note">
-        This form opens your email application to send your message securely.
-      </p>
+    <!-- =========================
+         PAGE HERO
+    ========================== -->
+    <section class="page-hero-contact">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-tag">Let’s Connect</span>
+          <h2>Contact Us</h2>
+          <p>
+            For partnerships, donations, volunteering, general inquiries, or program-related
+            concerns, send us a message and our team will respond as soon as possible.
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <form id="contactForm">
-        <div class="form-grid">
+    <!-- =========================
+         CONTACT MAIN
+    ========================== -->
+    <section class="contact-main-section">
+      <div class="container">
+        <div class="contact-layout">
 
-          <div class="form-field">
-            <label for="name">Full Name</label>
-            <input id="name" type="text" required placeholder="Your full name" />
-          </div>
+          <!-- LEFT INFO -->
+          <article class="contact-info-card">
+            <h3>How We Can Help</h3>
+            <p>
+              Reach out to Tides of Hope Incorporated for collaboration, support, volunteering,
+              donor concerns, or general communication. This page is arranged to keep the contact
+              process clear and easy for visitors.
+            </p>
 
-          <div class="form-field">
-            <label for="email">Email Address</label>
-            <input id="email" type="email" required placeholder="your@email.com" />
-          </div>
+            <ul class="contact-info-list">
+              <li>
+                <strong>General Contact</strong>
+                <span>Use the message form for general inquiries and coordination.</span>
+              </li>
 
-          <div class="form-field">
-            <label for="phone">Contact Number (optional)</label>
-            <input id="phone" type="tel" placeholder="+63 / +1 / +44" />
-          </div>
+              <li>
+                <strong>Donation and Support</strong>
+                <span>You may also visit the donate page for support-related actions.</span>
+              </li>
 
-          <div class="form-field">
-            <label for="topic">Subject</label>
-            <select id="topic" required>
-              <option value="">Select a subject</option>
-              <option value="partnership">Partnership Inquiry</option>
-              <option value="donation">Donation Inquiry</option>
-              <option value="volunteer">Volunteer Inquiry</option>
-              <option value="general">General Inquiry</option>
-            </select>
-          </div>
+              <li>
+                <strong>Facebook</strong>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61582551795734"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit our official page
+                </a>
+              </li>
 
-          <div class="form-field form-field-full">
-            <label for="message">Message</label>
-            <textarea id="message" rows="6" required placeholder="Write your message here..."></textarea>
-          </div>
+              <li>
+                <strong>BuildFrame Digital System</strong>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61573627290922"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Website, Funnel and Platform Builder
+                </a>
+              </li>
+
+              <li>
+                <strong>Email Support</strong>
+                <a href="mailto:chinveloso.consmaterials@gmail.com">chinveloso.consmaterials@gmail.com</a><br />
+                <a href="mailto:buildframe.digitalsystem@gmail.com">buildframe.digitalsystem@gmail.com</a>
+              </li>
+            </ul>
+          </article>
+
+          <!-- RIGHT FORM -->
+          <article class="contact-form-card">
+            <h3>Send a Message</h3>
+            <p class="small-note">
+              This form opens your email application so your message can be sent securely.
+            </p>
+
+            <form id="contactForm">
+              <div class="contact-form-grid">
+
+                <div class="contact-field">
+                  <label for="name">Full Name</label>
+                  <input id="name" type="text" required placeholder="Your full name" />
+                </div>
+
+                <div class="contact-field">
+                  <label for="email">Email Address</label>
+                  <input id="email" type="email" required placeholder="your@email.com" />
+                </div>
+
+                <div class="contact-field">
+                  <label for="phone">Contact Number (optional)</label>
+                  <input id="phone" type="tel" placeholder="+63 / +1 / +44" />
+                </div>
+
+                <div class="contact-field">
+                  <label for="topic">Subject</label>
+                  <select id="topic" required>
+                    <option value="">Select a subject</option>
+                    <option value="partnership">Partnership Inquiry</option>
+                    <option value="donation">Donation Inquiry</option>
+                    <option value="volunteer">Volunteer Inquiry</option>
+                    <option value="general">General Inquiry</option>
+                  </select>
+                </div>
+
+                <div class="contact-field contact-field-full">
+                  <label for="message">Message</label>
+                  <textarea
+                    id="message"
+                    rows="6"
+                    required
+                    placeholder="Write your message here..."
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="contact-form-actions">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+                <a href="donate.html" class="btn btn-secondary">Go to Donate Page</a>
+              </div>
+            </form>
+
+            <div class="contact-extra-note">
+              <p>
+                <strong>Facebook:</strong>
+                <a
+                  class="contact-facebook-link"
+                  href="https://www.facebook.com/profile.php?id=61582551795734"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit our official page
+                </a>
+              </p>
+
+              <p class="contact-fineprint">
+                SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
+              </p>
+            </div>
+          </article>
 
         </div>
+      </div>
+    </section>
 
-        <button type="submit" class="btn">Send Message</button>
-      </form>
+  </main>
 
-      <div class="alt-contact">
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo" />
+        <h3>Tides of Hope Incorporated</h3>
         <p>
-          <strong>Facebook:</strong>
-          <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener">
-            Visit our official page
-          </a>
+          Serving with compassion, building with hope, and creating pathways
+          toward stronger communities.
         </p>
+      </div>
 
-        <p class="fineprint">
-          SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="documents.html">Documents</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Office & Access</h4>
+        <ul class="footer-links">
+          <li><a href="verify.html">Verify</a></li>
+          <li><a href="admin-login.html">Admin Login</a></li>
+          <li><a href="office-portal.html">Office Portal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p>Email: info@tidesofhopeinc.org</p>
+        <p>Email: chinveloso.consmaterials@gmail.com</p>
+        <p>Email: buildframe.digitalsystem@gmail.com</p>
+
+        <a
+          href="https://www.facebook.com/profile.php?id=61573627290922"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-facebook-link"
+        >
+          <img src="facebook-logo.png" alt="Facebook" class="footer-facebook-icon" />
+          <span>BuildFrame Digital System</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-credit">
+      <div class="container footer-credit-inner">
+        <p>
+          Powered by <strong>BuildFrame Digital System</strong>
+          <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
         </p>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <footer>
-  <div class="footer-links">
-    <a href="leadership.html">Leadership</a>
-    <a href="documents.html">Legal & Documents</a>
-    <a href="contact.html">Contact</a>
-  </div>
+  <!-- =========================
+       BUBBLE CHAT
+  ========================== -->
+  <button class="bubble-chat-button" id="bubbleChatButton" aria-label="Open chat support">
+    <span class="bubble-chat-icon">💬</span>
+  </button>
 
-  <div class="socials">
-    <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener">
-      <img src="facebook-logo.png" alt="Facebook" class="social-icon" />
-    </a>
-  </div>
+  <script src="script.js"></script>
 
-  <p class="fineprint">
-    SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
-  </p>
-
-  <p>© 2025 Tides of Hope Inc. All Rights Reserved.</p>
-</footer>
-
-  <!-- SCRIPTS -->
   <script>
-    // Auto-select subject if coming from buttons
     (function () {
       const params = new URLSearchParams(window.location.search);
       const topic = params.get("topic");
       const topicEl = document.getElementById("topic");
-      if (topicEl && topic) topicEl.value = topic.toLowerCase();
+
+      if (topicEl && topic) {
+        topicEl.value = topic.toLowerCase();
+      }
     })();
 
-    // GitHub Pages safe email submission
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
-      e.preventDefault();
+    const contactForm = document.getElementById("contactForm");
 
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const topic = document.getElementById("topic").value.trim();
-      const message = document.getElementById("message").value.trim();
+    if (contactForm) {
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-      const TO_EMAIL = "admin@tidesofhopeinc.org";
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const topic = document.getElementById("topic").value.trim();
+        const message = document.getElementById("message").value.trim();
 
-      const subjectMap = {
-        partnership: "Partnership Inquiry",
-        donation: "Donation Inquiry",
-        volunteer: "Volunteer Inquiry",
-        general: "General Inquiry"
-      };
+        const TO_EMAIL = "info@tidesofhopeinc.org";
 
-      const subject = subjectMap[topic] || "Inquiry";
+        const subjectMap = {
+          partnership: "Partnership Inquiry",
+          donation: "Donation Inquiry",
+          volunteer: "Volunteer Inquiry",
+          general: "General Inquiry"
+        };
 
-      const body =
-        `Name: ${name}%0D%0A` +
-        `Email: ${email}%0D%0A` +
-        `Phone: ${phone || "N/A"}%0D%0A` +
-        `Subject: ${subject}%0D%0A%0D%0A` +
-        `Message:%0D%0A${encodeURIComponent(message)}`;
+        const subject = subjectMap[topic] || "Inquiry";
 
-      window.location.href =
-        `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
-    });
+        const bodyLines = [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          `Phone: ${phone || "N/A"}`,
+          `Subject: ${subject}`,
+          "",
+          "Message:",
+          message
+        ];
+
+        const body = encodeURIComponent(bodyLines.join("\n"));
+
+        window.location.href =
+          `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
+      });
+    }
   </script>
-
 </body>
 </html>
-
