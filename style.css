@@ -1,307 +1,71 @@
-/* =========================================================
-   Tides of Hope Foundation — Clean Professional Wave Theme
-   Brand: Deep Blue + Hope Green + Soft White
-   ========================================================= */
+<header class="main-header">
+  <div class="header-container">
 
-/* --- GLOBAL RESET --- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="round-logo.png" class="logo-img" alt="Tides of Hope Logo">
+      <div class="logo-text">
+        <strong>TIDES OF HOPE</strong>
+        <span>INCORPORATED</span>
+      </div>
+    </div>
 
-/* --- THEME TOKENS --- */
-:root {
-  --blue: #123B63;
-  --blue-2: #0F3153;
-  --green: #4CAF50;
-  --green-2: #3F9B44;
-  --white: #FFFFFF;
-  --bg-soft: #F4F8FB;
-  --bg-soft-2: #EEF5FB;
-  --bg-wave: linear-gradient(180deg, #F8FBFE 0%, #EEF5FB 50%, #F8FBFE 100%);
-  --card: #FFFFFF;
-  --text: #16324A;
-  --muted: rgba(22, 50, 74, 0.76);
-  --line: rgba(18, 59, 99, 0.10);
-  --shadow: 0 10px 24px rgba(18, 59, 99, 0.08);
-  --radius: 14px;
-  --radius-sm: 10px;
-  --max: 1100px;
-}
+    <!-- MOBILE TOGGLE -->
+    <div class="menu-toggle" id="menu-toggle">☰</div>
 
-/* --- BASE STYLES --- */
-html {
-  scroll-behavior: smooth;
-}
+    <!-- NAV -->
+    <nav id="nav-menu" class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="membership.html">Membership</a>
+      <a href="contact.html">Contact</a>
+      <a href="#get-involved" class="nav-cta">Be Part of Our Journey</a>
+    </nav>
 
-body {
-  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: var(--bg-wave);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+  </div>
+</header>
 
-img {
-  max-width: 100%;
-  display: block;
-}
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h2>Together, We Rise with Every Tide</h2>
+    <p>
+      Tides of Hope Inc. is dedicated to uplifting communities through compassion,
+      education, empowerment, and meaningful partnerships that create lasting impact.
+    </p>
 
-a {
-  color: inherit;
-}
+    <div class="hero-buttons">
+      <a href="#get-involved" class="btn-primary">Join the Mission</a>
+      <a href="#explore-programs" class="btn-secondary">Explore Programs</a>
+    </div>
+  </div>
+</section>
 
-::selection {
-  background: rgba(76, 175, 80, 0.28);
-}
+<!-- IMPACT -->
+<section class="impact-stats">
+  <div class="impact-container">
 
-/* =========================================================
-   HEADER / NAV
-   ========================================================= */
-header {
-  background: rgba(18, 59, 99, 0.96);
-  padding: 14px 24px;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(8px);
-}
+    <div class="impact-card">
+      <h2>1,200+</h2>
+      <p>Lives Reached</p>
+    </div>
 
-.header-container {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  gap: 20px;
-}
+    <div class="impact-card">
+      <h2>35+</h2>
+      <p>Community Programs</p>
+    </div>
 
-.logo-text h1 {
-  font-size: 22px;
-  letter-spacing: 1px;
-  line-height: 1.1;
-  color: var(--white);
-}
+    <div class="impact-card">
+      <h2>50+</h2>
+      <p>Volunteers</p>
+    </div>
 
-.logo-text p {
-  font-size: 12px;
-  margin-top: 2px;
-  color: rgba(255,255,255,0.80);
-  letter-spacing: 1.6px;
-}
+    <div class="impact-card">
+      <h2>12+</h2>
+      <p>Partner Organizations</p>
+    </div>
 
-/* desktop nav */
-nav#nav-menu {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-nav#nav-menu a {
-  color: rgba(255,255,255,0.92);
-  text-decoration: none;
-  margin-left: 18px;
-  font-weight: 500;
-  padding: 8px 6px;
-  border-radius: 8px;
-  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
-}
-
-nav#nav-menu a:hover {
-  color: var(--white);
-  background: rgba(255,255,255,0.08);
-}
-
-nav#nav-menu a.active {
-  color: var(--white);
-  background: rgba(255,255,255,0.12);
-}
-
-/* CTA button in nav */
-.highlight-btn {
-  background: var(--green);
-  color: var(--white) !important;
-  padding: 10px 14px !important;
-  border-radius: 10px;
-  margin-left: 18px;
-  box-shadow: 0 10px 18px rgba(76,175,80,0.25);
-}
-
-.highlight-btn:hover {
-  background: var(--green-2);
-  transform: translateY(-1px);
-}
-
-/* Focus accessibility */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-  outline: 3px solid rgba(76, 175, 80, 0.55);
-  outline-offset: 2px;
-  border-radius: 10px;
-}
-
-/* --- MOBILE MENU ICON --- */
-.menu-toggle {
-  display: none;
-  font-size: 28px;
-  color: var(--white);
-  cursor: pointer;
-  user-select: none;
-}
-
-/* =========================================================
-   GLOBAL SECTION HELPERS
-   ========================================================= */
-section {
-  width: 100%;
-}
-
-.section-wrap {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 56px 20px;
-}
-
-.small-note {
-  font-size: 13px;
-  color: rgba(22, 50, 74, 0.72);
-  margin-top: 10px;
-  line-height: 1.5;
-}
-
-.fineprint {
-  margin-top: 10px;
-  font-size: 13px;
-  opacity: 0.9;
-}
-
-/* =========================================================
-   HERO (Home)
-   ========================================================= */
-.hero {
-  background: linear-gradient(180deg, #F8FBFE 0%, #EEF5FB 100%);
-  color: var(--text);
-  padding: 56px 20px 64px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 80px;
-  background: radial-gradient(120% 80px at 50% 0%, rgba(255,255,255,0) 36%, #F4F8FB 37%, #F4F8FB 100%);
-  pointer-events: none;
-}
-
-.hero-logo {
-  max-width: 320px;
-  margin: 0 auto 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.hero-logo img {
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  margin: 0 auto;
-}
-
-.hero-text {
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.hero-text h2 {
-  font-size: 34px;
-  line-height: 1.2;
-  color: var(--blue);
-  margin-bottom: 14px;
-  letter-spacing: 0.2px;
-}
-
-.hero-text p {
-  max-width: 760px;
-  margin: 0 auto 26px;
-  font-size: 16px;
-  line-height: 1.7;
-  color: rgba(22, 50, 74, 0.82);
-}
-
-/* Primary button */
-.btn {
-  display: inline-block;
-  background: var(--green);
-  color: var(--white);
-  padding: 12px 22px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 14px 22px rgba(76,175,80,0.22);
-}
-
-.btn:hover {
-  background: var(--green-2);
-  transform: translateY(-2px);
-}
-
-/* =========================================================
-   IMPACT / STATS
-   ========================================================= */
-.impact-stats,
-.stats-section {
-  background: #123B63;
-  color: var(--white);
-  padding: 28px 20px 34px;
-}
-
-.stats-container {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  gap: 34px;
-  flex-wrap: wrap;
-  text-align: center;
-}
-
-.stat-box,
-.stat-item {
-  min-width: 140px;
-}
-
-.stat-box h3,
-.stat-item h3,
-.stat-box strong,
-.stat-item strong {
-  font-size: 30px;
-  line-height: 1;
-  margin-bottom: 8px;
-  color: var(--white);
-}
-
-.stat-box p,
-.stat-item p,
-.stat-box span,
-.stat-item span {
-  color: rgba(255,255,255,0.84);
-  font-size: 14px;
-  line-height: 1.5;
-}
+  </div>
+</section>
 
 /* =========================================================
    MISSION & VISION
