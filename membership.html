@@ -3,164 +3,481 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Membership · Tides of Hope Inc.</title>
+  <title>Membership | Tides of Hope Incorporated</title>
+  <meta
+    name="description"
+    content="Join Tides of Hope Incorporated through membership, volunteering, outreach, and partnership support."
+  />
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Page-only support styles -->
+  <style>
+    .page-hero-membership {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(238, 247, 251, 0.96), rgba(231, 247, 247, 0.92)),
+        linear-gradient(180deg, #f8fcfd 0%, #edf8fb 100%);
+      padding: 78px 0 88px;
+    }
+
+    .page-hero-membership::before {
+      content: "";
+      position: absolute;
+      top: -90px;
+      right: -90px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(46, 167, 160, 0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    .page-hero-membership .section-heading {
+      margin-bottom: 0;
+      max-width: 800px;
+    }
+
+    .membership-main-section {
+      background: #ffffff;
+    }
+
+    .membership-layout {
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .membership-info-card,
+    .membership-form-card {
+      background: #ffffff;
+      border: 1px solid var(--border-soft, #dbe9ef);
+      border-radius: 24px;
+      box-shadow: var(--shadow-card, 0 8px 22px rgba(12, 46, 78, 0.07));
+    }
+
+    .membership-info-card {
+      padding: 28px 24px;
+      background: linear-gradient(180deg, #f8fcfd 0%, #f1fafb 100%);
+    }
+
+    .membership-form-card {
+      padding: 30px 24px;
+    }
+
+    .membership-info-card h3,
+    .membership-form-card h3 {
+      color: var(--deep-blue, #0d3b66);
+      margin-bottom: 12px;
+      font-size: 1.35rem;
+    }
+
+    .membership-info-card p,
+    .membership-form-card p,
+    .membership-info-card li {
+      color: var(--text-soft, #5f7382);
+    }
+
+    .membership-points {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .membership-points strong {
+      display: block;
+      color: var(--deep-blue, #0d3b66);
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    .membership-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .membership-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .membership-field-full {
+      grid-column: 1 / -1;
+    }
+
+    .membership-field label {
+      color: var(--deep-blue, #0d3b66);
+      font-weight: 700;
+      font-size: 0.94rem;
+    }
+
+    .membership-field input,
+    .membership-field select,
+    .membership-field textarea {
+      width: 100%;
+      border: 1px solid var(--border-soft, #dbe9ef);
+      border-radius: 14px;
+      padding: 13px 14px;
+      font: inherit;
+      color: var(--text-main, #163447);
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .membership-field input:focus,
+    .membership-field select:focus,
+    .membership-field textarea:focus {
+      border-color: rgba(27, 143, 149, 0.45);
+      box-shadow: 0 0 0 4px rgba(27, 143, 149, 0.08);
+    }
+
+    .membership-field textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .membership-form-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .small-note {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .membership-agreement {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(13, 59, 102, 0.08);
+      font-size: 0.93rem;
+      color: var(--text-soft, #5f7382);
+    }
+
+    .membership-link {
+      color: var(--teal, #1b8f95);
+      font-weight: 700;
+    }
+
+    .membership-link:hover {
+      color: var(--deep-blue, #0d3b66);
+    }
+
+    .membership-fineprint {
+      margin-top: 10px;
+      font-size: 0.92rem;
+      color: var(--text-soft, #5f7382);
+    }
+
+    @media (max-width: 980px) {
+      .membership-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .membership-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-hero-membership {
+        padding: 64px 0 72px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <div class="logo-text">
-        <h1>TIDES OF HOPE</h1>
-        <p>INCORPORATED</p>
-      </div>
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="site-header">
+    <div class="container header-inner">
 
-      <div class="menu-toggle" id="menu-toggle">☰</div>
+      <a href="index.html" class="brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-title">Tides of Hope</span>
+          <span class="brand-subtitle">Incorporated</span>
+        </div>
+      </a>
 
-      <nav id="nav-menu">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav">
         <a href="index.html">Home</a>
-        <a href="membership.html" class="active">Membership</a>
+        <a href="membership.html">Membership</a>
         <a href="contact.html">Contact</a>
-        <a href="index.html#get-involved" class="highlight-btn">Be Part of Our Journey</a>
+        <a href="donate.html" class="nav-cta">Support Us</a>
       </nav>
     </div>
   </header>
 
-  <!-- PAGE HERO -->
-  <section class="page-hero">
-    <h2>Join the Tides of Hope Inc. Family 🌊</h2>
-    <p>
-      Become a member and help us create waves of change through compassion, action, and empowerment.
-      Your time, skills, and support can help communities rise with every tide.
-    </p>
-  </section>
+  <main>
 
-  <!-- MEMBERSHIP FORM SECTION -->
-  <section id="volunteer" class="membership-section fade-in">
-    <h2>Membership Application</h2>
-    <p>
-      Please complete the form below. Once submitted, you’ll be redirected to Google Forms in a new tab.
-    </p>
+    <!-- =========================
+         PAGE HERO
+    ========================== -->
+    <section class="page-hero-membership">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-tag">Join the Mission</span>
+          <h2>Become Part of Tides of Hope</h2>
+          <p>
+            Join through membership, volunteering, outreach support, or partnership interest.
+            Your time, heart, and skills can help create meaningful waves of hope in communities.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <form
-      class="membership-form"
-      action="https://docs.google.com/forms/d/e/1FAIpQLSeoy_pzjGayniUWIkyqIB4Y-WEG9KpyW3GCLjB-HpmSiO9Qsw/formResponse"
-      method="POST"
-      target="_blank"
-    >
+    <!-- =========================
+         MEMBERSHIP MAIN
+    ========================== -->
+    <section class="membership-main-section">
+      <div class="container">
+        <div class="membership-layout">
 
-      <!-- BASIC INFO -->
-      <label for="name">Full Name *</label>
-      <input
-        type="text"
-        name="entry.1959802141"
-        id="name"
-        placeholder="Enter your full name"
-        required
-      />
+          <!-- LEFT INFO -->
+          <article class="membership-info-card">
+            <h3>Why Join</h3>
+            <p>
+              Membership in Tides of Hope Incorporated opens the door to meaningful service,
+              outreach participation, and opportunities to support communities through action,
+              compassion, and advocacy.
+            </p>
 
-      <label for="email">Email Address *</label>
-      <input
-        type="email"
-        name="entry.2097262250"
-        id="email"
-        placeholder="Enter your email address"
-        required
-      />
+            <ul class="membership-points">
+              <li>
+                <strong>Volunteer Support</strong>
+                <span>Join outreach activities, community events, and service programs.</span>
+              </li>
 
-      <label for="phone">Phone Number *</label>
-      <input
-        type="tel"
-        name="entry.174411348"
-        id="phone"
-        placeholder="Enter your contact number"
-        required
-      />
+              <li>
+                <strong>Community Involvement</strong>
+                <span>Take part in initiatives that uplift families, youth, and local communities.</span>
+              </li>
 
-      <!-- SOCIAL MEDIA LINKS (OPTIONAL) -->
-      <label for="facebook">Facebook Profile or Page (Optional)</label>
-      <input
-        type="url"
-        name="entry.1111111111"
-        id="facebook"
-        placeholder="https://www.facebook.com/yourprofile"
-      />
+              <li>
+                <strong>Partnership and Collaboration</strong>
+                <span>Connect your skills, advocacy, or organization with a meaningful mission.</span>
+              </li>
 
-      <label for="instagram">Instagram Profile (Optional)</label>
-      <input
-        type="url"
-        name="entry.2222222222"
-        id="instagram"
-        placeholder="https://www.instagram.com/yourusername"
-      />
+              <li>
+                <strong>Application Process</strong>
+                <span>This form submits to your existing Google Form in a new tab for record capture.</span>
+              </li>
 
-      <label for="other-social">Other Social Media Link (Optional)</label>
-      <input
-        type="url"
-        name="entry.3333333333"
-        id="other-social"
-        placeholder="LinkedIn, X, Website, etc."
-      />
+              <li>
+                <strong>Need help first?</strong>
+                <a href="contact.html" class="membership-link">Contact our team before applying</a>
+              </li>
+            </ul>
+          </article>
 
-      <!-- INTEREST -->
-      <label for="interest">Area of Interest *</label>
-      <select name="entry.1176030071" id="interest" required>
-        <option value="" disabled selected>Select one</option>
-        <option value="Volunteering">Volunteering</option>
-        <option value="Community Outreach">Community Outreach</option>
-        <option value="Education and Awareness">Education and Awareness</option>
-        <option value="Fundraising">Fundraising</option>
-        <option value="Partnership Opportunities">Partnership Opportunities</option>
-      </select>
+          <!-- RIGHT FORM -->
+          <article class="membership-form-card">
+            <h3>Membership Application</h3>
+            <p class="small-note">
+              Please complete the form below. When submitted, it will open your existing Google Form response process in a new tab.
+            </p>
 
-      <!-- MESSAGE -->
-      <label for="message">Message or Comment (Optional)</label>
-      <textarea
-        name="entry.1000000001"
-        id="message"
-        placeholder="Tell us how you'd like to help (skills, availability, ideas, etc.)"
-      ></textarea>
+            <form
+              action="https://docs.google.com/forms/d/e/1FAIpQLSeoy_pzjGayniUWIkyqIB4Y-WEG9KpyW3GCLjB-HpmSiO9Qsw/formResponse"
+              method="POST"
+              target="_blank"
+            >
+              <div class="membership-form-grid">
 
-      <button type="submit">Submit Application</button>
+                <div class="membership-field">
+                  <label for="name">Full Name *</label>
+                  <input
+                    type="text"
+                    name="entry.1959802141"
+                    id="name"
+                    placeholder="Enter your full name"
+                    required
+                  />
+                </div>
 
-      <p class="small-note">
-        By submitting this form, you agree that Tides of Hope Inc. may contact you regarding membership,
-        volunteering opportunities, and related updates.
-      </p>
+                <div class="membership-field">
+                  <label for="email">Email Address *</label>
+                  <input
+                    type="email"
+                    name="entry.2097262250"
+                    id="email"
+                    placeholder="Enter your email address"
+                    required
+                  />
+                </div>
 
-    </form>
-  </section>
+                <div class="membership-field">
+                  <label for="phone">Phone Number *</label>
+                  <input
+                    type="tel"
+                    name="entry.174411348"
+                    id="phone"
+                    placeholder="Enter your contact number"
+                    required
+                  />
+                </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-links">
-      <a href="leadership.html">Leadership</a>
-      <a href="documents.html">Legal & Documents</a>
-      <a href="contact.html">Contact</a>
+                <div class="membership-field">
+                  <label for="interest">Area of Interest *</label>
+                  <select name="entry.1176030071" id="interest" required>
+                    <option value="" disabled selected>Select one</option>
+                    <option value="Volunteering">Volunteering</option>
+                    <option value="Community Outreach">Community Outreach</option>
+                    <option value="Education and Awareness">Education and Awareness</option>
+                    <option value="Fundraising">Fundraising</option>
+                    <option value="Partnership Opportunities">Partnership Opportunities</option>
+                  </select>
+                </div>
+
+                <div class="membership-field">
+                  <label for="facebook">Facebook Profile or Page (Optional)</label>
+                  <input
+                    type="url"
+                    name="entry.1111111111"
+                    id="facebook"
+                    placeholder="https://www.facebook.com/yourprofile"
+                  />
+                </div>
+
+                <div class="membership-field">
+                  <label for="instagram">Instagram Profile (Optional)</label>
+                  <input
+                    type="url"
+                    name="entry.2222222222"
+                    id="instagram"
+                    placeholder="https://www.instagram.com/yourusername"
+                  />
+                </div>
+
+                <div class="membership-field membership-field-full">
+                  <label for="other-social">Other Social Media Link (Optional)</label>
+                  <input
+                    type="url"
+                    name="entry.3333333333"
+                    id="other-social"
+                    placeholder="LinkedIn, X, Website, etc."
+                  />
+                </div>
+
+                <div class="membership-field membership-field-full">
+                  <label for="message">Message or Comment (Optional)</label>
+                  <textarea
+                    name="entry.1000000001"
+                    id="message"
+                    placeholder="Tell us how you'd like to help (skills, availability, ideas, etc.)"
+                  ></textarea>
+                </div>
+
+              </div>
+
+              <div class="membership-form-actions">
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+                <a href="contact.html" class="btn btn-secondary">Need Help First?</a>
+              </div>
+
+              <div class="membership-agreement">
+                By submitting this form, you agree that Tides of Hope Incorporated may contact you
+                regarding membership, volunteering opportunities, and related updates.
+              </div>
+
+              <p class="membership-fineprint">
+                SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
+              </p>
+            </form>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo" />
+        <h3>Tides of Hope Incorporated</h3>
+        <p>
+          Serving with compassion, building with hope, and creating pathways
+          toward stronger communities.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="documents.html">Documents</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Office & Access</h4>
+        <ul class="footer-links">
+          <li><a href="verify.html">Verify</a></li>
+          <li><a href="admin-login.html">Admin Login</a></li>
+          <li><a href="office-portal.html">Office Portal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p>Email: info@tidesofhopeinc.org</p>
+        <p>Email: chinveloso.consmaterials@gmail.com</p>
+        <p>Email: buildframe.digitalsystem@gmail.com</p>
+
+        <a
+          href="https://www.facebook.com/profile.php?id=61573627290922"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-facebook-link"
+        >
+          <img src="facebook-logo.png" alt="Facebook" class="footer-facebook-icon" />
+          <span>BuildFrame Digital System</span>
+        </a>
+      </div>
     </div>
 
-    <div class="socials">
-      <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener">
-        <img src="facebook-logo.png" alt="Facebook" class="social-icon" />
-      </a>
+    <div class="footer-credit">
+      <div class="container footer-credit-inner">
+        <p>
+          Powered by <strong>BuildFrame Digital System</strong>
+          <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
+        </p>
+      </div>
     </div>
-
-    <p class="fineprint">
-      SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
-    </p>
-
-    <p>© 2025 Tides of Hope Inc. All Rights Reserved.</p>
   </footer>
 
-  <!-- MOBILE MENU TOGGLE -->
-  <script>
-    const toggle = document.getElementById("menu-toggle");
-    const nav = document.getElementById("nav-menu");
-    if (toggle && nav) {
-      toggle.addEventListener("click", () => nav.classList.toggle("active"));
-    }
-  </script>
+  <!-- =========================
+       BUBBLE CHAT
+  ========================== -->
+  <button class="bubble-chat-button" id="bubbleChatButton" aria-label="Open chat support">
+    <span class="bubble-chat-icon">💬</span>
+  </button>
 
+  <script src="script.js"></script>
 </body>
 </html>
