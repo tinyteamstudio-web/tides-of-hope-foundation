@@ -3,84 +3,331 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documents · Tides of Hope Inc.</title>
+  <title>Documents | Tides of Hope Incorporated</title>
+  <meta
+    name="description"
+    content="View the public legal and transparency documents of Tides of Hope Incorporated."
+  />
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .page-hero-documents {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(238, 247, 251, 0.96), rgba(231, 247, 247, 0.92)),
+        linear-gradient(180deg, #f8fcfd 0%, #edf8fb 100%);
+      padding: 78px 0 88px;
+    }
+
+    .page-hero-documents::before {
+      content: "";
+      position: absolute;
+      top: -90px;
+      right: -90px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(46, 167, 160, 0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    .page-hero-documents .section-heading {
+      margin-bottom: 0;
+      max-width: 800px;
+    }
+
+    .documents-main-section {
+      background: #ffffff;
+    }
+
+    .documents-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .document-card {
+      background: #ffffff;
+      border: 1px solid var(--border-soft, #dbe9ef);
+      border-radius: 24px;
+      box-shadow: var(--shadow-card, 0 8px 22px rgba(12, 46, 78, 0.07));
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .document-card h3 {
+      color: var(--deep-blue, #0d3b66);
+      margin-bottom: 12px;
+      font-size: 1.28rem;
+    }
+
+    .document-card p {
+      color: var(--text-soft, #5f7382);
+      margin-bottom: 14px;
+    }
+
+    .document-card .btn {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    .document-status {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f2fafb;
+      color: var(--teal, #1b8f95);
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: 1px solid rgba(27, 143, 149, 0.14);
+    }
+
+    .document-meta-box {
+      margin: 8px 0 14px;
+      padding: 16px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #f8fcfd 0%, #f1fafb 100%);
+      border: 1px solid var(--border-soft, #dbe9ef);
+    }
+
+    .document-meta-box p {
+      margin-bottom: 8px;
+    }
+
+    .document-meta-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .documents-note-section {
+      background: linear-gradient(180deg, #f7fbfc 0%, #edf8fa 100%);
+    }
+
+    .documents-note-box {
+      max-width: 920px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid var(--border-soft, #dbe9ef);
+      border-radius: 24px;
+      box-shadow: var(--shadow-card, 0 8px 22px rgba(12, 46, 78, 0.07));
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .documents-note-box h3 {
+      color: var(--deep-blue, #0d3b66);
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+    }
+
+    .documents-note-box p {
+      color: var(--text-soft, #5f7382);
+      margin-bottom: 12px;
+    }
+
+    .documents-note-box .fineprint {
+      font-size: 0.92rem;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 980px) {
+      .documents-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-hero-documents {
+        padding: 64px 0 72px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <div class="header-container">
-      <div class="logo-text">
-        <h1>TIDES OF HOPE</h1>
-        <p>INCORPORATED</p>
-      </div>
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="site-header">
+    <div class="container header-inner">
 
-      <div class="menu-toggle" id="menu-toggle">☰</div>
+      <a href="index.html" class="brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-title">Tides of Hope</span>
+          <span class="brand-subtitle">Incorporated</span>
+        </div>
+      </a>
 
-      <nav id="nav-menu">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav">
         <a href="index.html">Home</a>
         <a href="membership.html">Membership</a>
-        <a href="donate.html">Donate</a>
         <a href="contact.html">Contact</a>
-        <a href="index.html#get-involved" class="highlight-btn">Be Part of Our Journey</a>
+        <a href="donate.html" class="nav-cta">Support Us</a>
       </nav>
     </div>
   </header>
 
-  <section class="page-hero">
-    <h2>Legal & Public Documents</h2>
-    <p>
-      We are preparing our official public copies of legal documents for transparency.
-      These will be published here once finalized.
-    </p>
-  </section>
+  <main>
 
-  <section class="donate-section">
-    <div class="cards-container">
-
-      <div class="card">
-        <h3>Articles of Incorporation</h3>
-        <p>Official document — will be posted here once the public copy is prepared.</p>
-        <p class="small-note">Status: To be uploaded</p>
+    <!-- =========================
+         PAGE HERO
+    ========================== -->
+    <section class="page-hero-documents">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-tag">Transparency</span>
+          <h2>Legal & Public Documents</h2>
+          <p>
+            We are preparing public copies of key organizational documents for transparency,
+            trust, and easier public reference. Available items will be listed here as they are finalized.
+          </p>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>By-Laws</h3>
-        <p>Official document — will be posted here once the public copy is prepared.</p>
-        <p class="small-note">Status: To be uploaded</p>
+    <!-- =========================
+         DOCUMENT CARDS
+    ========================== -->
+    <section class="documents-main-section">
+      <div class="container">
+        <div class="documents-grid">
+
+          <article class="document-card">
+            <h3>Articles of Incorporation</h3>
+            <p>
+              Official public copy of the Articles of Incorporation will be posted here
+              once the approved release version is prepared.
+            </p>
+            <span class="document-status">Status: To be uploaded</span>
+          </article>
+
+          <article class="document-card">
+            <h3>By-Laws</h3>
+            <p>
+              Official public copy of the organizational by-laws will be posted here
+              once the public release version is available.
+            </p>
+            <span class="document-status">Status: To be uploaded</span>
+          </article>
+
+          <article class="document-card">
+            <h3>SEC Registration</h3>
+            <p>
+              Organizational registration details are shown below for reference and verification.
+            </p>
+
+            <div class="document-meta-box">
+              <p><strong>SEC Registration No.:</strong> 2025120229353-01</p>
+              <p><strong>Type:</strong> Non-stock, Non-profit Organization</p>
+            </div>
+
+            <a href="contact.html?topic=general" class="btn btn-secondary">Request Verification</a>
+          </article>
+
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>SEC Registration</h3>
+    <!-- =========================
+         NOTES
+    ========================== -->
+    <section class="documents-note-section">
+      <div class="container">
+        <div class="documents-note-box">
+          <h3>Public Access Notice</h3>
+          <p>
+            This page is intended for public transparency and document reference.
+            Some files may remain unavailable until final public-safe copies are approved for release.
+          </p>
+          <p class="fineprint">
+            SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo" />
+        <h3>Tides of Hope Incorporated</h3>
         <p>
-          SEC Registration No.: <strong>2025120229353-01</strong><br />
-          Type: <strong>Non-stock, Non-profit Organization</strong>
+          Serving with compassion, building with hope, and creating pathways
+          toward stronger communities.
         </p>
-        <a class="btn" href="contact.html?topic=general">Request Verification</a>
       </div>
 
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="documents.html">Documents</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Office & Access</h4>
+        <ul class="footer-links">
+          <li><a href="verify.html">Verify</a></li>
+          <li><a href="admin-login.html">Admin Login</a></li>
+          <li><a href="office-portal.html">Office Portal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p>Email: info@tidesofhopeinc.org</p>
+        <p>Email: chinveloso.consmaterials@gmail.com</p>
+        <p>Email: buildframe.digitalsystem@gmail.com</p>
+
+        <a
+          href="https://www.facebook.com/profile.php?id=61573627290922"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-facebook-link"
+        >
+          <img src="facebook-logo.png" alt="Facebook" class="footer-facebook-icon" />
+          <span>BuildFrame Digital System</span>
+        </a>
+      </div>
     </div>
-  </section>
 
-  <footer>
-    <div class="socials">
-      <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener">
-        <img src="facebook-logo.png" alt="Facebook" class="social-icon" />
-      </a>
+    <div class="footer-credit">
+      <div class="container footer-credit-inner">
+        <p>
+          Powered by <strong>BuildFrame Digital System</strong>
+          <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
+        </p>
+      </div>
     </div>
-
-    <p class="fineprint">
-      SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
-    </p>
-
-    <p>© 2025 Tides of Hope Inc. All Rights Reserved.</p>
   </footer>
 
-  <script>
-    const toggle = document.getElementById("menu-toggle");
-    const nav = document.getElementById("nav-menu");
-    if (toggle && nav) toggle.addEventListener("click", () => nav.classList.toggle("active"));
-  </script>
+  <!-- =========================
+       BUBBLE CHAT
+  ========================== -->
+  <button class="bubble-chat-button" id="bubbleChatButton" aria-label="Open chat support">
+    <span class="bubble-chat-icon">💬</span>
+  </button>
 
+  <script src="script.js"></script>
 </body>
 </html>
