@@ -59,7 +59,6 @@ const programData = {
       partner:
         "Best partners include environmental groups, schools, coastal communities, LGUs, volunteers, and civic organizations."
     },
-  
     {
       title: "Eco-Bricks",
       category: "Community Program",
@@ -163,11 +162,10 @@ const programData = {
         "The program works through mentoring, activities, skills-building sessions, and opportunities for youth participation and leadership.",
       partner:
         "Best partners include schools, mentors, youth advocates, volunteer leaders, civic groups, and community organizations."
-    }
-
-      {
+    },
+    {
       title: "Women Empowerment",
-      category: "NextGen Program",
+      category: "Community Program",
       image: "assets/images/programs/future-women-empowerment.png",
       description:
         "An empowering development program that supports women through confidence-building, opportunity awareness, and growth pathways.",
@@ -178,7 +176,6 @@ const programData = {
       partner:
         "Best partners include women’s groups, mentors, trainers, livelihood advocates, and community support organizations."
     }
-
   ],
 
   nextgen: [
@@ -312,10 +309,9 @@ const programData = {
       partner:
         "Best partners include web mentors, schools, digital trainers, tech volunteers, and learning communities."
     },
-   
-       {
+    {
       title: "Digital Literacy",
-      category: "Community Program",
+      category: "NextGen Program",
       image: "assets/images/programs/program-digital-literacy.JPG",
       description:
         "A learning initiative that helps individuals and communities build confidence in using digital tools for education and opportunity.",
@@ -325,7 +321,7 @@ const programData = {
         "The program provides guided learning sessions, practical exposure to digital tools, and beginner-friendly support for technology use.",
       partner:
         "Best partners include schools, trainers, tech volunteers, youth mentors, and organizations supporting digital inclusion."
-    },
+    }
   ]
 };
 
@@ -449,7 +445,6 @@ if (communityTab && nextgenTab) {
 if (programList) {
   renderProgramList(currentProgramGroup);
 }
-
 /* =========================
    MINI GALLERY PLACEHOLDER
    Homepage now stays clean until admin uploads are connected
