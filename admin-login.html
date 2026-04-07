@@ -5,67 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin Access | Tides of Hope</title>
   <link rel="stylesheet" href="style.css"/>
-
-  <style>
-    .admin-hero {
-      background:
-        linear-gradient(135deg, rgba(238,247,251,0.95), rgba(231,247,247,0.92)),
-        linear-gradient(180deg,#f8fcfd 0%,#edf8fb 100%);
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .admin-card {
-      max-width: 420px;
-      margin: -60px auto 80px;
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 24px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      border: 1px solid #dbe9ef;
-      text-align: center;
-    }
-
-    .admin-card h2 {
-      color: #0d3b66;
-      margin-bottom: 10px;
-    }
-
-    .admin-card p {
-      color: #5f7382;
-      margin-bottom: 20px;
-    }
-
-    .admin-input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 10px;
-      border: 1px solid #dbe9ef;
-      font-size: 1rem;
-    }
-
-    .admin-btn {
-      width: 100%;
-      padding: 12px;
-      background: #0d3b66;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .admin-btn:hover {
-      background: #0a2f52;
-    }
-
-    .admin-note {
-      margin-top: 15px;
-      font-size: 0.85rem;
-      color: #7a8f9c;
-    }
-  </style>
 </head>
 
 <body>
@@ -75,7 +14,7 @@
   <div class="container header-inner">
 
     <a href="index.html" class="brand">
-      <img src="round-logo.png" class="brand-logo">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo">
       <div class="brand-text">
         <span class="brand-title">Tides of Hope</span>
         <span class="brand-subtitle">Incorporated</span>
@@ -92,36 +31,58 @@
   </div>
 </header>
 
-<main>
+<main class="admin-login-page">
 
-<!-- HERO -->
-<section class="admin-hero">
-  <h2>Admin Access Portal</h2>
-  <p>
-    Authorized personnel only. Access internal systems and document tools.
-  </p>
-</section>
+  <!-- HERO -->
+  <section class="admin-hero">
+    <div class="container">
+      <span class="section-tag">Office Access</span>
+      <h1>Admin Access Portal</h1>
+      <p>
+        Authorized personnel only. Access internal systems, uploads, and document tools.
+      </p>
+    </div>
+  </section>
 
-<!-- LOGIN CARD -->
-<section>
-  <div class="admin-card">
+  <!-- LOGIN CARD -->
+  <section class="admin-login-section">
+    <div class="container">
+      <div class="admin-card">
 
-    <h2>Secure Login</h2>
-    <p>Enter your access credentials to continue.</p>
+        <h2>Secure Login</h2>
+        <p>Enter your access credentials to continue.</p>
 
-    <input type="text" placeholder="Username" class="admin-input" />
-    <input type="password" placeholder="Password" class="admin-input" />
+        <form id="adminLoginForm" class="admin-login-form">
+          <input
+            type="email"
+            id="adminEmail"
+            class="admin-input"
+            placeholder="Admin Email"
+            required
+          />
 
-    <button class="admin-btn" onclick="enterPortal()">
-      Access Office Portal
-    </button>
+          <input
+            type="password"
+            id="adminPassword"
+            class="admin-input"
+            placeholder="Password"
+            required
+          />
 
-    <p class="admin-note">
-      This is a secure internal system for Tides of Hope administrators.
-    </p>
+          <button type="submit" class="admin-btn">
+            Access Office Portal
+          </button>
 
-  </div>
-</section>
+          <p id="adminLoginMessage" class="admin-login-message"></p>
+        </form>
+
+        <p class="admin-note">
+          This is a secure internal system for Tides of Hope administrators.
+        </p>
+
+      </div>
+    </div>
+  </section>
 
 </main>
 
@@ -130,7 +91,7 @@
   <div class="container footer-grid">
 
     <div class="footer-brand">
-      <img src="round-logo.png" class="footer-logo">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo">
       <h3>Tides of Hope Incorporated</h3>
       <p>Serving with compassion, building with hope.</p>
     </div>
@@ -147,30 +108,26 @@
 
     <div class="footer-column">
       <h4>Contact</h4>
-      <p>chinveloso.consmaterials@gmail.com</p>
-      <p>buildframe.digitalsystem@gmail.com</p>
+      <p>admin@tidesofhopeinc.org</p>
     </div>
 
   </div>
 
   <div class="footer-credit">
-    <p>
-      Powered by <strong>BuildFrame Digital System</strong> —
-      Website, Funnel and Platform Builder
-    </p>
+    <div class="container footer-credit-inner">
+      <p>
+        Powered by <strong>BuildFrame Digital System</strong>
+        <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
+      </p>
+    </div>
   </div>
 </footer>
 
 <!-- BUBBLE CHAT -->
-<button class="bubble-chat-button">💬</button>
+<button class="bubble-chat-button" aria-label="Open chat support">💬</button>
 
 <!-- SCRIPT -->
-<script>
-  function enterPortal() {
-    // TEMPORARY (Option C)
-    window.location.href = "office-portal.html";
-  }
-</script>
+<script src="admin-login.js"></script>
 
 </body>
 </html>
