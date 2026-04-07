@@ -59,19 +59,7 @@ const programData = {
       partner:
         "Best partners include environmental groups, schools, coastal communities, LGUs, volunteers, and civic organizations."
     },
-    {
-      title: "Digital Literacy",
-      category: "Community Program",
-      image: "assets/images/programs/program-digital-literacy.JPG",
-      description:
-        "A learning initiative that helps individuals and communities build confidence in using digital tools for education and opportunity.",
-      why:
-        "Digital literacy helps people access information, education, communication tools, and modern opportunities with greater confidence and safety.",
-      how:
-        "The program provides guided learning sessions, practical exposure to digital tools, and beginner-friendly support for technology use.",
-      partner:
-        "Best partners include schools, trainers, tech volunteers, youth mentors, and organizations supporting digital inclusion."
-    },
+  
     {
       title: "Eco-Bricks",
       category: "Community Program",
@@ -176,6 +164,21 @@ const programData = {
       partner:
         "Best partners include schools, mentors, youth advocates, volunteer leaders, civic groups, and community organizations."
     }
+
+      {
+      title: "Women Empowerment",
+      category: "NextGen Program",
+      image: "assets/images/programs/future-women-empowerment.png",
+      description:
+        "An empowering development program that supports women through confidence-building, opportunity awareness, and growth pathways.",
+      why:
+        "Women empowerment strengthens families and communities by opening more space for confidence, dignity, opportunity, and growth.",
+      how:
+        "The program works through encouragement, skills awareness, opportunity orientation, and support-centered learning activities.",
+      partner:
+        "Best partners include women’s groups, mentors, trainers, livelihood advocates, and community support organizations."
+    }
+
   ],
 
   nextgen: [
@@ -309,19 +312,20 @@ const programData = {
       partner:
         "Best partners include web mentors, schools, digital trainers, tech volunteers, and learning communities."
     },
-    {
-      title: "Women Empowerment",
-      category: "NextGen Program",
-      image: "assets/images/programs/future-women-empowerment.png",
+   
+       {
+      title: "Digital Literacy",
+      category: "Community Program",
+      image: "assets/images/programs/program-digital-literacy.JPG",
       description:
-        "An empowering development program that supports women through confidence-building, opportunity awareness, and growth pathways.",
+        "A learning initiative that helps individuals and communities build confidence in using digital tools for education and opportunity.",
       why:
-        "Women empowerment strengthens families and communities by opening more space for confidence, dignity, opportunity, and growth.",
+        "Digital literacy helps people access information, education, communication tools, and modern opportunities with greater confidence and safety.",
       how:
-        "The program works through encouragement, skills awareness, opportunity orientation, and support-centered learning activities.",
+        "The program provides guided learning sessions, practical exposure to digital tools, and beginner-friendly support for technology use.",
       partner:
-        "Best partners include women’s groups, mentors, trainers, livelihood advocates, and community support organizations."
-    }
+        "Best partners include schools, trainers, tech volunteers, youth mentors, and organizations supporting digital inclusion."
+    },
   ]
 };
 
