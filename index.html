@@ -272,107 +272,103 @@
       </div>
     </section>
 
-       <!-- =========================
-         PROGRAMS
-    ========================== -->
-    <section class="programs-section" id="programs">
-      <div class="container programs-layout">
+  <!-- =========================
+     PROGRAMS
+========================== -->
+<section class="programs-section" id="programs">
+  <div class="container programs-layout">
 
-        <!-- LEFT PANEL -->
-        <div class="programs-sidebar">
-          <span class="section-tag">Program Focus</span>
-          <h2>Explore Our Programs</h2>
-          <p>
-            Discover our ongoing community-centered initiatives and our future-ready
-            NextGen programs designed to uplift lives and expand opportunities.
+    <!-- LEFT PANEL -->
+    <div class="programs-sidebar">
+      <span class="section-tag">Program Focus</span>
+      <h2>Explore Our Programs</h2>
+      <p>
+        Discover our ongoing community-centered initiatives and our future-ready
+        NextGen programs designed to uplift lives and expand opportunities.
+      </p>
+
+      <div class="program-group-switcher">
+        <button
+          class="program-tab active"
+          id="communityTab"
+          type="button"
+          data-program-group="community"
+        >
+          Community Programs
+        </button>
+
+        <button
+          class="program-tab"
+          id="nextgenTab"
+          type="button"
+          data-program-group="nextgen"
+        >
+          NextGen Programs
+        </button>
+      </div>
+
+      <!-- DESCRIPTION PANEL -->
+      <div class="program-detail-panel">
+        <div class="program-detail-box">
+          <h4>Why this program matters</h4>
+          <p id="programWhyText">
+            This program responds to real needs in communities by providing practical,
+            compassionate support that uplifts lives and strengthens hope.
           </p>
-
-          <div class="program-group-switcher">
-            <button
-              class="program-tab active"
-              id="communityTab"
-              type="button"
-              data-program-group="community"
-            >
-              Community Programs
-            </button>
-
-            <button
-              class="program-tab"
-              id="nextgenTab"
-              type="button"
-              data-program-group="nextgen"
-            >
-              NextGen Programs
-            </button>
-          </div>
-
-          <!-- DESCRIPTION PANEL -->
-          <div class="program-detail-panel">
-            <div class="program-detail-box">
-              <h4>Why this program matters</h4>
-              <p id="programWhyText">
-                This program responds to real needs in communities by providing practical,
-                compassionate support that uplifts lives and strengthens hope.
-              </p>
-            </div>
-
-            <div class="program-detail-box">
-              <h4>How it works</h4>
-              <p id="programHowText">
-                Activities are organized through volunteers, partner groups, and focused
-                outreach efforts designed to create meaningful and sustainable impact.
-              </p>
-            </div>
-
-            <div class="program-detail-box">
-              <h4>Best partners for this program</h4>
-              <p id="programPartnerText">
-                Community leaders, volunteers, donors, schools, advocates, civic groups,
-                and mission-aligned organizations can help this program grow.
-              </p>
-            </div>
-          </div>
         </div>
 
-        <!-- RIGHT PANEL -->
-      <div class="program-preview">
+        <div class="program-detail-box">
+          <h4>How it works</h4>
+          <p id="programHowText">
+            Activities are organized through volunteers, partner groups, and focused
+            outreach efforts designed to create meaningful and sustainable impact.
+          </p>
+        </div>
 
-  <!-- IMAGE FIRST (FULL WIDTH) -->
-  <div class="program-image">
-    <img src="assets/images/programs/blood-donation.jpg" />
-  </div>
-
-  <!-- TEXT BELOW IMAGE -->
-  <div class="program-details">
-    <span class="program-category">COMMUNITY PROGRAM</span>
-    <h3 class="program-title">Blood Donation</h3>
-    <p class="program-description">
-      A compassionate initiative that helps support lifesaving needs through volunteer blood donation drives and community participation.
-    </p>
-  </div>
-
-</div>
-            <div class="program-feature-content">
-              <span class="program-feature-label" id="featuredProgramCategory">Community Program</span>
-              <h3 id="featuredProgramTitle">Blood Donation</h3>
-              <p id="featuredProgramDescription">
-                A compassionate initiative that helps support lifesaving needs through
-                volunteer blood donation drives and community participation.
-              </p>
-            </div>
-          </article>
-
-          <!-- PROGRAM LIST -->
-          <div class="program-list-wrap">
-            <div class="program-list" id="programList">
-              <!-- script.js will populate this -->
-            </div>
-          </div>
-
+        <div class="program-detail-box">
+          <h4>Best partners for this program</h4>
+          <p id="programPartnerText">
+            Community leaders, volunteers, donors, schools, advocates, civic groups,
+            and mission-aligned organizations can help this program grow.
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="programs-display">
+
+      <!-- FEATURED PROGRAM CARD -->
+      <article class="program-feature-card">
+        <div class="program-feature-image-wrap">
+          <img
+            id="featuredProgramImage"
+            class="program-feature-image"
+            src="assets/images/programs/blood-donation.jpg"
+            alt="Blood Donation"
+          />
+        </div>
+
+        <div class="program-feature-content">
+          <span class="program-feature-label" id="featuredProgramCategory">Community Program</span>
+          <h3 id="featuredProgramTitle">Blood Donation</h3>
+          <p id="featuredProgramDescription">
+            A compassionate initiative that helps support lifesaving needs through
+            volunteer blood donation drives and community participation.
+          </p>
+        </div>
+      </article>
+
+      <!-- PROGRAM LIST -->
+      <div class="program-list-wrap">
+        <div class="program-list" id="programList">
+          <!-- script.js will populate this -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
         <!-- =========================
          ANNOUNCEMENTS
     ========================== -->
