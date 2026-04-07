@@ -1083,7 +1083,7 @@ section {
 
 .admin-badge {
   background: rgba(13, 59, 102, 0.08);
-  color: var(--blue);
+  color: var(--deep-blue);
   font-size: 0.75rem;
   font-weight: 700;
   padding: 6px 12px;
@@ -1116,7 +1116,7 @@ section {
 
 .subpage-hero h1 {
   font-size: clamp(2rem, 4vw, 3rem);
-  color: var(--blue);
+  color: var(--deep-blue);
   margin-bottom: 14px;
 }
 
@@ -1166,7 +1166,7 @@ section {
 }
 
 .gallery-media-body h3 {
-  color: var(--blue);
+  color: var(--deep-blue);
   font-size: 1rem;
   margin-bottom: 8px;
 }
@@ -1301,23 +1301,14 @@ section {
 }
 
 .program-feature-card {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   background: #ffffff;
   border: 1px solid rgba(13, 59, 102, 0.08);
   border-radius: 22px;
-  padding: 18px;
-  box-shadow: 0 12px 28px rgba(10, 47, 82, 0.06);
-  align-items: center;
-}
-
-.program-feature-image-wrap {
-  width: 100%;
-  height: 210px;
-  border-radius: 18px;
   overflow: hidden;
-  background: #e5f1f5;
+  box-shadow: 0 12px 28px rgba(10, 47, 82, 0.06);
 }
 
 .program-feature-image {
@@ -1326,30 +1317,38 @@ section {
   object-fit: cover;
   display: block;
 }
+.program-feature-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
 .program-feature-content {
-  padding: 4px 0;
+  padding: 24px 24px 26px;
 }
 
 .program-feature-label {
-  display: inline-block;
-  margin-bottom: 10px;
+  display: block;
+  margin-bottom: 8px;
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: #1f7a8c;
 }
 
 .program-feature-content h3 {
   color: #0d3b66;
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  margin-bottom: 12px;
+  line-height: 1.2;
 }
 
 .program-feature-content p {
   color: #5b7183;
-  line-height: 1.7;
+  line-height: 1.75;
+  font-size: 1rem;
 }
 
 .program-list-wrap {
@@ -1368,10 +1367,6 @@ section {
 
 @media (max-width: 980px) {
   .programs-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .program-feature-card {
     grid-template-columns: 1fr;
   }
 
