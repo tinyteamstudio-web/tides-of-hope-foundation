@@ -97,6 +97,13 @@ const programData = {
         "A community action effort that supports environmental care, greener spaces, and long-term ecological responsibility."
     },
     {
+      title: "Clean Water",
+      category: "NextGen Program",
+      image: "assets/images/programs/future-clean-water.JPG",
+      description:
+        "A future-focused community initiative that highlights clean water access, health awareness, and sustainable local solutions."
+    },
+    {
       title: "Youth Leadership",
       category: "Community Program",
       image: "assets/images/programs/program-youth-leadership.JPG",
@@ -126,13 +133,6 @@ const programData = {
       image: "assets/images/programs/future-business-literacy.png",
       description:
         "A growth-oriented program that introduces practical knowledge in entrepreneurship, planning, and responsible business thinking."
-    },
-    {
-      title: "Clean Water",
-      category: "NextGen Program",
-      image: "assets/images/programs/future-clean-water.JPG",
-      description:
-        "A future-focused community initiative that highlights clean water access, health awareness, and sustainable local solutions."
     },
     {
       title: "Financial Literacy",
