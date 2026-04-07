@@ -1204,3 +1204,285 @@ section {
     height: 220px;
   }
 }
+/* =========================
+   PROGRAMS SECTION REFINEMENT
+========================== */
+
+.programs-section {
+  padding: 90px 20px;
+  background: #ffffff;
+}
+
+.programs-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.programs-sidebar {
+  background: #0d3b66;
+  color: #ffffff;
+  border-radius: 22px;
+  padding: 28px 24px;
+  box-shadow: 0 14px 34px rgba(10, 47, 82, 0.14);
+}
+
+.programs-sidebar .section-tag {
+  color: #d8eef5;
+}
+
+.programs-sidebar h2 {
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.programs-sidebar p {
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.program-group-switcher {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+  margin-bottom: 20px;
+}
+
+.program-tab {
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+}
+
+.program-tab.active {
+  background: #27c2c9;
+  color: #08344f;
+}
+
+.program-detail-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.program-detail-box {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.program-detail-box h4 {
+  font-size: 0.96rem;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.program-detail-box p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.88);
+}
+
+.programs-display {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.program-feature-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(13, 59, 102, 0.08);
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: 0 12px 28px rgba(10, 47, 82, 0.06);
+  align-items: center;
+}
+
+.program-feature-image-wrap {
+  width: 100%;
+  height: 210px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #e5f1f5;
+}
+
+.program-feature-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.program-feature-content {
+  padding: 4px 0;
+}
+
+.program-feature-label {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1f7a8c;
+}
+
+.program-feature-content h3 {
+  color: #0d3b66;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.program-feature-content p {
+  color: #5b7183;
+  line-height: 1.7;
+}
+
+.program-list-wrap {
+  background: #ffffff;
+  border: 1px solid rgba(13, 59, 102, 0.08);
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow: 0 12px 28px rgba(10, 47, 82, 0.05);
+}
+
+.program-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 980px) {
+  .programs-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .program-feature-card {
+    grid-template-columns: 1fr;
+  }
+
+  .program-feature-image-wrap {
+    height: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .program-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   HOMEPAGE CONTENT PLACEHOLDERS
+========================== */
+
+.content-placeholder-wrap {
+  max-width: 760px;
+  margin: 28px auto 0;
+}
+
+.content-placeholder-card {
+  background: #ffffff;
+  border: 1px dashed rgba(13, 59, 102, 0.18);
+  border-radius: 22px;
+  padding: 34px 24px;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(10, 47, 82, 0.05);
+}
+
+.content-placeholder-icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+
+.content-placeholder-card h3 {
+  color: #0d3b66;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.content-placeholder-card p {
+  color: #5b7183;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.gratitude-placeholder-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fcfd 100%);
+}
+
+/* =========================
+   GET INVOLVED REFINEMENT
+========================== */
+
+.involvement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.involvement-card {
+  background: #ffffff;
+  border: 1px solid rgba(13, 59, 102, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(10, 47, 82, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.involvement-image-wrap {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef7fa;
+  padding: 18px;
+}
+
+.involvement-image {
+  max-width: 110px;
+  max-height: 110px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.involvement-content {
+  padding: 18px 18px 20px;
+  text-align: left;
+}
+
+.involvement-content h3 {
+  margin-bottom: 8px;
+  color: #0d3b66;
+}
+
+.involvement-content p {
+  color: #5b7183;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 860px) {
+  .involvement-grid {
+    grid-template-columns: 1fr;
+  }
+}
