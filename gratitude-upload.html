@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gratitude Upload | Tides of Hope</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-title">Tides of Hope</span>
+        <span class="brand-subtitle">Incorporated</span>
+      </div>
+    </a>
+
+    <nav class="site-nav">
+      <a href="index.html">Homepage</a>
+      <a href="office-portal.html">Office Portal</a>
+      <a href="#" id="gratitudeLogoutBtn" class="nav-cta">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<main class="admin-login-page">
+
+  <section class="admin-hero">
+    <div class="container">
+      <span class="section-tag">Office Upload Tool</span>
+      <h1>Gratitude Wall Upload</h1>
+      <p>Publish messages of appreciation and recognition for the homepage gratitude wall.</p>
+    </div>
+  </section>
+
+  <section class="admin-login-section">
+    <div class="container">
+      <div class="admin-card">
+
+        <h2>Create Gratitude Post</h2>
+        <p>Fill out the details below to publish a gratitude message.</p>
+
+        <form id="gratitudeUploadForm" class="admin-login-form">
+          <input type="text" id="gratitudeTitle" class="admin-input" placeholder="Title" required />
+          <input type="text" id="gratitudeFromName" class="admin-input" placeholder="From / Recognition Name" />
+
+          <textarea id="gratitudeMessageText" class="admin-input admin-textarea" placeholder="Write the gratitude message" rows="6" required></textarea>
+
+          <button type="submit" class="admin-btn">Publish Gratitude Post</button>
+
+          <p id="gratitudeUploadMessage" class="admin-login-message"></p>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo">
+      <h3>Tides of Hope Incorporated</h3>
+      <p>Serving with compassion, building with hope.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+if (sessionStorage.getItem("tohAdminLoggedIn") !== "true") {
+  window.location.href = "admin-login.html";
+}
+
+document.getElementById("gratitudeLogoutBtn").addEventListener("click", function(e) {
+  e.preventDefault();
+  sessionStorage.clear();
+  window.location.href = "admin-login.html";
+});
+
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwn-Uwujakfbo2uR8G-9j30yW5z0UJK7oRkx1G5LyRVKWqpNCq9D13OlSSlRNIbG4dB/exec";
+const gratitudeUploadForm = document.getElementById("gratitudeUploadForm");
+const gratitudeUploadMessage = document.getElementById("gratitudeUploadMessage");
+
+gratitudeUploadForm.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  gratitudeUploadMessage.textContent = "Publishing... please wait.";
+  gratitudeUploadMessage.style.color = "#0d3b66";
+
+  const payload = {
+    action: "submitGratitudeUpload",
+    title: document.getElementById("gratitudeTitle").value.trim(),
+    name: document.getElementById("gratitudeFromName").value.trim(),
+    message: document.getElementById("gratitudeMessageText").value.trim(),
+    uploadedBy: sessionStorage.getItem("tohAdminEmail") || "admin@tidesofhopeinc.org"
+  };
+
+  try {
+    const response = await fetch(WEB_APP_URL, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      gratitudeUploadMessage.textContent = "Gratitude post published successfully.";
+      gratitudeUploadMessage.style.color = "green";
+      gratitudeUploadForm.reset();
+    } else {
+      gratitudeUploadMessage.textContent = result.message || "Publishing failed.";
+      gratitudeUploadMessage.style.color = "red";
+    }
+  } catch (error) {
+    gratitudeUploadMessage.textContent = "Publishing failed. Please check your Web App deployment.";
+    gratitudeUploadMessage.style.color = "red";
+  }
+});
+</script>
+
+</body>
+</html>
