@@ -35,7 +35,7 @@
       <span class="section-tag">Office Upload Tool</span>
       <h1>Mini Gallery Upload</h1>
       <p>
-        Upload official photos and videos for the homepage mini gallery and future gallery page.
+        Upload official photos and videos for the homepage mini gallery and featured impact source.
       </p>
     </div>
   </section>
@@ -130,12 +130,9 @@
   </div>
 </footer>
 
-<button class="bubble-chat-button" aria-label="Open chat support">💬</button>
+<button class="bubble-chat-button" id="bubbleChatButton" aria-label="Open chat support">💬</button>
 
 <script>
-/* =========================
-   LOGIN CHECK
-========================= */
 if (sessionStorage.getItem("tohAdminLoggedIn") !== "true") {
   window.location.href = "admin-login.html";
 }
@@ -146,14 +143,8 @@ document.getElementById("galleryLogoutBtn").addEventListener("click", function(e
   window.location.href = "admin-login.html";
 });
 
-/* =========================
-   CONFIG
-========================= */
 const GALLERY_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwn-Uwujakfbo2uR8G-9j30yW5z0UJK7oRkx1G5LyRVKWqpNCq9D13OlSSlRNIbG4dB/exec";
 
-/* =========================
-   UPLOAD
-========================= */
 const galleryUploadForm = document.getElementById("galleryUploadForm");
 const galleryUploadMessage = document.getElementById("galleryUploadMessage");
 
@@ -162,12 +153,24 @@ galleryUploadForm.addEventListener("submit", async function(e) {
 
   const title = document.getElementById("galleryTitle").value.trim();
   const caption = document.getElementById("galleryCaption").value.trim();
-  const mediaType = document.getElementById("galleryMediaType").value;
+  const mediaType = document.getElementById("galleryMediaType").value.trim();
   const fileInput = document.getElementById("galleryFile");
   const file = fileInput.files[0];
 
   if (!file) {
     galleryUploadMessage.textContent = "Please choose a file.";
+    galleryUploadMessage.style.color = "red";
+    return;
+  }
+
+  if (mediaType === "image" && !file.type.startsWith("image/")) {
+    galleryUploadMessage.textContent = "Selected file does not match Image type.";
+    galleryUploadMessage.style.color = "red";
+    return;
+  }
+
+  if (mediaType === "video" && !file.type.startsWith("video/")) {
+    galleryUploadMessage.textContent = "Selected file does not match Video type.";
     galleryUploadMessage.style.color = "red";
     return;
   }
@@ -208,13 +211,20 @@ galleryUploadForm.addEventListener("submit", async function(e) {
         galleryUploadMessage.style.color = "red";
       }
     } catch (error) {
-      galleryUploadMessage.textContent = "Upload failed. Please check your Web App URL.";
+      galleryUploadMessage.textContent = "Upload failed. Please check your Web App deployment.";
       galleryUploadMessage.style.color = "red";
     }
   };
 
   reader.readAsDataURL(file);
 });
+
+const bubbleChatButton = document.getElementById("bubbleChatButton");
+if (bubbleChatButton) {
+  bubbleChatButton.addEventListener("click", () => {
+    window.open("https://www.facebook.com/profile.php?id=61573627290922", "_blank");
+  });
+}
 </script>
 
 </body>
