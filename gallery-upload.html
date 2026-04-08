@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Gallery Upload | Tides of Hope</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="index.html" class="brand">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-title">Tides of Hope</span>
+        <span class="brand-subtitle">Incorporated</span>
+      </div>
+    </a>
+
+    <nav class="site-nav">
+      <a href="index.html">Homepage</a>
+      <a href="office-portal.html">Office Portal</a>
+      <a href="#" id="galleryLogoutBtn" class="nav-cta">Logout</a>
+    </nav>
+
+  </div>
+</header>
+
+<main class="admin-login-page">
+
+  <section class="admin-hero">
+    <div class="container">
+      <span class="section-tag">Office Upload Tool</span>
+      <h1>Mini Gallery Upload</h1>
+      <p>
+        Upload official photos and videos for the homepage mini gallery and future gallery page.
+      </p>
+    </div>
+  </section>
+
+  <section class="admin-login-section">
+    <div class="container">
+      <div class="admin-card gallery-upload-card">
+
+        <h2>Upload Media</h2>
+        <p>Fill out the details below and upload your official gallery media.</p>
+
+        <form id="galleryUploadForm" class="admin-login-form">
+          <input
+            type="text"
+            id="galleryTitle"
+            class="admin-input"
+            placeholder="Event Title"
+            required
+          />
+
+          <textarea
+            id="galleryCaption"
+            class="admin-input admin-textarea"
+            placeholder="Write a short caption"
+            rows="4"
+            required
+          ></textarea>
+
+          <select id="galleryMediaType" class="admin-input" required>
+            <option value="">Select Media Type</option>
+            <option value="image">Image</option>
+            <option value="video">Video</option>
+          </select>
+
+          <input
+            type="file"
+            id="galleryFile"
+            class="admin-input"
+            accept="image/*,video/*"
+            required
+          />
+
+          <button type="submit" class="admin-btn">
+            Upload to Gallery
+          </button>
+
+          <p id="galleryUploadMessage" class="admin-login-message"></p>
+        </form>
+
+        <p class="admin-note">
+          Only authorized administrators should upload official organization media.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+
+    <div class="footer-brand">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo">
+      <h3>Tides of Hope Incorporated</h3>
+      <p>Serving with compassion, building with hope.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="office-portal.html">Office Portal</a></li>
+        <li><a href="admin-login.html">Admin Login</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <p>admin@tidesofhopeinc.org</p>
+    </div>
+
+  </div>
+
+  <div class="footer-credit">
+    <div class="container footer-credit-inner">
+      <p>
+        Powered by <strong>BuildFrame Digital System</strong>
+        <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button class="bubble-chat-button" aria-label="Open chat support">💬</button>
+
+<script>
+/* =========================
+   LOGIN CHECK
+========================= */
+if (sessionStorage.getItem("tohAdminLoggedIn") !== "true") {
+  window.location.href = "admin-login.html";
+}
+
+document.getElementById("galleryLogoutBtn").addEventListener("click", function(e) {
+  e.preventDefault();
+  sessionStorage.clear();
+  window.location.href = "admin-login.html";
+});
+
+/* =========================
+   CONFIG
+========================= */
+const GALLERY_WEB_APP_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+
+/* =========================
+   UPLOAD
+========================= */
+const galleryUploadForm = document.getElementById("galleryUploadForm");
+const galleryUploadMessage = document.getElementById("galleryUploadMessage");
+
+galleryUploadForm.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const title = document.getElementById("galleryTitle").value.trim();
+  const caption = document.getElementById("galleryCaption").value.trim();
+  const mediaType = document.getElementById("galleryMediaType").value;
+  const fileInput = document.getElementById("galleryFile");
+  const file = fileInput.files[0];
+
+  if (!file) {
+    galleryUploadMessage.textContent = "Please choose a file.";
+    galleryUploadMessage.style.color = "red";
+    return;
+  }
+
+  galleryUploadMessage.textContent = "Uploading... please wait.";
+  galleryUploadMessage.style.color = "#0d3b66";
+
+  const reader = new FileReader();
+
+  reader.onload = async function() {
+    const base64Data = reader.result.split(",")[1];
+
+    const payload = {
+      action: "submitGalleryUpload",
+      title: title,
+      caption: caption,
+      mediaType: mediaType,
+      fileName: file.name,
+      mimeType: file.type,
+      fileData: base64Data,
+      uploadedBy: sessionStorage.getItem("tohAdminEmail") || "admin@tidesofhopeinc.org"
+    };
+
+    try {
+      const response = await fetch(GALLERY_WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        galleryUploadMessage.textContent = "Upload successful!";
+        galleryUploadMessage.style.color = "green";
+        galleryUploadForm.reset();
+      } else {
+        galleryUploadMessage.textContent = result.message || "Upload failed.";
+        galleryUploadMessage.style.color = "red";
+      }
+    } catch (error) {
+      galleryUploadMessage.textContent = "Upload failed. Please check your Web App URL.";
+      galleryUploadMessage.style.color = "red";
+    }
+  };
+
+  reader.readAsDataURL(file);
+});
+</script>
+
+</body>
+</html>
