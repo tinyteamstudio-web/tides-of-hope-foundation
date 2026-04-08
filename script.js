@@ -1,12 +1,8 @@
 /* =========================================
    TIDES OF HOPE - HOMEPAGE / SUBPAGE SCRIPT
-   Clean structure for:
-   1. Mobile menu
-   2. Programs section switcher
-   3. Mini Gallery placeholder-ready state
-   4. Gratitude placeholder-ready state
-   5. Bubble chat button
 ========================================= */
+
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwn-Uwujakfbo2uR8G-9j30yW5z0UJK7oRkx1G5LyRVKWqpNCq9D13OlSSlRNIbG4dB/exec";
 
 /* =========================
    MOBILE MENU
@@ -19,9 +15,7 @@ if (menuToggle && siteNav) {
     siteNav.classList.toggle("active");
   });
 
-  const navLinks = siteNav.querySelectorAll("a");
-
-  navLinks.forEach((link) => {
+  siteNav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       siteNav.classList.remove("active");
     });
@@ -342,9 +336,6 @@ const programPartnerText = document.getElementById("programPartnerText");
 
 let currentProgramGroup = "community";
 
-/* =========================
-   RENDER FEATURED PROGRAM
-========================= */
 function renderFeaturedProgram(program) {
   if (!program) return;
 
@@ -352,35 +343,14 @@ function renderFeaturedProgram(program) {
     featuredProgramImage.src = program.image;
     featuredProgramImage.alt = program.title;
   }
-
-  if (featuredProgramCategory) {
-    featuredProgramCategory.textContent = program.category;
-  }
-
-  if (featuredProgramTitle) {
-    featuredProgramTitle.textContent = program.title;
-  }
-
-  if (featuredProgramDescription) {
-    featuredProgramDescription.textContent = program.description;
-  }
-
-  if (programWhyText) {
-    programWhyText.textContent = program.why || "";
-  }
-
-  if (programHowText) {
-    programHowText.textContent = program.how || "";
-  }
-
-  if (programPartnerText) {
-    programPartnerText.textContent = program.partner || "";
-  }
+  if (featuredProgramCategory) featuredProgramCategory.textContent = program.category;
+  if (featuredProgramTitle) featuredProgramTitle.textContent = program.title;
+  if (featuredProgramDescription) featuredProgramDescription.textContent = program.description;
+  if (programWhyText) programWhyText.textContent = program.why || "";
+  if (programHowText) programHowText.textContent = program.how || "";
+  if (programPartnerText) programPartnerText.textContent = program.partner || "";
 }
 
-/* =========================
-   RENDER PROGRAM LIST
-========================= */
 function renderProgramList(groupName) {
   if (!programList || !programData[groupName]) return;
 
@@ -392,15 +362,11 @@ function renderProgramList(groupName) {
     button.className = "program-list-item";
     button.textContent = program.title;
 
-    if (index === 0) {
-      button.classList.add("active");
-    }
+    if (index === 0) button.classList.add("active");
 
     button.addEventListener("click", () => {
       renderFeaturedProgram(program);
-
-      const allProgramButtons = programList.querySelectorAll(".program-list-item");
-      allProgramButtons.forEach((item) => item.classList.remove("active"));
+      programList.querySelectorAll(".program-list-item").forEach((item) => item.classList.remove("active"));
       button.classList.add("active");
     });
 
@@ -410,88 +376,173 @@ function renderProgramList(groupName) {
   renderFeaturedProgram(programData[groupName][0]);
 }
 
-/* =========================
-   SWITCH PROGRAM GROUP
-========================= */
 function setActiveProgramGroup(groupName) {
   currentProgramGroup = groupName;
 
   if (communityTab && nextgenTab) {
-    if (groupName === "community") {
-      communityTab.classList.add("active");
-      nextgenTab.classList.remove("active");
-    } else {
-      nextgenTab.classList.add("active");
-      communityTab.classList.remove("active");
-    }
+    communityTab.classList.toggle("active", groupName === "community");
+    nextgenTab.classList.toggle("active", groupName === "nextgen");
   }
 
   renderProgramList(groupName);
 }
 
 if (communityTab && nextgenTab) {
-  communityTab.addEventListener("click", () => {
-    setActiveProgramGroup("community");
-  });
-
-  nextgenTab.addEventListener("click", () => {
-    setActiveProgramGroup("nextgen");
-  });
+  communityTab.addEventListener("click", () => setActiveProgramGroup("community"));
+  nextgenTab.addEventListener("click", () => setActiveProgramGroup("nextgen"));
 }
 
-/* =========================
-   INITIALIZE PROGRAMS
-========================= */
 if (programList) {
   renderProgramList(currentProgramGroup);
 }
-/* =========================
-   MINI GALLERY PLACEHOLDER
-   Homepage now stays clean until admin uploads are connected
-========================= */
-const miniGalleryGrid = document.getElementById("miniGalleryGrid");
 
-if (miniGalleryGrid) {
-  miniGalleryGrid.innerHTML = `
-    <article class="content-placeholder-card">
-      <div class="content-placeholder-icon">📸</div>
-      <h3>Gallery uploads will appear here</h3>
-      <p>
-        Photos and videos uploaded by authorized administrators through the office portal
-        will be displayed in this section.
-      </p>
-    </article>
-  `;
+/* =========================
+   PRESIDENT'S CORNER
+========================= */
+async function loadPresidentMessage() {
+  const wrap = document.getElementById("presidentCornerContent");
+  if (!wrap) return;
+
+  wrap.innerHTML = `<p>Loading latest message...</p>`;
+
+  try {
+    const response = await fetch(`${WEB_APP_URL}?action=getPresidentMessage`);
+    const data = await response.json();
+
+    if (!data.success || !data.item) {
+      wrap.innerHTML = `<p>No president message available yet.</p>`;
+      return;
+    }
+
+    const item = data.item;
+    const title = item.Title || "President’s Message";
+    const message = item.Message || "";
+    const author = item.Author || "Office of the President";
+
+    wrap.innerHTML = `
+      <article class="content-card">
+        <h3>${title}</h3>
+        <p>${message}</p>
+        <p><strong>${author}</strong></p>
+      </article>
+    `;
+  } catch (error) {
+    wrap.innerHTML = `<p>Unable to load president message right now.</p>`;
+  }
 }
 
 /* =========================
-   GRATITUDE PLACEHOLDER
-   Homepage now stays clean until admin uploads are connected
+   FEATURED IMPACT
 ========================= */
-const gratitudeGrid = document.getElementById("gratitudeGrid");
+async function loadFeaturedImpact() {
+  const wrap = document.getElementById("featuredImpactContent");
+  if (!wrap) return;
 
-if (gratitudeGrid) {
-  gratitudeGrid.innerHTML = `
-    <article class="content-placeholder-card gratitude-placeholder-card">
-      <div class="content-placeholder-icon">💙</div>
-      <h3>Gratitude posts will appear here</h3>
-      <p>
-        Appreciation messages, supporter recognitions, and gratitude posts with
-        photos or videos will be displayed here after admin upload.
-      </p>
-    </article>
-  `;
+  wrap.innerHTML = `<p>Loading featured impact...</p>`;
+
+  try {
+    const response = await fetch(`${WEB_APP_URL}?action=getFeaturedImpact`);
+    const data = await response.json();
+
+    if (!data.success || !data.item) {
+      wrap.innerHTML = `<p>Stories of hope and transformation will appear here.</p>`;
+      return;
+    }
+
+    const item = data.item;
+    const title = item.Title || "Featured Impact";
+    const caption = item.Caption || "";
+    const mediaType = String(item.MediaType || "").toLowerCase();
+    const fileUrl = item.FileURL || "";
+
+    const mediaHtml = mediaType === "video"
+      ? `
+        <video class="gallery-image" controls preload="metadata">
+          <source src="${fileUrl}" type="video/mp4">
+          Your browser does not support video.
+        </video>
+      `
+      : `<img src="${fileUrl}" alt="${title}" class="gallery-image">`;
+
+    wrap.innerHTML = `
+      <article class="gallery-card">
+        ${mediaHtml}
+        <div class="gallery-overlay">${title}</div>
+      </article>
+      <div class="impact-copy">
+        <p>${caption}</p>
+      </div>
+    `;
+  } catch (error) {
+    wrap.innerHTML = `<p>Unable to load featured impact right now.</p>`;
+  }
 }
 
 /* =========================
-   MINI GALLERY - HOMEPAGE
+   ANNOUNCEMENTS
 ========================= */
+async function loadHomepageAnnouncements() {
+  const wrap = document.getElementById("homepageAnnouncementsGrid");
+  if (!wrap) return;
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwn-Uwujakfbo2uR8G-9j30yW5z0UJK7oRkx1G5LyRVKWqpNCq9D13OlSSlRNIbG4dB/exec";
+  wrap.innerHTML = `
+    <article class="empty-state-card">
+      Loading announcements...
+    </article>
+  `;
 
+  try {
+    const response = await fetch(`${WEB_APP_URL}?action=getAnnouncements`);
+    const data = await response.json();
+
+    if (!data.success || !data.items || !data.items.length) {
+      wrap.innerHTML = `
+        <article class="empty-state-card">
+          No announcements available yet.
+        </article>
+      `;
+      return;
+    }
+
+    wrap.innerHTML = "";
+
+    data.items.forEach((item) => {
+      const title = item.Title || "Announcement";
+      const category = item.Category || "General";
+      const summary = item.Summary || "";
+      const dateText = item.Timestamp ? new Date(item.Timestamp).toLocaleDateString() : "";
+
+      wrap.innerHTML += `
+        <article class="announcement-card">
+          <span class="announcement-category">${category}</span>
+          <h3>${title}</h3>
+          <p>${summary}</p>
+          <span class="announcement-date">${dateText}</span>
+        </article>
+      `;
+    });
+
+  } catch (error) {
+    wrap.innerHTML = `
+      <article class="empty-state-card">
+        Failed to load announcements.
+      </article>
+    `;
+  }
+}
+
+/* =========================
+   HOMEPAGE GALLERY
+========================= */
 async function loadHomepageGallery() {
   const galleryGrid = document.getElementById("homepageGalleryGrid");
   if (!galleryGrid) return;
+
+  galleryGrid.innerHTML = `
+    <article class="gallery-card placeholder-card">
+      <div class="gallery-overlay">Loading gallery...</div>
+    </article>
+  `;
 
   try {
     const response = await fetch(`${WEB_APP_URL}?action=getHomepageGallery`);
@@ -509,17 +560,18 @@ async function loadHomepageGallery() {
     }
 
     data.items.forEach(item => {
-      const mediaType = (item.MediaType || "").toLowerCase();
+      const mediaType = String(item.MediaType || "").toLowerCase();
       const fileUrl = item.FileURL || "";
       const title = item.Title || "Gallery Item";
 
-      const mediaHtml =
-        mediaType === "video"
-          ? `<video class="gallery-image" controls preload="metadata">
-               <source src="${fileUrl}" type="video/mp4">
-               Your browser does not support video.
-             </video>`
-          : `<img src="${fileUrl}" alt="${title}" class="gallery-image">`;
+      const mediaHtml = mediaType === "video"
+        ? `
+          <video class="gallery-image" controls preload="metadata">
+            <source src="${fileUrl}" type="video/mp4">
+            Your browser does not support video.
+          </video>
+        `
+        : `<img src="${fileUrl}" alt="${title}" class="gallery-image">`;
 
       galleryGrid.innerHTML += `
         <article class="gallery-card">
@@ -535,31 +587,77 @@ async function loadHomepageGallery() {
         <div class="gallery-overlay">Failed to load gallery.</div>
       </article>
     `;
-    console.error("Gallery load error:", error);
   }
 }
 
-document.addEventListener("DOMContentLoaded", loadHomepageGallery);
 /* =========================
-   GALLERY PAGE PLACEHOLDER
+   GRATITUDE WALL
 ========================= */
-const galleryPageGrid = document.getElementById("galleryPageGrid");
+async function loadGratitudePosts() {
+  const wrap = document.getElementById("gratitudeGrid");
+  if (!wrap) return;
 
-if (galleryPageGrid) {
-  galleryPageGrid.innerHTML = `
+  wrap.innerHTML = `
     <article class="empty-state-card">
-      No gallery uploads available yet.
+      Loading gratitude posts...
     </article>
   `;
+
+  try {
+    const response = await fetch(`${WEB_APP_URL}?action=getGratitudePosts`);
+    const data = await response.json();
+
+    if (!data.success || !data.items || !data.items.length) {
+      wrap.innerHTML = `
+        <article class="empty-state-card">
+          No gratitude posts available yet.
+        </article>
+      `;
+      return;
+    }
+
+    wrap.innerHTML = "";
+
+    data.items.forEach((item) => {
+      const title = item.Title || "Gratitude";
+      const message = item.Message || "";
+      const fromName = item.FromName || "Tides of Hope";
+
+      wrap.innerHTML += `
+        <article class="gratitude-card">
+          <h3>${title}</h3>
+          <p>${message}</p>
+          <span class="gratitude-from">— ${fromName}</span>
+        </article>
+      `;
+    });
+
+  } catch (error) {
+    wrap.innerHTML = `
+      <article class="empty-state-card">
+        Failed to load gratitude posts.
+      </article>
+    `;
+  }
 }
 
 /* =========================
    BUBBLE CHAT
 ========================= */
 const bubbleChatButton = document.getElementById("bubbleChatButton");
-
 if (bubbleChatButton) {
   bubbleChatButton.addEventListener("click", () => {
     window.open("https://www.facebook.com/profile.php?id=61573627290922", "_blank");
   });
 }
+
+/* =========================
+   PAGE LOAD
+========================= */
+document.addEventListener("DOMContentLoaded", () => {
+  loadPresidentMessage();
+  loadFeaturedImpact();
+  loadHomepageAnnouncements();
+  loadHomepageGallery();
+  loadGratitudePosts();
+});
