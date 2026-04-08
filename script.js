@@ -484,6 +484,63 @@ if (gratitudeGrid) {
 }
 
 /* =========================
+   MINI GALLERY - HOMEPAGE
+========================= */
+
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwn-Uwujakfbo2uR8G-9j30yW5z0UJK7oRkx1G5LyRVKWqpNCq9D13OlSSlRNIbG4dB/exec";
+
+async function loadHomepageGallery() {
+  const galleryGrid = document.getElementById("homepageGalleryGrid");
+  if (!galleryGrid) return;
+
+  try {
+    const response = await fetch(`${WEB_APP_URL}?action=getHomepageGallery`);
+    const data = await response.json();
+
+    galleryGrid.innerHTML = "";
+
+    if (!data.success || !data.items || !data.items.length) {
+      galleryGrid.innerHTML = `
+        <article class="gallery-card placeholder-card">
+          <div class="gallery-overlay">No gallery uploads available yet.</div>
+        </article>
+      `;
+      return;
+    }
+
+    data.items.forEach(item => {
+      const mediaType = (item.MediaType || "").toLowerCase();
+      const fileUrl = item.FileURL || "";
+      const title = item.Title || "Gallery Item";
+
+      const mediaHtml =
+        mediaType === "video"
+          ? `<video class="gallery-image" controls preload="metadata">
+               <source src="${fileUrl}" type="video/mp4">
+               Your browser does not support video.
+             </video>`
+          : `<img src="${fileUrl}" alt="${title}" class="gallery-image">`;
+
+      galleryGrid.innerHTML += `
+        <article class="gallery-card">
+          ${mediaHtml}
+          <div class="gallery-overlay">${title}</div>
+        </article>
+      `;
+    });
+
+  } catch (error) {
+    galleryGrid.innerHTML = `
+      <article class="gallery-card placeholder-card">
+        <div class="gallery-overlay">Failed to load gallery.</div>
+      </article>
+    `;
+    console.error("Gallery load error:", error);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadHomepageGallery);
+/* =========================
    GALLERY PAGE PLACEHOLDER
 ========================= */
 const galleryPageGrid = document.getElementById("galleryPageGrid");
