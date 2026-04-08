@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>President's Corner Upload | Tides of Hope</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-title">Tides of Hope</span>
+        <span class="brand-subtitle">Incorporated</span>
+      </div>
+    </a>
+
+    <nav class="site-nav">
+      <a href="index.html">Homepage</a>
+      <a href="office-portal.html">Office Portal</a>
+      <a href="#" id="presidentLogoutBtn" class="nav-cta">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<main class="admin-login-page">
+
+  <section class="admin-hero">
+    <div class="container">
+      <span class="section-tag">Leadership Upload Tool</span>
+      <h1>President’s Corner</h1>
+      <p>Publish the latest leadership message for the homepage President’s Corner.</p>
+    </div>
+  </section>
+
+  <section class="admin-login-section">
+    <div class="container">
+      <div class="admin-card">
+
+        <h2>Create President Message</h2>
+        <p>Fill out the details below to publish the latest leadership message.</p>
+
+        <form id="presidentUploadForm" class="admin-login-form">
+          <input type="text" id="presidentTitle" class="admin-input" placeholder="Title" value="President’s Message" />
+          <input type="text" id="presidentAuthor" class="admin-input" placeholder="Author" value="Office of the President" />
+
+          <textarea id="presidentMessageText" class="admin-input admin-textarea" placeholder="Write the president's message" rows="8" required></textarea>
+
+          <button type="submit" class="admin-btn">Publish President Message</button>
+
+          <p id="presidentUploadMessage" class="admin-login-message"></p>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo">
+      <h3>Tides of Hope Incorporated</h3>
+      <p>Serving with compassion, building with hope.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+if (sessionStorage.getItem("tohAdminLoggedIn") !== "true") {
+  window.location.href = "admin-login.html";
+}
+
+const role = sessionStorage.getItem("tohAdminRole") || "";
+if (!["admin", "president"].includes(role)) {
+  alert("You do not have access to this page.");
+  window.location.href = "office-portal.html";
+}
+
+document.getElementById("presidentLogoutBtn").addEventListener("click", function(e) {
+  e.preventDefault();
+  sessionStorage.clear();
+  window.location.href = "admin-login.html";
+});
+
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwn-Uwujakfbo2uR8G-9j30yW5z0UJK7oRkx1G5LyRVKWqpNCq9D13OlSSlRNIbG4dB/exec";
+const presidentUploadForm = document.getElementById("presidentUploadForm");
+const presidentUploadMessage = document.getElementById("presidentUploadMessage");
+
+presidentUploadForm.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  presidentUploadMessage.textContent = "Publishing... please wait.";
+  presidentUploadMessage.style.color = "#0d3b66";
+
+  const payload = {
+    action: "submitPresidentMessage",
+    title: document.getElementById("presidentTitle").value.trim(),
+    author: document.getElementById("presidentAuthor").value.trim(),
+    message: document.getElementById("presidentMessageText").value.trim(),
+    uploadedBy: sessionStorage.getItem("tohAdminEmail") || "admin@tidesofhopeinc.org"
+  };
+
+  try {
+    const response = await fetch(WEB_APP_URL, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      presidentUploadMessage.textContent = "President message published successfully.";
+      presidentUploadMessage.style.color = "green";
+      presidentUploadForm.reset();
+      document.getElementById("presidentTitle").value = "President’s Message";
+      document.getElementById("presidentAuthor").value = "Office of the President";
+    } else {
+      presidentUploadMessage.textContent = result.message || "Publishing failed.";
+      presidentUploadMessage.style.color = "red";
+    }
+  } catch (error) {
+    presidentUploadMessage.textContent = "Publishing failed. Please check your Web App deployment.";
+    presidentUploadMessage.style.color = "red";
+  }
+});
+</script>
+
+</body>
+</html>
