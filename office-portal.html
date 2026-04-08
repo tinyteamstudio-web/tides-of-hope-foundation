@@ -4,215 +4,157 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Office Portal | Tides of Hope Incorporated</title>
-  <meta
-    name="description"
-    content="Office portal for Tides of Hope Incorporated administrators."
-  />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container header-inner">
+<header class="site-header">
+  <div class="container header-inner">
 
-      <a href="index.html" class="brand">
-        <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo" />
-        <div class="brand-text">
-          <span class="brand-title">Tides of Hope</span>
-          <span class="brand-subtitle">Incorporated</span>
-        </div>
-      </a>
+    <a href="index.html" class="brand">
+      <img src="round-logo.png" class="brand-logo" />
+      <div class="brand-text">
+        <span class="brand-title">Tides of Hope</span>
+        <span class="brand-subtitle">Incorporated</span>
+      </div>
+    </a>
 
-      <nav class="site-nav">
-        <a href="index.html">Homepage</a>
-        <a href="admin-login.html">Admin Login</a>
-        <a href="#" id="adminLogoutBtn" class="nav-cta">Logout</a>
-      </nav>
+    <nav class="site-nav">
+      <a href="index.html">Homepage</a>
+      <a href="admin-login.html">Admin Login</a>
+      <a href="#" id="adminLogoutBtn" class="nav-cta">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<main class="office-portal-page">
+
+<section class="office-portal-hero">
+  <div class="container">
+    <span class="section-tag">Office Dashboard</span>
+    <h1>Welcome to the Tides of Hope Office Portal</h1>
+  </div>
+</section>
+
+<section class="office-portal-section">
+<div class="container">
+
+<div class="office-portal-topbar">
+  <h2>Admin Control Panel</h2>
+  <p id="officePortalWelcomeText">Logged in as administrator</p>
+</div>
+
+<div class="office-portal-grid">
+
+<!-- PRESIDENT -->
+<article class="office-card" id="presidentCard">
+  <div class="office-card-icon">👤</div>
+  <h3>President’s Corner</h3>
+  <p>Access leadership messages and official direction.</p>
+  <div class="office-card-actions">
+    <a href="#" class="btn btn-secondary">Open Tool</a>
+  </div>
+</article>
+
+<!-- SECRETARY -->
+<article class="office-card" id="secretaryCard">
+  <div class="office-card-icon">🧾</div>
+  <h3>Secretary System</h3>
+  <p>Manage letters, communications, and meeting documents.</p>
+  <div class="office-card-actions">
+    <a href="#" class="btn btn-secondary">Open Tool</a>
+  </div>
+</article>
+
+<!-- TREASURER -->
+<article class="office-card" id="treasurerCard">
+  <div class="office-card-icon">📊</div>
+  <h3>Treasurer System</h3>
+  <p>Monitor funds, donations, and financial reports.</p>
+  <div class="office-card-actions">
+    <a href="#" class="btn btn-secondary">Open Tool</a>
+  </div>
+</article>
+
+<!-- ANNOUNCEMENTS -->
+<article class="office-card">
+  <div class="office-card-icon">📢</div>
+  <h3>Announcements</h3>
+  <p>Create and manage public announcements.</p>
+  <div class="office-card-actions">
+    <a href="#" class="btn btn-secondary">Open Tool</a>
+  </div>
+</article>
+
+<!-- GALLERY -->
+<article class="office-card">
+  <div class="office-card-icon">🖼️</div>
+  <h3>Mini Gallery Uploads</h3>
+  <p>Upload images and videos for homepage gallery.</p>
+  <div class="office-card-actions">
+    <a href="#" class="btn btn-secondary">Open Tool</a>
+  </div>
+</article>
+
+<!-- GRATITUDE -->
+<article class="office-card">
+  <div class="office-card-icon">💙</div>
+  <h3>Gratitude Wall</h3>
+  <p>Post appreciation and recognition messages.</p>
+  <div class="office-card-actions">
+    <a href="#" class="btn btn-secondary">Open Tool</a>
+  </div>
+</article>
+
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="round-logo.png" class="footer-logo" />
+      <h3>Tides of Hope Incorporated</h3>
     </div>
-  </header>
+  </div>
+</footer>
 
-  <main class="office-portal-page">
+<script>
+/* LOGIN CHECK */
+if (sessionStorage.getItem("tohAdminLoggedIn") !== "true") {
+  window.location.href = "admin-login.html";
+}
 
-    <!-- HERO / WELCOME -->
-    <section class="office-portal-hero">
-      <div class="container">
-        <span class="section-tag">Office Dashboard</span>
-        <h1>Welcome to the Tides of Hope Office Portal</h1>
-        <p>
-          Manage official website content, prepare uploads, and access internal tools
-          for announcements, gallery posts, gratitude wall updates, and future office functions.
-        </p>
-      </div>
-    </section>
+/* DISPLAY USER */
+const email = sessionStorage.getItem("tohAdminEmail");
+if (email) {
+  document.getElementById("officePortalWelcomeText").textContent = "Logged in as " + email;
+}
 
-    <!-- DASHBOARD -->
-    <section class="office-portal-section">
-      <div class="container">
+/* LOGOUT */
+document.getElementById("adminLogoutBtn").addEventListener("click", function(e){
+  e.preventDefault();
+  sessionStorage.clear();
+  window.location.href = "admin-login.html";
+});
 
-        <div class="office-portal-topbar">
-          <div>
-            <h2>Admin Control Panel</h2>
-            <p id="officePortalWelcomeText">
-              Logged in as administrator
-            </p>
-          </div>
-        </div>
+/* ROLE CONTROL */
+const role = sessionStorage.getItem("tohAdminRole");
 
-        <div class="office-portal-grid">
+if (role !== "admin" && role !== "president") {
+  document.getElementById("presidentCard").style.display = "none";
+}
 
-          <article class="office-card">
-            <div class="office-card-icon">📢</div>
-            <h3>Announcements</h3>
-            <p>
-              Create and manage official notices, updates, and organization announcements
-              for the public website.
-            </p>
-            <div class="office-card-actions">
-              <a href="#" class="btn btn-secondary">Open Tool</a>
-            </div>
-          </article>
+if (role !== "admin" && role !== "secretary") {
+  document.getElementById("secretaryCard").style.display = "none";
+}
 
-          <article class="office-card">
-            <div class="office-card-icon">🖼️</div>
-            <h3>Mini Gallery Uploads</h3>
-            <p>
-              Upload official event photos and videos that will appear in the homepage
-              gallery and future full gallery page.
-            </p>
-            <div class="office-card-actions">
-              <a href="#" class="btn btn-secondary">Open Tool</a>
-            </div>
-          </article>
-
-          <article class="office-card">
-            <div class="office-card-icon">💙</div>
-            <h3>Gratitude Wall</h3>
-            <p>
-              Add thank-you posts, recognition messages, partner appreciation content,
-              and official gratitude updates.
-            </p>
-            <div class="office-card-actions">
-              <a href="#" class="btn btn-secondary">Open Tool</a>
-            </div>
-          </article>
-
-          <article class="office-card">
-            <div class="office-card-icon">📄</div>
-            <h3>Documents</h3>
-            <p>
-              Access future document tools, generated files, official records, and
-              internal office materials.
-            </p>
-            <div class="office-card-actions">
-              <a href="#" class="btn btn-secondary">Coming Soon</a>
-            </div>
-          </article>
-
-          <article class="office-card">
-            <div class="office-card-icon">🤝</div>
-            <h3>Partnerships</h3>
-            <p>
-              Manage partner logos, banners, acknowledgments, and future collaboration
-              content for the website.
-            </p>
-            <div class="office-card-actions">
-              <a href="#" class="btn btn-secondary">Coming Soon</a>
-            </div>
-          </article>
-
-          <article class="office-card">
-            <div class="office-card-icon">⚙️</div>
-            <h3>System Settings</h3>
-            <p>
-              Future area for protected admin settings, website content controls,
-              and connected platform tools.
-            </p>
-            <div class="office-card-actions">
-              <a href="#" class="btn btn-secondary">Coming Soon</a>
-            </div>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-
-      <div class="footer-brand">
-        <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo" />
-        <h3>Tides of Hope Incorporated</h3>
-        <p>
-          Serving with compassion, building with hope, and creating pathways
-          toward stronger communities.
-        </p>
-      </div>
-
-      <div class="footer-column">
-        <h4>Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="membership.html">Membership</a></li>
-          <li><a href="documents.html">Documents</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-column">
-        <h4>Office</h4>
-        <ul class="footer-links">
-          <li><a href="admin-login.html">Admin Login</a></li>
-          <li><a href="office-portal.html">Office Portal</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-column">
-        <h4>Contact</h4>
-        <p>chinveloso.consmaterials@gmail.com</p>
-        <p>buildframe.digitalsystem@gmail.com</p>
-      </div>
-
-    </div>
-
-    <div class="footer-credit">
-      <div class="container footer-credit-inner">
-        <p>
-          Powered by <strong>BuildFrame Digital System</strong>
-          <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
-        </p>
-      </div>
-    </div>
-  </footer>
-
-  <button class="bubble-chat-button" aria-label="Open chat support">💬</button>
-
-  <script>
-    if (sessionStorage.getItem("tohAdminLoggedIn") !== "true") {
-      window.location.href = "admin-login.html";
-    }
-
-    const adminLogoutBtn = document.getElementById("adminLogoutBtn");
-    const officePortalWelcomeText = document.getElementById("officePortalWelcomeText");
-    const savedAdminEmail = sessionStorage.getItem("tohAdminEmail");
-
-    if (savedAdminEmail && officePortalWelcomeText) {
-      officePortalWelcomeText.textContent = "Logged in as " + savedAdminEmail;
-    }
-
-    if (adminLogoutBtn) {
-      adminLogoutBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-        sessionStorage.removeItem("tohAdminLoggedIn");
-        sessionStorage.removeItem("tohAdminEmail");
-        window.location.href = "admin-login.html";
-      });
-    }
-  </script>
+if (role !== "admin" && role !== "treasurer") {
+  document.getElementById("treasurerCard").style.display = "none";
+}
+</script>
 
 </body>
 </html>
