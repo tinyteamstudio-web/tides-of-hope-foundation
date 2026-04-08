@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Announcements Upload | Tides of Hope</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-title">Tides of Hope</span>
+        <span class="brand-subtitle">Incorporated</span>
+      </div>
+    </a>
+
+    <nav class="site-nav">
+      <a href="index.html">Homepage</a>
+      <a href="office-portal.html">Office Portal</a>
+      <a href="#" id="announcementsLogoutBtn" class="nav-cta">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<main class="admin-login-page">
+
+  <section class="admin-hero">
+    <div class="container">
+      <span class="section-tag">Office Upload Tool</span>
+      <h1>Announcements Upload</h1>
+      <p>Publish official announcements and updates for the homepage.</p>
+    </div>
+  </section>
+
+  <section class="admin-login-section">
+    <div class="container">
+      <div class="admin-card">
+
+        <h2>Create Announcement</h2>
+        <p>Fill out the details below to publish an official update.</p>
+
+        <form id="announcementUploadForm" class="admin-login-form">
+          <input type="text" id="announcementTitle" class="admin-input" placeholder="Announcement Title" required />
+
+          <input type="text" id="announcementCategory" class="admin-input" placeholder="Category (example: Event, Notice, Update)" />
+
+          <textarea id="announcementSummary" class="admin-input admin-textarea" placeholder="Short summary" rows="3" required></textarea>
+
+          <textarea id="announcementContent" class="admin-input admin-textarea" placeholder="Full content (optional)" rows="6"></textarea>
+
+          <button type="submit" class="admin-btn">Publish Announcement</button>
+
+          <p id="announcementUploadMessage" class="admin-login-message"></p>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo">
+      <h3>Tides of Hope Incorporated</h3>
+      <p>Serving with compassion, building with hope.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+if (sessionStorage.getItem("tohAdminLoggedIn") !== "true") {
+  window.location.href = "admin-login.html";
+}
+
+document.getElementById("announcementsLogoutBtn").addEventListener("click", function(e) {
+  e.preventDefault();
+  sessionStorage.clear();
+  window.location.href = "admin-login.html";
+});
+
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwn-Uwujakfbo2uR8G-9j30yW5z0UJK7oRkx1G5LyRVKWqpNCq9D13OlSSlRNIbG4dB/exec";
+const announcementUploadForm = document.getElementById("announcementUploadForm");
+const announcementUploadMessage = document.getElementById("announcementUploadMessage");
+
+announcementUploadForm.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  announcementUploadMessage.textContent = "Publishing... please wait.";
+  announcementUploadMessage.style.color = "#0d3b66";
+
+  const payload = {
+    action: "submitAnnouncementUpload",
+    title: document.getElementById("announcementTitle").value.trim(),
+    category: document.getElementById("announcementCategory").value.trim(),
+    summary: document.getElementById("announcementSummary").value.trim(),
+    content: document.getElementById("announcementContent").value.trim(),
+    uploadedBy: sessionStorage.getItem("tohAdminEmail") || "admin@tidesofhopeinc.org"
+  };
+
+  try {
+    const response = await fetch(WEB_APP_URL, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      announcementUploadMessage.textContent = "Announcement published successfully.";
+      announcementUploadMessage.style.color = "green";
+      announcementUploadForm.reset();
+    } else {
+      announcementUploadMessage.textContent = result.message || "Publishing failed.";
+      announcementUploadMessage.style.color = "red";
+    }
+  } catch (error) {
+    announcementUploadMessage.textContent = "Publishing failed. Please check your Web App deployment.";
+    announcementUploadMessage.style.color = "red";
+  }
+});
+</script>
+
+</body>
+</html>
