@@ -458,7 +458,7 @@ async function loadFeaturedImpact() {
     const mediaHtml = mediaType === "video"
       ? `
         <video class="gallery-image" controls preload="metadata">
-          <source src="${fileUrl}" type="video/mp4">
+          <source src="${fileUrl}">
           Your browser does not support video.
         </video>
       `
@@ -567,7 +567,7 @@ async function loadHomepageGallery() {
       const mediaHtml = mediaType === "video"
         ? `
           <video class="gallery-image" controls preload="metadata">
-            <source src="${fileUrl}" type="video/mp4">
+           <source src="${fileUrl}">
             Your browser does not support video.
           </video>
         `
