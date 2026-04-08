@@ -1723,3 +1723,41 @@ section {
   resize: vertical;
   font-family: inherit;
 }
+
+/* =========================
+   PRESIDENT + IMPACT SECTION
+========================= */
+.dual-highlight-section {
+  padding: 80px 20px;
+}
+
+.dual-highlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.highlight-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  border: 1px solid #dbe9ef;
+}
+
+.highlight-card h2 {
+  margin-bottom: 15px;
+  color: #0d3b66;
+}
+
+.highlight-card p {
+  color: #5f7382;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dual-highlight-grid {
+    grid-template-columns: 1fr;
+  }
+}
