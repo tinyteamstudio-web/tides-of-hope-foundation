@@ -92,8 +92,48 @@
       font-size:0.95rem;
     }
 
+    .portal-status-box{
+      margin-top:18px;
+      padding:16px 18px;
+      border-radius:18px;
+      background:#fff8e8;
+      border:1px solid rgba(216,163,44,0.18);
+      color:#6b5a24;
+      font-size:0.96rem;
+    }
+
+    .portal-mini-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .portal-mini-card{
+      padding:16px;
+      border-radius:18px;
+      background:#f8fcfd;
+      border:1px solid rgba(13,59,102,0.08);
+    }
+
+    .portal-mini-card h4{
+      color:#0d3b66;
+      margin-bottom:8px;
+      font-size:1rem;
+    }
+
+    .portal-mini-card p{
+      margin:0;
+      font-size:0.94rem;
+      color:#5f7382;
+    }
+
     @media (max-width: 980px){
       .internal-portal-grid{
+        grid-template-columns:1fr;
+      }
+
+      .portal-mini-grid{
         grid-template-columns:1fr;
       }
     }
@@ -127,7 +167,7 @@
       <h1>Treasurer Portal</h1>
       <p>
         Access the treasurer workflow for donations, funds-in records, expenses,
-        summary dashboard monitoring, and financial report generation.
+        summaries, and financial report operations through a protected internal portal.
       </p>
     </div>
   </section>
@@ -137,34 +177,39 @@
       <div class="internal-portal-grid">
 
         <article class="internal-portal-card">
-          <h2>Open Treasurer System</h2>
+          <h2>Treasurer Internal Workspace</h2>
           <p>
-            This portal uses the Tides of Hope master spreadsheet as the live internal
-            financial system for the treasurer office.
+            This page is your protected entry point for treasurer operations.
+            Direct access to the master financial database sheet is hidden for privacy and system safety.
           </p>
 
           <div class="portal-action-stack">
-            <a
-              href="https://docs.google.com/spreadsheets/d/1ICp0F5VfN2Dkl_gLTIgW8mg0Fc8Nfqk5-wDrJwExPvc/edit?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-primary"
-            >
-              Open Master Treasurer Sheet
-            </a>
+            <a href="#" class="btn btn-primary" id="treasurerRecordDonationBtn">Record Donation</a>
+            <a href="#" class="btn btn-secondary" id="treasurerRecordExpenseBtn">Record Expense</a>
+            <a href="#" class="btn btn-secondary" id="treasurerViewSummaryBtn">View Summary Dashboard</a>
+            <a href="office-portal.html" class="btn btn-secondary">Back to Office Portal</a>
+          </div>
 
-            <a
-              href="office-portal.html"
-              class="btn btn-secondary"
-            >
-              Back to Office Portal
-            </a>
+          <div class="portal-status-box">
+            <strong>Phase 1 Portal Mode:</strong><br>
+            The direct Google Sheet link has been removed. This portal is now prepared for
+            Phase 2, where treasurer forms and dashboard summaries will connect through Apps Script only.
           </div>
 
           <div class="portal-note">
-            Use the top menu inside Google Sheets:
-            <strong>Treasurer Tools</strong>
-            to generate reports and run treasurer-side actions.
+            Treasurer access is intentionally limited to finance-related actions only.
+            The private master system remains hidden behind the platform backend.
+          </div>
+
+          <div class="portal-mini-grid">
+            <div class="portal-mini-card">
+              <h4>Financial Intake</h4>
+              <p>For donations, expenses, summaries, and report-related workflow.</p>
+            </div>
+            <div class="portal-mini-card">
+              <h4>Protected Data Flow</h4>
+              <p>All future treasurer records will write to the same master sheet through Apps Script.</p>
+            </div>
           </div>
         </article>
 
@@ -173,23 +218,23 @@
 
           <ul class="portal-list">
             <li>
-              <strong>DONATIONS_INBOX</strong>
-              Use this tab to review incoming donation records and approval flow before processing.
+              <strong>DONATIONS INBOX</strong>
+              Used for receiving and reviewing incoming donation records before processing.
             </li>
 
             <li>
-              <strong>FUNDS_IN</strong>
-              Use this tab to monitor approved and processed incoming fund entries.
+              <strong>FUNDS IN</strong>
+              Used for approved and processed incoming fund entries.
             </li>
 
             <li>
               <strong>EXPENSES</strong>
-              Use this tab to record and monitor outgoing financial activity and expense entries.
+              Used for financial outflow recording and internal expense tracking.
             </li>
 
             <li>
               <strong>SUMMARY</strong>
-              Use this tab to review totals, monthly figures, charts, and current financial standing.
+              Used by the system for totals, dashboard review, and report-level financial monitoring.
             </li>
           </ul>
         </article>
@@ -225,6 +270,25 @@ document.getElementById("treasurerLogoutBtn").addEventListener("click", function
   e.preventDefault();
   sessionStorage.clear();
   window.location.href = "admin-login.html";
+});
+
+function portalComingSoon(message) {
+  alert(message);
+}
+
+document.getElementById("treasurerRecordDonationBtn").addEventListener("click", function(e) {
+  e.preventDefault();
+  portalComingSoon("Phase 2 next: Donation form will be connected here.");
+});
+
+document.getElementById("treasurerRecordExpenseBtn").addEventListener("click", function(e) {
+  e.preventDefault();
+  portalComingSoon("Phase 2 next: Expense form will be connected here.");
+});
+
+document.getElementById("treasurerViewSummaryBtn").addEventListener("click", function(e) {
+  e.preventDefault();
+  portalComingSoon("Phase 2 next: Treasurer dashboard summary will be connected here.");
 });
 </script>
 
