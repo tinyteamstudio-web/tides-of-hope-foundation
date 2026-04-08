@@ -53,6 +53,7 @@
         <p>Enter your access credentials to continue.</p>
 
         <form id="adminLoginForm" class="admin-login-form">
+
           <input
             type="email"
             id="adminEmail"
@@ -74,6 +75,7 @@
           </button>
 
           <p id="adminLoginMessage" class="admin-login-message"></p>
+
         </form>
 
         <p class="admin-note">
@@ -126,8 +128,55 @@
 <!-- BUBBLE CHAT -->
 <button class="bubble-chat-button" aria-label="Open chat support">💬</button>
 
-<!-- SCRIPT -->
-<script src="admin-login.js"></script>
+<!-- LOGIN SCRIPT -->
+<script>
+document.getElementById("adminLoginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const email = document.getElementById("adminEmail").value.trim();
+  const password = document.getElementById("adminPassword").value.trim();
+  const message = document.getElementById("adminLoginMessage");
+
+  if (email !== "admin@tidesofhopeinc.org") {
+    message.textContent = "Invalid email.";
+    message.style.color = "red";
+    return;
+  }
+
+  let role = "";
+
+  if (password === "@TidesOfHope!!062476") {
+    role = "admin";
+  } 
+  else if (password === "@TOHPres@0246") {
+    role = "president";
+  } 
+  else if (password === "@TOHSec@0135") {
+    role = "secretary";
+  } 
+  else if (password === "@TOHTreas@0876") {
+    role = "treasurer";
+  } 
+  else {
+    message.textContent = "Invalid password.";
+    message.style.color = "red";
+    return;
+  }
+
+  // SAVE SESSION
+  sessionStorage.setItem("tohAdminLoggedIn", "true");
+  sessionStorage.setItem("tohAdminEmail", email);
+  sessionStorage.setItem("tohAdminRole", role);
+
+  // SUCCESS
+  message.textContent = "Login successful. Redirecting...";
+  message.style.color = "green";
+
+  setTimeout(() => {
+    window.location.href = "office-portal.html";
+  }, 800);
+});
+</script>
 
 </body>
 </html>
