@@ -6,13 +6,10 @@
   <title>Admin Access | Tides of Hope</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
-
 <body>
 
-<!-- HEADER -->
 <header class="site-header">
   <div class="container header-inner">
-
     <a href="index.html" class="brand">
       <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo">
       <div class="brand-text">
@@ -27,13 +24,11 @@
       <a href="contact.html">Contact</a>
       <a href="donate.html" class="nav-cta">Support Us</a>
     </nav>
-
   </div>
 </header>
 
 <main class="admin-login-page">
 
-  <!-- HERO -->
   <section class="admin-hero">
     <div class="container">
       <span class="section-tag">Office Access</span>
@@ -44,7 +39,6 @@
     </div>
   </section>
 
-  <!-- LOGIN CARD -->
   <section class="admin-login-section">
     <div class="container">
       <div class="admin-card">
@@ -53,12 +47,12 @@
         <p>Enter your access credentials to continue.</p>
 
         <form id="adminLoginForm" class="admin-login-form">
-
           <input
             type="email"
             id="adminEmail"
             class="admin-input"
             placeholder="Admin Email"
+            autocomplete="username"
             required
           />
 
@@ -67,6 +61,7 @@
             id="adminPassword"
             class="admin-input"
             placeholder="Password"
+            autocomplete="current-password"
             required
           />
 
@@ -75,11 +70,10 @@
           </button>
 
           <p id="adminLoginMessage" class="admin-login-message"></p>
-
         </form>
 
         <p class="admin-note">
-          This is a secure internal system for Tides of Hope administrators.
+          This browser login is for portal access control only. Official content publishing is still controlled by the office system and Apps Script backend.
         </p>
 
       </div>
@@ -88,7 +82,6 @@
 
 </main>
 
-<!-- FOOTER -->
 <footer class="site-footer">
   <div class="container footer-grid">
 
@@ -125,57 +118,66 @@
   </div>
 </footer>
 
-<!-- BUBBLE CHAT -->
-<button class="bubble-chat-button" aria-label="Open chat support">💬</button>
+<button class="bubble-chat-button" id="bubbleChatButton" aria-label="Open chat support">💬</button>
 
-<!-- LOGIN SCRIPT -->
 <script>
-document.getElementById("adminLoginForm").addEventListener("submit", function(e) {
+const ADMIN_EMAIL = "admin@tidesofhopeinc.org";
+
+const ROLE_PASSWORDS = {
+  admin: "@TidesOfHope!!062476",
+  president: "@TOHPres@0246",
+  secretary: "@TOHSec@0135",
+  treasurer: "@TOHTreas@0876"
+};
+
+const adminLoginForm = document.getElementById("adminLoginForm");
+const adminLoginMessage = document.getElementById("adminLoginMessage");
+
+adminLoginForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
   const email = document.getElementById("adminEmail").value.trim();
   const password = document.getElementById("adminPassword").value.trim();
-  const message = document.getElementById("adminLoginMessage");
 
-  if (email !== "admin@tidesofhopeinc.org") {
-    message.textContent = "Invalid email.";
-    message.style.color = "red";
+  adminLoginMessage.textContent = "";
+  adminLoginMessage.style.color = "red";
+
+  if (email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
+    adminLoginMessage.textContent = "Invalid email.";
     return;
   }
 
-  let role = "";
+  let matchedRole = "";
 
-  if (password === "@TidesOfHope!!062476") {
-    role = "admin";
-  } 
-  else if (password === "@TOHPres@0246") {
-    role = "president";
-  } 
-  else if (password === "@TOHSec@0135") {
-    role = "secretary";
-  } 
-  else if (password === "@TOHTreas@0876") {
-    role = "treasurer";
-  } 
-  else {
-    message.textContent = "Invalid password.";
-    message.style.color = "red";
+  Object.keys(ROLE_PASSWORDS).forEach((role) => {
+    if (password === ROLE_PASSWORDS[role]) {
+      matchedRole = role;
+    }
+  });
+
+  if (!matchedRole) {
+    adminLoginMessage.textContent = "Invalid password.";
     return;
   }
 
-  // SAVE SESSION
   sessionStorage.setItem("tohAdminLoggedIn", "true");
   sessionStorage.setItem("tohAdminEmail", email);
-  sessionStorage.setItem("tohAdminRole", role);
+  sessionStorage.setItem("tohAdminRole", matchedRole);
 
-  // SUCCESS
-  message.textContent = "Login successful. Redirecting...";
-  message.style.color = "green";
+  adminLoginMessage.textContent = "Login successful. Redirecting...";
+  adminLoginMessage.style.color = "green";
 
   setTimeout(() => {
     window.location.href = "office-portal.html";
-  }, 800);
+  }, 700);
 });
+
+const bubbleChatButton = document.getElementById("bubbleChatButton");
+if (bubbleChatButton) {
+  bubbleChatButton.addEventListener("click", () => {
+    window.open("https://www.facebook.com/profile.php?id=61573627290922", "_blank");
+  });
+}
 </script>
 
 </body>
