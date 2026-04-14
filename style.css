@@ -584,7 +584,7 @@ section {
   align-items: center;
 }
 
-..program-feature-image-wrap {
+.program-feature-image-wrap {
   width: 100%;
   height: 210px;
   border-radius: 18px;
