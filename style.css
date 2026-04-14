@@ -634,6 +634,7 @@ section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
+  margin-top: 10px;
 }
 
 .program-list-item {
@@ -645,15 +646,19 @@ section {
   font-weight: 700;
   text-align: left;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.program-list-item:hover,
+.program-list-item:hover {
+  background: #f2fbfc;
+  border-color: #27c2c9;
+}
+
 .program-list-item.active {
-  background: var(--teal-soft);
-  border-color: rgba(27, 143, 149, 0.24);
-  color: var(--deep-blue);
+  background: #dff8fa;
+  border-color: #27c2c9;
+  color: #08344f;
 }
-
 /* =========================
    PARTNERSHIPS
 ========================= */
