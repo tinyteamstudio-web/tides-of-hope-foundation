@@ -1802,17 +1802,16 @@ section {
 }
 
 .president-image-wrap {
-  width: 120px;
-  flex-shrink: 0;
+  width: 50px;
 }
 
 .president-image {
-  width: 120px;
-  height: 120px;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
-  border-radius: 16px;
+  border-radius: 50%;
   display: block;
-  box-shadow: 0 8px 20px rgba(12, 46, 78, 0.12);
+  box-shadow: 0 4px 10px rgba(12, 46, 78, 0.12);
   border: 1px solid rgba(13, 59, 102, 0.08);
 }
 
@@ -1841,6 +1840,13 @@ section {
 
 .president-message .content-card p:last-child {
   margin-bottom: 0;
+}
+
+#presidentCornerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 /* FEATURED IMPACT CLEANUP */
