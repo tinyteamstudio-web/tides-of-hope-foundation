@@ -419,14 +419,22 @@ async function loadPresidentMessage() {
   const wrap = document.getElementById("presidentCornerContent");
   if (!wrap) return;
 
-  wrap.innerHTML = `<p>Loading latest message...</p>`;
+  // TARGET ONLY MESSAGE AREA
+  const messageWrap = wrap.querySelector(".president-message");
+
+  // SHOW LOADING (without removing image)
+  if (messageWrap) {
+    messageWrap.innerHTML = `<p>Loading latest message...</p>`;
+  }
 
   try {
     const response = await fetch(`${WEB_APP_URL}?action=getPresidentMessage`);
     const data = await response.json();
 
     if (!data.success || !data.item) {
-      wrap.innerHTML = `<p>No president message available yet.</p>`;
+      if (messageWrap) {
+        messageWrap.innerHTML = `<p>No president message available yet.</p>`;
+      }
       return;
     }
 
@@ -435,18 +443,22 @@ async function loadPresidentMessage() {
     const message = item.Message || "";
     const author = item.Author || "Office of the President";
 
-    wrap.innerHTML = `
-      <article class="content-card">
-        <h3>${title}</h3>
-        <p>${message}</p>
-        <p><strong>${author}</strong></p>
-      </article>
-    `;
+    if (messageWrap) {
+      messageWrap.innerHTML = `
+        <article class="content-card">
+          <h3>${title}</h3>
+          <p>${message}</p>
+          <p><strong>${author}</strong></p>
+        </article>
+      `;
+    }
+
   } catch (error) {
-    wrap.innerHTML = `<p>Unable to load president message right now.</p>`;
+    if (messageWrap) {
+      messageWrap.innerHTML = `<p>Unable to load president message right now.</p>`;
+    }
   }
 }
-
 /* =========================
    FEATURED IMPACT
 ========================= */
