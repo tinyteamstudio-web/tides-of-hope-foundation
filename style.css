@@ -1869,3 +1869,55 @@ section {
     height: 100px;
   }
 }
+
+/* CLICKABLE PRESIDENT IMAGE */
+.president-image {
+  cursor: zoom-in;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.president-image:hover {
+  transform: scale(1.04);
+}
+
+/* IMAGE MODAL */
+.image-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 37, 61, 0.82);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 99999;
+}
+
+.image-modal.active {
+  display: flex;
+}
+
+.image-modal-img {
+  max-width: min(92vw, 520px);
+  max-height: 86vh;
+  width: auto;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  background: #ffffff;
+}
+
+.image-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #0d3b66;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
