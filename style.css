@@ -1802,16 +1802,16 @@ section {
 }
 
 .president-image-wrap {
-  width: 50px;
+  width: 70px;
 }
 
 .president-image {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
   border-radius: 50%;
   display: block;
-  box-shadow: 0 4px 10px rgba(12, 46, 78, 0.12);
+  box-shadow: 0 6px 14px rgba(12, 46, 78, 0.12);
   border: 1px solid rgba(13, 59, 102, 0.08);
 }
 
