@@ -1802,12 +1802,12 @@ section {
 }
 
 .president-image-wrap {
-  width: 70px;
+  width: 90px;
 }
 
 .president-image {
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
   border-radius: 50%;
   display: block;
