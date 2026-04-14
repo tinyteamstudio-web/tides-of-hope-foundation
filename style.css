@@ -1214,6 +1214,8 @@ section {
     height: 220px;
   }
 }
+
+
 /* =========================
    PROGRAMS SECTION REFINEMENT
 ========================== */
@@ -1271,6 +1273,11 @@ section {
   font-weight: 700;
   cursor: pointer;
   text-align: left;
+  transition: all 0.2s ease;
+}
+
+.program-tab:hover {
+  background: rgba(255, 255, 255, 0.24);
 }
 
 .program-tab.active {
@@ -1301,7 +1308,7 @@ section {
 .program-detail-box p {
   font-size: 0.9rem;
   line-height: 1.65;
-  color: rgba(255,255,255,0.88);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .programs-display {
@@ -1321,12 +1328,14 @@ section {
   box-shadow: 0 12px 28px rgba(10, 47, 82, 0.06);
 }
 
-.program-feature-image {
+.program-feature-image-wrap {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  height: 420px;
+  overflow: hidden;
+  background: #e5f1f5;
+  flex-shrink: 0;
 }
+
 .program-feature-image {
   width: 100%;
   height: 100%;
@@ -1375,19 +1384,46 @@ section {
   gap: 12px;
 }
 
+.program-list-item {
+  border: 1px solid rgba(13, 59, 102, 0.10);
+  background: #ffffff;
+  color: #0d3b66;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.program-list-item:hover {
+  background: #f2fbfc;
+  border-color: #27c2c9;
+}
+
+.program-list-item.active {
+  background: #dff8fa;
+  border-color: #27c2c9;
+  color: #08344f;
+}
+
 @media (max-width: 980px) {
   .programs-layout {
     grid-template-columns: 1fr;
   }
 
   .program-feature-image-wrap {
-    height: 240px;
+    height: 280px;
   }
 }
 
 @media (max-width: 640px) {
   .program-list {
     grid-template-columns: 1fr;
+  }
+
+  .program-feature-content h3 {
+    font-size: 1.6rem;
   }
 }
 
