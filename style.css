@@ -1802,17 +1802,17 @@ section {
 }
 
 .president-image-wrap {
-  width: 90px;
+  width: 110px;
 }
 
 .president-image {
-  width: 90px;
-  height: 90px;
+  width: 110px;
+  height: 110px;
   object-fit: cover;
   border-radius: 50%;
   display: block;
-  box-shadow: 0 6px 14px rgba(12, 46, 78, 0.12);
-  border: 1px solid rgba(13, 59, 102, 0.08);
+  box-shadow: 0 6px 16px rgba(12, 46, 78, 0.14);
+  border: 2px solid #ffffff;
 }
 
 .president-message {
