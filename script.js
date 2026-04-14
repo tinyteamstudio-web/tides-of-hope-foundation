@@ -680,6 +680,35 @@ if (bubbleChatButton) {
 }
 
 /* =========================
+   PRESIDENT IMAGE MODAL
+========================= */
+const presidentImage = document.getElementById("presidentImage");
+const imageModal = document.getElementById("imageModal");
+const imageModalClose = document.getElementById("imageModalClose");
+const imageModalImg = document.getElementById("imageModalImg");
+
+if (presidentImage && imageModal && imageModalClose && imageModalImg) {
+  presidentImage.addEventListener("click", () => {
+    imageModalImg.src = presidentImage.src;
+    imageModalImg.alt = presidentImage.alt;
+    imageModal.classList.add("active");
+    imageModal.setAttribute("aria-hidden", "false");
+  });
+
+  imageModalClose.addEventListener("click", () => {
+    imageModal.classList.remove("active");
+    imageModal.setAttribute("aria-hidden", "true");
+  });
+
+  imageModal.addEventListener("click", (e) => {
+    if (e.target === imageModal) {
+      imageModal.classList.remove("active");
+      imageModal.setAttribute("aria-hidden", "true");
+    }
+  });
+}
+
+/* =========================
    PAGE LOAD
 ========================= */
 document.addEventListener("DOMContentLoaded", () => {
