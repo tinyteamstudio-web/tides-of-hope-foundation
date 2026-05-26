@@ -1,135 +1,221 @@
 /*************************************************
- * TOH SOLICITATION REQUEST FORM
+ * TOH INSTANT SOLICITATION GENERATOR
  *************************************************/
 
-const API_URL =
-  "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+document.addEventListener("DOMContentLoaded", () => {
+  const fields = [
+    "letterDate",
+    "requestedBy",
+    "requesterContact",
+    "recipientName",
+    "recipientPosition",
+    "companyName",
+    "salutation",
+    "otherSalutation",
+    "recipientContact",
+    "requestedSupport",
+    "purposeNotes"
+  ];
 
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
+  fields.forEach((id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
 
-    const form =
-      document.getElementById(
-        "solicitationForm"
-      );
+    el.addEventListener("input", generateSolicitation);
+    el.addEventListener("change", generateSolicitation);
+  });
 
-    if (!form) return;
+  generateSolicitation();
+});
 
-    form.addEventListener(
-      "submit",
-      submitSolicitationRequest_
-    );
-  }
-);
+function generateSolicitation() {
+
+  const letterDate =
+    getValue_("letterDate");
+
+  const recipientName =
+    getValue_("recipientName");
+
+  const recipientPosition =
+    getValue_("recipientPosition");
+
+  const companyName =
+    getValue_("companyName");
+
+  const recipientAddress =
+    getValue_("recipientAddress");
+
+  const salutationValue =
+    getValue_("salutation");
+
+  const otherSalutation =
+    getValue_("otherSalutation");
+
+  const finalSalutation =
+    salutationValue === "Other"
+      ? otherSalutation
+      : salutationValue;
+
+  const recipientContact =
+    getValue_("recipientContact");
+
+  setText_(
+    "previewDate",
+    formatDate_(letterDate)
+  );
+
+  setText_(
+    "previewSalutation",
+    finalSalutation
+  );
+
+  setText_(
+    "previewRecipient",
+    recipientName
+  );
+
+  setText_(
+    "previewRecipientInline",
+    recipientName
+  );
+
+  setText_(
+    "previewPosition",
+    recipientPosition
+  );
+
+  setText_(
+    "previewCompany",
+    companyName
+  );
+
+  setText_(
+    "previewAddress",
+    recipientAddress
+  );
+
+  setText_(
+    "previewContactPerson",
+    recipientName
+  );
+
+  setText_(
+    "previewContactNumber",
+    recipientContact
+  );
+
+  setText_(
+    "previewControlNumber",
+    generateControlNumber_()
+  );
+}
+
+function downloadSolicitationImage() {
+  const letter = document.getElementById("solicitationPreview");
+
+  html2canvas(letter, {
+    scale: 3,
+    backgroundColor: "#ffffff"
+  }).then((canvas) => {
+    const link = document.createElement("a");
+    link.download = "TOH-Solicitation.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
+}
 
 /*************************************************
- * SUBMIT REQUEST
+ * HELPERS
  *************************************************/
 
-async function submitSolicitationRequest_(e) {
+function getValue_(id) {
+  const el = document.getElementById(id);
+  return el ? String(el.value || "").trim() : "";
+}
 
-  e.preventDefault();
+function setText_(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
 
-  try {
+function formatDate_(value) {
+  if (!value) return "";
 
-    const payload = {
+  const date = new Date(value + "T00:00:00");
 
-      action:
-        "submitSolicitationRequest",
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+}
 
-      letterDate:
-        document.getElementById(
-          "letterDate"
-        ).value,
+function generateControlNumber_() {
+  const saved =
+    sessionStorage.getItem("tohSolicitationControlNo");
 
-      recipientName:
-        document.getElementById(
-          "recipientName"
-        ).value,
+  if (saved) return saved;
 
-      recipientPosition:
-        document.getElementById(
-          "recipientPosition"
-        ).value,
+  const now = new Date();
 
-      companyName:
-        document.getElementById(
-          "companyName"
-        ).value,
+  const number =
+    "TOH-" +
+    now.getFullYear() +
+    "-" +
+    String(Math.floor(1000 + Math.random() * 9000));
 
-      salutation:
-        document.getElementById(
-          "salutation"
-        ).value,
+  sessionStorage.setItem(
+    "tohSolicitationControlNo",
+    number
+  );
 
-      contactPerson:
-        document.getElementById(
-          "contactPerson"
-        ).value,
+  return number;
+}
 
-      contactNumber:
-        document.getElementById(
-          "contactNumber"
-        ).value,
+/*************************************************
+ * HELPERS
+ *************************************************/
 
-      requestedItems:
-        document.getElementById(
-          "requestedItems"
-        ).value,
+function getValue_(id) {
+  const el = document.getElementById(id);
+  return el ? String(el.value || "").trim() : "";
+}
 
-      messageBody:
-        document.getElementById(
-          "messageBody"
-        ).value
-    };
+function setText_(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
 
-    const response =
-      await fetch(API_URL, {
+function formatDate_(value) {
+  if (!value) return "";
 
-        method: "POST",
+  const date = new Date(value + "T00:00:00");
 
-        headers: {
-          "Content-Type":
-            "application/json"
-        },
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+}
 
-        body:
-          JSON.stringify(payload)
-      });
+function generateControlNumber_() {
+  const saved =
+    sessionStorage.getItem("tohSolicitationControlNo");
 
-    const result =
-      await response.json();
+  if (saved) return saved;
 
-    if (!result.success) {
+  const now = new Date();
 
-      alert(
-        result.message ||
-        "Submission failed."
-      );
+  const number =
+    "TOH-" +
+    now.getFullYear() +
+    "-" +
+    String(Math.floor(1000 + Math.random() * 9000));
 
-      return;
-    }
+  sessionStorage.setItem(
+    "tohSolicitationControlNo",
+    number
+  );
 
-    document.getElementById(
-      "successMessage"
-    ).style.display = "block";
-
-    document.getElementById(
-      "solicitationForm"
-    ).reset();
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-
-  } catch (err) {
-
-    console.error(err);
-
-    alert(
-      "Server connection failed."
-    );
-  }
+  return number;
 }

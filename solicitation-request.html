@@ -2,41 +2,66 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOH Solicitation Request</title>
-
-    <link rel="stylesheet" href="assets/css/main.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TOH Solicitation Generator</title>
 
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
             margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f8fb;
+            color: #123;
         }
 
-        .request-container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: #fff;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+        .page-wrap {
+            padding: 40px 20px;
         }
 
-        .request-header {
+        .generator-card {
+            max-width: 1400px;
+            margin: auto;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .generator-header {
+            background: linear-gradient(135deg, #0b5d7a, #17a2b8);
+            color: white;
+            padding: 40px;
             text-align: center;
-            margin-bottom: 30px;
         }
 
-        .request-header h1 {
-            color: #0b4f6c;
-            margin-bottom: 10px;
+        .generator-header h1 {
+            margin: 0;
+            font-size: 42px;
         }
 
-        .request-header p {
-            color: #555;
+        .generator-header p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .generator-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .form-section,
+        .preview-section {
+            background: #f9fcff;
+            border-radius: 18px;
+            padding: 25px;
+            border: 1px solid #dce8f0;
+        }
+
+        .form-section h2 {
+            margin-top: 0;
+            color: #0b5d7a;
         }
 
         .form-group {
@@ -45,141 +70,474 @@
 
         .form-group label {
             display: block;
-            font-weight: bold;
             margin-bottom: 8px;
-            color: #333;
+            font-weight: bold;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #cbd8df;
             font-size: 15px;
             box-sizing: border-box;
         }
 
         textarea {
-            resize: vertical;
             min-height: 120px;
+            resize: vertical;
         }
 
-        .submit-btn {
+        .generate-btn,
+        .print-btn {
             width: 100%;
-            background: #0b4f6c;
-            color: #fff;
             border: none;
-            padding: 15px;
-            border-radius: 12px;
+            padding: 16px;
+            border-radius: 14px;
             font-size: 16px;
-            cursor: pointer;
             font-weight: bold;
+            cursor: pointer;
+            color: white;
         }
 
-        .submit-btn:hover {
-            background: #08384d;
+        .generate-btn {
+            background: #0b5d7a;
         }
 
-        .success-message {
-            display: none;
+        .print-btn {
             margin-top: 20px;
-            background: #dff6e4;
-            color: #207245;
-            padding: 15px;
-            border-radius: 10px;
+            background: #17a2b8;
+        }
+
+        .solicitation-preview {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding:
+                24px 28px;
+
+            min-height: auto;
+
+            max-width: 720px;
+
+            margin: auto;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.05);
+
+            font-size: 13px;
+
+            line-height: 1.35;
+        }
+
+        .solicitation-preview h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .solicitation-preview p {
+
+            margin:
+                7px 0;
+
+            line-height:
+                1.15;
+        }
+
+        @media(max-width:1000px) {
+
+            .generator-body {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media print {
+
+            body * {
+                visibility: hidden;
+            }
+
+            .solicitation-preview,
+            .solicitation-preview * {
+                visibility: visible;
+            }
+
+            .solicitation-preview {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                box-shadow: none;
+            }
+
         }
     </style>
+
 </head>
 
 <body>
+    <div class="page-wrap">
 
-    <div class="request-container">
+        <div class="generator-card">
 
-        <div class="request-header">
-            <h1>Solicitation Request Form</h1>
+            <div class="generator-header">
 
-            <p>
-                Submit sponsorship and solicitation requests
-                for approval by the Tides of Hope Secretary Office.
-            </p>
+                <h1>
+                    Tides of Hope Inc.
+                </h1>
+
+                <p>
+                    Instant Solicitation Letter Generator
+                </p>
+
+            </div>
+
+            <div class="generator-body">
+
+                <!-- LEFT -->
+                <div class="form-section">
+
+                    <h2>Fill-Up Information</h2>
+
+                    <div class="form-group">
+                        <label>Letter Date</label>
+                        <input type="date" id="letterDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Requested By</label>
+
+                        <input type="text" id="requestedBy" placeholder="Name of requesting TOH member" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Requester Contact Number</label>
+
+                        <input type="text" id="requesterContact" placeholder="Required for tracing and verification"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Recipient Name</label>
+                        <input type="text" id="recipientName">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Recipient Position</label>
+                        <input type="text" id="recipientPosition">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Company / Organization</label>
+                        <input type="text" id="companyName">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" id="recipientAddress" placeholder="Optional">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Salutation</label>
+
+                        <select id="salutation">
+                            <option>Mr./Ms.</option>
+                            <option>Hon.</option>
+                            <option>Dr.</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>If Other</label>
+
+                        <input type="text" id="otherSalutation" placeholder="Example: Engr., Atty., Rev.">
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            Recipient Contact Number
+                            <span style="font-weight:normal;">
+                                (optional)
+                            </span>
+                        </label>
+
+                        <input type="text" id="recipientContact" placeholder="Optional">
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Requested Support</label>
+
+                        <div class="support-options">
+
+                            <label>
+                                <input type="checkbox" class="support-checkbox" value="Financial Assistance">
+                                Financial Assistance
+                            </label>
+
+                            <label>
+                                <input type="checkbox" class="support-checkbox" value="Medical Supplies / Medicines">
+                                Medical Supplies / Medicines
+                            </label>
+
+                            <label>
+                                <input type="checkbox" class="support-checkbox" value="Volunteer or Medical Support">
+                                Volunteer or Medical Support
+                            </label>
+
+                            <label>
+                                <input type="checkbox" class="support-checkbox"
+                                    value="Transportation / Event Logistics">
+                                Transportation / Event Logistics
+                            </label>
+
+                            <label>
+                                <input type="checkbox" class="support-checkbox" value="Community Partnership">
+                                Community Partnership
+                            </label>
+
+                            <label>
+                                <input type="checkbox" class="support-checkbox" value="Other Support">
+                                Other Support
+                            </label>
+
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Purpose / Notes</label>
+
+                        <textarea id="purposeNotes" placeholder="Additional notes or purpose"></textarea>
+                    </div>
+
+
+                </div>
+
+                <!-- RIGHT -->
+                <div class="preview-section">
+
+                    <div class="solicitation-preview" id="solicitationPreview">
+
+                        <div id="previewLetterContent">
+
+                            <div style="text-align:center;">
+
+                                <img src="round-logo.png" alt="Tides of Hope Logo" style="
+            width:90px;
+            height:90px;
+            object-fit:contain;
+            margin-bottom:10px;
+        ">
+
+                                <h2 style="
+        margin-bottom:5px;
+        margin-top:0;
+    ">
+                                    Tides of Hope Inc.
+                                </h2>
+
+                                <p style="margin:0;">
+                                    Rizal St., Brgy. West, Ormoc City 6541
+                                </p>
+
+                                <p style="margin:5px 0;">
+                                    0915 845 7720 | 0936 970 2476
+                                </p>
+
+                                <p style="margin-top:0;">
+                                    admin@tidesofhopeinc.org
+                                </p>
+
+                            </div>
+
+                            <br>
+
+                            <p>
+                                <strong>
+                                    Control No:
+                                </strong>
+
+                                <span id="previewControlNumber">
+                                    TOH-2026-0001
+                                </span>
+                            </p>
+
+                            <p id="previewDate">
+                                May 25, 2026
+                            </p>
+
+                            <br>
+
+                            <p>
+                                <span id="previewSalutation">
+                                    Mr./Ms.
+                                </span>
+
+                                <span id="previewRecipient">
+                                    Juan Dela Cruz
+                                </span>
+                            </p>
+
+                            <p id="previewPosition">
+                                Manager
+                            </p>
+
+                            <p id="previewCompany">
+                                ABC Corporation
+                            </p>
+
+
+                            <p id="previewAddress">
+                                {{Address}}
+                            </p>
+
+                            <br>
+
+                            <p>
+                                <strong>
+                                    Subject:
+                                </strong>
+
+                                Medical Mission Sponsorship & Partnership Program
+                            </p>
+
+                            <p>
+                                Dear
+                                <span id="previewRecipientInline">
+                                    Juan Dela Cruz
+                                </span>,
+                            </p>
+
+                            <p>
+                                Warm greetings from Tides of Hope Inc.
+                            </p>
+
+                            <p>
+                                We respectfully seek your support for our upcoming
+                                Medical Mission Sponsorship & Partnership Program
+                                to be held on July 2–3, 2026 in Ormoc City.
+                                This initiative aims to provide free medical services,
+                                especially for Solo Parents and Senior Citizens in our community.
+                            </p>
+
+                            <p>
+                                In line with this, we humbly invite your office
+                                to become one of our valued partners through
+                                any form of support, such as:
+                            </p>
+
+                            <div style="
+                display:grid;
+                grid-template-columns:1fr 1fr;
+                gap:10px;
+                margin:20px 0;
+            ">
+
+                                <div>
+                                    ☐ Financial Assistance<br>
+                                    ☐ Medical Supplies / Medicines<br>
+                                    ☐ Volunteer or Medical Support
+                                </div>
+
+                                <div>
+                                    ☐ Transportation / Event Logistics<br>
+                                    ☐ Community Partnership<br>
+                                    ☐ Other Support
+                                </div>
+
+                            </div>
+
+                            <p>
+                                Your generosity will greatly contribute to the success
+                                of this mission and will directly help individuals
+                                in need of care and support.
+                            </p>
+
+                            <p>
+                                As our valued partner, your support will also be
+                                acknowledged during the event and in our official materials.
+                            </p>
+
+                            <p>
+                                We sincerely hope for your favorable response and partnership
+                                in this meaningful cause. Thank you very much for your time,
+                                generosity, and continued commitment to community service.
+                            </p>
+
+                            <br>
+
+                            <p style="margin-bottom:8px;">
+                                Respectfully yours,
+                            </p>
+
+                            <div style="margin-top:0;">
+
+                                <img src="sgd.png" alt="Signature" style="
+            width:90px;
+            margin-bottom:-20px;
+        ">
+
+                                <br>
+
+                                <strong>
+                                    Agnes Desiree Escaño Desquitado
+                                </strong>
+
+                                <br>
+
+                                President
+
+                                <br>
+
+                                Tides of Hope Inc.
+
+                            </div>
+
+
+                            <p>
+                                Contact Person:
+                                <span id="previewContactPerson">
+                                    Olivia T. Saavedra
+                                </span>
+                            </p>
+
+                            <p>
+                                Contact Number:
+                                <span id="previewContactNumber">
+                                    09338683627
+                                </span>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <button class="print-btn" onclick="window.print()">
+
+                        Print / Save PDF
+
+                    </button>
+
+                    <button class="print-btn" onclick="downloadSolicitationImage()">
+                        Download Image
+                    </button>
+
+                </div>
+
+            </div>
+
         </div>
-
-        <form id="solicitationForm">
-
-            <div class="form-group">
-                <label>Letter Date</label>
-                <input type="date" id="letterDate" required>
-            </div>
-
-            <div class="form-group">
-                <label>Recipient Name</label>
-                <input type="text" id="recipientName" required>
-            </div>
-
-            <div class="form-group">
-                <label>Recipient Position</label>
-                <input type="text" id="recipientPosition">
-            </div>
-
-            <div class="form-group">
-                <label>Company / Organization</label>
-                <input type="text" id="companyName" required>
-            </div>
-
-            <div class="form-group">
-                <label>Salutation</label>
-
-                <select id="salutation">
-                    <option value="">None</option>
-                    <option>Hon.</option>
-                    <option>Mr.</option>
-                    <option>Ms.</option>
-                    <option>Mrs.</option>
-                    <option>Dr.</option>
-                    <option>Atty.</option>
-                    <option>Engr.</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Contact Person</label>
-                <input type="text" id="contactPerson" required>
-            </div>
-
-            <div class="form-group">
-                <label>Contact Number</label>
-                <input type="text" id="contactNumber" required>
-            </div>
-
-            <div class="form-group">
-                <label>Requested Support</label>
-
-                <textarea id="requestedItems"
-                    placeholder="Example: Financial assistance, medicines, transportation support..."></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>Purpose / Notes</label>
-
-                <textarea id="messageBody"
-                    placeholder="Additional message or purpose..."></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">
-                Submit Solicitation Request
-            </button>
-
-            <div class="success-message" id="successMessage">
-                Solicitation request submitted successfully.
-            </div>
-
-        </form>
 
     </div>
 
     <script src="assets/js/solicitation-request.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 </body>
 
