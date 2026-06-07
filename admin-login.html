@@ -2,183 +2,170 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Access | Tides of Hope</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Member & Office Login | Tides of Hope</title>
+
+  <meta
+    name="description"
+    content="Tides of Hope Incorporated secure member and office access portal."
+  />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="index.html" class="brand">
-      <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo">
-      <div class="brand-text">
-        <span class="brand-title">Tides of Hope</span>
-        <span class="brand-subtitle">Incorporated</span>
-      </div>
-    </a>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
 
-    <nav class="site-nav">
-      <a href="index.html">Home</a>
-      <a href="membership.html">Membership</a>
-      <a href="contact.html">Contact</a>
-      <a href="donate.html" class="nav-cta">Support Us</a>
-    </nav>
-  </div>
-</header>
+      <a href="index.html" class="brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-title">Tides of Hope</span>
+          <span class="brand-subtitle">Incorporated</span>
+        </div>
+      </a>
 
-<main class="admin-login-page">
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="membership.html">Membership</a>
+        <a href="contact.html">Contact</a>
+        <a href="donate.html" class="nav-cta">Support Us</a>
+      </nav>
 
-  <section class="admin-hero">
-    <div class="container">
-      <span class="section-tag">Office Access</span>
-      <h1>Admin Access Portal</h1>
-      <p>
-        Authorized personnel only. Access internal systems, uploads, and document tools.
-      </p>
     </div>
-  </section>
+  </header>
 
-  <section class="admin-login-section">
-    <div class="container">
-      <div class="admin-card">
+  <!-- MAIN -->
+  <main class="admin-login-page">
 
-        <h2>Secure Login</h2>
-        <p>Enter your access credentials to continue.</p>
-
-        <form id="adminLoginForm" class="admin-login-form">
-          <input
-            type="email"
-            id="adminEmail"
-            class="admin-input"
-            placeholder="Admin Email"
-            autocomplete="username"
-            required
-          />
-
-          <input
-            type="password"
-            id="adminPassword"
-            class="admin-input"
-            placeholder="Password"
-            autocomplete="current-password"
-            required
-          />
-
-          <button type="submit" class="admin-btn">
-            Access Office Portal
-          </button>
-
-          <p id="adminLoginMessage" class="admin-login-message"></p>
-        </form>
-
-        <p class="admin-note">
-          This browser login is for portal access control only. Official content publishing is still controlled by the office system and Apps Script backend.
+    <section class="admin-hero">
+      <div class="container">
+        <span class="section-tag">Secure Access</span>
+        <h1>Member & Office Login</h1>
+        <p>
+          Authorized Tides of Hope members, officers, and administrators may access
+          the internal portal using their registered email address.
         </p>
+      </div>
+    </section>
 
+    <section class="admin-login-section">
+      <div class="container">
+        <div class="admin-card">
+
+          <h2>Login to Portal</h2>
+          <p>
+            Use your registered email address and password to continue.
+          </p>
+
+          <form id="adminLoginForm" class="admin-login-form">
+
+            <input
+              type="email"
+              id="adminEmail"
+              class="admin-input"
+              placeholder="Email Address"
+              autocomplete="username"
+              required
+            />
+
+            <div class="password-field">
+              <input
+                type="password"
+                id="adminPassword"
+                class="admin-input password-input"
+                placeholder="Password"
+                autocomplete="current-password"
+                required
+              />
+
+              <button
+                type="button"
+                class="password-toggle"
+                id="passwordToggle"
+                aria-label="Show password"
+              >
+                👁
+              </button>
+            </div>
+
+            <button type="submit" class="admin-btn">
+              Login
+            </button>
+
+            <p id="adminLoginMessage" class="admin-login-message"></p>
+
+            <div class="login-help-links">
+              <a href="change-password.html">Change Password</a>
+              <span>•</span>
+              <a href="forgot-password.html">Forgot Password?</a>
+            </div>
+
+          </form>
+
+          <p class="admin-note">
+            For privacy and security, please change your temporary password after
+            your first login. Your password is for your own access only.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo" />
+        <h3>Tides of Hope Incorporated</h3>
+        <p>Serving with compassion, building with hope.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="donate.html">Donate</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p>Email: admin@tidesofhopeinc.org</p>
+      </div>
+
+    </div>
+
+    <div class="footer-credit">
+      <div class="container footer-credit-inner">
+        <p>
+          Powered by <strong>BuildFrame Digital System</strong>
+          <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
+        </p>
       </div>
     </div>
-  </section>
+  </footer>
 
-</main>
+ <button
+  class="bubble-chat-button"
+  id="bubbleChatButton"
+  aria-label="Contact Tides of Hope"
+>
+  <img
+    src="round-logo.png"
+    alt="Tides of Hope"
+    class="bubble-chat-logo"
+  />
+</button>
 
-<footer class="site-footer">
-  <div class="container footer-grid">
-
-    <div class="footer-brand">
-      <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo">
-      <h3>Tides of Hope Incorporated</h3>
-      <p>Serving with compassion, building with hope.</p>
-    </div>
-
-    <div class="footer-column">
-      <h4>Quick Links</h4>
-      <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="membership.html">Membership</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="donate.html">Donate</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-column">
-      <h4>Contact</h4>
-      <p>admin@tidesofhopeinc.org</p>
-    </div>
-
-  </div>
-
-  <div class="footer-credit">
-    <div class="container footer-credit-inner">
-      <p>
-        Powered by <strong>BuildFrame Digital System</strong>
-        <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
-      </p>
-    </div>
-  </div>
-</footer>
-
-<button class="bubble-chat-button" id="bubbleChatButton" aria-label="Open chat support">💬</button>
-
-<script>
-const ADMIN_EMAIL = "admin@tidesofhopeinc.org";
-
-const ROLE_PASSWORDS = {
-  admin: "@TidesOfHope!!062476",
-  president: "@TOHPres@0246",
-  secretary: "@TOHSec@0135",
-  treasurer: "@TOHTreas@0876"
-};
-
-const adminLoginForm = document.getElementById("adminLoginForm");
-const adminLoginMessage = document.getElementById("adminLoginMessage");
-
-adminLoginForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const email = document.getElementById("adminEmail").value.trim();
-  const password = document.getElementById("adminPassword").value.trim();
-
-  adminLoginMessage.textContent = "";
-  adminLoginMessage.style.color = "red";
-
-  if (email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
-    adminLoginMessage.textContent = "Invalid email.";
-    return;
-  }
-
-  let matchedRole = "";
-
-  Object.keys(ROLE_PASSWORDS).forEach((role) => {
-    if (password === ROLE_PASSWORDS[role]) {
-      matchedRole = role;
-    }
-  });
-
-  if (!matchedRole) {
-    adminLoginMessage.textContent = "Invalid password.";
-    return;
-  }
-
-  sessionStorage.setItem("tohAdminLoggedIn", "true");
-  sessionStorage.setItem("tohAdminEmail", email);
-  sessionStorage.setItem("tohAdminRole", matchedRole);
-
-  adminLoginMessage.textContent = "Login successful. Redirecting...";
-  adminLoginMessage.style.color = "green";
-
-  setTimeout(() => {
-    window.location.href = "office-portal.html";
-  }, 700);
-});
-
-const bubbleChatButton = document.getElementById("bubbleChatButton");
-if (bubbleChatButton) {
-  bubbleChatButton.addEventListener("click", () => {
-    window.open("https://www.facebook.com/profile.php?id=61582551795734", "_blank");
-  });
-}
-</script>
-
+  <script src="admin-login.js"></script>
 </body>
 </html>

@@ -2,16 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>President's Corner Upload | Tides of Hope</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
     <a href="index.html" class="brand">
-      <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo" />
       <div class="brand-text">
         <span class="brand-title">Tides of Hope</span>
         <span class="brand-subtitle">Incorporated</span>
@@ -32,7 +34,9 @@
     <div class="container">
       <span class="section-tag">Leadership Upload Tool</span>
       <h1>President’s Corner</h1>
-      <p>Publish the latest leadership message for the homepage President’s Corner.</p>
+      <p>
+        This page is restricted to the current President of Tides of Hope Incorporated.
+      </p>
     </div>
   </section>
 
@@ -41,18 +45,45 @@
       <div class="admin-card">
 
         <h2>Create President Message</h2>
-        <p>Fill out the details below to publish the latest leadership message.</p>
+        <p>Publish the latest leadership message for the homepage President’s Corner.</p>
 
         <form id="presidentUploadForm" class="admin-login-form">
-          <input type="text" id="presidentTitle" class="admin-input" placeholder="Title" value="President’s Message" />
-          <input type="text" id="presidentAuthor" class="admin-input" placeholder="Author" value="Office of the President" />
+          <input
+            type="text"
+            id="presidentTitle"
+            class="admin-input"
+            placeholder="Title"
+            value="President’s Message"
+            required
+          />
 
-          <textarea id="presidentMessageText" class="admin-input admin-textarea" placeholder="Write the president's message" rows="8" required></textarea>
+          <input
+            type="text"
+            id="presidentAuthor"
+            class="admin-input"
+            placeholder="Author"
+            value="Office of the President"
+            required
+          />
 
-          <button type="submit" class="admin-btn">Publish President Message</button>
+          <textarea
+            id="presidentMessageText"
+            class="admin-input admin-textarea"
+            placeholder="Write the president's message"
+            rows="8"
+            required
+          ></textarea>
+
+          <button type="submit" class="admin-btn">
+            Publish President Message
+          </button>
 
           <p id="presidentUploadMessage" class="admin-login-message"></p>
         </form>
+
+        <p class="admin-note">
+          Only the current President account may publish or update this section.
+        </p>
 
       </div>
     </div>
@@ -63,46 +94,106 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo" />
       <h3>Tides of Hope Incorporated</h3>
       <p>Serving with compassion, building with hope.</p>
     </div>
   </div>
+
+  <div class="footer-credit">
+    <div class="container footer-credit-inner">
+      <p>
+        Powered by <strong>BuildFrame Digital System</strong>
+        <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
+      </p>
+    </div>
+  </div>
 </footer>
 
+<button
+  class="bubble-chat-button"
+  id="bubbleChatButton"
+  aria-label="Contact Tides of Hope"
+>
+  <img src="round-logo.png" alt="Tides of Hope Logo" class="bubble-chat-logo" />
+</button>
+
 <script>
-if (sessionStorage.getItem("tohAdminLoggedIn") !== "true") {
+const CURRENT_PRESIDENT_EMAIL = "agnesdesiree65@gmail.com";
+
+const loggedIn =
+  sessionStorage.getItem("tohLoggedIn") === "true" ||
+  sessionStorage.getItem("tohAdminLoggedIn") === "true";
+
+const userEmail = String(
+  sessionStorage.getItem("tohUserEmail") ||
+  sessionStorage.getItem("tohAdminEmail") ||
+  ""
+).toLowerCase();
+
+const userRole = String(
+  sessionStorage.getItem("tohUserRole") ||
+  sessionStorage.getItem("tohAdminRole") ||
+  ""
+).toLowerCase();
+
+if (!loggedIn) {
   window.location.href = "admin-login.html";
 }
 
-const role = sessionStorage.getItem("tohAdminRole") || "";
-if (!["admin", "president"].includes(role)) {
-  alert("You do not have access to this page.");
+if (
+  userEmail !== CURRENT_PRESIDENT_EMAIL ||
+  userRole !== "president"
+) {
+  alert("This page is restricted to the current President only.");
   window.location.href = "office-portal.html";
 }
 
-document.getElementById("presidentLogoutBtn").addEventListener("click", function(e) {
-  e.preventDefault();
-  sessionStorage.clear();
-  window.location.href = "admin-login.html";
-});
+const presidentLogoutBtn = document.getElementById("presidentLogoutBtn");
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwn-Uwujakfbo2uR8G-9j30yW5z0UJK7oRkx1G5LyRVKWqpNCq9D13OlSSlRNIbG4dB/exec";
+if (presidentLogoutBtn) {
+  presidentLogoutBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    sessionStorage.clear();
+    window.location.href = "admin-login.html";
+  });
+}
+
+const WEB_APP_URL =
+  "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+
 const presidentUploadForm = document.getElementById("presidentUploadForm");
 const presidentUploadMessage = document.getElementById("presidentUploadMessage");
+
+function showPresidentMessage(message, type) {
+  presidentUploadMessage.textContent = message;
+  presidentUploadMessage.classList.remove("error", "success");
+
+  if (type) {
+    presidentUploadMessage.classList.add(type);
+  }
+}
 
 presidentUploadForm.addEventListener("submit", async function(e) {
   e.preventDefault();
 
-  presidentUploadMessage.textContent = "Publishing... please wait.";
-  presidentUploadMessage.style.color = "#0d3b66";
+  const title = document.getElementById("presidentTitle").value.trim();
+  const author = document.getElementById("presidentAuthor").value.trim();
+  const message = document.getElementById("presidentMessageText").value.trim();
+
+  if (!title || !author || !message) {
+    showPresidentMessage("Please complete all fields.", "error");
+    return;
+  }
+
+  showPresidentMessage("Publishing... please wait.", "");
 
   const payload = {
     action: "submitPresidentMessage",
-    title: document.getElementById("presidentTitle").value.trim(),
-    author: document.getElementById("presidentAuthor").value.trim(),
-    message: document.getElementById("presidentMessageText").value.trim(),
-    uploadedBy: sessionStorage.getItem("tohAdminEmail") || "admin@tidesofhopeinc.org"
+    title: title,
+    author: author,
+    message: message,
+    uploadedBy: userEmail
   };
 
   try {
@@ -114,20 +205,30 @@ presidentUploadForm.addEventListener("submit", async function(e) {
     const result = await response.json();
 
     if (result.success) {
-      presidentUploadMessage.textContent = "President message published successfully.";
-      presidentUploadMessage.style.color = "green";
+      showPresidentMessage("President message published successfully.", "success");
+
       presidentUploadForm.reset();
       document.getElementById("presidentTitle").value = "President’s Message";
       document.getElementById("presidentAuthor").value = "Office of the President";
     } else {
-      presidentUploadMessage.textContent = result.message || "Publishing failed.";
-      presidentUploadMessage.style.color = "red";
+      showPresidentMessage(result.message || "Publishing failed.", "error");
     }
+
   } catch (error) {
-    presidentUploadMessage.textContent = "Publishing failed. Please check your Web App deployment.";
-    presidentUploadMessage.style.color = "red";
+    showPresidentMessage(
+      "Publishing failed. Please check your Web App deployment.",
+      "error"
+    );
   }
 });
+
+const bubbleChatButton = document.getElementById("bubbleChatButton");
+
+if (bubbleChatButton) {
+  bubbleChatButton.addEventListener("click", () => {
+    window.open("https://www.facebook.com/share/1J3FyRocdZ/", "_blank");
+  });
+}
 </script>
 
 </body>

@@ -130,9 +130,18 @@
   </div>
 </footer>
 
-<button class="bubble-chat-button" id="bubbleChatButton" aria-label="Open chat support">💬</button>
+<button
+  class="bubble-chat-button"
+  id="bubbleChatButton"
+  aria-label="Contact Tides of Hope"
+>
+  <img
+    src="round-logo.png"
+    alt="Tides of Hope Logo"
+    class="bubble-chat-logo"
+  />
+</button>
 
-<script>
 if (sessionStorage.getItem("tohAdminLoggedIn") !== "true") {
   window.location.href = "admin-login.html";
 }
@@ -143,7 +152,7 @@ document.getElementById("galleryLogoutBtn").addEventListener("click", function(e
   window.location.href = "admin-login.html";
 });
 
-const GALLERY_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwn-Uwujakfbo2uR8G-9j30yW5z0UJK7oRkx1G5LyRVKWqpNCq9D13OlSSlRNIbG4dB/exec";
+const GALLERY_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
 
 const galleryUploadForm = document.getElementById("galleryUploadForm");
 const galleryUploadMessage = document.getElementById("galleryUploadMessage");
@@ -222,7 +231,7 @@ galleryUploadForm.addEventListener("submit", async function(e) {
 const bubbleChatButton = document.getElementById("bubbleChatButton");
 if (bubbleChatButton) {
   bubbleChatButton.addEventListener("click", () => {
-    window.open("https://www.facebook.com/profile.php?id=61582551795734", "_blank");
+    window.open("https://www.facebook.com/share/1J3FyRocdZ/", "_blank");
   });
 }
 </script>

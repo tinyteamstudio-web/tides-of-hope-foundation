@@ -2,7 +2,7 @@
    TIDES OF HOPE - HOMEPAGE / SUBPAGE SCRIPT
 ========================================= */
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwn-Uwujakfbo2uR8G-9j30yW5z0UJK7oRkx1G5LyRVKWqpNCq9D13OlSSlRNIbG4dB/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
 
 /* =========================
    MOBILE MENU
@@ -675,7 +675,7 @@ async function loadGratitudePosts() {
 const bubbleChatButton = document.getElementById("bubbleChatButton");
 if (bubbleChatButton) {
   bubbleChatButton.addEventListener("click", () => {
-    window.open("https://www.facebook.com/profile.php?id=61573627290922", "_blank");
+    window.open("https://www.facebook.com/share/1J3FyRocdZ/", "_blank");
   });
 }
 
