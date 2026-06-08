@@ -1496,6 +1496,7 @@ section {
   background: linear-gradient(180deg, #ffffff 0%, #f8fcfd 100%);
 }
 
+
 /* =========================
    GET INVOLVED REFINEMENT
 ========================== */
@@ -2033,5 +2034,97 @@ section {
   100% {
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(72, 180, 200, 0);
+  }
+}
+
+.footer-column,
+.footer-column p,
+.footer-column h4,
+.footer-links a,
+.footer-brand h3,
+.footer-brand p,
+.footer-credit,
+.footer-credit p,
+.footer-credit-text {
+    color: #ffffff;
+}
+
+.footer-column a,
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-column a:hover,
+.footer-links a:hover {
+    color: #7de3ff;
+}
+
+.footer-column {
+    color: #ffffff;
+}
+
+.footer-column h4 {
+    color: #ffffff;
+}
+
+.footer-column p {
+    color: #ffffff;
+}
+
+.footer-column a {
+    color: #ffffff;
+}
+
+/* =========================
+   UPCOMING PROGRAMS
+========================= */
+
+.upcoming-programs-section {
+  background: linear-gradient(
+    180deg,
+    #f7fbfc 0%,
+    #edf8fb 100%
+  );
+}
+
+.upcoming-programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.upcoming-program-card {
+  background: #ffffff;
+  border: 1px solid var(--border-soft);
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.upcoming-program-card h3 {
+  color: var(--deep-blue);
+  margin-bottom: 10px;
+}
+
+.upcoming-program-date {
+  color: var(--teal);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.upcoming-program-location {
+  color: var(--text-soft);
+  margin-bottom: 10px;
+}
+
+.upcoming-program-card p {
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+@media (max-width: 860px) {
+  .upcoming-programs-grid {
+    grid-template-columns: 1fr;
   }
 }

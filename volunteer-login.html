@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Volunteer Login | Tides of Hope</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="volunteer-auth.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="round-logo.png" class="brand-logo" alt="Tides of Hope Logo" />
+      <div class="brand-text">
+        <span class="brand-title">Tides of Hope</span>
+        <span class="brand-subtitle">Volunteer Corner</span>
+      </div>
+    </a>
+
+    <nav class="site-nav">
+      <a href="index.html">Homepage</a>
+      <a href="volunteer-register.html" class="nav-cta">
+        Become a Volunteer
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main class="volunteer-auth-page">
+
+  <section class="volunteer-auth-card">
+
+    <span class="section-tag">
+      Volunteer Login
+    </span>
+
+    <h1>
+      Welcome Back Volunteer
+    </h1>
+
+    <p>
+      Login to access your volunteer profile,
+      community updates, gratitude wall,
+      stories, and future activities.
+    </p>
+
+    <form
+      id="volunteerLoginForm"
+      class="volunteer-auth-form"
+    >
+
+      <label>
+        Username
+        <input
+          type="text"
+          id="username"
+          required
+        />
+      </label>
+
+      <label>
+        Password
+        <input
+          type="password"
+          id="password"
+          required
+        />
+      </label>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+      >
+        Login
+      </button>
+
+      <p
+        id="loginMessage"
+        class="form-message"
+      ></p>
+
+    </form>
+
+  </section>
+
+</main>
+
+<footer class="site-footer">
+
+  <div class="footer-credit">
+    <div class="container footer-credit-inner">
+
+      <p>
+        Powered by
+        <strong>
+          BuildFrame Digital System
+        </strong>
+
+        <span class="footer-credit-text">
+          Website, Funnel and Platform Builder
+        </span>
+      </p>
+
+    </div>
+  </div>
+
+</footer>
+
+<script src="volunteer-auth.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+.system-page{
+    min-height:100vh;
+    background:#f8fbff;
+}
+
+.system-hero{
+    padding:80px 20px 40px;
+}
+
+.system-section{
+    padding:20px;
+}
+
+.system-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.system-card{
+    background:#fff;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.system-card h3{
+    margin-bottom:15px;
+}

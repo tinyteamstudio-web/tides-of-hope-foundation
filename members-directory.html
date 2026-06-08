@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Members Directory | Tides of Hope Incorporated</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="round-logo.png" class="brand-logo" alt="Tides of Hope Logo" />
+      <div class="brand-text">
+        <span class="brand-title">Tides of Hope</span>
+        <span class="brand-subtitle">Incorporated</span>
+      </div>
+    </a>
+
+    <nav class="site-nav">
+      <a href="index.html">Homepage</a>
+      <a href="office-portal.html">Office Portal</a>
+      <a href="#" id="logoutBtn" class="nav-cta">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<main class="office-portal-page">
+
+  <section class="office-portal-hero">
+    <div class="container">
+      <span class="section-tag">Member Directory</span>
+      <h1>Tides of Hope Members & Incorporators</h1>
+      <p>
+        View officers, board members, incorporators, and registered members of
+        Tides of Hope Incorporated.
+      </p>
+    </div>
+  </section>
+
+  <section class="office-portal-section">
+    <div class="container">
+
+      <div class="office-portal-topbar">
+        <h2>Directory Overview</h2>
+        <p id="directoryWelcomeText">Logged in</p>
+      </div>
+
+      <div class="office-portal-grid">
+
+        <article class="office-card">
+          <div class="office-card-icon">👑</div>
+          <h3>Officers</h3>
+          <p>President, Vice President, Secretary, Treasurer and Internal Auditor.</p>
+        </article>
+
+        <article class="office-card">
+          <div class="office-card-icon">🤝</div>
+          <h3>Board of Trustees</h3>
+          <p>View official Board of Trustee members.</p>
+        </article>
+
+        <article class="office-card">
+          <div class="office-card-icon">📜</div>
+          <h3>Incorporators</h3>
+          <p>View registered incorporators of Tides of Hope.</p>
+        </article>
+
+        <article class="office-card">
+          <div class="office-card-icon">👥</div>
+          <h3>Members</h3>
+          <p>View registered members and profiles.</p>
+        </article>
+
+        <article class="office-card">
+          <div class="office-card-icon">🔎</div>
+          <h3>Search Directory</h3>
+          <p>Search members, officers and incorporators.</p>
+        </article>
+
+        <article class="office-card">
+          <div class="office-card-icon">📇</div>
+          <h3>Member Profiles</h3>
+          <p>View individual member information.</p>
+        </article>
+
+      </div>
+
+      <div class="office-portal-topbar" style="margin-top: 42px;">
+        <h2>Registered Directory</h2>
+        <p>Private emails and passwords are hidden from this view.</p>
+      </div>
+
+      <div id="membersContainer" class="office-portal-grid">
+        <article class="office-card">
+          <div class="office-card-icon">⏳</div>
+          <h3>Loading Members...</h3>
+          <p>Please wait while the directory loads.</p>
+        </article>
+      </div>
+
+      <div class="center-action">
+        <a href="office-portal.html" class="btn btn-secondary">Back to Office Portal</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="round-logo.png" class="footer-logo" alt="Tides of Hope Logo" />
+      <h3>Tides of Hope Incorporated</h3>
+      <p>Serving with compassion, building with hope.</p>
+    </div>
+  </div>
+
+  <div class="footer-credit">
+    <div class="container footer-credit-inner">
+      <p>
+        Powered by <strong>BuildFrame Digital System</strong>
+        <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const WEB_APP_URL =
+  "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+
+const isLoggedIn =
+  sessionStorage.getItem("tohLoggedIn") === "true" ||
+  sessionStorage.getItem("tohAdminLoggedIn") === "true";
+
+if (!isLoggedIn) {
+  window.location.href = "admin-login.html";
+}
+
+const userEmail =
+  sessionStorage.getItem("tohUserEmail") ||
+  sessionStorage.getItem("tohAdminEmail") ||
+  "";
+
+const userRole =
+  sessionStorage.getItem("tohUserRole") ||
+  sessionStorage.getItem("tohAdminRole") ||
+  "Member";
+
+const directoryWelcomeText = document.getElementById("directoryWelcomeText");
+
+if (directoryWelcomeText) {
+  directoryWelcomeText.textContent =
+    "Logged in as " + userEmail + " (" + userRole + ")";
+}
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    sessionStorage.clear();
+    window.location.href = "admin-login.html";
+  });
+}
+
+function safeText(value) {
+  return String(value || "").trim();
+}
+
+function getDesignation(member) {
+  return [
+    member.PrimaryRole,
+    member.Designation1,
+    member.Designation2,
+    member.Designation3
+  ]
+    .filter(Boolean)
+    .join(" • ");
+}
+
+async function loadMembersDirectory() {
+  const container = document.getElementById("membersContainer");
+
+  if (!container) return;
+
+  try {
+    const response = await fetch(
+      WEB_APP_URL + "?action=getMembersDirectory"
+    );
+
+    const data = await response.json();
+
+    if (!data.success || !Array.isArray(data.members) || data.members.length === 0) {
+      container.innerHTML = `
+        <article class="office-card">
+          <div class="office-card-icon">📭</div>
+          <h3>No Members Found</h3>
+          <p>No active members are available in the directory yet.</p>
+        </article>
+      `;
+      return;
+    }
+
+    container.innerHTML = data.members.map(member => {
+      const photo = safeText(member.ProfilePhoto) || "round-logo.png";
+      const fullName = safeText(member.FullName) || "Unnamed Member";
+      const designation = getDesignation(member) || "Member";
+      const bio = safeText(member.Bio) || "No bio added yet.";
+
+      return `
+        <article class="office-card">
+          <div class="office-card-icon">
+            <img
+              src="${photo}"
+              alt="${fullName}"
+              style="width:72px;height:72px;border-radius:50%;object-fit:cover;"
+              onerror="this.src='round-logo.png';"
+            />
+          </div>
+
+          <h3>${fullName}</h3>
+          <p><strong>${designation}</strong></p>
+          <p>${bio}</p>
+        </article>
+      `;
+    }).join("");
+
+  } catch (error) {
+    container.innerHTML = `
+      <article class="office-card">
+        <div class="office-card-icon">⚠️</div>
+        <h3>Unable to Load Directory</h3>
+        <p>Please check the Web App deployment or internet connection.</p>
+      </article>
+    `;
+  }
+}
+
+loadMembersDirectory();
+</script>
+
+</body>
+</html>

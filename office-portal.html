@@ -6,6 +6,7 @@
   <title>Office Portal | Tides of Hope Incorporated</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
 <header class="site-header">
@@ -20,7 +21,7 @@
 
     <nav class="site-nav">
       <a href="index.html">Homepage</a>
-      <a href="admin-login.html">Admin Login</a>
+      <a href="admin-login.html">Login</a>
       <a href="#" id="adminLogoutBtn" class="nav-cta">Logout</a>
     </nav>
   </div>
@@ -40,63 +41,72 @@
     <div class="container">
 
       <div class="office-portal-topbar">
-        <h2>Admin Control Panel</h2>
-        <p id="officePortalWelcomeText">Logged in as administrator</p>
+        <h2>Member & Office Portal</h2>
+        <p id="officePortalWelcomeText">Logged in</p>
       </div>
 
       <div class="office-portal-grid">
 
-        <article class="office-card" id="presidentCard">
+        <article class="office-card">
           <div class="office-card-icon">👤</div>
-          <h3>President’s Corner</h3>
-          <p>Post leadership messages and official guidance for the homepage.</p>
+          <h3>President's Corner</h3>
+          <p>Official messages and guidance from the President.</p>
           <div class="office-card-actions">
             <a href="president-upload.html" class="btn btn-secondary">Open Tool</a>
           </div>
         </article>
 
-        <article class="office-card" id="secretaryCard">
-          <div class="office-card-icon">🧾</div>
-          <h3>Secretary System</h3>
-          <p>Manage letters, communications, and meeting documents in Google Sheets and Apps Script.</p>
-          <div class="office-card-actions">
-           <a href="secretary-portal.html" class="btn btn-secondary">Open Tool</a>
-          </div>
-        </article>
-
-        <article class="office-card" id="treasurerCard">
-          <div class="office-card-icon">📊</div>
-          <h3>Treasurer System</h3>
-          <p>Monitor donations, funds, summaries, reports, and finance-related workflows.</p>
-          <div class="office-card-actions">
-           <a href="treasurer-portal.html" class="btn btn-secondary">Open Tool</a>
-          </div>
-        </article>
-
-        <article class="office-card" id="announcementsCard">
+        <article class="office-card">
           <div class="office-card-icon">📢</div>
           <h3>Announcements</h3>
-          <p>Create and publish official website announcements for the homepage.</p>
+          <p>Create and publish official website announcements.</p>
           <div class="office-card-actions">
             <a href="announcements-upload.html" class="btn btn-secondary">Open Tool</a>
           </div>
         </article>
 
-        <article class="office-card" id="galleryCard">
+        <article class="office-card">
+          <div class="office-card-icon">🤝</div>
+          <h3>Partnership & Sponsorship</h3>
+          <p>Manage sponsorship requests and partnership initiatives.</p>
+          <div class="office-card-actions">
+            <a href="partnership-portal.html" class="btn btn-secondary">Open Tool</a>
+          </div>
+        </article>
+
+        <article class="office-card">
           <div class="office-card-icon">🖼️</div>
-          <h3>Mini Gallery Uploads</h3>
-          <p>Upload official photos and videos for the homepage gallery and featured impact.</p>
+          <h3>Mini Gallery Events</h3>
+          <p>Upload official photos and videos from events and activities.</p>
           <div class="office-card-actions">
             <a href="gallery-upload.html" class="btn btn-secondary">Open Tool</a>
           </div>
         </article>
 
-        <article class="office-card" id="gratitudeCard">
+        <article class="office-card">
           <div class="office-card-icon">💙</div>
           <h3>Gratitude Wall</h3>
-          <p>Post appreciation messages and recognition notes for the homepage gratitude section.</p>
+          <p>Post appreciation and recognition messages.</p>
           <div class="office-card-actions">
             <a href="gratitude-upload.html" class="btn btn-secondary">Open Tool</a>
+          </div>
+        </article>
+
+        <article class="office-card">
+          <div class="office-card-icon">👥</div>
+          <h3>Member Directory</h3>
+          <p>View members, incorporators and officers.</p>
+          <div class="office-card-actions">
+            <a href="members-directory.html" class="btn btn-secondary">Open Tool</a>
+          </div>
+        </article>
+
+        <article class="office-card">
+          <div class="office-card-icon">🙋</div>
+          <h3>Volunteer Portal</h3>
+          <p>Manage volunteers, assignments, activities, and participation records.</p>
+          <div class="office-card-actions">
+            <a href="volunteer-portal.html" class="btn btn-secondary">Open Tool</a>
           </div>
         </article>
 
@@ -114,42 +124,54 @@
       <p>Serving with compassion, building with hope.</p>
     </div>
   </div>
+
+  <div class="footer-credit">
+    <div class="container footer-credit-inner">
+      <p>
+        Powered by <strong>BuildFrame Digital System</strong>
+        <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
+      </p>
+    </div>
+  </div>
 </footer>
 
 <script>
-if (sessionStorage.getItem("tohAdminLoggedIn") !== "true") {
+const isLoggedIn =
+  sessionStorage.getItem("tohLoggedIn") === "true" ||
+  sessionStorage.getItem("tohAdminLoggedIn") === "true";
+
+if (!isLoggedIn) {
   window.location.href = "admin-login.html";
 }
 
-const adminEmail = sessionStorage.getItem("tohAdminEmail") || "admin@tidesofhopeinc.org";
-const adminRole = sessionStorage.getItem("tohAdminRole") || "admin";
+const userEmail =
+  sessionStorage.getItem("tohUserEmail") ||
+  sessionStorage.getItem("tohAdminEmail") ||
+  "";
+
+const userRole =
+  (
+    sessionStorage.getItem("tohUserRole") ||
+    sessionStorage.getItem("tohAdminRole") ||
+    "Member"
+  ).trim();
 
 const welcomeText = document.getElementById("officePortalWelcomeText");
+
 if (welcomeText) {
-  welcomeText.textContent = "Logged in as " + adminEmail + " (" + adminRole + ")";
+  welcomeText.textContent =
+    "Logged in as " + userEmail + " (" + userRole + ")";
 }
 
-document.getElementById("adminLogoutBtn").addEventListener("click", function(e) {
-  e.preventDefault();
-  sessionStorage.clear();
-  window.location.href = "admin-login.html";
-});
+const logoutBtn = document.getElementById("adminLogoutBtn");
 
-function hideIfUnauthorized(cardId, allowedRoles) {
-  const el = document.getElementById(cardId);
-  if (!el) return;
-  if (!allowedRoles.includes(adminRole)) {
-    el.style.display = "none";
-  }
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    sessionStorage.clear();
+    window.location.href = "admin-login.html";
+  });
 }
-
-hideIfUnauthorized("presidentCard", ["admin", "president"]);
-hideIfUnauthorized("secretaryCard", ["admin", "secretary"]);
-hideIfUnauthorized("treasurerCard", ["admin", "treasurer"]);
-
-hideIfUnauthorized("announcementsCard", ["admin", "president", "secretary"]);
-hideIfUnauthorized("galleryCard", ["admin", "president", "secretary"]);
-hideIfUnauthorized("gratitudeCard", ["admin", "president", "secretary"]);
 </script>
 
 </body>

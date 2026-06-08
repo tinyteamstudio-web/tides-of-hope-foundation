@@ -1,0 +1,325 @@
+/* =========================================================
+   TIDES OF HOPE - VOLUNTEER PORTAL
+   BuildFrame Digital System
+========================================================= */
+
+.volunteer-portal-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(45, 212, 191, 0.18), transparent 35%),
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.16), transparent 35%),
+    #f7fbff;
+}
+
+/* HERO */
+
+.volunteer-hero {
+  padding: 90px 0 70px;
+  background:
+    linear-gradient(135deg, rgba(7, 89, 133, 0.95), rgba(13, 148, 136, 0.92)),
+    url("round-logo.png");
+  background-repeat: no-repeat;
+  background-position: right 8% center;
+  background-size: 260px;
+  color: #ffffff;
+}
+
+.volunteer-hero h1 {
+  max-width: 850px;
+  margin: 14px 0 16px;
+  font-size: clamp(2.2rem, 5vw, 4.3rem);
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+
+.volunteer-hero p {
+  max-width: 720px;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* DASHBOARD */
+
+.volunteer-dashboard-section {
+  padding: 55px 0 35px;
+}
+
+.volunteer-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 26px;
+  padding: 24px;
+  border-radius: 26px;
+  background: #ffffff;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.12);
+}
+
+.volunteer-topbar h2 {
+  margin: 0 0 6px;
+  color: #0f172a;
+  font-size: 1.8rem;
+}
+
+.volunteer-topbar p {
+  margin: 0;
+  color: #64748b;
+}
+
+.volunteer-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.volunteer-stat-card {
+  padding: 24px;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid rgba(14, 165, 233, 0.12);
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.07);
+}
+
+.volunteer-stat-card span {
+  display: inline-flex;
+  width: 52px;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #e0f2fe, #ccfbf1);
+  font-size: 1.7rem;
+  margin-bottom: 16px;
+}
+
+.volunteer-stat-card h3 {
+  margin: 0 0 8px;
+  color: #0f172a;
+  font-size: 1.55rem;
+}
+
+.volunteer-stat-card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+/* DIRECTORY */
+
+.volunteer-directory-section {
+  padding: 45px 0;
+}
+
+.section-heading-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.section-heading-row h2 {
+  margin: 10px 0 8px;
+  color: #0f172a;
+  font-size: 2rem;
+}
+
+.section-heading-row p {
+  margin: 0;
+  color: #64748b;
+}
+
+.volunteer-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.volunteer-profile-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(14, 165, 233, 0.12);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.volunteer-profile-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 7px;
+  background: linear-gradient(90deg, #06b6d4, #14b8a6, #22c55e);
+}
+
+.volunteer-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.volunteer-avatar {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #e0f2fe, #ccfbf1);
+  border: 3px solid #ffffff;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.14);
+}
+
+.volunteer-avatar-placeholder {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.35rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.14);
+}
+
+.volunteer-profile-card h3 {
+  margin: 0 0 5px;
+  color: #0f172a;
+  font-size: 1.2rem;
+}
+
+.volunteer-role {
+  margin: 0;
+  color: #0284c7;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.volunteer-profile-card p {
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.volunteer-meta-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.volunteer-meta-item {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.volunteer-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.volunteer-badge {
+  display: inline-flex;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: #ecfeff;
+  color: #0e7490;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* COMMUNITY */
+
+.volunteer-community-section {
+  padding: 50px 0 80px;
+}
+
+.volunteer-community-section h2 {
+  margin: 10px 0 24px;
+  color: #0f172a;
+  font-size: 2rem;
+}
+
+.volunteer-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.volunteer-feature-card {
+  padding: 24px;
+  border-radius: 26px;
+  background:
+    linear-gradient(180deg, #ffffff, #f8fafc);
+  border: 1px solid rgba(14, 165, 233, 0.13);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.07);
+}
+
+.volunteer-feature-card h3 {
+  margin: 0 0 12px;
+  color: #0f172a;
+  font-size: 1.1rem;
+}
+
+.volunteer-feature-card p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* EMPTY / LOADING */
+
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 34px;
+  text-align: center;
+  border-radius: 24px;
+  background: #ffffff;
+  color: #64748b;
+  border: 1px dashed rgba(14, 165, 233, 0.35);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .volunteer-stats-grid,
+  .volunteer-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .volunteer-directory-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .volunteer-hero {
+    padding: 70px 0 55px;
+    background-size: 170px;
+    background-position: right -40px center;
+  }
+
+  .volunteer-topbar,
+  .section-heading-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .volunteer-stats-grid,
+  .volunteer-feature-grid,
+  .volunteer-directory-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .volunteer-profile-header {
+    align-items: flex-start;
+  }
+}
