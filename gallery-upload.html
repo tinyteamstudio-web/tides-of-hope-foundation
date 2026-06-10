@@ -69,12 +69,13 @@
           </select>
 
           <input
-            type="file"
-            id="galleryFile"
-            class="admin-input"
-            accept="image/*,video/*"
-            required
-          />
+  type="file"
+  id="galleryFile"
+  class="admin-input"
+  accept="image/*,video/*"
+  multiple
+  required
+/>
 
           <button type="submit" class="admin-btn">
             Upload to Event Album
@@ -171,10 +172,6 @@ function showGalleryMessage(message, type) {
   if (!galleryUploadMessage) return;
 
   galleryUploadMessage.textContent = message;
-  setTimeout(() => {
-  window.location.href =
-    "event-album.html?id=" + selectedEventId;
-}, 1200);
 
   galleryUploadMessage.style.color =
     type === "success" ? "green" :
@@ -276,6 +273,22 @@ function getUploaderInfo() {
   };
 }
 
+function readFileAsBase64(file) {
+  return new Promise(function(resolve, reject) {
+    const reader = new FileReader();
+
+    reader.onload = function() {
+      resolve(reader.result.split(",")[1]);
+    };
+
+    reader.onerror = function() {
+      reject(new Error("Unable to read file."));
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
 if (galleryUploadForm) {
   galleryUploadForm.addEventListener("submit", async function(e) {
     e.preventDefault();
@@ -296,8 +309,8 @@ if (galleryUploadForm) {
     const fileInput =
       document.getElementById("galleryFile");
 
-    const file =
-      fileInput.files[0];
+    const files =
+      Array.from(fileInput.files || []);
 
     if (!eventId || !eventTitle) {
       showGalleryMessage("Please select an event album.", "error");
@@ -309,42 +322,62 @@ if (galleryUploadForm) {
       return;
     }
 
-    if (!file) {
-      showGalleryMessage("Please choose a file from your device.", "error");
+    if (!mediaType) {
+      showGalleryMessage("Please select media type.", "error");
       return;
     }
 
-    if (mediaType === "image" && !file.type.startsWith("image/")) {
-      showGalleryMessage("Selected file does not match Image type.", "error");
+    if (!files.length) {
+      showGalleryMessage("Please choose file/s from your device.", "error");
       return;
     }
 
-    if (mediaType === "video" && !file.type.startsWith("video/")) {
-      showGalleryMessage("Selected file does not match Video type.", "error");
+    if (mediaType === "video" && files.length > 1) {
+      showGalleryMessage("Videos must be uploaded one at a time.", "error");
       return;
     }
 
-    const maxSizeMB = mediaType === "video" ? 40 : 12;
+    if (mediaType === "image" && files.length > 30) {
+      showGalleryMessage("You can upload up to 30 photos only per batch.", "error");
+      return;
+    }
+
+    const maxSizeMB = mediaType === "video" ? 40 : 8;
     const maxSizeBytes = maxSizeMB * 1024 * 1024;
 
-    if (file.size > maxSizeBytes) {
-      showGalleryMessage(
-        "File is too large. Maximum allowed: " + maxSizeMB + "MB.",
-        "error"
-      );
-      return;
+    for (const file of files) {
+      if (mediaType === "image" && !file.type.startsWith("image/")) {
+        showGalleryMessage("All selected files must be images.", "error");
+        return;
+      }
+
+      if (mediaType === "video" && !file.type.startsWith("video/")) {
+        showGalleryMessage("Selected file must be a video.", "error");
+        return;
+      }
+
+      if (file.size > maxSizeBytes) {
+        showGalleryMessage(
+          file.name + " is too large. Maximum allowed: " + maxSizeMB + "MB.",
+          "error"
+        );
+        return;
+      }
     }
 
-    showGalleryMessage("Uploading from device... please wait.", "");
+    const uploader = getUploaderInfo();
 
-    const reader = new FileReader();
+    let successCount = 0;
 
-    reader.onload = async function() {
-      const base64Data = reader.result.split(",")[1];
-      const uploader = getUploaderInfo();
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
 
-      const fileHash =
-        eventId + "_" + file.name + "_" + file.size;
+      showGalleryMessage(
+        "Uploading " + (i + 1) + " of " + files.length + "...",
+        ""
+      );
+
+      const fileData = await readFileAsBase64(file);
 
       const payload = {
         action: "submitGalleryUpload",
@@ -359,9 +392,9 @@ if (galleryUploadForm) {
         fileName: file.name,
         originalFileName: file.name,
         fileSize: file.size,
-        fileHash: fileHash,
+        fileHash: eventId + "_" + file.name + "_" + file.size,
         mimeType: file.type,
-        fileData: base64Data,
+        fileData: fileData,
 
         uploaderID: uploader.uploaderID,
         uploaderName: uploader.uploaderName,
@@ -371,38 +404,35 @@ if (galleryUploadForm) {
         uploadedBy: uploader.uploaderName
       };
 
-      try {
-        const response = await fetch(GALLERY_WEB_APP_URL, {
-          method: "POST",
-          body: JSON.stringify(payload)
-        });
+      const response = await fetch(GALLERY_WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify(payload)
+      });
 
-        const result = await response.json();
+      const result = await response.json();
 
-        if (result.success) {
-          showGalleryMessage(
-            "Upload successful! Your media was saved to the selected event album.",
-            "success"
-          );
-          galleryUploadForm.reset();
-          loadEventAlbumsDropdown();
-        } else {
-          showGalleryMessage(result.message || "Upload failed.", "error");
-        }
-
-      } catch (error) {
+      if (!result.success) {
         showGalleryMessage(
-          "Upload failed. Please check internet connection or Web App deployment.",
+          "Upload stopped at " + file.name + ": " + (result.message || "Upload failed."),
           "error"
         );
+        return;
       }
-    };
 
-    reader.onerror = function() {
-      showGalleryMessage("Unable to read file from this device.", "error");
-    };
+      successCount++;
+    }
 
-    reader.readAsDataURL(file);
+    showGalleryMessage(
+      "Upload complete! " + successCount + " file/s uploaded successfully.",
+      "success"
+    );
+
+    galleryUploadForm.reset();
+    loadEventAlbumsDropdown();
+
+    setTimeout(function() {
+      window.location.href = "event-album.html?id=" + eventId;
+    }, 1200);
   });
 }
 

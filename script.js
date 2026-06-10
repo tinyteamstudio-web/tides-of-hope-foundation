@@ -563,116 +563,79 @@ async function loadHomepageAnnouncements() {
    HOMEPAGE GALLERY
 ========================= */
 async function loadHomepageGallery() {
-
-  const galleryGrid =
-    document.getElementById("homepageGalleryGrid");
-
+  const galleryGrid = document.getElementById("homepageGalleryGrid");
   if (!galleryGrid) return;
 
   galleryGrid.innerHTML = `
     <article class="gallery-card placeholder-card">
-      <div class="gallery-overlay">
-        Loading Event Albums...
-      </div>
+      <div class="gallery-overlay">Loading Event Albums...</div>
     </article>
   `;
 
   try {
-
-    const response =
-      await fetch(
-        `${WEB_APP_URL}?action=getEventAlbums`
-      );
-
-    const result =
-      await response.json();
+    const response = await fetch(`${WEB_APP_URL}?action=getEventAlbums`);
+    const result = await response.json();
 
     galleryGrid.innerHTML = "";
 
-    if (
-      !result.success ||
-      !result.data ||
-      !result.data.length
-    ) {
-
+    if (!result.success || !result.data || !result.data.length) {
       galleryGrid.innerHTML = `
-        <article class="gallery-card placeholder-card">
-          <div class="gallery-overlay">
-            No Event Albums Available Yet
+        <article class="gallery-card placeholder-card clean-album-card">
+          <img src="round-logo.png" alt="Tides of Hope" class="album-thumb-image" />
+          <div class="album-info">
+            <h3>No Event Albums Yet</h3>
+            <p>Photos to upload</p>
           </div>
         </article>
       `;
-
       return;
     }
 
     result.data.forEach((album) => {
-
       const coverPhoto =
-        album.CoverPhoto ||
-        "assets/images/programs/hero-main.png";
+        album.CoverPhoto && String(album.CoverPhoto).trim()
+          ? album.CoverPhoto
+          : "round-logo.png";
+
+      const totalPhotos = Number(album.PhotoCount || 0);
+      const totalVideos = Number(album.VideoCount || 0);
+
+      const uploadNote =
+        totalPhotos + totalVideos > 0
+          ? `${totalPhotos} photos • ${totalVideos} videos`
+          : "Photos to upload";
 
       galleryGrid.innerHTML += `
-        <article class="gallery-card album-card">
-
+        <a
+          href="event-album.html?id=${album.EventID}"
+          class="gallery-card clean-album-card"
+        >
           <img
             src="${coverPhoto}"
-            alt="${album.EventTitle}"
-            class="gallery-image"
-          >
+            alt="${album.EventTitle || "Event Album"}"
+            class="album-thumb-image"
+            onerror="this.src='round-logo.png';"
+          />
 
           <div class="album-info">
-
-            <h3>
-              ${album.EventTitle}
-            </h3>
-
-            <p class="album-date">
-              ${album.EventDate || ""}
-            </p>
-
-            <div class="album-stats">
-
-              <span>
-                📷 ${album.PhotoCount || 0}
-              </span>
-
-              <span>
-                🎥 ${album.VideoCount || 0}
-              </span>
-
-              <span>
-                👥 ${album.ContributorCount || 0}
-              </span>
-
-            </div>
-
-            <a
-              href="event-album.html?id=${album.EventID}"
-              class="btn btn-secondary album-btn"
-            >
-              View Album
-            </a>
-
+            <h3>${album.EventTitle || "Event Album"}</h3>
+            <p>${album.EventDate || ""}</p>
+            <span>${uploadNote}</span>
           </div>
-
-        </article>
+        </a>
       `;
-
     });
 
   } catch (error) {
-
     galleryGrid.innerHTML = `
-      <article class="gallery-card placeholder-card">
-        <div class="gallery-overlay">
-          Failed to load Event Albums
+      <article class="gallery-card placeholder-card clean-album-card">
+        <img src="round-logo.png" alt="Tides of Hope" class="album-thumb-image" />
+        <div class="album-info">
+          <h3>Unable to Load Albums</h3>
+          <p>Please check the connection.</p>
         </div>
       </article>
     `;
-
-    console.error(error);
-
   }
 }
 
