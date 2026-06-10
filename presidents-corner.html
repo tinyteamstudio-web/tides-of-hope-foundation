@@ -3,8 +3,258 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>President's Corner | Tides of Hope</title>
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .president-magazine-page {
+      background:
+        radial-gradient(circle at top left, rgba(15,154,168,.18), transparent 34%),
+        linear-gradient(180deg, #f4fbfd 0%, #fffaf1 48%, #eef8fb 100%);
+    }
+
+    .president-cover {
+      padding: 90px 0 40px;
+    }
+
+    .president-cover-card {
+      background: #fffdf7;
+      border-radius: 26px;
+      box-shadow: 0 30px 80px rgba(13,59,102,.16);
+      border: 1px solid rgba(13,59,102,.12);
+      overflow: hidden;
+    }
+
+    .president-cover-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 34px;
+      border-bottom: 3px solid #101828;
+      background: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-weight: 900;
+      font-size: .72rem;
+      color: #0d3b66;
+    }
+
+    .president-cover-body {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 50px;
+  padding: 50px;
+  align-items: start;
+}
+     
+    .president-photo-panel {
+      border-right: 1px solid #d8d0bd;
+      padding-right: 26px;
+    }
+
+    .president-photo-frame {
+      background: #111827;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 18px 35px rgba(0,0,0,.18);
+    }
+
+    .president-photo-frame img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+    .president-caption {
+      margin-top: 16px;
+      border-top: 2px solid #101828;
+      border-bottom: 1px solid #cfc6b5;
+      padding: 12px 0;
+    }
+
+    .president-caption h3 {
+      color: #101828;
+      margin-bottom: 4px;
+      font-size: 1.15rem;
+    }
+
+    .president-caption p {
+      color: #52677a;
+      font-size: .92rem;
+      line-height: 1.5;
+    }
+
+    .president-main-story {
+      min-width: 0;
+    }
+
+    .president-category {
+      display: inline-block;
+      background: #d71920;
+      color: #fff;
+      padding: 8px 16px;
+      font-size: .75rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .president-title {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: .95;
+  letter-spacing: -.05em;
+  color: #101828;
+  margin-bottom: 20px;
+}
+
+    .president-deck {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #52677a;
+      border-top: 1px solid #cfc6b5;
+      border-bottom: 1px solid #cfc6b5;
+      padding: 14px 0;
+      margin-bottom: 22px;
+    }
+
+    .president-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: #101828;
+      font-weight: 800;
+      margin-bottom: 26px;
+      font-size: .95rem;
+    }
+
+    .president-meta span {
+      color: #52677a;
+      font-weight: 700;
+    }
+
+    .president-content {
+  color: #1f2937;
+  line-height: 1.9;
+  font-size: 1.08rem;
+  text-align: left;
+}
+
+    .president-content p {
+      margin: 0 0 16px;
+      break-inside: avoid;
+    }
+
+    .president-content p:first-child::first-letter {
+      float: left;
+      font-size: 5.2rem;
+      line-height: .82;
+      padding-right: 10px;
+      color: #d71920;
+      font-weight: 900;
+    }
+
+    .president-content h1,
+    .president-content h2,
+    .president-content h3 {
+      column-span: all;
+      color: #101828;
+      margin: 24px 0 12px;
+      line-height: 1.1;
+    }
+
+    .president-content blockquote {
+      column-span: all;
+      margin: 28px 0;
+      padding: 22px 28px;
+      border-left: 8px solid #d71920;
+      background: #fff3f3;
+      font-size: 1.35rem;
+      line-height: 1.5;
+      color: #101828;
+      font-weight: 800;
+    }
+
+    .president-sidebar {
+      border-left: 1px solid #d8d0bd;
+      padding-left: 24px;
+    }
+
+    .magazine-side-box {
+      border-bottom: 1px solid #cfc6b5;
+      padding-bottom: 18px;
+      margin-bottom: 22px;
+    }
+
+    .magazine-side-box h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: #0d3b66;
+      margin-bottom: 10px;
+    }
+
+    .magazine-side-box p,
+    .magazine-side-box li {
+      font-size: .92rem;
+      line-height: 1.55;
+      color: #52677a;
+    }
+
+    .magazine-side-box ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    @media (max-width: 1050px) {
+      .president-cover-body {
+        grid-template-columns: 280px 1fr;
+      }
+
+      .president-sidebar {
+        grid-column: 1 / -1;
+        border-left: none;
+        border-top: 1px solid #d8d0bd;
+        padding-left: 0;
+        padding-top: 24px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .president-cover {
+        padding-top: 40px;
+      }
+
+      .president-cover-top,
+      .president-cover-body {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .president-cover-body {
+        grid-template-columns: 1fr;
+      }
+
+      .president-photo-panel {
+        border-right: none;
+        padding-right: 0;
+      }
+
+      .president-content {
+        columns: 1;
+      }
+
+      .president-sidebar {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -27,29 +277,71 @@
   </div>
 </header>
 
-<main class="office-portal-page">
+<main class="president-magazine-page">
 
-  <section class="office-portal-hero">
-    <div class="container">
-      <span class="section-tag">Leadership</span>
-      <h1>President’s Corner</h1>
-      <p>Official messages, reflections, updates, and writings from the President of Tides of Hope Incorporated.</p>
-    </div>
-  </section>
-
-  <section class="office-portal-section">
+  <section class="president-cover">
     <div class="container">
 
-      <article class="profile-section-card">
-        <span class="section-tag">Latest Message</span>
-        <h2 id="presidentTitle">Loading President’s Message...</h2>
-        <p><strong id="presidentAuthor">Office of the President</strong></p>
-        <p id="presidentDate">Date Published: —</p>
+      <article class="president-cover-card">
 
-        <hr />
+        <div class="president-cover-top">
+          <span>Tides of Hope Leadership Journal</span>
+          <span id="presidentIssueDate">Current Edition</span>
+        </div>
 
-        <div id="presidentMessage">
-          Loading message...
+        <div class="president-cover-body">
+
+          <aside class="president-photo-panel">
+            <div class="president-photo-frame">
+              <img
+                id="presidentFeaturedPhoto"
+                src="round-logo.png"
+                alt="President's featured photo"
+              />
+            </div>
+
+           <h3 id="presidentAuthorName">
+  Agnes Desiree Escaño Desquitado
+</h3>
+
+<p>
+President<br>
+Tides of Hope Incorporated
+</p>
+
+<hr>
+
+<p>
+"Hope grows when compassion becomes action."
+</p>
+          </aside>
+
+          <section class="president-main-story">
+            <span class="president-category" id="presidentCategory">
+              President's Message
+            </span>
+
+            <h1 id="presidentTitle" class="president-title">
+              Loading...
+            </h1>
+
+            <p class="president-deck">
+              A leadership message for the Tides of Hope family, partners, supporters,
+              and communities we serve.
+            </p>
+
+            <div class="president-meta">
+              <div>By <span id="presidentAuthor">Office of the President</span></div>
+              <div>Published <span id="presidentDate">—</span></div>
+            </div>
+
+            <div id="presidentMessage" class="president-content">
+              Loading...
+            </div>
+          </section>
+
+          
+
         </div>
       </article>
 
@@ -74,32 +366,101 @@ const WEB_APP_URL =
 
 function formatDate(value) {
   if (!value) return "—";
+
   const date = new Date(value);
-  if (isNaN(date.getTime())) return value;
-  return date.toLocaleDateString();
+
+  if (isNaN(date.getTime())) {
+    return value;
+  }
+
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
 }
 
 async function loadPresidentMessage() {
+  const titleEl = document.getElementById("presidentTitle");
+  const authorEl = document.getElementById("presidentAuthor");
+  const dateEl = document.getElementById("presidentDate");
+  const issueDateEl = document.getElementById("presidentIssueDate");
+  const messageEl = document.getElementById("presidentMessage");
+  const categoryEl = document.getElementById("presidentCategory");
+  const photoEl = document.getElementById("presidentFeaturedPhoto");
+
   try {
-    const response = await fetch(WEB_APP_URL + "?action=getPresidentMessage");
-    const result = await response.json();
+    const response =
+      await fetch(WEB_APP_URL + "?action=getPresidentMessage");
 
-    const data = result.data || result.message || result.presidentMessage || result;
+    const result =
+      await response.json();
 
-    document.getElementById("presidentTitle").textContent =
-      data.Title || data.title || "President’s Message";
+    const item =
+      result.item ||
+      result.data ||
+      result.message ||
+      result.presidentMessage ||
+      null;
 
-    document.getElementById("presidentAuthor").textContent =
-      data.Author || data.author || "Office of the President";
+    if (!result.success || !item) {
+      categoryEl.textContent = "President's Message";
+      titleEl.textContent = "President’s Message";
+      authorEl.textContent = "Office of the President";
+      dateEl.textContent = "—";
+      issueDateEl.textContent = "Current Edition";
+      messageEl.innerHTML = "No message available yet.";
+      photoEl.src = "round-logo.png";
+      return;
+    }
 
-    document.getElementById("presidentDate").textContent =
-      "Date Published: " + formatDate(data.CreatedAt || data.Timestamp || data.Date || data.date);
+    const publishDate =
+      formatDate(
+        item.PublishDate ||
+        item.publishDate ||
+        item.Timestamp ||
+        item.timestamp ||
+        ""
+      );
 
-    document.getElementById("presidentMessage").innerHTML =
-      String(data.Message || data.message || "No message available yet.").replace(/\n/g, "<br>");
+    categoryEl.textContent =
+      item.Category ||
+      item.category ||
+      "President's Message";
+
+    titleEl.textContent =
+      item.Title ||
+      item.title ||
+      "President’s Message";
+
+    authorEl.textContent =
+      item.Author ||
+      item.author ||
+      "Office of the President";
+
+    dateEl.textContent = publishDate;
+    issueDateEl.textContent = publishDate;
+
+    messageEl.innerHTML =
+      item.Message ||
+      item.message ||
+      "No message available yet.";
+
+    const featuredPhoto =
+      item.FeaturedPhoto ||
+      item.featuredPhoto ||
+      "";
+
+    photoEl.src = featuredPhoto || "round-logo.png";
+
+    photoEl.onerror = function() {
+      this.src = "round-logo.png";
+    };
+
   } catch (error) {
-    document.getElementById("presidentMessage").textContent =
-      "Unable to load President’s message.";
+    titleEl.textContent = "President’s Message";
+    messageEl.textContent = "Unable to load President’s message.";
+    photoEl.src = "round-logo.png";
   }
 }
 

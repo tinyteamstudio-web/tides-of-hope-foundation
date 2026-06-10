@@ -6,6 +6,54 @@
 
   <title>President's Corner Upload | Tides of Hope</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+
+  <style>
+    .president-editor-card { max-width: 900px; }
+
+    .president-editor-wrap {
+      background: #fff;
+      border: 1px solid #dbe9ef;
+      border-radius: 14px;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    #presidentEditor {
+      min-height: 340px;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #0d3b66;
+    }
+
+    .ql-toolbar.ql-snow {
+      border: none;
+      border-bottom: 1px solid #dbe9ef;
+      background: #f7fbfc;
+    }
+
+    .ql-container.ql-snow { border: none; }
+
+    .president-date-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .president-photo-preview {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin: 0 auto 12px;
+      border: 1px solid #dbe9ef;
+      background: #eef7fb;
+    }
+
+    @media (max-width: 700px) {
+      .president-date-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
@@ -23,6 +71,7 @@
     <nav class="site-nav">
       <a href="index.html">Homepage</a>
       <a href="office-portal.html">Office Portal</a>
+      <a href="presidents-corner.html">President’s Corner</a>
       <a href="#" id="presidentLogoutBtn" class="nav-cta">Logout</a>
     </nav>
   </div>
@@ -32,47 +81,86 @@
 
   <section class="admin-hero">
     <div class="container">
-      <span class="section-tag">Leadership Upload Tool</span>
+      <span class="section-tag">Leadership Writing Tool</span>
       <h1>President’s Corner</h1>
-      <p>
-        This page is restricted to the current President of Tides of Hope Incorporated.
-      </p>
+      <p>Write, format, add a featured photo, and publish official messages.</p>
     </div>
   </section>
 
   <section class="admin-login-section">
     <div class="container">
-      <div class="admin-card">
+      <div class="admin-card president-editor-card">
 
         <h2>Create President Message</h2>
-        <p>Publish the latest leadership message for the homepage President’s Corner.</p>
+        <p>Madam President may write freely and change her featured photo anytime.</p>
 
         <form id="presidentUploadForm" class="admin-login-form">
-          <input
-            type="text"
-            id="presidentTitle"
-            class="admin-input"
-            placeholder="Title"
-            value="President’s Message"
-            required
-          />
+
+          <input type="text" id="presidentTitle" class="admin-input"
+            placeholder="Message Title" value="President’s Message" required />
+
+          <div class="president-date-row">
+            <input type="text" id="presidentAuthor" class="admin-input"
+              placeholder="Author" value="Office of the President" required />
+
+            <input type="date" id="presidentDate" class="admin-input" required />
+          </div>
+
+          <select id="presidentCategory" class="admin-input" required>
+            <option value="President's Message">President's Message</option>
+            <option value="Community Update">Community Update</option>
+            <option value="Official Statement">Official Statement</option>
+            <option value="Call To Action">Call To Action</option>
+            <option value="Reflection">Reflection</option>
+            <option value="Special Announcement">Special Announcement</option>
+          </select>
+
+          <img src="round-logo.png" id="presidentPhotoPreview" class="president-photo-preview" alt="Featured Photo Preview" />
 
           <input
-            type="text"
-            id="presidentAuthor"
+            type="file"
+            id="presidentFeaturedPhoto"
             class="admin-input"
-            placeholder="Author"
-            value="Office of the President"
-            required
+            accept="image/*"
           />
 
-          <textarea
-            id="presidentMessageText"
-            class="admin-input admin-textarea"
-            placeholder="Write the president's message"
-            rows="8"
-            required
-          ></textarea>
+          <div class="president-editor-wrap">
+            <div id="presidentToolbar">
+              <span class="ql-formats">
+                <select class="ql-header">
+                  <option selected></option>
+                  <option value="1"></option>
+                  <option value="2"></option>
+                  <option value="3"></option>
+                </select>
+              </span>
+
+              <span class="ql-formats">
+                <button class="ql-bold"></button>
+                <button class="ql-italic"></button>
+                <button class="ql-underline"></button>
+              </span>
+
+              <span class="ql-formats">
+                <button class="ql-list" value="ordered"></button>
+                <button class="ql-list" value="bullet"></button>
+                <button class="ql-indent" value="-1"></button>
+                <button class="ql-indent" value="+1"></button>
+              </span>
+
+              <span class="ql-formats">
+                <select class="ql-align"></select>
+              </span>
+
+              <span class="ql-formats">
+                <button class="ql-blockquote"></button>
+                <button class="ql-link"></button>
+                <button class="ql-clean"></button>
+              </span>
+            </div>
+
+            <div id="presidentEditor"></div>
+          </div>
 
           <button type="submit" class="admin-btn">
             Publish President Message
@@ -99,27 +187,14 @@
       <p>Serving with compassion, building with hope.</p>
     </div>
   </div>
-
-  <div class="footer-credit">
-    <div class="container footer-credit-inner">
-      <p>
-        Powered by <strong>BuildFrame Digital System</strong>
-        <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
-      </p>
-    </div>
-  </div>
 </footer>
 
-<button
-  class="bubble-chat-button"
-  id="bubbleChatButton"
-  aria-label="Contact Tides of Hope"
->
-  <img src="round-logo.png" alt="Tides of Hope Logo" class="bubble-chat-logo" />
-</button>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <script>
 const CURRENT_PRESIDENT_EMAIL = "agnesdesiree65@gmail.com";
+const WEB_APP_URL =
+  "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
 
 const loggedIn =
   sessionStorage.getItem("tohLoggedIn") === "true" ||
@@ -137,19 +212,77 @@ const userRole = String(
   ""
 ).toLowerCase();
 
-if (!loggedIn) {
-  window.location.href = "admin-login.html";
-}
+if (!loggedIn) window.location.href = "admin-login.html";
 
-if (
-  userEmail !== CURRENT_PRESIDENT_EMAIL ||
-  userRole !== "president"
-) {
+if (userEmail !== CURRENT_PRESIDENT_EMAIL || userRole !== "president") {
   alert("This page is restricted to the current President only.");
   window.location.href = "office-portal.html";
 }
 
+const presidentUploadForm = document.getElementById("presidentUploadForm");
+const presidentUploadMessage = document.getElementById("presidentUploadMessage");
 const presidentLogoutBtn = document.getElementById("presidentLogoutBtn");
+const presidentFeaturedPhoto = document.getElementById("presidentFeaturedPhoto");
+const presidentPhotoPreview = document.getElementById("presidentPhotoPreview");
+
+const today = new Date().toISOString().split("T")[0];
+document.getElementById("presidentDate").value = today;
+
+const presidentEditor = new Quill("#presidentEditor", {
+  theme: "snow",
+  modules: { toolbar: "#presidentToolbar" },
+  placeholder: "Write the President’s message here..."
+});
+
+let featuredPhotoPayload = null;
+
+function showPresidentMessage(message, type) {
+  presidentUploadMessage.textContent = message;
+  presidentUploadMessage.classList.remove("error", "success");
+  if (type) presidentUploadMessage.classList.add(type);
+}
+
+function fileToBase64(file) {
+  return new Promise(function(resolve, reject) {
+    const reader = new FileReader();
+    reader.onload = function() { resolve(reader.result.split(",")[1]); };
+    reader.onerror = function() { reject(new Error("Unable to read photo.")); };
+    reader.readAsDataURL(file);
+  });
+}
+
+if (presidentFeaturedPhoto) {
+  presidentFeaturedPhoto.addEventListener("change", async function() {
+    const file = this.files[0];
+    if (!file) {
+      featuredPhotoPayload = null;
+      presidentPhotoPreview.src = "round-logo.png";
+      return;
+    }
+
+    if (!file.type.startsWith("image/")) {
+      alert("Please choose an image file.");
+      this.value = "";
+      return;
+    }
+
+    if (file.size > 8 * 1024 * 1024) {
+      alert("Featured photo must be 8MB or smaller.");
+      this.value = "";
+      return;
+    }
+
+    presidentPhotoPreview.src = URL.createObjectURL(file);
+
+    const base64 = await fileToBase64(file);
+
+    featuredPhotoPayload = {
+      fileName: file.name,
+      mimeType: file.type,
+      fileData: base64
+    };
+  });
+}
 
 if (presidentLogoutBtn) {
   presidentLogoutBtn.addEventListener("click", function(e) {
@@ -159,30 +292,19 @@ if (presidentLogoutBtn) {
   });
 }
 
-const WEB_APP_URL =
-  "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
-
-const presidentUploadForm = document.getElementById("presidentUploadForm");
-const presidentUploadMessage = document.getElementById("presidentUploadMessage");
-
-function showPresidentMessage(message, type) {
-  presidentUploadMessage.textContent = message;
-  presidentUploadMessage.classList.remove("error", "success");
-
-  if (type) {
-    presidentUploadMessage.classList.add(type);
-  }
-}
-
 presidentUploadForm.addEventListener("submit", async function(e) {
   e.preventDefault();
 
   const title = document.getElementById("presidentTitle").value.trim();
   const author = document.getElementById("presidentAuthor").value.trim();
-  const message = document.getElementById("presidentMessageText").value.trim();
+  const publishDate = document.getElementById("presidentDate").value;
+  const category = document.getElementById("presidentCategory").value;
 
-  if (!title || !author || !message) {
-    showPresidentMessage("Please complete all fields.", "error");
+  const messageHtml = presidentEditor.root.innerHTML.trim();
+  const plainText = presidentEditor.getText().trim();
+
+  if (!title || !author || !publishDate || !plainText) {
+    showPresidentMessage("Please complete the title, author, date, and message.", "error");
     return;
   }
 
@@ -192,8 +314,15 @@ presidentUploadForm.addEventListener("submit", async function(e) {
     action: "submitPresidentMessage",
     title: title,
     author: author,
-    message: message,
-    uploadedBy: userEmail
+    date: publishDate,
+    category: category,
+    message: messageHtml,
+    plainText: plainText,
+    uploadedBy: userEmail,
+
+    featuredPhotoFileName: featuredPhotoPayload ? featuredPhotoPayload.fileName : "",
+    featuredPhotoMimeType: featuredPhotoPayload ? featuredPhotoPayload.mimeType : "",
+    featuredPhotoData: featuredPhotoPayload ? featuredPhotoPayload.fileData : ""
   };
 
   try {
@@ -210,25 +339,20 @@ presidentUploadForm.addEventListener("submit", async function(e) {
       presidentUploadForm.reset();
       document.getElementById("presidentTitle").value = "President’s Message";
       document.getElementById("presidentAuthor").value = "Office of the President";
+      document.getElementById("presidentDate").value = today;
+      document.getElementById("presidentCategory").value = "President's Message";
+      presidentPhotoPreview.src = "round-logo.png";
+      presidentEditor.setContents([]);
+      featuredPhotoPayload = null;
+
     } else {
       showPresidentMessage(result.message || "Publishing failed.", "error");
     }
 
   } catch (error) {
-    showPresidentMessage(
-      "Publishing failed. Please check your Web App deployment.",
-      "error"
-    );
+    showPresidentMessage("Publishing failed. Please check your Web App deployment.", "error");
   }
 });
-
-const bubbleChatButton = document.getElementById("bubbleChatButton");
-
-if (bubbleChatButton) {
-  bubbleChatButton.addEventListener("click", () => {
-    window.open("https://www.facebook.com/share/1J3FyRocdZ/", "_blank");
-  });
-}
 </script>
 
 </body>
