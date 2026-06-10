@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>My Profile | Tides of Hope</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .member-profile-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .member-profile-card {
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+
+    .member-profile-top {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 30px;
+      padding: 36px;
+      background: linear-gradient(135deg, #eefaff, #ffffff);
+      align-items: center;
+    }
+
+    .member-photo-panel {
+      text-align: center;
+    }
+
+    .member-profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #dceff5;
+      background: #ffffff;
+      box-shadow: 0 16px 35px rgba(0, 47, 73, 0.14);
+    }
+
+    .member-photo-upload {
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .member-identity h2 {
+      margin: 0 0 8px;
+      color: #0d2b66;
+      font-size: 2rem;
+    }
+
+    .member-identity p {
+      color: #52677a;
+      margin-bottom: 16px;
+    }
+
+    .member-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .member-badge {
+      background: #eaf8fb;
+      color: #0d3b66;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .member-profile-body {
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 28px;
+    }
+
+    .profile-section-card {
+      background: #f8fcfe;
+      border-radius: 22px;
+      padding: 24px;
+      border: 1px solid #dceff5;
+    }
+
+    .profile-section-card h3 {
+      margin-top: 0;
+      color: #0d2b66;
+    }
+
+    .profile-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .profile-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .profile-field label {
+      font-weight: 700;
+      color: #0d3b66;
+      font-size: 0.9rem;
+    }
+
+    .profile-field input,
+    .profile-field textarea {
+      width: 100%;
+      border: 1px solid #cfe3ec;
+      border-radius: 14px;
+      padding: 13px 14px;
+      font: inherit;
+      color: #0d3b66;
+      background: #ffffff;
+    }
+
+    .profile-field textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .profile-field input[readonly] {
+      background: #eef6f9;
+      color: #52677a;
+    }
+
+    .profile-full {
+      grid-column: 1 / -1;
+    }
+
+    .member-side-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .member-side-item {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 18px;
+      border: 1px solid #dceff5;
+    }
+
+    .member-side-item span {
+      display: block;
+      color: #0f9aa8;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .member-side-item strong {
+      color: #0d2b66;
+    }
+
+    .profile-actions {
+      margin-top: 22px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .profile-message {
+      margin-top: 18px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 850px) {
+      .member-profile-top,
+      .member-profile-body,
+      .profile-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .member-identity {
+        text-align: center;
+      }
+
+      .member-badges {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="round-logo.png" class="brand-logo" alt="Tides of Hope" />
+      <div class="brand-text">
+        <span class="brand-title">Tides of Hope</span>
+        <span class="brand-subtitle">Incorporated</span>
+      </div>
+    </a>
+
+    <nav class="site-nav">
+      <a href="office-portal.html">Office Portal</a>
+      <a href="members-directory.html">Directory</a>
+      <a href="#" id="logoutBtn">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<main class="office-portal-page">
+
+  <section class="office-portal-hero">
+    <div class="container">
+      <span class="section-tag">Member Corner</span>
+      <h1>My Member Profile</h1>
+      <p>
+        Your personal space inside Tides of Hope. Share your story, update your profile,
+        and help fellow members know the heart behind your service.
+      </p>
+    </div>
+  </section>
+
+  <section class="office-portal-section">
+    <div class="container member-profile-wrap">
+
+      <div class="member-profile-card">
+
+        <div class="member-profile-top">
+          <div class="member-photo-panel">
+            <img
+              id="profilePreview"
+              src="round-logo.png"
+              alt="Member Profile Photo"
+              class="member-profile-photo"
+            />
+
+            <div class="member-photo-upload">
+              <label for="profilePhoto" class="btn btn-secondary">
+                Choose Profile Photo
+              </label>
+              <input
+                type="file"
+                id="profilePhoto"
+                accept="image/*"
+                style="display:none;"
+              />
+            </div>
+          </div>
+
+          <div class="member-identity">
+            <span class="section-tag">Official Member Profile</span>
+            <h2 id="displayName">Member Name</h2>
+            <p id="displayEmail">member@email.com</p>
+
+            <div class="member-badges">
+              <span class="member-badge" id="displayRole">Member</span>
+              <span class="member-badge" id="displayDesignation1">Designation</span>
+              <span class="member-badge" id="displayDesignation2">Tides of Hope</span>
+              <span class="member-badge" id="displayDesignation3">Community</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="member-profile-body">
+
+          <div class="profile-section-card">
+            <h3>Profile Information</h3>
+            <p>
+              These details help make the member directory more personal, complete,
+              and meaningful for the organization.
+            </p>
+
+            <div class="profile-form-grid">
+              <div class="profile-field">
+                <label>Full Name</label>
+                <input type="text" id="fullName" readonly />
+              </div>
+
+              <div class="profile-field">
+                <label>Email</label>
+                <input type="email" id="email" readonly />
+              </div>
+
+              <div class="profile-field">
+                <label>Mobile Number</label>
+                <input type="text" id="mobileNumber" placeholder="Enter mobile number" />
+              </div>
+
+              <div class="profile-field">
+                <label>Primary Role</label>
+                <input type="text" id="primaryRole" readonly />
+              </div>
+
+              <div class="profile-field profile-full">
+                <label>Biography</label>
+                <textarea
+                  id="bio"
+                  placeholder="Write a warm short biography about your role, service, advocacy, or journey with Tides of Hope."
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="profile-actions">
+              <button id="saveProfileBtn" class="btn btn-primary" type="button">
+                Save Profile
+              </button>
+
+              <a href="members-directory.html" class="btn btn-secondary">
+  View Directory
+</a>
+
+            </div>
+
+            <div id="profileMessage" class="profile-message"></div>
+          </div>
+
+          <aside class="profile-section-card">
+            <h3>Member Details</h3>
+
+            <div class="member-side-list">
+              <div class="member-side-item">
+                <span>Status</span>
+                <strong id="displayStatus">Active</strong>
+              </div>
+
+              <div class="member-side-item">
+                <span>Designation 1</span>
+                <strong id="sideDesignation1">—</strong>
+              </div>
+
+              <div class="member-side-item">
+                <span>Designation 2</span>
+                <strong id="sideDesignation2">—</strong>
+              </div>
+
+              <div class="member-side-item">
+                <span>Designation 3</span>
+                <strong id="sideDesignation3">—</strong>
+              </div>
+
+              <div class="member-side-item">
+                <span>Last Login</span>
+                <strong id="displayLastLogin">—</strong>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="round-logo.png" class="footer-logo" alt="Tides of Hope" />
+      <h3>Tides of Hope Incorporated</h3>
+      <p>Serving with compassion, building with hope.</p>
+    </div>
+  </div>
+
+  <div class="footer-credit">
+    <div class="container footer-credit-inner">
+      <p>
+        Powered by <strong>BuildFrame Digital System</strong>
+        <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+
+const isLoggedIn =
+  sessionStorage.getItem("tohLoggedIn") === "true" ||
+  sessionStorage.getItem("tohAdminLoggedIn") === "true";
+
+if (!isLoggedIn) {
+  window.location.href = "admin-login.html";
+}
+
+const profilePhoto = document.getElementById("profilePhoto");
+const profilePreview = document.getElementById("profilePreview");
+const saveProfileBtn = document.getElementById("saveProfileBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+
+let currentProfilePhotoUrl = "";
+
+const memberEmail =
+  sessionStorage.getItem("tohUserEmail") ||
+  sessionStorage.getItem("tohAdminEmail") ||
+  "";
+
+const memberName =
+  sessionStorage.getItem("tohUserName") ||
+  sessionStorage.getItem("tohAdminName") ||
+  "Member Name";
+
+const memberRole =
+  sessionStorage.getItem("tohUserRole") ||
+  sessionStorage.getItem("tohAdminRole") ||
+  "Member";
+
+const memberDesignation =
+  sessionStorage.getItem("tohUserDesignation") ||
+  "";
+
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value || "—";
+}
+
+function setValue(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.value = value || "";
+}
+
+function formatDate(value) {
+  if (!value) return "—";
+
+  const date = new Date(value);
+
+  if (isNaN(date.getTime())) {
+    return value;
+  }
+
+  return date.toLocaleString();
+}
+
+function applyDesignation(designationText) {
+  const parts =
+    String(designationText || "")
+      .split("|")
+      .map(function(item) {
+        return item.trim();
+      })
+      .filter(Boolean);
+
+  const designation1 = parts[0] || "—";
+  const designation2 = parts[1] || "—";
+  const designation3 = parts[2] || "—";
+
+  setText("displayDesignation1", designation1);
+  setText("displayDesignation2", designation2);
+  setText("displayDesignation3", designation3);
+
+  setText("sideDesignation1", designation1);
+  setText("sideDesignation2", designation2);
+  setText("sideDesignation3", designation3);
+}
+
+setText("displayName", memberName);
+setText("displayEmail", memberEmail);
+setText("displayRole", memberRole);
+
+setValue("fullName", memberName);
+setValue("email", memberEmail);
+setValue("primaryRole", memberRole);
+
+applyDesignation(memberDesignation);
+setText("displayStatus", "Active");
+
+async function loadMemberProfile() {
+  try {
+    const response = await fetch(
+      WEB_APP_URL +
+      "?action=getMemberProfile&email=" +
+      encodeURIComponent(memberEmail)
+    );
+
+    const result = await response.json();
+
+    if (!result.success || !result.member) {
+      return;
+    }
+
+    const member = result.member;
+
+    const freshDesignation = [
+      member.Designation1 || "",
+      member.Designation2 || "",
+      member.Designation3 || ""
+    ]
+      .filter(Boolean)
+      .join(" | ");
+
+    setText("displayName", member.FullName || memberName);
+    setText("displayEmail", member.Email || memberEmail);
+    setText("displayRole", member.PrimaryRole || member.Role || memberRole);
+
+    setValue("fullName", member.FullName || memberName);
+    setValue("email", member.Email || memberEmail);
+    setValue("primaryRole", member.PrimaryRole || member.Role || memberRole);
+
+    setValue("mobileNumber", member.MobileNumber || "");
+    setValue("bio", member.Bio || "");
+
+    setText("displayStatus", member.Status || "ACTIVE");
+    setText("displayLastLogin", formatDate(member.LastLogin));
+
+    applyDesignation(freshDesignation);
+
+    currentProfilePhotoUrl = member.ProfilePhoto || "";
+
+    if (currentProfilePhotoUrl && !currentProfilePhotoUrl.startsWith("file:///")) {
+      profilePreview.src = currentProfilePhotoUrl;
+    } else {
+      profilePreview.src = "round-logo.png";
+    }
+
+  } catch (error) {
+    console.error("Profile load error:", error);
+  }
+}
+
+function fileToBase64(file) {
+  return new Promise(function(resolve, reject) {
+
+    const reader = new FileReader();
+
+    reader.onload = function() {
+      resolve(reader.result);
+    };
+
+    reader.onerror = function() {
+      reject("Unable to read file.");
+    };
+
+    reader.readAsDataURL(file);
+
+  });
+}
+
+if (profilePhoto) {
+
+  profilePhoto.addEventListener(
+    "change",
+    async function () {
+
+      const file = this.files[0];
+
+      if (!file) return;
+
+      if (!file.type.startsWith("image/")) {
+        alert("Please choose an image file.");
+        return;
+      }
+
+      const profileMessage =
+        document.getElementById("profileMessage");
+
+      try {
+
+        profilePreview.src =
+          URL.createObjectURL(file);
+
+        profileMessage.style.color =
+          "#0d3b66";
+
+        profileMessage.textContent =
+          "Uploading profile photo...";
+
+        const base64 =
+          await fileToBase64(file);
+
+        const payload = {
+          action: "uploadMemberProfilePhoto",
+          email: memberEmail,
+          fileName: file.name,
+          mimeType: file.type,
+          base64: base64
+        };
+
+        const response =
+          await fetch(
+            WEB_APP_URL,
+            {
+              method: "POST",
+              body: JSON.stringify(payload)
+            }
+          );
+
+        const result =
+          await response.json();
+
+        if (result.success) {
+
+          currentProfilePhotoUrl =
+            result.photoUrl || "";
+
+          profilePreview.src =
+            currentProfilePhotoUrl;
+
+          profileMessage.style.color =
+            "#0f9aa8";
+
+          profileMessage.textContent =
+            "Profile photo uploaded successfully.";
+
+          loadMemberProfile();
+
+        } else {
+
+          profileMessage.style.color =
+            "#c0392b";
+
+          profileMessage.textContent =
+            result.message ||
+            "Unable to upload profile photo.";
+
+        }
+
+      } catch (error) {
+
+        console.error(error);
+
+        profileMessage.style.color =
+          "#c0392b";
+
+        profileMessage.textContent =
+          "Error uploading profile photo.";
+
+      }
+
+    }
+  );
+
+}
+
+if (saveProfileBtn) {
+  saveProfileBtn.addEventListener("click", async function () {
+    const profileMessage = document.getElementById("profileMessage");
+
+    try {
+      profileMessage.style.color = "#0d3b66";
+      profileMessage.textContent = "Saving profile...";
+
+      const payload = {
+        action: "updateMemberProfile",
+        email: memberEmail,
+        mobileNumber: document.getElementById("mobileNumber").value,
+        bio: document.getElementById("bio").value,
+        profilePhoto: currentProfilePhotoUrl
+      };
+
+      const response = await fetch(WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        profileMessage.style.color = "#0f9aa8";
+        profileMessage.textContent = "Profile saved successfully.";
+        loadMemberProfile();
+      } else {
+        profileMessage.style.color = "#c0392b";
+        profileMessage.textContent = result.message || "Unable to save profile.";
+      }
+
+    } catch (error) {
+      console.error("Profile save error:", error);
+      profileMessage.style.color = "#c0392b";
+      profileMessage.textContent = "Error saving profile.";
+    }
+  });
+}
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    sessionStorage.clear();
+    window.location.href = "admin-login.html";
+  });
+}
+
+loadMemberProfile();
+</script>
+
+</body>
+</html>

@@ -190,12 +190,12 @@ async function loadMembersDirectory() {
 
   try {
     const response = await fetch(
-      WEB_APP_URL + "?action=getMembersDirectory"
+    WEB_APP_URL + "?action=getCommunityDirectory"
     );
 
     const data = await response.json();
 
-    if (!data.success || !Array.isArray(data.members) || data.members.length === 0) {
+    if (!data.success || !Array.isArray(data.data) || data.data.length === 0) {
       container.innerHTML = `
         <article class="office-card">
           <div class="office-card-icon">📭</div>
@@ -206,7 +206,7 @@ async function loadMembersDirectory() {
       return;
     }
 
-    container.innerHTML = data.members.map(member => {
+    container.innerHTML = data.data.map(member => {
       const photo = safeText(member.ProfilePhoto) || "round-logo.png";
       const fullName = safeText(member.FullName) || "Unnamed Member";
       const designation = getDesignation(member) || "Member";
