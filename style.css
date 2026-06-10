@@ -2285,3 +2285,20 @@ section {
   max-width: 320px;
   margin: 0 auto;
 }
+
+.full-highlight-row {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.volunteers-card {
+  text-align: center;
+}
+
+.volunteers-card .hero-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}

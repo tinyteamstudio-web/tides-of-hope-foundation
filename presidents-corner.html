@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>President's Corner | Tides of Hope</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="round-logo.png" class="brand-logo" alt="Tides of Hope" />
+      <div class="brand-text">
+        <span class="brand-title">Tides of Hope</span>
+        <span class="brand-subtitle">Incorporated</span>
+      </div>
+    </a>
+
+    <nav class="site-nav">
+      <a href="index.html">Homepage</a>
+      <a href="office-portal.html">Office Portal</a>
+      <a href="family-corner.html">Family Corner</a>
+    </nav>
+  </div>
+</header>
+
+<main class="office-portal-page">
+
+  <section class="office-portal-hero">
+    <div class="container">
+      <span class="section-tag">Leadership</span>
+      <h1>President’s Corner</h1>
+      <p>Official messages, reflections, updates, and writings from the President of Tides of Hope Incorporated.</p>
+    </div>
+  </section>
+
+  <section class="office-portal-section">
+    <div class="container">
+
+      <article class="profile-section-card">
+        <span class="section-tag">Latest Message</span>
+        <h2 id="presidentTitle">Loading President’s Message...</h2>
+        <p><strong id="presidentAuthor">Office of the President</strong></p>
+        <p id="presidentDate">Date Published: —</p>
+
+        <hr />
+
+        <div id="presidentMessage">
+          Loading message...
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="round-logo.png" class="footer-logo" alt="Tides of Hope" />
+      <h3>Tides of Hope Incorporated</h3>
+      <p>Serving with compassion, building with hope.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const WEB_APP_URL =
+  "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+
+function formatDate(value) {
+  if (!value) return "—";
+  const date = new Date(value);
+  if (isNaN(date.getTime())) return value;
+  return date.toLocaleDateString();
+}
+
+async function loadPresidentMessage() {
+  try {
+    const response = await fetch(WEB_APP_URL + "?action=getPresidentMessage");
+    const result = await response.json();
+
+    const data = result.data || result.message || result.presidentMessage || result;
+
+    document.getElementById("presidentTitle").textContent =
+      data.Title || data.title || "President’s Message";
+
+    document.getElementById("presidentAuthor").textContent =
+      data.Author || data.author || "Office of the President";
+
+    document.getElementById("presidentDate").textContent =
+      "Date Published: " + formatDate(data.CreatedAt || data.Timestamp || data.Date || data.date);
+
+    document.getElementById("presidentMessage").innerHTML =
+      String(data.Message || data.message || "No message available yet.").replace(/\n/g, "<br>");
+  } catch (error) {
+    document.getElementById("presidentMessage").textContent =
+      "Unable to load President’s message.";
+  }
+}
+
+loadPresidentMessage();
+</script>
+
+</body>
+</html>
