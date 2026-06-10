@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mini Gallery Upload | Tides of Hope</title>
+  <title>Events & Activities Album Upload | Tides of Hope</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
+
 <body>
 
 <header class="site-header">
@@ -32,10 +33,10 @@
 
   <section class="admin-hero">
     <div class="container">
-      <span class="section-tag">Office Upload Tool</span>
-      <h1>Mini Gallery Upload</h1>
+      <span class="section-tag">Event Album Upload</span>
+      <h1>Events & Activities Album Upload</h1>
       <p>
-        Upload official photos and videos for the homepage mini gallery and featured impact source.
+        Upload photos and videos directly from your device into the correct event album.
       </p>
     </div>
   </section>
@@ -45,16 +46,13 @@
       <div class="admin-card gallery-upload-card">
 
         <h2>Upload Media</h2>
-        <p>Fill out the details below and upload your official gallery media.</p>
+        <p>Select the event album first, then upload your photo or video.</p>
 
         <form id="galleryUploadForm" class="admin-login-form">
-          <input
-            type="text"
-            id="galleryTitle"
-            class="admin-input"
-            placeholder="Event Title"
-            required
-          />
+
+          <select id="galleryEvent" class="admin-input" required>
+            <option value="">Loading event albums...</option>
+          </select>
 
           <textarea
             id="galleryCaption"
@@ -79,14 +77,14 @@
           />
 
           <button type="submit" class="admin-btn">
-            Upload to Gallery
+            Upload to Event Album
           </button>
 
           <p id="galleryUploadMessage" class="admin-login-message"></p>
         </form>
 
         <p class="admin-note">
-          Only authorized administrators should upload official organization media.
+          Uploads are saved under the selected event album. Photos and videos may be reviewed before public display.
         </p>
 
       </div>
@@ -142,98 +140,283 @@
   />
 </button>
 
-if (sessionStorage.getItem("tohAdminLoggedIn") !== "true") {
+<script>
+const GALLERY_WEB_APP_URL =
+  "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+
+const isLoggedIn =
+  sessionStorage.getItem("tohAdminLoggedIn") === "true" ||
+  sessionStorage.getItem("tohLoggedIn") === "true" ||
+  sessionStorage.getItem("tohVolunteerLoggedIn") === "true";
+
+if (!isLoggedIn) {
   window.location.href = "admin-login.html";
 }
 
-document.getElementById("galleryLogoutBtn").addEventListener("click", function(e) {
-  e.preventDefault();
-  sessionStorage.clear();
-  window.location.href = "admin-login.html";
-});
+const galleryLogoutBtn = document.getElementById("galleryLogoutBtn");
 
-const GALLERY_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+if (galleryLogoutBtn) {
+  galleryLogoutBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    sessionStorage.clear();
+    window.location.href = "admin-login.html";
+  });
+}
 
 const galleryUploadForm = document.getElementById("galleryUploadForm");
 const galleryUploadMessage = document.getElementById("galleryUploadMessage");
+const galleryEvent = document.getElementById("galleryEvent");
 
-galleryUploadForm.addEventListener("submit", async function(e) {
-  e.preventDefault();
+function showGalleryMessage(message, type) {
+  if (!galleryUploadMessage) return;
 
-  const title = document.getElementById("galleryTitle").value.trim();
-  const caption = document.getElementById("galleryCaption").value.trim();
-  const mediaType = document.getElementById("galleryMediaType").value.trim();
-  const fileInput = document.getElementById("galleryFile");
-  const file = fileInput.files[0];
+  galleryUploadMessage.textContent = message;
+  setTimeout(() => {
+  window.location.href =
+    "event-album.html?id=" + selectedEventId;
+}, 1200);
 
-  if (!file) {
-    galleryUploadMessage.textContent = "Please choose a file.";
-    galleryUploadMessage.style.color = "red";
-    return;
+  galleryUploadMessage.style.color =
+    type === "success" ? "green" :
+    type === "error" ? "red" :
+    "#0d3b66";
+}
+
+async function loadEventAlbumsDropdown() {
+  if (!galleryEvent) return;
+
+  galleryEvent.innerHTML = `
+    <option value="">Loading event albums...</option>
+  `;
+
+  try {
+    const response = await fetch(
+      `${GALLERY_WEB_APP_URL}?action=getActiveEvents`
+    );
+
+    const result = await response.json();
+
+    if (!result.success || !result.data || !result.data.length) {
+      galleryEvent.innerHTML = `
+        <option value="">No active event albums found</option>
+      `;
+      return;
+    }
+
+    galleryEvent.innerHTML = `
+      <option value="">Select Event Album</option>
+    `;
+
+    result.data.forEach(function(event) {
+      const option = document.createElement("option");
+
+      option.value = event.EventID;
+      option.textContent =
+        event.EventTitle +
+        (event.EventDate ? " — " + event.EventDate : "");
+
+      option.dataset.title = event.EventTitle || "";
+      option.dataset.location = event.EventLocation || "";
+      option.dataset.date = event.EventDate || "";
+
+      galleryEvent.appendChild(option);
+    });
+
+  } catch (error) {
+    galleryEvent.innerHTML = `
+      <option value="">Failed to load event albums</option>
+    `;
+  }
+}
+
+function getUploaderInfo() {
+  const adminEmail =
+    sessionStorage.getItem("tohAdminEmail") || "";
+
+  const memberEmail =
+    sessionStorage.getItem("tohUserEmail") || "";
+
+  const volunteerEmail =
+    sessionStorage.getItem("tohVolunteerEmail") || "";
+
+  const uploaderName =
+    sessionStorage.getItem("tohUserName") ||
+    sessionStorage.getItem("tohVolunteerName") ||
+    sessionStorage.getItem("tohAdminName") ||
+    adminEmail ||
+    memberEmail ||
+    volunteerEmail ||
+    "Tides of Hope User";
+
+  const uploaderRole =
+    sessionStorage.getItem("tohUserRole") ||
+    sessionStorage.getItem("tohAdminRole") ||
+    sessionStorage.getItem("tohVolunteerRole") ||
+    "Contributor";
+
+  let uploaderType = "MEMBER";
+
+  if (sessionStorage.getItem("tohAdminLoggedIn") === "true") {
+    uploaderType = "ADMIN";
   }
 
-  if (mediaType === "image" && !file.type.startsWith("image/")) {
-    galleryUploadMessage.textContent = "Selected file does not match Image type.";
-    galleryUploadMessage.style.color = "red";
-    return;
+  if (sessionStorage.getItem("tohVolunteerLoggedIn") === "true") {
+    uploaderType = "VOLUNTEER";
   }
 
-  if (mediaType === "video" && !file.type.startsWith("video/")) {
-    galleryUploadMessage.textContent = "Selected file does not match Video type.";
-    galleryUploadMessage.style.color = "red";
-    return;
-  }
+  return {
+    uploaderID:
+      adminEmail ||
+      memberEmail ||
+      volunteerEmail ||
+      uploaderName,
+    uploaderName: uploaderName,
+    uploaderRole: uploaderRole,
+    uploaderType: uploaderType
+  };
+}
 
-  galleryUploadMessage.textContent = "Uploading... please wait.";
-  galleryUploadMessage.style.color = "#0d3b66";
+if (galleryUploadForm) {
+  galleryUploadForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
 
-  const reader = new FileReader();
+    const selectedOption =
+      galleryEvent.options[galleryEvent.selectedIndex];
 
-  reader.onload = async function() {
-    const base64Data = reader.result.split(",")[1];
+    const eventId = galleryEvent.value.trim();
+    const eventTitle =
+      selectedOption ? selectedOption.dataset.title : "";
 
-    const payload = {
-      action: "submitGalleryUpload",
-      title: title,
-      caption: caption,
-      mediaType: mediaType,
-      fileName: file.name,
-      mimeType: file.type,
-      fileData: base64Data,
-      uploadedBy: sessionStorage.getItem("tohAdminEmail") || "admin@tidesofhopeinc.org"
+    const caption =
+      document.getElementById("galleryCaption").value.trim();
+
+    const mediaType =
+      document.getElementById("galleryMediaType").value.trim();
+
+    const fileInput =
+      document.getElementById("galleryFile");
+
+    const file =
+      fileInput.files[0];
+
+    if (!eventId || !eventTitle) {
+      showGalleryMessage("Please select an event album.", "error");
+      return;
+    }
+
+    if (!caption) {
+      showGalleryMessage("Please write a short caption.", "error");
+      return;
+    }
+
+    if (!file) {
+      showGalleryMessage("Please choose a file from your device.", "error");
+      return;
+    }
+
+    if (mediaType === "image" && !file.type.startsWith("image/")) {
+      showGalleryMessage("Selected file does not match Image type.", "error");
+      return;
+    }
+
+    if (mediaType === "video" && !file.type.startsWith("video/")) {
+      showGalleryMessage("Selected file does not match Video type.", "error");
+      return;
+    }
+
+    const maxSizeMB = mediaType === "video" ? 40 : 12;
+    const maxSizeBytes = maxSizeMB * 1024 * 1024;
+
+    if (file.size > maxSizeBytes) {
+      showGalleryMessage(
+        "File is too large. Maximum allowed: " + maxSizeMB + "MB.",
+        "error"
+      );
+      return;
+    }
+
+    showGalleryMessage("Uploading from device... please wait.", "");
+
+    const reader = new FileReader();
+
+    reader.onload = async function() {
+      const base64Data = reader.result.split(",")[1];
+      const uploader = getUploaderInfo();
+
+      const fileHash =
+        eventId + "_" + file.name + "_" + file.size;
+
+      const payload = {
+        action: "submitGalleryUpload",
+
+        eventId: eventId,
+        eventTitle: eventTitle,
+
+        title: eventTitle,
+        caption: caption,
+
+        mediaType: mediaType,
+        fileName: file.name,
+        originalFileName: file.name,
+        fileSize: file.size,
+        fileHash: fileHash,
+        mimeType: file.type,
+        fileData: base64Data,
+
+        uploaderID: uploader.uploaderID,
+        uploaderName: uploader.uploaderName,
+        uploaderRole: uploader.uploaderRole,
+        uploaderType: uploader.uploaderType,
+
+        uploadedBy: uploader.uploaderName
+      };
+
+      try {
+        const response = await fetch(GALLERY_WEB_APP_URL, {
+          method: "POST",
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          showGalleryMessage(
+            "Upload successful! Your media was saved to the selected event album.",
+            "success"
+          );
+          galleryUploadForm.reset();
+          loadEventAlbumsDropdown();
+        } else {
+          showGalleryMessage(result.message || "Upload failed.", "error");
+        }
+
+      } catch (error) {
+        showGalleryMessage(
+          "Upload failed. Please check internet connection or Web App deployment.",
+          "error"
+        );
+      }
     };
 
-    try {
-      const response = await fetch(GALLERY_WEB_APP_URL, {
-        method: "POST",
-        body: JSON.stringify(payload)
-      });
+    reader.onerror = function() {
+      showGalleryMessage("Unable to read file from this device.", "error");
+    };
 
-      const result = await response.json();
-
-      if (result.success) {
-        galleryUploadMessage.textContent = "Upload successful!";
-        galleryUploadMessage.style.color = "green";
-        galleryUploadForm.reset();
-      } else {
-        galleryUploadMessage.textContent = result.message || "Upload failed.";
-        galleryUploadMessage.style.color = "red";
-      }
-    } catch (error) {
-      galleryUploadMessage.textContent = "Upload failed. Please check your Web App deployment.";
-      galleryUploadMessage.style.color = "red";
-    }
-  };
-
-  reader.readAsDataURL(file);
-});
+    reader.readAsDataURL(file);
+  });
+}
 
 const bubbleChatButton = document.getElementById("bubbleChatButton");
+
 if (bubbleChatButton) {
   bubbleChatButton.addEventListener("click", () => {
     window.open("https://www.facebook.com/share/1J3FyRocdZ/", "_blank");
   });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  loadEventAlbumsDropdown();
+});
 </script>
 
 </body>

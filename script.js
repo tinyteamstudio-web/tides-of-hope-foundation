@@ -563,58 +563,116 @@ async function loadHomepageAnnouncements() {
    HOMEPAGE GALLERY
 ========================= */
 async function loadHomepageGallery() {
-  const galleryGrid = document.getElementById("homepageGalleryGrid");
+
+  const galleryGrid =
+    document.getElementById("homepageGalleryGrid");
+
   if (!galleryGrid) return;
 
   galleryGrid.innerHTML = `
     <article class="gallery-card placeholder-card">
-      <div class="gallery-overlay">Loading gallery...</div>
+      <div class="gallery-overlay">
+        Loading Event Albums...
+      </div>
     </article>
   `;
 
   try {
-    const response = await fetch(`${WEB_APP_URL}?action=getHomepageGallery`);
-    const data = await response.json();
+
+    const response =
+      await fetch(
+        `${WEB_APP_URL}?action=getEventAlbums`
+      );
+
+    const result =
+      await response.json();
 
     galleryGrid.innerHTML = "";
 
-    if (!data.success || !data.items || !data.items.length) {
+    if (
+      !result.success ||
+      !result.data ||
+      !result.data.length
+    ) {
+
       galleryGrid.innerHTML = `
         <article class="gallery-card placeholder-card">
-          <div class="gallery-overlay">No gallery uploads available yet.</div>
+          <div class="gallery-overlay">
+            No Event Albums Available Yet
+          </div>
         </article>
       `;
+
       return;
     }
 
-    data.items.forEach((item) => {
-      const mediaType = String(item.MediaType || "").toLowerCase();
-      const fileUrl = item.FileURL || "";
-      const title = item.Title || "Gallery Item";
+    result.data.forEach((album) => {
 
-      const mediaHtml = mediaType === "video"
-        ? `
-          <video class="gallery-image" controls preload="metadata">
-            <source src="${fileUrl}">
-            Your browser does not support video.
-          </video>
-        `
-        : `<img src="${fileUrl}" alt="${title}" class="gallery-image">`;
+      const coverPhoto =
+        album.CoverPhoto ||
+        "assets/images/programs/hero-main.png";
 
       galleryGrid.innerHTML += `
-        <article class="gallery-card">
-          ${mediaHtml}
-          <div class="gallery-overlay">${title}</div>
+        <article class="gallery-card album-card">
+
+          <img
+            src="${coverPhoto}"
+            alt="${album.EventTitle}"
+            class="gallery-image"
+          >
+
+          <div class="album-info">
+
+            <h3>
+              ${album.EventTitle}
+            </h3>
+
+            <p class="album-date">
+              ${album.EventDate || ""}
+            </p>
+
+            <div class="album-stats">
+
+              <span>
+                📷 ${album.PhotoCount || 0}
+              </span>
+
+              <span>
+                🎥 ${album.VideoCount || 0}
+              </span>
+
+              <span>
+                👥 ${album.ContributorCount || 0}
+              </span>
+
+            </div>
+
+            <a
+              href="event-album.html?id=${album.EventID}"
+              class="btn btn-secondary album-btn"
+            >
+              View Album
+            </a>
+
+          </div>
+
         </article>
       `;
+
     });
 
   } catch (error) {
+
     galleryGrid.innerHTML = `
       <article class="gallery-card placeholder-card">
-        <div class="gallery-overlay">Failed to load gallery.</div>
+        <div class="gallery-overlay">
+          Failed to load Event Albums
+        </div>
       </article>
     `;
+
+    console.error(error);
+
   }
 }
 

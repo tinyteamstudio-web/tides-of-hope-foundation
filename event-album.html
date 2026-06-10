@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Event Album | Tides of Hope</title>
+
+  <meta
+    name="description"
+    content="View official Tides of Hope event albums, photos, videos, donors, supporters, and community impact stories."
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .album-page-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .album-cover-wrap {
+      margin: 0 auto 28px;
+      border-radius: 26px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #eaf8fb, #ffffff);
+      box-shadow: var(--shadow-card);
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .album-cover-image {
+      width: 100%;
+      max-height: 460px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .album-cover-fallback {
+      padding: 50px 24px;
+      text-align: center;
+      color: #0d3b66;
+    }
+
+    .album-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin: 28px 0;
+    }
+
+    .album-meta-grid .info-card {
+      text-align: center;
+      padding: 22px;
+    }
+
+    .album-story {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      margin-top: 30px;
+    }
+
+    .album-story p {
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .album-actions-row {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .album-section-heading {
+      margin: 70px auto 26px;
+      max-width: 780px;
+    }
+
+    .recognition-summary-card {
+      max-width: 760px;
+      margin: 0 auto 70px;
+      text-align: center;
+    }
+
+    .recognition-summary-box {
+      background: #ffffff;
+      padding: 34px;
+      border-radius: 24px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .recognition-summary-box h3 {
+      margin-bottom: 12px;
+      color: #0d2b66;
+    }
+
+    .recognition-summary-box p {
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    .recognition-summary-box .admin-btn {
+      max-width: 320px;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    .album-media-meta {
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      color: #52677a;
+      background: #ffffff;
+    }
+
+    .recognition-modal,
+    .story-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 26, 44, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 18px;
+    }
+
+    .recognition-modal.active,
+    .story-modal.active {
+      display: flex;
+    }
+
+    .recognition-modal-box,
+    .story-modal-box {
+      width: 100%;
+      max-width: 720px;
+      max-height: 85vh;
+      overflow-y: auto;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+    }
+
+    .recognition-modal-close,
+    .story-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      border: none;
+      background: #eef7fa;
+      color: #0d3b66;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .recognition-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .recognition-item {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #f4fbfd;
+      text-align: left;
+    }
+
+    .recognition-item strong {
+      display: block;
+      color: #0d2b66;
+      margin-bottom: 4px;
+    }
+
+    .recognition-item span {
+      font-size: 0.9rem;
+      color: #52677a;
+    }
+
+    @media (max-width: 900px) {
+      .album-meta-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .album-meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .album-story,
+      .recognition-summary-box,
+      .recognition-modal-box,
+      .story-modal-box {
+        padding: 24px;
+      }
+
+      .album-cover-wrap {
+        min-height: 220px;
+      }
+
+      .album-cover-image {
+        max-height: 320px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="index.html" class="brand">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo" />
+      <div class="brand-text">
+        <span class="brand-title">Tides of Hope</span>
+        <span class="brand-subtitle">Incorporated</span>
+      </div>
+    </a>
+
+    <nav class="site-nav">
+      <a href="index.html">Homepage</a>
+      <a href="gallery.html">All Albums</a>
+      <a href="donate.html" class="nav-cta">Support Us</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <section class="subpage-hero">
+    <div class="container subpage-hero-content">
+      <span class="section-tag">Events & Activities Album</span>
+      <h1 id="albumTitle">Loading Album...</h1>
+      <p id="albumSubtitle">Please wait while we load this event album.</p>
+    </div>
+  </section>
+
+  <section class="gallery-page-section">
+    <div class="container album-page-wrap">
+
+      <div class="album-cover-wrap" id="albumCoverWrap">
+        <div class="album-cover-fallback">
+          Loading cover photo...
+        </div>
+      </div>
+
+      <div class="album-meta-grid">
+        <div class="info-card">
+          <h3>Event Date</h3>
+          <p id="albumDate">—</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Location</h3>
+          <p id="albumLocation">—</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Photos</h3>
+          <p id="albumPhotoCount">0</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Videos</h3>
+          <p id="albumVideoCount">0</p>
+        </div>
+      </div>
+
+      <div class="album-story">
+        <span class="section-tag">Mission Story</span>
+        <div id="albumDescription">Loading mission story...</div>
+
+        <div class="album-actions-row">
+          <button class="btn btn-secondary" id="readFullStoryBtn" type="button">
+            Read Full Story
+          </button>
+        </div>
+      </div>
+
+      <div class="section-heading center album-section-heading">
+        <span class="section-tag">Gallery</span>
+        <h2>Photos & Videos</h2>
+        <p>
+          Approved uploads from Tides of Hope members, volunteers, officers, and incorporators.
+        </p>
+      </div>
+
+      <div class="gallery-page-grid" id="albumMediaGrid">
+        <article class="empty-state-card">
+          Loading media...
+        </article>
+      </div>
+
+      <div class="section-heading center album-section-heading">
+        <span class="section-tag">Recognition</span>
+        <h2>Community Recognition</h2>
+      </div>
+
+      <div class="recognition-summary-card" id="albumSupportersGrid">
+        <div class="empty-state-card">
+          <h3>Loading Recognition...</h3>
+          <p>Please wait while we load community supporters.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="recognition-modal" id="recognitionModal">
+    <div class="recognition-modal-box">
+      <button class="recognition-modal-close" id="recognitionModalClose" type="button">×</button>
+      <h2>Full Recognition List</h2>
+      <div id="recognitionModalList">Loading...</div>
+    </div>
+  </div>
+
+  <div class="story-modal" id="storyModal">
+    <div class="story-modal-box">
+      <button class="story-modal-close" id="storyModalClose" type="button">×</button>
+      <h2>Full Mission Story</h2>
+      <div id="storyModalContent">Loading...</div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+
+    <div class="footer-brand">
+      <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo" />
+      <h3>Tides of Hope Incorporated</h3>
+      <p>Serving with compassion, building with hope.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">All Albums</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <p>admin@tidesofhopeinc.org</p>
+    </div>
+
+  </div>
+
+  <div class="footer-credit">
+    <div class="container footer-credit-inner">
+      <p>
+        Powered by <strong>BuildFrame Digital System</strong>
+        <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button
+  class="bubble-chat-button"
+  id="bubbleChatButton"
+  aria-label="Contact Tides of Hope"
+>
+  <img src="round-logo.png" alt="Tides of Hope Logo" class="bubble-chat-logo" />
+</button>
+
+<script>
+const WEB_APP_URL =
+  "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+
+let currentSupporters = [];
+let currentFullStory = "";
+
+function getEventIdFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("id") || params.get("eventId") || "";
+}
+
+function formatDate(value) {
+  if (!value) return "—";
+  const date = new Date(value);
+  if (isNaN(date.getTime())) return value;
+
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function renderParagraphs(text) {
+  const safeText = escapeHtml(text || "No mission story available yet.");
+
+  return safeText
+    .split(/\n+/)
+    .filter(Boolean)
+    .map(paragraph => `<p>${paragraph}</p>`)
+    .join("");
+}
+
+function makeShortStory(text) {
+  const clean = String(text || "").replace(/\s+/g, " ").trim();
+
+  if (!clean) {
+    return "This mission reflects Tides of Hope’s commitment to compassionate service, community support, and meaningful action.";
+  }
+
+  if (clean.length <= 280) {
+    return clean;
+  }
+
+  return clean.slice(0, 280).trim() + "...";
+}
+
+function normalizeDriveImageUrl(url) {
+  const value = String(url || "").trim();
+
+  if (!value) return "";
+
+  let fileId = "";
+
+  const idMatch = value.match(/[?&]id=([^&]+)/);
+  const fileMatch = value.match(/\/d\/([^/]+)/);
+
+  if (idMatch && idMatch[1]) {
+    fileId = idMatch[1];
+  } else if (fileMatch && fileMatch[1]) {
+    fileId = fileMatch[1];
+  }
+
+  if (fileId) {
+    return "https://drive.google.com/thumbnail?id=" + fileId + "&sz=w1200";
+  }
+
+  return value;
+}
+
+function uniqueSupportersByName(items, eventId) {
+  const seen = {};
+  const list = [];
+
+  items.forEach(item => {
+    if (eventId && String(item.EventID || "") !== eventId) return;
+
+    const name = String(item.SupporterName || "").trim();
+    const type = String(item.SupporterType || "").trim();
+    const contribution = String(item.ContributionType || "").trim();
+    const details = String(item.ContributionDetails || "").trim();
+
+    const key = [name, type, contribution, details].join("|").toLowerCase();
+
+    if (name && !seen[key]) {
+      seen[key] = true;
+      list.push(item);
+    }
+  });
+
+  return list;
+}
+
+function openRecognitionModal() {
+  const modal = document.getElementById("recognitionModal");
+  const list = document.getElementById("recognitionModalList");
+
+  if (!modal || !list) return;
+
+  if (!currentSupporters.length) {
+    list.innerHTML = `<p>No recognition entries available yet.</p>`;
+  } else {
+    list.innerHTML = `
+      <div class="recognition-list">
+        ${currentSupporters.map(item => `
+          <div class="recognition-item">
+            <strong>${escapeHtml(item.SupporterName || "Unnamed Supporter")}</strong>
+            <span>
+              ${escapeHtml(item.SupporterType || "Supporter")}
+              ${item.ContributionType ? " • " + escapeHtml(item.ContributionType) : ""}
+              ${item.ContributionDetails ? " • " + escapeHtml(item.ContributionDetails) : ""}
+            </span>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  modal.classList.add("active");
+}
+
+function closeRecognitionModal() {
+  const modal = document.getElementById("recognitionModal");
+  if (modal) modal.classList.remove("active");
+}
+
+function openStoryModal() {
+  const modal = document.getElementById("storyModal");
+  const content = document.getElementById("storyModalContent");
+
+  if (!modal || !content) return;
+
+  content.innerHTML = renderParagraphs(currentFullStory);
+  modal.classList.add("active");
+}
+
+function closeStoryModal() {
+  const modal = document.getElementById("storyModal");
+  if (modal) modal.classList.remove("active");
+}
+
+async function loadEventAlbum() {
+  const eventId = getEventIdFromUrl();
+
+  const titleEl = document.getElementById("albumTitle");
+  const subtitleEl = document.getElementById("albumSubtitle");
+  const coverWrap = document.getElementById("albumCoverWrap");
+  const dateEl = document.getElementById("albumDate");
+  const locationEl = document.getElementById("albumLocation");
+  const photoCountEl = document.getElementById("albumPhotoCount");
+  const videoCountEl = document.getElementById("albumVideoCount");
+  const descriptionEl = document.getElementById("albumDescription");
+  const supportersGrid = document.getElementById("albumSupportersGrid");
+  const mediaGrid = document.getElementById("albumMediaGrid");
+
+  if (!eventId) {
+    titleEl.textContent = "Event Album Not Found";
+    subtitleEl.textContent = "No EventID was provided in the link.";
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `${WEB_APP_URL}?action=getEventAlbumById&eventId=${encodeURIComponent(eventId)}`
+    );
+
+    const result = await response.json();
+
+    if (!result.success || !result.event) {
+      titleEl.textContent = "Event Album Not Found";
+      subtitleEl.textContent =
+        result.message || "Unable to load this event album.";
+      return;
+    }
+
+    const event = result.event;
+    const allMedia = result.media || [];
+    const allSupporters = result.supporters || [];
+
+    const media = allMedia.filter(item =>
+      String(item.EventID || "") === eventId
+    );
+
+    currentSupporters = uniqueSupportersByName(allSupporters, eventId);
+    currentFullStory = event.EventDescription || "";
+
+    const photos = media.filter(item =>
+      String(item.MediaType || "").toLowerCase() === "image"
+    );
+
+    const videos = media.filter(item =>
+      String(item.MediaType || "").toLowerCase() === "video"
+    );
+
+    const coverPhoto =
+      normalizeDriveImageUrl(event.CoverPhoto) ||
+      normalizeDriveImageUrl(photos[0] && photos[0].MediaURL) ||
+      "";
+
+    titleEl.textContent = event.EventTitle || "Event Album";
+    subtitleEl.textContent =
+      event.EventLocation || "Tides of Hope Events & Activities";
+
+    dateEl.textContent = formatDate(event.EventDate);
+    locationEl.textContent = event.EventLocation || "—";
+    photoCountEl.textContent = photos.length;
+    videoCountEl.textContent = videos.length;
+
+    descriptionEl.innerHTML = `
+      <p>${escapeHtml(makeShortStory(event.EventDescription || ""))}</p>
+    `;
+
+    if (coverPhoto) {
+      coverWrap.innerHTML = `
+        <img
+          src="${coverPhoto}"
+          alt="${escapeHtml(event.EventTitle || "Event Album")}"
+          class="album-cover-image"
+          onerror="this.parentElement.innerHTML='<div class=&quot;album-cover-fallback&quot;>Cover photo will appear here once available.</div>'"
+        />
+      `;
+    } else {
+      coverWrap.innerHTML = `
+        <div class="album-cover-fallback">
+          Cover photo will appear here once available.
+        </div>
+      `;
+    }
+
+    if (!currentSupporters.length) {
+      supportersGrid.innerHTML = `
+        <div class="empty-state-card">
+          No recognition entries available yet.
+        </div>
+      `;
+    } else {
+      supportersGrid.innerHTML = `
+        <div class="recognition-summary-box">
+          <h3>
+            ${currentSupporters.length} Community Donors & Supporters
+          </h3>
+
+          <p>
+            Community members, donors, volunteers, and partners who helped make this mission possible.
+          </p>
+
+          <button
+            class="admin-btn"
+            id="viewRecognitionBtn"
+            type="button"
+          >
+            View Full Recognition List
+          </button>
+        </div>
+      `;
+
+      const viewBtn = document.getElementById("viewRecognitionBtn");
+      if (viewBtn) {
+        viewBtn.addEventListener("click", openRecognitionModal);
+      }
+    }
+
+    if (!media.length) {
+      mediaGrid.innerHTML = `
+        <article class="empty-state-card">
+          No approved photos or videos yet.
+        </article>
+      `;
+    } else {
+      mediaGrid.innerHTML = "";
+
+      media.forEach(item => {
+        const mediaType = String(item.MediaType || "").toLowerCase();
+        const mediaUrl = mediaType === "image"
+          ? normalizeDriveImageUrl(item.MediaURL)
+          : item.MediaURL || "";
+
+        const caption = item.Caption || "";
+        const uploader = item.UploaderName || "Tides of Hope Contributor";
+
+        const mediaHtml =
+          mediaType === "video"
+            ? `
+              <video class="gallery-image" controls preload="metadata">
+                <source src="${mediaUrl}">
+                Your browser does not support video.
+              </video>
+            `
+            : `
+              <img
+                src="${mediaUrl}"
+                alt="${escapeHtml(caption || event.EventTitle)}"
+                class="gallery-image"
+              />
+            `;
+
+        mediaGrid.innerHTML += `
+          <article class="gallery-card album-media-card">
+            ${mediaHtml}
+            <div class="gallery-overlay">
+              ${escapeHtml(caption || "Event Media")}
+            </div>
+            <div class="album-media-meta">
+              Uploaded by ${escapeHtml(uploader)}
+            </div>
+          </article>
+        `;
+      });
+    }
+
+  } catch (error) {
+    titleEl.textContent = "Unable to Load Album";
+    subtitleEl.textContent =
+      "Please check your connection or Web App deployment.";
+  }
+}
+
+const bubbleChatButton = document.getElementById("bubbleChatButton");
+
+if (bubbleChatButton) {
+  bubbleChatButton.addEventListener("click", () => {
+    window.open("https://www.facebook.com/share/1J3FyRocdZ/", "_blank");
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  loadEventAlbum();
+
+  const recognitionClose = document.getElementById("recognitionModalClose");
+  const recognitionModal = document.getElementById("recognitionModal");
+
+  if (recognitionClose) {
+    recognitionClose.addEventListener("click", closeRecognitionModal);
+  }
+
+  if (recognitionModal) {
+    recognitionModal.addEventListener("click", function(e) {
+      if (e.target === recognitionModal) {
+        closeRecognitionModal();
+      }
+    });
+  }
+
+  const storyClose = document.getElementById("storyModalClose");
+  const storyModal = document.getElementById("storyModal");
+  const readBtn = document.getElementById("readFullStoryBtn");
+
+  if (storyClose) {
+    storyClose.addEventListener("click", closeStoryModal);
+  }
+
+  if (storyModal) {
+    storyModal.addEventListener("click", function(e) {
+      if (e.target === storyModal) {
+        closeStoryModal();
+      }
+    });
+  }
+
+  if (readBtn) {
+    readBtn.addEventListener("click", openStoryModal);
+  }
+});
+</script>
+
+</body>
+</html>
