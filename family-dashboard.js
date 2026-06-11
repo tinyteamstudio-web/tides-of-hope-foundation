@@ -1,6 +1,6 @@
 /* =========================================================
    TIDES OF HOPE
-   VOLUNTEER DASHBOARD
+   FAMILY DASHBOARD
 ========================================================= */
 
 const WEBAPP_URL =
@@ -10,109 +10,97 @@ const WEBAPP_URL =
    LOGIN CHECK
 ========================================================= */
 
-const volunteerLoggedIn =
+const familyLoggedIn =
+  sessionStorage.getItem("tohFamilyLoggedIn") === "true" ||
   sessionStorage.getItem("tohVolunteerLoggedIn") === "true";
 
-if (!volunteerLoggedIn) {
-  window.location.href = "volunteer-login.html";
+if (!familyLoggedIn) {
+  window.location.href = "family-login.html";
 }
 
 /* =========================================================
    SESSION VALUES
 ========================================================= */
 
-const volunteerId =
+const familyId =
   sessionStorage.getItem("tohVolunteerID") || "";
 
-const volunteerUsername =
-  sessionStorage.getItem("tohVolunteerUsername") || "";
+const familyUsername =
+  sessionStorage.getItem("tohFamilyUsername") ||
+  sessionStorage.getItem("tohVolunteerUsername") ||
+  "";
 
-const volunteerName =
-  sessionStorage.getItem("tohVolunteerName") || "Volunteer";
+const familyName =
+  sessionStorage.getItem("tohFamilyName") ||
+  sessionStorage.getItem("tohVolunteerName") ||
+  "Family Member";
 
 /* =========================================================
    LOAD PAGE
 ========================================================= */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
-
-    loadVolunteerProfile();
-    initializeLogout();
-
-  }
-);
+document.addEventListener("DOMContentLoaded", function() {
+  loadFamilyProfile();
+  initializeLogout();
+});
 
 /* =========================================================
    LOAD PROFILE
 ========================================================= */
 
-async function loadVolunteerProfile() {
-
+async function loadFamilyProfile() {
   try {
-
     const result =
       await sendRequest({
-
         action: "getVolunteerProfile",
-        volunteerId: volunteerId,
-        username: volunteerUsername
-
+        volunteerId: familyId,
+        username: familyUsername
       });
 
-    if (
-      result.success &&
-      result.volunteer
-    ) {
-
-      renderVolunteer(
-        result.volunteer
-      );
-
+    if (result.success && result.volunteer) {
+      renderFamilyMember(result.volunteer);
     } else {
-
-      renderVolunteer({
-        FullName: volunteerName,
-        Username: volunteerUsername,
-        BadgeLevel: "New Volunteer",
+      renderFamilyMember({
+        FullName: familyName,
+        Username: familyUsername,
+        BadgeLevel: "Family Member",
         TotalHours: 0
       });
-
     }
 
   } catch (error) {
-
     console.error(error);
 
+    renderFamilyMember({
+      FullName: familyName,
+      Username: familyUsername,
+      BadgeLevel: "Family Member",
+      TotalHours: 0
+    });
   }
-
 }
 
 /* =========================================================
-   RENDER
+   RENDER FAMILY MEMBER
 ========================================================= */
 
-function renderVolunteer(
-  volunteer
-) {
-
+function renderFamilyMember(member) {
   const fullName =
-    volunteer.FullName ||
-    volunteerName ||
-    "Volunteer";
+    member.FullName ||
+    familyName ||
+    "Family Member";
 
   const username =
-    volunteer.Username ||
-    volunteerUsername ||
-    "volunteer";
+    member.Username ||
+    familyUsername ||
+    "family";
 
   const badge =
-    volunteer.BadgeLevel ||
-    "New Volunteer";
+    member.BadgeLevel ||
+    "Family Member";
 
   const hours =
-    volunteer.TotalHours ||
+    member.TotalHours ||
     0;
 
   setText(
@@ -141,19 +129,12 @@ function renderVolunteer(
   );
 
   const avatar =
-    document.getElementById(
-      "dashboardAvatar"
-    );
+    document.getElementById("dashboardAvatar");
 
   if (avatar) {
-
     avatar.textContent =
-      getInitials(
-        fullName
-      );
-
+      getInitials(fullName);
   }
-
 }
 
 /* =========================================================
@@ -161,102 +142,64 @@ function renderVolunteer(
 ========================================================= */
 
 function initializeLogout() {
-
   const logoutBtn =
-    document.getElementById(
-      "volunteerLogoutBtn"
-    );
+    document.getElementById("volunteerLogoutBtn");
 
   if (!logoutBtn) return;
 
-  logoutBtn.addEventListener(
-    "click",
-    function (e) {
+  logoutBtn.addEventListener("click", function(e) {
+    e.preventDefault();
 
-      e.preventDefault();
+    sessionStorage.removeItem("tohVolunteerLoggedIn");
+    sessionStorage.removeItem("tohVolunteerID");
+    sessionStorage.removeItem("tohVolunteerUsername");
+    sessionStorage.removeItem("tohVolunteerName");
 
-      sessionStorage.removeItem(
-        "tohVolunteerLoggedIn"
-      );
+    sessionStorage.removeItem("tohFamilyLoggedIn");
+    sessionStorage.removeItem("tohFamilyUsername");
+    sessionStorage.removeItem("tohFamilyName");
 
-      sessionStorage.removeItem(
-        "tohVolunteerID"
-      );
-
-      sessionStorage.removeItem(
-        "tohVolunteerUsername"
-      );
-
-      sessionStorage.removeItem(
-        "tohVolunteerName"
-      );
-
-      window.location.href =
-        "volunteer-login.html";
-
-    }
-  );
-
+    window.location.href =
+      "family-login.html";
+  });
 }
 
 /* =========================================================
    API REQUEST
 ========================================================= */
 
-async function sendRequest(
-  payload
-) {
-
+async function sendRequest(payload) {
   const response =
     await fetch(
       WEBAPP_URL,
       {
         method: "POST",
-        body: JSON.stringify(
-          payload
-        )
+        body: JSON.stringify(payload)
       }
     );
 
   return await response.json();
-
 }
 
 /* =========================================================
    HELPERS
 ========================================================= */
 
-function setText(
-  id,
-  value
-) {
-
+function setText(id, value) {
   const element =
-    document.getElementById(
-      id
-    );
+    document.getElementById(id);
 
   if (element) {
-
     element.textContent =
       value;
-
   }
-
 }
 
-function getInitials(
-  name
-) {
-
+function getInitials(name) {
   return String(name)
     .split(" ")
-    .map(
-      word =>
-      word.charAt(0)
-    )
+    .map(word => word.charAt(0))
     .join("")
     .substring(0, 2)
     .toUpperCase();
-
 }

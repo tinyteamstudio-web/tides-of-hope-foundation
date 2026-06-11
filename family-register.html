@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Join the Family | Tides of Hope</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="family-auth.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="index.html" class="brand">
+      <img
+        src="round-logo.png"
+        class="brand-logo"
+        alt="Tides of Hope Logo"
+      >
+
+      <div class="brand-text">
+        <span class="brand-title">Tides of Hope</span>
+        <span class="brand-subtitle">Family Community</span>
+      </div>
+    </a>
+
+    <nav class="site-nav">
+      <a href="index.html">Homepage</a>
+
+      <a href="family-login.html" class="nav-cta">
+        Family Login
+      </a>
+    </nav>
+
+  </div>
+</header>
+
+<main class="volunteer-auth-page">
+
+  <section class="volunteer-auth-card">
+
+    <span class="section-tag">
+      Join the Family
+    </span>
+
+    <h1>
+      Create Your Family Account
+    </h1>
+
+    <p>
+      Become part of the Tides of Hope Family Community.
+      Connect with fellow members, share stories, upload
+      gratitude posts, participate in activities, and
+      help spread hope throughout our communities.
+    </p>
+
+    <form
+      id="volunteerRegisterForm"
+      class="volunteer-auth-form"
+    >
+
+      <label>
+        Full Name
+        <input
+          type="text"
+          id="fullName"
+          required
+        >
+      </label>
+
+      <label>
+        Username
+        <input
+          type="text"
+          id="username"
+          required
+        >
+      </label>
+
+      <label>
+        Email
+        <input
+          type="email"
+          id="email"
+          required
+        >
+      </label>
+
+      <label>
+        Password
+        <input
+          type="password"
+          id="password"
+          required
+        >
+      </label>
+
+      <label>
+        Contact Number
+        <input
+          type="text"
+          id="contactNumber"
+        >
+      </label>
+
+      <label>
+        Address
+        <textarea id="address"></textarea>
+      </label>
+
+      <label>
+        Skills / Talents
+        <textarea
+          id="skills"
+          placeholder="Example: medical, logistics, cooking, photography, administration, fundraising"
+        ></textarea>
+      </label>
+
+      <label>
+        Availability
+        <input
+          type="text"
+          id="availability"
+          placeholder="Example: weekends, weekdays, on-call"
+        >
+      </label>
+
+      <label>
+        Why would you like to join the Tides of Hope Family?
+        <textarea id="reason"></textarea>
+      </label>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+      >
+        Join the Family
+      </button>
+
+      <p
+        id="registerMessage"
+        class="form-message"
+      ></p>
+
+    </form>
+
+  </section>
+
+</main>
+
+<footer class="site-footer">
+
+  <div class="footer-credit">
+    <div class="container footer-credit-inner">
+
+      <p>
+        Powered by
+        <strong>
+          BuildFrame Digital System
+        </strong>
+
+        <span class="footer-credit-text">
+          Website, Funnel and Platform Builder
+        </span>
+      </p>
+
+    </div>
+  </div>
+
+</footer>
+
+<script src="family-auth.js"></script>
+
+</body>
+</html>
