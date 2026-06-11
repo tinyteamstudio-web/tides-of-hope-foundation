@@ -3,16 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Members Directory | Tides of Hope Incorporated</title>
+
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .directory-filter-card {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .directory-filter-card:hover,
+    .directory-filter-card.active {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(13, 59, 102, 0.14);
+      border: 2px solid #0f9aa8;
+    }
+
+    .directory-search-wrap {
+      margin: 28px 0;
+      max-width: 520px;
+    }
+
+    .directory-search-input {
+      width: 100%;
+      padding: 16px 18px;
+      border-radius: 999px;
+      border: 1px solid #dbe9ef;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .member-profile-photo {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #eef7fb;
+      background: #ffffff;
+    }
+
+    .member-card-bio {
+      max-height: 180px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .directory-count {
+      color: #52677a;
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
+  </style>
 </head>
 
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
+
     <a href="index.html" class="brand">
       <img src="round-logo.png" class="brand-logo" alt="Tides of Hope Logo" />
+
       <div class="brand-text">
         <span class="brand-title">Tides of Hope</span>
         <span class="brand-subtitle">Incorporated</span>
@@ -24,6 +77,7 @@
       <a href="office-portal.html">Office Portal</a>
       <a href="#" id="logoutBtn" class="nav-cta">Logout</a>
     </nav>
+
   </div>
 </header>
 
@@ -32,10 +86,12 @@
   <section class="office-portal-hero">
     <div class="container">
       <span class="section-tag">Member Directory</span>
+
       <h1>Tides of Hope Members & Incorporators</h1>
+
       <p>
-        View officers, board members, incorporators, and registered members of
-        Tides of Hope Incorporated.
+        View officers, board members, incorporators, registered members,
+        and Tides of Hope family members.
       </p>
     </div>
   </section>
@@ -44,53 +100,67 @@
     <div class="container">
 
       <div class="office-portal-topbar">
-        <h2>Directory Overview</h2>
-        <p id="directoryWelcomeText">Logged in</p>
+        <div>
+          <h2>Directory Overview</h2>
+          <p id="directoryWelcomeText">Logged in</p>
+        </div>
       </div>
 
       <div class="office-portal-grid">
 
-        <article class="office-card">
+        <article class="office-card directory-filter-card active" data-filter="all">
+          <div class="office-card-icon">📇</div>
+          <h3>All Profiles</h3>
+          <p>View everyone listed in the Tides of Hope directory.</p>
+        </article>
+
+        <article class="office-card directory-filter-card" data-filter="officers">
           <div class="office-card-icon">👑</div>
           <h3>Officers</h3>
           <p>President, Vice President, Secretary, Treasurer and Internal Auditor.</p>
         </article>
 
-        <article class="office-card">
+        <article class="office-card directory-filter-card" data-filter="board">
           <div class="office-card-icon">🤝</div>
           <h3>Board of Trustees</h3>
           <p>View official Board of Trustee members.</p>
         </article>
 
-        <article class="office-card">
+        <article class="office-card directory-filter-card" data-filter="incorporators">
           <div class="office-card-icon">📜</div>
           <h3>Incorporators</h3>
           <p>View registered incorporators of Tides of Hope.</p>
         </article>
 
-        <article class="office-card">
+        <article class="office-card directory-filter-card" data-filter="members">
           <div class="office-card-icon">👥</div>
-          <h3>Members</h3>
-          <p>View registered members and profiles.</p>
+          <h3>Members & Family</h3>
+          <p>View registered members and Tides of Hope family profiles.</p>
         </article>
 
-        <article class="office-card">
+        <article class="office-card directory-filter-card" data-filter="search">
           <div class="office-card-icon">🔎</div>
           <h3>Search Directory</h3>
-          <p>Search members, officers and incorporators.</p>
-        </article>
-
-        <article class="office-card">
-          <div class="office-card-icon">📇</div>
-          <h3>Member Profiles</h3>
-          <p>View individual member information.</p>
+          <p>Search members, officers, incorporators and family members.</p>
         </article>
 
       </div>
 
       <div class="office-portal-topbar" style="margin-top: 42px;">
-        <h2>Registered Directory</h2>
-        <p>Private emails and passwords are hidden from this view.</p>
+        <div>
+          <h2 id="directorySectionTitle">Registered Directory</h2>
+          <p>Private emails and passwords are hidden from this view.</p>
+          <p id="directoryCountText" class="directory-count"></p>
+        </div>
+      </div>
+
+      <div class="directory-search-wrap">
+        <input
+          type="search"
+          id="directorySearchInput"
+          class="directory-search-input"
+          placeholder="Search by name, role, designation, or bio..."
+        />
       </div>
 
       <div id="membersContainer" class="office-portal-grid">
@@ -102,7 +172,9 @@
       </div>
 
       <div class="center-action">
-        <a href="office-portal.html" class="btn btn-secondary">Back to Office Portal</a>
+        <a href="office-portal.html" class="btn btn-secondary">
+          Back to Office Portal
+        </a>
       </div>
 
     </div>
@@ -112,18 +184,26 @@
 
 <footer class="site-footer">
   <div class="container footer-grid">
+
     <div class="footer-brand">
       <img src="round-logo.png" class="footer-logo" alt="Tides of Hope Logo" />
+
       <h3>Tides of Hope Incorporated</h3>
-      <p>Serving with compassion, building with hope.</p>
+
+      <p>
+        Serving with compassion, building with hope.
+      </p>
     </div>
+
   </div>
 
   <div class="footer-credit">
     <div class="container footer-credit-inner">
       <p>
         Powered by <strong>BuildFrame Digital System</strong>
-        <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
+        <span class="footer-credit-text">
+          Website, Funnel and Platform Builder
+        </span>
       </p>
     </div>
   </div>
@@ -151,19 +231,38 @@ const userRole =
   sessionStorage.getItem("tohAdminRole") ||
   "Member";
 
-const directoryWelcomeText = document.getElementById("directoryWelcomeText");
+const directoryWelcomeText =
+  document.getElementById("directoryWelcomeText");
+
+const directoryCountText =
+  document.getElementById("directoryCountText");
+
+const directorySectionTitle =
+  document.getElementById("directorySectionTitle");
+
+const searchInput =
+  document.getElementById("directorySearchInput");
+
+const filterCards =
+  document.querySelectorAll(".directory-filter-card");
+
+let allMembers = [];
+let activeFilter = "all";
 
 if (directoryWelcomeText) {
   directoryWelcomeText.textContent =
     "Logged in as " + userEmail + " (" + userRole + ")";
 }
 
-const logoutBtn = document.getElementById("logoutBtn");
+const logoutBtn =
+  document.getElementById("logoutBtn");
 
 if (logoutBtn) {
   logoutBtn.addEventListener("click", function(e) {
     e.preventDefault();
+
     sessionStorage.clear();
+
     window.location.href = "admin-login.html";
   });
 }
@@ -183,19 +282,181 @@ function getDesignation(member) {
     .join(" • ");
 }
 
+function getSearchText(member) {
+  return [
+    member.FullName,
+    member.PrimaryRole,
+    member.Designation1,
+    member.Designation2,
+    member.Designation3,
+    member.Bio
+  ]
+    .map(value => safeText(value).toLowerCase())
+    .join(" ");
+}
+
+function memberBelongsToFilter(member, filter) {
+  const roleText =
+    getSearchText(member);
+
+  if (filter === "all") {
+    return true;
+  }
+
+  if (filter === "officers") {
+    return (
+      roleText.includes("president") ||
+      roleText.includes("vice president") ||
+      roleText.includes("secretary") ||
+      roleText.includes("treasurer") ||
+      roleText.includes("auditor")
+    );
+  }
+
+  if (filter === "board") {
+    return (
+      roleText.includes("board") ||
+      roleText.includes("trustee") ||
+      roleText.includes("director")
+    );
+  }
+
+  if (filter === "incorporators") {
+    return roleText.includes("incorporator");
+  }
+
+  if (filter === "members") {
+    return (
+      roleText.includes("member") ||
+      roleText.includes("family") ||
+      roleText.includes("volunteer") ||
+      (
+        !roleText.includes("president") &&
+        !roleText.includes("secretary") &&
+        !roleText.includes("treasurer") &&
+        !roleText.includes("auditor") &&
+        !roleText.includes("board") &&
+        !roleText.includes("trustee") &&
+        !roleText.includes("incorporator")
+      )
+    );
+  }
+
+  if (filter === "search") {
+    return true;
+  }
+
+  return true;
+}
+
+function getFilterTitle(filter) {
+  if (filter === "officers") return "Officers";
+  if (filter === "board") return "Board of Trustees";
+  if (filter === "incorporators") return "Incorporators";
+  if (filter === "members") return "Members & Family";
+  if (filter === "search") return "Search Directory";
+  return "Registered Directory";
+}
+
+function renderMembersDirectory() {
+  const container =
+    document.getElementById("membersContainer");
+
+  if (!container) return;
+
+  const searchTerm =
+    safeText(searchInput ? searchInput.value : "").toLowerCase();
+
+  const filtered =
+    allMembers.filter(member => {
+      const matchesFilter =
+        memberBelongsToFilter(member, activeFilter);
+
+      const matchesSearch =
+        !searchTerm ||
+        getSearchText(member).includes(searchTerm);
+
+      return matchesFilter && matchesSearch;
+    });
+
+  if (directorySectionTitle) {
+    directorySectionTitle.textContent =
+      getFilterTitle(activeFilter);
+  }
+
+  if (directoryCountText) {
+    directoryCountText.textContent =
+      filtered.length + " profile(s) shown";
+  }
+
+  if (!filtered.length) {
+    container.innerHTML = `
+      <article class="office-card">
+        <div class="office-card-icon">📭</div>
+        <h3>No Profiles Found</h3>
+        <p>No matching profiles are available in this section yet.</p>
+      </article>
+    `;
+    return;
+  }
+
+  container.innerHTML =
+    filtered.map(member => {
+      const photo =
+        safeText(member.ProfilePhoto) || "round-logo.png";
+
+      const fullName =
+        safeText(member.FullName) || "Unnamed Member";
+
+      const designation =
+        getDesignation(member) || "Member";
+
+      const bio =
+        safeText(member.Bio) || "No bio added yet.";
+
+      return `
+        <article class="office-card">
+          <div class="office-card-icon">
+            <img
+              src="${photo}"
+              alt="${fullName}"
+              class="member-profile-photo"
+              onerror="this.src='round-logo.png';"
+            />
+          </div>
+
+          <h3>${fullName}</h3>
+
+          <p>
+            <strong>${designation}</strong>
+          </p>
+
+          <p class="member-card-bio">
+            ${bio}
+          </p>
+        </article>
+      `;
+    }).join("");
+}
+
 async function loadMembersDirectory() {
-  const container = document.getElementById("membersContainer");
+  const container =
+    document.getElementById("membersContainer");
 
   if (!container) return;
 
   try {
-    const response = await fetch(
-    WEB_APP_URL + "?action=getCommunityDirectory"
-    );
+    const response =
+      await fetch(WEB_APP_URL + "?action=getCommunityDirectory");
 
-    const data = await response.json();
+    const data =
+      await response.json();
 
-    if (!data.success || !Array.isArray(data.data) || data.data.length === 0) {
+    if (
+      !data.success ||
+      !Array.isArray(data.data) ||
+      data.data.length === 0
+    ) {
       container.innerHTML = `
         <article class="office-card">
           <div class="office-card-icon">📭</div>
@@ -206,29 +467,10 @@ async function loadMembersDirectory() {
       return;
     }
 
-    container.innerHTML = data.data.map(member => {
-      const photo = safeText(member.ProfilePhoto) || "round-logo.png";
-      const fullName = safeText(member.FullName) || "Unnamed Member";
-      const designation = getDesignation(member) || "Member";
-      const bio = safeText(member.Bio) || "No bio added yet.";
+    allMembers =
+      data.data;
 
-      return `
-        <article class="office-card">
-          <div class="office-card-icon">
-            <img
-              src="${photo}"
-              alt="${fullName}"
-              style="width:72px;height:72px;border-radius:50%;object-fit:cover;"
-              onerror="this.src='round-logo.png';"
-            />
-          </div>
-
-          <h3>${fullName}</h3>
-          <p><strong>${designation}</strong></p>
-          <p>${bio}</p>
-        </article>
-      `;
-    }).join("");
+    renderMembersDirectory();
 
   } catch (error) {
     container.innerHTML = `
@@ -239,6 +481,31 @@ async function loadMembersDirectory() {
       </article>
     `;
   }
+}
+
+filterCards.forEach(card => {
+  card.addEventListener("click", function() {
+    activeFilter =
+      this.dataset.filter || "all";
+
+    filterCards.forEach(item => {
+      item.classList.remove("active");
+    });
+
+    this.classList.add("active");
+
+    if (activeFilter === "search" && searchInput) {
+      searchInput.focus();
+    }
+
+    renderMembersDirectory();
+  });
+});
+
+if (searchInput) {
+  searchInput.addEventListener("input", function() {
+    renderMembersDirectory();
+  });
 }
 
 loadMembersDirectory();
