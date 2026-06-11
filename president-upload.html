@@ -4,12 +4,68 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>President's Corner Upload | Tides of Hope</title>
+  <title>President's Corner Manager | Tides of Hope</title>
+
   <link rel="stylesheet" href="style.css" />
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
 
   <style>
-    .president-editor-card { max-width: 900px; }
+    .president-editor-card {
+      max-width: 1000px;
+    }
+
+    .president-manager-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .president-manager-panel {
+      background: #ffffff;
+      border: 1px solid #dbe9ef;
+      border-radius: 18px;
+      padding: 22px;
+      text-align: left;
+    }
+
+    .president-manager-panel h3 {
+      margin-bottom: 8px;
+      color: #0d3b66;
+    }
+
+    .president-manager-panel p {
+      color: #52677a;
+      margin-bottom: 16px;
+    }
+
+    .president-message-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .president-message-item {
+      border: 1px solid #dbe9ef;
+      border-radius: 14px;
+      padding: 16px;
+      background: #f8fcfd;
+    }
+
+    .president-message-item h4 {
+      color: #0d3b66;
+      margin-bottom: 6px;
+    }
+
+    .president-message-meta {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-bottom: 12px;
+    }
+
+    .president-message-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
     .president-editor-wrap {
       background: #fff;
@@ -32,7 +88,9 @@
       background: #f7fbfc;
     }
 
-    .ql-container.ql-snow { border: none; }
+    .ql-container.ql-snow {
+      border: none;
+    }
 
     .president-date-row {
       display: grid;
@@ -48,10 +106,47 @@
       margin: 0 auto 12px;
       border: 1px solid #dbe9ef;
       background: #eef7fb;
+      display: block;
+    }
+
+    .president-form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .danger-btn {
+      background: #b42318;
+      color: #ffffff;
+      border: none;
+    }
+
+    .danger-btn:hover {
+      background: #8f1d14;
+    }
+
+    .small-muted {
+      color: #64748b;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 700px) {
-      .president-date-row { grid-template-columns: 1fr; }
+      .president-date-row {
+        grid-template-columns: 1fr;
+      }
+
+      .president-message-actions,
+      .president-form-actions {
+        flex-direction: column;
+      }
+
+      .president-message-actions .btn,
+      .president-form-actions .btn,
+      .president-form-actions .admin-btn {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -60,8 +155,14 @@
 
 <header class="site-header">
   <div class="container header-inner">
+
     <a href="index.html" class="brand">
-      <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo" />
+      <img
+        src="round-logo.png"
+        alt="Tides of Hope Logo"
+        class="brand-logo"
+      >
+
       <div class="brand-text">
         <span class="brand-title">Tides of Hope</span>
         <span class="brand-subtitle">Incorporated</span>
@@ -74,6 +175,7 @@
       <a href="presidents-corner.html">President’s Corner</a>
       <a href="#" id="presidentLogoutBtn" class="nav-cta">Logout</a>
     </nav>
+
   </div>
 </header>
 
@@ -82,98 +184,184 @@
   <section class="admin-hero">
     <div class="container">
       <span class="section-tag">Leadership Writing Tool</span>
-      <h1>President’s Corner</h1>
-      <p>Write, format, add a featured photo, and publish official messages.</p>
+
+      <h1>President’s Corner Manager</h1>
+
+      <p>
+        Create, edit, format, archive, and manage official President’s Corner messages.
+      </p>
     </div>
   </section>
 
   <section class="admin-login-section">
     <div class="container">
+
       <div class="admin-card president-editor-card">
 
-        <h2>Create President Message</h2>
-        <p>Madam President may write freely and change her featured photo anytime.</p>
+        <div class="president-manager-grid">
 
-        <form id="presidentUploadForm" class="admin-login-form">
+          <div class="president-manager-panel">
+            <h3>Manage Existing Messages</h3>
 
-          <input type="text" id="presidentTitle" class="admin-input"
-            placeholder="Message Title" value="President’s Message" required />
+            <p>
+              Edit a published message or archive it from the public President’s Corner.
+            </p>
 
-          <div class="president-date-row">
-            <input type="text" id="presidentAuthor" class="admin-input"
-              placeholder="Author" value="Office of the President" required />
-
-            <input type="date" id="presidentDate" class="admin-input" required />
-          </div>
-
-          <select id="presidentCategory" class="admin-input" required>
-            <option value="President's Message">President's Message</option>
-            <option value="Community Update">Community Update</option>
-            <option value="Official Statement">Official Statement</option>
-            <option value="Call To Action">Call To Action</option>
-            <option value="Reflection">Reflection</option>
-            <option value="Special Announcement">Special Announcement</option>
-          </select>
-
-          <img src="round-logo.png" id="presidentPhotoPreview" class="president-photo-preview" alt="Featured Photo Preview" />
-
-          <input
-            type="file"
-            id="presidentFeaturedPhoto"
-            class="admin-input"
-            accept="image/*"
-          />
-
-          <div class="president-editor-wrap">
-            <div id="presidentToolbar">
-              <span class="ql-formats">
-                <select class="ql-header">
-                  <option selected></option>
-                  <option value="1"></option>
-                  <option value="2"></option>
-                  <option value="3"></option>
-                </select>
-              </span>
-
-              <span class="ql-formats">
-                <button class="ql-bold"></button>
-                <button class="ql-italic"></button>
-                <button class="ql-underline"></button>
-              </span>
-
-              <span class="ql-formats">
-                <button class="ql-list" value="ordered"></button>
-                <button class="ql-list" value="bullet"></button>
-                <button class="ql-indent" value="-1"></button>
-                <button class="ql-indent" value="+1"></button>
-              </span>
-
-              <span class="ql-formats">
-                <select class="ql-align"></select>
-              </span>
-
-              <span class="ql-formats">
-                <button class="ql-blockquote"></button>
-                <button class="ql-link"></button>
-                <button class="ql-clean"></button>
-              </span>
+            <div id="presidentMessagesList" class="president-message-list">
+              <p class="small-muted">Loading President messages...</p>
             </div>
-
-            <div id="presidentEditor"></div>
           </div>
 
-          <button type="submit" class="admin-btn">
-            Publish President Message
-          </button>
+          <div class="president-manager-panel">
 
-          <p id="presidentUploadMessage" class="admin-login-message"></p>
-        </form>
+            <h2 id="presidentFormTitle">Create President Message</h2>
 
-        <p class="admin-note">
-          Only the current President account may publish or update this section.
-        </p>
+            <p id="presidentFormHelp">
+              Madam President may write freely, format the message, add a featured photo,
+              and publish an official message.
+            </p>
+
+            <form id="presidentUploadForm" class="admin-login-form">
+
+              <input
+                type="hidden"
+                id="presidentMessageId"
+              >
+
+              <input
+                type="text"
+                id="presidentTitle"
+                class="admin-input"
+                placeholder="Message Title"
+                value="President’s Message"
+                required
+              >
+
+              <div class="president-date-row">
+                <input
+                  type="text"
+                  id="presidentAuthor"
+                  class="admin-input"
+                  placeholder="Author"
+                  value="Office of the President"
+                  required
+                >
+
+                <input
+                  type="date"
+                  id="presidentDate"
+                  class="admin-input"
+                  required
+                >
+              </div>
+
+              <select
+                id="presidentCategory"
+                class="admin-input"
+                required
+              >
+                <option value="President's Message">President's Message</option>
+                <option value="Community Update">Community Update</option>
+                <option value="Official Statement">Official Statement</option>
+                <option value="Call To Action">Call To Action</option>
+                <option value="Reflection">Reflection</option>
+                <option value="Special Announcement">Special Announcement</option>
+              </select>
+
+              <img
+                src="round-logo.png"
+                id="presidentPhotoPreview"
+                class="president-photo-preview"
+                alt="Featured Photo Preview"
+              >
+
+              <input
+                type="file"
+                id="presidentFeaturedPhoto"
+                class="admin-input"
+                accept="image/*"
+              >
+
+              <p class="small-muted">
+                For editing: leave the photo blank if you want to keep the current featured photo.
+              </p>
+
+                        <div class="president-editor-wrap">
+                <div id="presidentToolbar">
+
+                  <span class="ql-formats">
+                    <select class="ql-header">
+                      <option selected></option>
+                      <option value="1"></option>
+                      <option value="2"></option>
+                      <option value="3"></option>
+                    </select>
+                  </span>
+
+                  <span class="ql-formats">
+                    <button class="ql-bold"></button>
+                    <button class="ql-italic"></button>
+                    <button class="ql-underline"></button>
+                  </span>
+
+                  <span class="ql-formats">
+                    <button class="ql-list" value="ordered"></button>
+                    <button class="ql-list" value="bullet"></button>
+                    <button class="ql-indent" value="-1"></button>
+                    <button class="ql-indent" value="+1"></button>
+                  </span>
+
+                  <span class="ql-formats">
+                    <select class="ql-align"></select>
+                  </span>
+
+                  <span class="ql-formats">
+                    <button class="ql-blockquote"></button>
+                    <button class="ql-link"></button>
+                    <button class="ql-clean"></button>
+                  </span>
+
+                </div>
+
+                <div id="presidentEditor"></div>
+              </div>
+
+              <div class="president-form-actions">
+                <button
+                  type="submit"
+                  class="admin-btn"
+                  id="presidentSubmitBtn"
+                >
+                  Publish President Message
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  id="cancelEditBtn"
+                  style="display:none;"
+                >
+                  Cancel Edit
+                </button>
+              </div>
+
+              <p
+                id="presidentUploadMessage"
+                class="admin-login-message"
+              ></p>
+
+            </form>
+
+            <p class="admin-note">
+              Only the current President account may publish, edit, or archive this section.
+            </p>
+
+          </div>
+
+        </div>
 
       </div>
+
     </div>
   </section>
 
@@ -181,10 +369,31 @@
 
 <footer class="site-footer">
   <div class="container footer-grid">
+
     <div class="footer-brand">
-      <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo" />
+      <img
+        src="round-logo.png"
+        alt="Tides of Hope Logo"
+        class="footer-logo"
+      >
+
       <h3>Tides of Hope Incorporated</h3>
-      <p>Serving with compassion, building with hope.</p>
+
+      <p>
+        Serving with compassion, building with hope.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer-credit">
+    <div class="container footer-credit-inner">
+      <p>
+        Powered by <strong>BuildFrame Digital System</strong>
+        <span class="footer-credit-text">
+          Website, Funnel and Platform Builder
+        </span>
+      </p>
     </div>
   </div>
 </footer>
@@ -192,7 +401,9 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <script>
-const CURRENT_PRESIDENT_EMAIL = "agnesdesiree65@gmail.com";
+const CURRENT_PRESIDENT_EMAIL =
+  "agnesdesiree65@gmail.com";
+
 const WEB_APP_URL =
   "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
 
@@ -200,63 +411,390 @@ const loggedIn =
   sessionStorage.getItem("tohLoggedIn") === "true" ||
   sessionStorage.getItem("tohAdminLoggedIn") === "true";
 
-const userEmail = String(
-  sessionStorage.getItem("tohUserEmail") ||
-  sessionStorage.getItem("tohAdminEmail") ||
-  ""
-).toLowerCase();
+const userEmail =
+  String(
+    sessionStorage.getItem("tohUserEmail") ||
+    sessionStorage.getItem("tohAdminEmail") ||
+    ""
+  ).toLowerCase();
 
-const userRole = String(
-  sessionStorage.getItem("tohUserRole") ||
-  sessionStorage.getItem("tohAdminRole") ||
-  ""
-).toLowerCase();
+const userRole =
+  String(
+    sessionStorage.getItem("tohUserRole") ||
+    sessionStorage.getItem("tohAdminRole") ||
+    ""
+  ).toLowerCase();
 
-if (!loggedIn) window.location.href = "admin-login.html";
+if (!loggedIn) {
+  window.location.href = "admin-login.html";
+}
 
-if (userEmail !== CURRENT_PRESIDENT_EMAIL || userRole !== "president") {
+if (
+  userEmail !== CURRENT_PRESIDENT_EMAIL ||
+  userRole !== "president"
+) {
   alert("This page is restricted to the current President only.");
   window.location.href = "office-portal.html";
 }
 
-const presidentUploadForm = document.getElementById("presidentUploadForm");
-const presidentUploadMessage = document.getElementById("presidentUploadMessage");
-const presidentLogoutBtn = document.getElementById("presidentLogoutBtn");
-const presidentFeaturedPhoto = document.getElementById("presidentFeaturedPhoto");
-const presidentPhotoPreview = document.getElementById("presidentPhotoPreview");
+const presidentUploadForm =
+  document.getElementById("presidentUploadForm");
 
-const today = new Date().toISOString().split("T")[0];
-document.getElementById("presidentDate").value = today;
+const presidentUploadMessage =
+  document.getElementById("presidentUploadMessage");
 
-const presidentEditor = new Quill("#presidentEditor", {
-  theme: "snow",
-  modules: { toolbar: "#presidentToolbar" },
-  placeholder: "Write the President’s message here..."
-});
+const presidentLogoutBtn =
+  document.getElementById("presidentLogoutBtn");
+
+const presidentFeaturedPhoto =
+  document.getElementById("presidentFeaturedPhoto");
+
+const presidentPhotoPreview =
+  document.getElementById("presidentPhotoPreview");
+
+const presidentMessagesList =
+  document.getElementById("presidentMessagesList");
+
+const presidentFormTitle =
+  document.getElementById("presidentFormTitle");
+
+const presidentFormHelp =
+  document.getElementById("presidentFormHelp");
+
+const presidentSubmitBtn =
+  document.getElementById("presidentSubmitBtn");
+
+const cancelEditBtn =
+  document.getElementById("cancelEditBtn");
+
+const today =
+  new Date().toISOString().split("T")[0];
+
+document.getElementById("presidentDate").value =
+  today;
+
+const presidentEditor =
+  new Quill("#presidentEditor", {
+    theme: "snow",
+    modules: {
+      toolbar: "#presidentToolbar"
+    },
+    placeholder: "Write the President’s message here..."
+  });
 
 let featuredPhotoPayload = null;
+let presidentMessages = [];
+let editingMessageId = "";
 
 function showPresidentMessage(message, type) {
   presidentUploadMessage.textContent = message;
   presidentUploadMessage.classList.remove("error", "success");
-  if (type) presidentUploadMessage.classList.add(type);
+
+  if (type) {
+    presidentUploadMessage.classList.add(type);
+  }
+}
+
+function formatDate(value) {
+  if (!value) return "—";
+
+  const date = new Date(value);
+
+  if (isNaN(date.getTime())) {
+    return value;
+  }
+
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+}
+
+function getField(item, keys, fallback) {
+  for (const key of keys) {
+    if (
+      item &&
+      item[key] !== undefined &&
+      item[key] !== null &&
+      item[key] !== ""
+    ) {
+      return item[key];
+    }
+  }
+
+  return fallback;
 }
 
 function fileToBase64(file) {
   return new Promise(function(resolve, reject) {
     const reader = new FileReader();
-    reader.onload = function() { resolve(reader.result.split(",")[1]); };
-    reader.onerror = function() { reject(new Error("Unable to read photo.")); };
+
+    reader.onload = function() {
+      resolve(reader.result.split(",")[1]);
+    };
+
+    reader.onerror = function() {
+      reject(new Error("Unable to read photo."));
+    };
+
     reader.readAsDataURL(file);
   });
+}
+
+function resetPresidentForm() {
+  editingMessageId = "";
+
+  document.getElementById("presidentMessageId").value = "";
+  document.getElementById("presidentTitle").value = "President’s Message";
+  document.getElementById("presidentAuthor").value = "Office of the President";
+  document.getElementById("presidentDate").value = today;
+  document.getElementById("presidentCategory").value = "President's Message";
+
+  presidentPhotoPreview.src = "round-logo.png";
+  presidentFeaturedPhoto.value = "";
+  presidentEditor.setContents([]);
+
+  featuredPhotoPayload = null;
+
+  presidentFormTitle.textContent = "Create President Message";
+
+  presidentFormHelp.textContent =
+    "Madam President may write freely, format the message, add a featured photo, and publish an official message.";
+
+  presidentSubmitBtn.textContent =
+    "Publish President Message";
+
+  cancelEditBtn.style.display = "none";
+}
+
+function renderPresidentManagerList() {
+  if (!presidentMessagesList) return;
+
+  if (!presidentMessages.length) {
+    presidentMessagesList.innerHTML =
+      '<p class="small-muted">No President messages found yet.</p>';
+    return;
+  }
+
+  presidentMessagesList.innerHTML = "";
+
+  presidentMessages.forEach(function(item) {
+    const messageId =
+      getField(item, ["MessageID", "messageId"], "");
+
+    const title =
+      getField(item, ["Title", "title"], "President’s Message");
+
+    const category =
+      getField(item, ["Category", "category"], "President's Message");
+
+    const publishDate =
+      formatDate(
+        getField(
+          item,
+          ["PublishDate", "publishDate", "Timestamp", "timestamp"],
+          ""
+        )
+      );
+
+    const status =
+      getField(item, ["Status", "status"], "Published");
+
+    const card =
+      document.createElement("article");
+
+    card.className =
+      "president-message-item";
+
+    card.innerHTML =
+      "<h4>" + title + "</h4>" +
+      '<div class="president-message-meta">' +
+      category + " • " + publishDate + " • " + status +
+      "</div>" +
+      '<div class="president-message-actions">' +
+      '<button type="button" class="btn btn-secondary" data-action="edit">Edit</button>' +
+      '<button type="button" class="btn danger-btn" data-action="archive">Archive</button>' +
+      "</div>";
+
+    const editBtn =
+      card.querySelector('[data-action="edit"]');
+
+    const archiveBtn =
+      card.querySelector('[data-action="archive"]');
+
+    editBtn.addEventListener("click", function() {
+      startEditPresidentMessage(messageId);
+    });
+
+    archiveBtn.addEventListener("click", function() {
+      archivePresidentMessage(messageId, title);
+    });
+
+    presidentMessagesList.appendChild(card);
+  });
+}
+
+async function loadPresidentManagerMessages() {
+  if (!presidentMessagesList) return;
+
+  presidentMessagesList.innerHTML =
+    '<p class="small-muted">Loading President messages...</p>';
+
+  try {
+    const response =
+      await fetch(WEB_APP_URL + "?action=getPresidentMessages");
+
+    const result =
+      await response.json();
+
+    const items =
+      result.items ||
+      result.data ||
+      result.messages ||
+      result.presidentMessages ||
+      [];
+
+    presidentMessages =
+      Array.isArray(items) ? items : [];
+
+    renderPresidentManagerList();
+
+  } catch (error) {
+    presidentMessagesList.innerHTML =
+      '<p class="small-muted">Unable to load President messages.</p>';
+  }
+}
+
+function startEditPresidentMessage(messageId) {
+  const item =
+    presidentMessages.find(function(row) {
+      return String(
+        row.MessageID ||
+        row.messageId ||
+        ""
+      ) === String(messageId);
+    });
+
+  if (!item) {
+    showPresidentMessage("Unable to find selected message.", "error");
+    return;
+  }
+
+  editingMessageId = messageId;
+
+  document.getElementById("presidentMessageId").value =
+    messageId;
+
+  document.getElementById("presidentTitle").value =
+    getField(item, ["Title", "title"], "President’s Message");
+
+  document.getElementById("presidentAuthor").value =
+    getField(item, ["Author", "author"], "Office of the President");
+
+  const rawDate =
+    getField(item, ["PublishDate", "publishDate"], "");
+
+  document.getElementById("presidentDate").value =
+    rawDate
+      ? new Date(rawDate).toISOString().split("T")[0]
+      : today;
+
+  document.getElementById("presidentCategory").value =
+    getField(item, ["Category", "category"], "President's Message");
+
+  presidentEditor.root.innerHTML =
+    getField(item, ["Message", "message"], "");
+
+  const featuredPhoto =
+    getField(item, ["FeaturedPhoto", "featuredPhoto"], "");
+
+  presidentPhotoPreview.src =
+    featuredPhoto || "round-logo.png";
+
+  presidentFeaturedPhoto.value = "";
+  featuredPhotoPayload = null;
+
+  presidentFormTitle.textContent =
+    "Edit President Message";
+
+  presidentFormHelp.textContent =
+    "You are editing an existing President’s Corner message. Leave the photo blank to keep the current featured photo.";
+
+  presidentSubmitBtn.textContent =
+    "Update President Message";
+
+  cancelEditBtn.style.display =
+    "inline-flex";
+
+  showPresidentMessage(
+    "Editing selected message. Update the form, then click Update President Message.",
+    ""
+  );
+
+  window.scrollTo({
+    top: document.querySelector(".admin-login-section").offsetTop,
+    behavior: "smooth"
+  });
+}
+
+async function archivePresidentMessage(messageId, title) {
+  const confirmArchive =
+    confirm(
+      "Archive this President message?\n\n" +
+      title +
+      "\n\nIt will be hidden from the public President’s Corner but kept in the records."
+    );
+
+  if (!confirmArchive) return;
+
+  try {
+    const response =
+      await fetch(WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          action: "archivePresidentMessage",
+          messageId: messageId,
+          uploadedBy: userEmail
+        })
+      });
+
+    const result =
+      await response.json();
+
+    if (result.success) {
+      showPresidentMessage(
+        "President message archived successfully.",
+        "success"
+      );
+
+      if (editingMessageId === messageId) {
+        resetPresidentForm();
+      }
+
+      await loadPresidentManagerMessages();
+
+    } else {
+      showPresidentMessage(
+        result.message || "Archive failed.",
+        "error"
+      );
+    }
+
+  } catch (error) {
+    showPresidentMessage(
+      "Archive failed. Please check your Web App deployment.",
+      "error"
+    );
+  }
 }
 
 if (presidentFeaturedPhoto) {
   presidentFeaturedPhoto.addEventListener("change", async function() {
     const file = this.files[0];
+
     if (!file) {
       featuredPhotoPayload = null;
-      presidentPhotoPreview.src = "round-logo.png";
       return;
     }
 
@@ -272,9 +810,11 @@ if (presidentFeaturedPhoto) {
       return;
     }
 
-    presidentPhotoPreview.src = URL.createObjectURL(file);
+    presidentPhotoPreview.src =
+      URL.createObjectURL(file);
 
-    const base64 = await fileToBase64(file);
+    const base64 =
+      await fileToBase64(file);
 
     featuredPhotoPayload = {
       fileName: file.name,
@@ -287,31 +827,66 @@ if (presidentFeaturedPhoto) {
 if (presidentLogoutBtn) {
   presidentLogoutBtn.addEventListener("click", function(e) {
     e.preventDefault();
+
     sessionStorage.clear();
-    window.location.href = "admin-login.html";
+
+    window.location.href =
+      "admin-login.html";
+  });
+}
+
+if (cancelEditBtn) {
+  cancelEditBtn.addEventListener("click", function() {
+    resetPresidentForm();
+    showPresidentMessage("Edit cancelled.", "");
   });
 }
 
 presidentUploadForm.addEventListener("submit", async function(e) {
   e.preventDefault();
 
-  const title = document.getElementById("presidentTitle").value.trim();
-  const author = document.getElementById("presidentAuthor").value.trim();
-  const publishDate = document.getElementById("presidentDate").value;
-  const category = document.getElementById("presidentCategory").value;
+  const title =
+    document.getElementById("presidentTitle").value.trim();
 
-  const messageHtml = presidentEditor.root.innerHTML.trim();
-  const plainText = presidentEditor.getText().trim();
+  const author =
+    document.getElementById("presidentAuthor").value.trim();
+
+  const publishDate =
+    document.getElementById("presidentDate").value;
+
+  const category =
+    document.getElementById("presidentCategory").value;
+
+  const messageHtml =
+    presidentEditor.root.innerHTML.trim();
+
+  const plainText =
+    presidentEditor.getText().trim();
 
   if (!title || !author || !publishDate || !plainText) {
-    showPresidentMessage("Please complete the title, author, date, and message.", "error");
+    showPresidentMessage(
+      "Please complete the title, author, date, and message.",
+      "error"
+    );
     return;
   }
 
-  showPresidentMessage("Publishing... please wait.", "");
+  const isEditing =
+    Boolean(editingMessageId);
+
+  showPresidentMessage(
+    isEditing
+      ? "Updating... please wait."
+      : "Publishing... please wait.",
+    ""
+  );
 
   const payload = {
-    action: "submitPresidentMessage",
+    action: isEditing
+      ? "updatePresidentMessage"
+      : "submitPresidentMessage",
+
+    messageId: editingMessageId,
     title: title,
     author: author,
     date: publishDate,
@@ -320,39 +895,58 @@ presidentUploadForm.addEventListener("submit", async function(e) {
     plainText: plainText,
     uploadedBy: userEmail,
 
-    featuredPhotoFileName: featuredPhotoPayload ? featuredPhotoPayload.fileName : "",
-    featuredPhotoMimeType: featuredPhotoPayload ? featuredPhotoPayload.mimeType : "",
-    featuredPhotoData: featuredPhotoPayload ? featuredPhotoPayload.fileData : ""
+    featuredPhotoFileName: featuredPhotoPayload
+      ? featuredPhotoPayload.fileName
+      : "",
+
+    featuredPhotoMimeType: featuredPhotoPayload
+      ? featuredPhotoPayload.mimeType
+      : "",
+
+    featuredPhotoData: featuredPhotoPayload
+      ? featuredPhotoPayload.fileData
+      : ""
   };
 
   try {
-    const response = await fetch(WEB_APP_URL, {
-      method: "POST",
-      body: JSON.stringify(payload)
-    });
+    const response =
+      await fetch(WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify(payload)
+      });
 
-    const result = await response.json();
+    const result =
+      await response.json();
 
     if (result.success) {
-      showPresidentMessage("President message published successfully.", "success");
+      showPresidentMessage(
+        isEditing
+          ? "President message updated successfully."
+          : "President message published successfully.",
+        "success"
+      );
 
-      presidentUploadForm.reset();
-      document.getElementById("presidentTitle").value = "President’s Message";
-      document.getElementById("presidentAuthor").value = "Office of the President";
-      document.getElementById("presidentDate").value = today;
-      document.getElementById("presidentCategory").value = "President's Message";
-      presidentPhotoPreview.src = "round-logo.png";
-      presidentEditor.setContents([]);
-      featuredPhotoPayload = null;
+      resetPresidentForm();
+
+      await loadPresidentManagerMessages();
 
     } else {
-      showPresidentMessage(result.message || "Publishing failed.", "error");
+      showPresidentMessage(
+        result.message ||
+        (isEditing ? "Update failed." : "Publishing failed."),
+        "error"
+      );
     }
 
   } catch (error) {
-    showPresidentMessage("Publishing failed. Please check your Web App deployment.", "error");
+    showPresidentMessage(
+      "Saving failed. Please check your Web App deployment.",
+      "error"
+    );
   }
 });
+
+loadPresidentManagerMessages();
 </script>
 
 </body>
