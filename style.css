@@ -2427,10 +2427,20 @@ section {
     font-size:1.15rem;
     line-height:2;
     color:#243b53;
+    columns:1 !important;
+    column-count:1 !important;
+    column-width:auto !important;
+    max-width:100%;
 }
 
 .president-content p{
-    margin-bottom:24px;
+    margin:0 0 24px;
+    width:100%;
+}
+
+.president-content *{
+    columns:1 !important;
+    column-count:1 !important;
 }
 
 .president-content h1,
@@ -2439,4 +2449,39 @@ section {
     margin-top:30px;
     margin-bottom:15px;
     color:#0d3b66;
+}
+
+.president-archive{
+  margin-top:24px;
+  padding-top:20px;
+  border-top:1px solid #d8d0bd;
+}
+
+.president-archive h4{
+  margin-bottom:12px;
+  color:#0d3b66;
+  font-size:1rem;
+}
+
+.president-archive-item{
+  display:block;
+  width:100%;
+  text-align:left;
+  background:none;
+  border:none;
+  padding:10px 0;
+  cursor:pointer;
+  border-bottom:1px solid #ece5d6;
+}
+
+.president-archive-item strong{
+  display:block;
+  color:#101828;
+  font-size:.92rem;
+}
+
+.president-archive-item span{
+  display:block;
+  color:#64748b;
+  font-size:.8rem;
 }
