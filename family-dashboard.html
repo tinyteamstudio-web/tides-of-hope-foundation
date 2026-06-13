@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,249 +13,263 @@
 
 <body>
 
-<header class="site-header">
-  <div class="container header-inner">
+  <header class="site-header">
+    <div class="container header-inner">
 
-    <a href="family-corner.html" class="brand">
-      <img
-        src="round-logo.png"
-        class="brand-logo"
-        alt="Tides of Hope Logo"
-      >
+      <a href="family-corner.html" class="brand">
+        <img src="round-logo.png" class="brand-logo" alt="Tides of Hope Logo">
 
-      <div class="brand-text">
-        <span class="brand-title">Tides of Hope</span>
-        <span class="brand-subtitle">Family Dashboard</span>
+        <div class="brand-text">
+          <span class="brand-title">Tides of Hope</span>
+          <span class="brand-subtitle">Family Dashboard</span>
+        </div>
+      </a>
+
+      <nav class="site-nav">
+        <a href="family-corner.html">Family Corner</a>
+        <a href="family-portal.html">Family Community</a>
+        <a href="index.html">Homepage</a>
+        <a href="#" id="volunteerLogoutBtn" class="nav-cta">Logout</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="volunteer-dashboard-page">
+
+    <section class="volunteer-dashboard-hero">
+      <div class="container dashboard-hero-grid">
+
+        <div>
+          <span class="section-tag">My Family Community</span>
+
+          <h1 id="dashboardWelcomeName">
+            Welcome to the Tides of Hope Family
+          </h1>
+
+          <p>
+            This is your personal Family Dashboard.
+            View your profile, share gratitude stories,
+            upload gallery moments, join community activities,
+            and grow with the Tides of Hope Family.
+          </p>
+        </div>
+
+        <div class="dashboard-profile-card">
+          <div id="dashboardAvatar" class="dashboard-avatar">F</div>
+
+          <h3 id="dashboardFullName">Family Member</h3>
+
+          <p id="dashboardUsername">@username</p>
+
+          <span id="dashboardBadge" class="dashboard-badge">
+            Family Member
+          </span>
+        </div>
+
       </div>
-    </a>
+    </section>
 
-    <nav class="site-nav">
-      <a href="family-corner.html">Family Corner</a>
-      <a href="family-portal.html">Family Community</a>
-      <a href="index.html">Homepage</a>
-      <a href="#" id="volunteerLogoutBtn" class="nav-cta">Logout</a>
-    </nav>
+    <section class="volunteer-dashboard-section">
+      <div class="container">
 
-  </div>
-</header>
+        <div class="dashboard-stats-grid">
 
-<main class="volunteer-dashboard-page">
+          <article class="dashboard-stat-card">
+            <span>⏱️</span>
+            <h3 id="dashboardHours">0</h3>
+            <p>Community Hours</p>
+          </article>
 
-  <section class="volunteer-dashboard-hero">
-    <div class="container dashboard-hero-grid">
+          <article class="dashboard-stat-card">
+            <span>📸</span>
+            <h3 id="dashboardGalleryUploads">0</h3>
+            <p>Gallery Uploads</p>
+          </article>
 
-      <div>
-        <span class="section-tag">My Family Community</span>
+          <article class="dashboard-stat-card">
+            <span>💬</span>
+            <h3 id="dashboardCommunityPosts">0</h3>
+            <p>Community Posts</p>
+          </article>
 
-        <h1 id="dashboardWelcomeName">
-          Welcome to the Tides of Hope Family
-        </h1>
+          <article class="dashboard-stat-card">
+            <span>🎖️</span>
+            <h3 id="dashboardCommunityRecognition">0</h3>
+            <p>Community Recognition</p>
+          </article>
+
+        </div>
+
+        <div class="dashboard-card-grid">
+
+          <article class="dashboard-action-card">
+            <div class="dashboard-action-icon">👤</div>
+
+            <h3>My Profile</h3>
+
+            <p>
+              View and update your Family Community profile,
+              bio, skills, interests, and availability.
+            </p>
+
+            <span>Coming Soon</span>
+          </article>
+
+          <article class="dashboard-action-card">
+            <div class="dashboard-action-icon">❤️</div>
+
+            <h3>Family Gratitude Wall</h3>
+
+            <p>
+              Share gratitude stories, appreciation messages,
+              testimonials, and inspiring moments with the
+              Tides of Hope Family.
+            </p>
+
+            <span>Family Upload Tool Next</span>
+          </article>
+
+          <article class="dashboard-action-card">
+            <div class="dashboard-action-icon">📸</div>
+
+            <h3>Family Gallery</h3>
+
+            <p>
+              Share approved photos and videos from outreach,
+              activities, missions, and family moments.
+            </p>
+
+            <a href="family-gallery.html">
+              Open Gallery
+            </a>
+
+          </article>
+
+          <article class="dashboard-action-card">
+            <div class="dashboard-action-icon">🗂️</div>
+
+            <h3>Manage My Gallery Uploads</h3>
+
+            <p>
+              View your uploaded photos and videos,
+              edit captions, and archive gallery moments
+              you no longer want to show.
+            </p>
+
+            <a href="family-my-gallery.html">
+              Open Manager
+            </a>
+          </article>
+
+          <article class="dashboard-action-card">
+            <div class="dashboard-action-icon">💬</div>
+
+            <h3>Family Community Feed</h3>
+
+            <p>
+              Share stories, reflections, updates,
+              encouragement, and community experiences
+              with fellow family members.
+            </p>
+
+            <a href="family-feed.html">
+              Open Feed
+            </a>
+          </article>
+
+          <article class="dashboard-action-card">
+            <div class="dashboard-action-icon">📅</div>
+
+            <h3>Upcoming Activities</h3>
+
+            <p>
+              View upcoming programs, family activities,
+              outreach events, missions, and community schedules.
+            </p>
+
+            <span>Coming Soon</span>
+          </article>
+
+          <article class="dashboard-action-card">
+            <div class="dashboard-action-icon">🏅</div>
+
+            <h3>Family Recognition</h3>
+
+            <p>
+              Track community hours, appreciation,
+              badges, certificates, participation,
+              and family milestones.
+            </p>
+
+            <span>Coming Soon</span>
+          </article>
+
+          <article class="dashboard-action-card">
+            <div class="dashboard-action-icon">🔐</div>
+
+            <h3>Change Password</h3>
+
+            <p>
+              Update your Family Community account password
+              anytime for security.
+            </p>
+
+            <a href="change-password.html">
+              Open Tool
+            </a>
+          </article>
+
+          <article class="dashboard-action-card">
+            <div class="dashboard-action-icon">🌊</div>
+
+            <h3>Family News Feed</h3>
+
+            <p>
+              Read official announcements, community stories,
+              family highlights, and updates from across
+              Tides of Hope.
+            </p>
+
+            <span>Family News Feed Next</span>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+        <img src="round-logo.png" class="footer-logo" alt="Tides of Hope Logo">
+
+        <h3>Tides of Hope Incorporated</h3>
 
         <p>
-          This is your personal Family Dashboard.
-          View your profile, share gratitude stories,
-          upload gallery moments, join community activities,
-          and grow with the Tides of Hope Family.
+          Serving with compassion, building with hope.
         </p>
       </div>
 
-      <div class="dashboard-profile-card">
-        <div id="dashboardAvatar" class="dashboard-avatar">F</div>
+    </div>
 
-        <h3 id="dashboardFullName">Family Member</h3>
-
-        <p id="dashboardUsername">@username</p>
-
-        <span id="dashboardBadge" class="dashboard-badge">
-          Family Member
-        </span>
+    <div class="footer-credit">
+      <div class="container footer-credit-inner">
+        <p>
+          Powered by <strong>BuildFrame Digital System</strong>
+          <span class="footer-credit-text">
+            Website, Funnel and Platform Builder
+          </span>
+        </p>
       </div>
-
     </div>
-  </section>
+  </footer>
 
-  <section class="volunteer-dashboard-section">
-    <div class="container">
-
-      <div class="dashboard-stats-grid">
-
-        <article class="dashboard-stat-card">
-          <span>⏱️</span>
-          <h3 id="dashboardHours">0</h3>
-          <p>Community Hours</p>
-        </article>
-
-        <article class="dashboard-stat-card">
-          <span>📸</span>
-          <h3>0</h3>
-          <p>Gallery Uploads</p>
-        </article>
-
-        <article class="dashboard-stat-card">
-          <span>💬</span>
-          <h3>0</h3>
-          <p>Community Posts</p>
-        </article>
-
-        <article class="dashboard-stat-card">
-          <span>🎖️</span>
-          <h3>0</h3>
-          <p>Community Recognition</p>
-        </article>
-
-      </div>
-
-      <div class="dashboard-card-grid">
-
-        <article class="dashboard-action-card">
-          <div class="dashboard-action-icon">👤</div>
-
-          <h3>My Profile</h3>
-
-          <p>
-            View and update your Family Community profile,
-            bio, skills, interests, and availability.
-          </p>
-
-          <span>Coming Soon</span>
-        </article>
-
-        <article class="dashboard-action-card">
-          <div class="dashboard-action-icon">❤️</div>
-
-          <h3>Family Gratitude Wall</h3>
-
-          <p>
-            Share gratitude stories, appreciation messages,
-            testimonials, and inspiring moments with the
-            Tides of Hope Family.
-          </p>
-
-          <span>Coming Soon</span>
-        </article>
-
-        <article class="dashboard-action-card">
-          <div class="dashboard-action-icon">📸</div>
-
-          <h3>Family Gallery</h3>
-
-          <p>
-            Share approved photos and videos from outreach,
-            activities, missions, and family moments.
-          </p>
-
-          <span>Coming Soon</span>
-        </article>
-
-        <article class="dashboard-action-card">
-          <div class="dashboard-action-icon">💬</div>
-
-          <h3>Family Community Feed</h3>
-
-          <p>
-            Share stories, reflections, updates,
-            encouragement, and community experiences
-            with fellow family members.
-          </p>
-
-          <span>Coming Soon</span>
-        </article>
-
-        <article class="dashboard-action-card">
-          <div class="dashboard-action-icon">📅</div>
-
-          <h3>Upcoming Activities</h3>
-
-          <p>
-            View upcoming programs, family activities,
-            outreach events, missions, and community schedules.
-          </p>
-
-          <span>Coming Soon</span>
-        </article>
-
-        <article class="dashboard-action-card">
-          <div class="dashboard-action-icon">🏅</div>
-
-          <h3>Family Recognition</h3>
-
-          <p>
-            Track community hours, appreciation,
-            badges, certificates, participation,
-            and family milestones.
-          </p>
-
-          <span>Coming Soon</span>
-        </article>
-
-        <article class="dashboard-action-card">
-          <div class="dashboard-action-icon">🔐</div>
-
-          <h3>Change Password</h3>
-
-          <p>
-            Update your Family Community account password
-            anytime for security.
-          </p>
-
-          <a href="family-change-password.html">
-            Open Tool
-          </a>
-        </article>
-
-        <article class="dashboard-action-card">
-          <div class="dashboard-action-icon">🌊</div>
-
-          <h3>Family News Feed</h3>
-
-          <p>
-            Read official announcements, community stories,
-            family highlights, and updates from across
-            Tides of Hope.
-          </p>
-
-          <span>Coming Soon</span>
-        </article>
-
-      </div>
-
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-grid">
-
-    <div class="footer-brand">
-      <img
-        src="round-logo.png"
-        class="footer-logo"
-        alt="Tides of Hope Logo"
-      >
-
-      <h3>Tides of Hope Incorporated</h3>
-
-      <p>
-        Serving with compassion, building with hope.
-      </p>
-    </div>
-
-  </div>
-
-  <div class="footer-credit">
-    <div class="container footer-credit-inner">
-      <p>
-        Powered by <strong>BuildFrame Digital System</strong>
-        <span class="footer-credit-text">
-          Website, Funnel and Platform Builder
-        </span>
-      </p>
-    </div>
-  </div>
-</footer>
-
-<script src="family-dashboard.js"></script>
+  <script src="family-dashboard.js"></script>
 
 </body>
+
 </html>

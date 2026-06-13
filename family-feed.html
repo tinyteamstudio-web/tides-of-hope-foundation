@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Family Community Feed | Tides of Hope</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        .feed-page {
+            padding: 40px 0 80px;
+            background: #f3fbfd;
+        }
+
+        .feed-layout {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .feed-composer,
+        .feed-section-card,
+        .feed-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+        }
+
+        .feed-composer {
+            margin-bottom: 30px;
+        }
+
+        .feed-composer textarea {
+            width: 100%;
+            min-height: 140px;
+            padding: 14px;
+            border: 1px solid #dbe5ea;
+            border-radius: 12px;
+            resize: vertical;
+            font-size: 16px;
+        }
+
+        .feed-composer-actions,
+        .feed-post-actions {
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .feed-section-card {
+            margin-bottom: 30px;
+        }
+
+        .feed-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feed-author {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .feed-avatar,
+        .feed-avatar-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .feed-avatar {
+            object-fit: cover;
+        }
+
+        .feed-avatar-placeholder {
+            background: #0b6d88;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .feed-author h3 {
+            margin: 0;
+        }
+
+        .feed-author p {
+            margin: 4px 0 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .feed-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 18px;
+        }
+
+        .pending-note {
+            text-align: center;
+            padding: 40px;
+            background: #fff;
+            border-radius: 18px;
+        }
+
+        .danger-link {
+            color: #b42318 !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="brand">
+                <img src="round-logo.png" class="brand-logo" alt="Tides of Hope Logo">
+                <div class="brand-text">
+                    <span class="brand-title">Tides of Hope</span>
+                    <span class="brand-subtitle">Family Community</span>
+                </div>
+            </a>
+
+            <nav class="site-nav">
+                <a href="family-dashboard.html">Dashboard</a>
+                <a href="family-portal.html">Community</a>
+                <a href="family-corner.html">Family Corner</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="feed-page">
+        <section class="container">
+            <div class="feed-layout">
+
+                <div class="feed-composer">
+                    <span class="section-tag">Family Community Feed</span>
+
+                    <h2 id="composerTitle">Share Something With The Family</h2>
+
+                    <input type="hidden" id="editingPostId">
+
+                    <textarea id="postText"
+                        placeholder="Share your thoughts, gratitude, stories, reflections, encouragement, or community updates..."></textarea>
+
+                    <div class="feed-composer-actions">
+                        <input type="file" id="postPhoto" accept="image/*">
+
+                        <button id="submitPostBtn" class="btn btn-primary">
+                            Submit Post
+                        </button>
+
+                        <button id="cancelEditBtn" class="btn btn-secondary" style="display:none;">
+                            Cancel Edit
+                        </button>
+                    </div>
+
+                    <p id="postMessage"></p>
+                </div>
+
+                <div class="feed-section-card">
+                    <span class="section-tag">My Posts</span>
+                    <h2>Manage My Posts</h2>
+                    <p>
+                        Edit or archive your own Family Community posts.
+                        Edited posts return to Pending until approved again.
+                    </p>
+
+                    <div id="myPosts" class="feed-posts">
+                        <div class="pending-note">Loading your posts...</div>
+                    </div>
+                </div>
+
+                <div class="feed-section-card">
+                    <span class="section-tag">Community Timeline</span>
+                    <h2>Approved Family Posts</h2>
+
+                    <div id="feedPosts" class="feed-posts">
+                        <div class="pending-note">Loading Family Feed...</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="round-logo.png" class="footer-logo" alt="Tides of Hope Logo">
+                <h3>Tides of Hope Incorporated</h3>
+                <p>Serving with compassion, building with hope.</p>
+            </div>
+        </div>
+
+        <div class="footer-credit">
+            <div class="container footer-credit-inner">
+                <p>
+                    Powered by <strong>BuildFrame Digital System</strong>
+                    <span class="footer-credit-text">Website, Funnel and Platform Builder</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="family-feed.js"></script>
+
+</body>
+
+</html>

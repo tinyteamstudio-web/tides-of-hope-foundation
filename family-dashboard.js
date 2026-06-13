@@ -23,7 +23,9 @@ if (!familyLoggedIn) {
 ========================================================= */
 
 const familyId =
-  sessionStorage.getItem("tohVolunteerID") || "";
+  sessionStorage.getItem("tohFamilyID") ||
+  sessionStorage.getItem("tohVolunteerID") ||
+  "";
 
 const familyUsername =
   sessionStorage.getItem("tohFamilyUsername") ||
@@ -35,12 +37,18 @@ const familyName =
   sessionStorage.getItem("tohVolunteerName") ||
   "Family Member";
 
+const familyEmail =
+  sessionStorage.getItem("tohFamilyEmail") ||
+  sessionStorage.getItem("tohVolunteerEmail") ||
+  "";
+
 /* =========================================================
    LOAD PAGE
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   loadFamilyProfile();
+  loadDashboardCounters();
   initializeLogout();
 });
 
@@ -81,6 +89,43 @@ async function loadFamilyProfile() {
 }
 
 /* =========================================================
+   LOAD DASHBOARD COUNTERS
+========================================================= */
+
+async function loadDashboardCounters() {
+  try {
+    const result =
+      await sendRequest({
+        action: "getFamilyDashboardCounters",
+        familyId: familyId,
+        email: familyEmail,
+        username: familyUsername,
+        fullName: familyName
+      });
+
+    if (!result.success) {
+      throw new Error(result.message || "Unable to load counters.");
+    }
+
+    setText(
+      "dashboardGalleryUploads",
+      result.galleryUploads || 0
+    );
+
+    setText(
+      "dashboardCommunityPosts",
+      result.communityPosts || 0
+    );
+
+  } catch (error) {
+    console.error(error);
+
+    setText("dashboardGalleryUploads", 0);
+    setText("dashboardCommunityPosts", 0);
+  }
+}
+
+/* =========================================================
    RENDER FAMILY MEMBER
 ========================================================= */
 
@@ -96,7 +141,6 @@ function renderFamilyMember(member) {
     "family";
 
   const badge =
-    member.BadgeLevel ||
     "Family Member";
 
   const hours =
@@ -147,17 +191,20 @@ function initializeLogout() {
 
   if (!logoutBtn) return;
 
-  logoutBtn.addEventListener("click", function(e) {
+  logoutBtn.addEventListener("click", function (e) {
     e.preventDefault();
 
     sessionStorage.removeItem("tohVolunteerLoggedIn");
     sessionStorage.removeItem("tohVolunteerID");
     sessionStorage.removeItem("tohVolunteerUsername");
     sessionStorage.removeItem("tohVolunteerName");
+    sessionStorage.removeItem("tohVolunteerEmail");
 
     sessionStorage.removeItem("tohFamilyLoggedIn");
+    sessionStorage.removeItem("tohFamilyID");
     sessionStorage.removeItem("tohFamilyUsername");
     sessionStorage.removeItem("tohFamilyName");
+    sessionStorage.removeItem("tohFamilyEmail");
 
     window.location.href =
       "family-login.html";

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        Family Gallery Upload | Tides of Hope
+    </title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        .family-upload-page {
+            background: #f3fbfd;
+            padding: 50px 0 90px;
+        }
+
+        .family-upload-wrap {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .upload-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+        }
+
+        .upload-card h1 {
+            color: #082f49;
+            margin: 10px 0 20px;
+        }
+
+        .upload-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .upload-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .upload-field label {
+            font-weight: 600;
+            color: #082f49;
+        }
+
+        .upload-field input,
+        .upload-field select,
+        .upload-field textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d8e5eb;
+            border-radius: 12px;
+            font-size: 15px;
+        }
+
+        .upload-field textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .upload-actions {
+            margin-top: 24px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .upload-message {
+            margin-top: 18px;
+            font-weight: 600;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+
+            <a href="family-gallery.html" class="brand">
+                <img src="round-logo.png" class="brand-logo" alt="Tides of Hope">
+
+                <div class="brand-text">
+                    <span class="brand-title">
+                        Tides of Hope
+                    </span>
+
+                    <span class="brand-subtitle">
+                        Family Gallery Upload
+                    </span>
+                </div>
+            </a>
+
+            <nav class="site-nav">
+                <a href="family-dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="family-gallery.html">
+                    Gallery
+                </a>
+
+                <a href="family-feed.html">
+                    Family Feed
+                </a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="family-upload-page">
+
+        <section class="container">
+
+            <div class="family-upload-wrap">
+
+                <div class="upload-card">
+
+                    <span class="section-tag">
+                        Family Gallery Upload
+                    </span>
+
+                    <h1>
+                        Share A Family Moment
+                    </h1>
+
+                    <p>
+                        Upload photos and videos from
+                        community activities, outreach,
+                        missions, events, and family memories.
+                    </p>
+
+                    <div class="upload-grid">
+
+                        <div class="upload-field">
+                            <label>
+                                Event
+                            </label>
+
+                            <select id="eventId">
+                                <option value="">
+                                    Select Event
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="upload-field">
+                            <label>
+                                Media Type
+                            </label>
+
+                            <select id="mediaType">
+                                <option value="image">
+                                    Image
+                                </option>
+
+                                <option value="video">
+                                    Video
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="upload-field">
+                            <label>
+                                Caption
+                            </label>
+
+                            <textarea id="caption" placeholder="Tell the story behind this moment..."></textarea>
+                        </div>
+
+                        <div class="upload-field">
+
+                            <label>
+                                Upload Photos / Videos
+                            </label>
+
+                            <input type="file" id="galleryFiles" accept="image/*,video/*" multiple />
+
+                            <small style="
+                                      color:#64748b;
+                                      margin-top:8px;
+                                      display:block;
+                               ">
+                                You may upload up to
+                                <strong>30 files</strong>
+                                at one time.
+                                Photos and videos are allowed.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <div class="upload-actions">
+
+                        <button id="uploadBtn" class="btn btn-primary">
+                            Upload Moment
+                        </button>
+
+                        <a href="family-gallery.html" class="btn btn-secondary">
+                            Back To Gallery
+                        </a>
+
+                    </div>
+
+                    <p id="uploadMessage" class="upload-message"></p>
+                    <p id="selectedFileCount" style="
+                           margin-top:10px;
+                           color:#0b6d88;
+                           font-weight:600;
+                    ">
+                        <strong>0</strong> files selected
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-layout" style="
+display:flex;
+justify-content:center;
+text-align:center;
+">
+
+            <div class="footer-brand" style="
+text-align:center;
+width:100%;
+">
+                <img src="round-logo.png" class="footer-logo" alt="Tides of Hope">
+
+                <h3>
+                    Tides of Hope Incorporated
+                </h3>
+
+                <p>
+                    Serving with compassion,
+                    building with hope.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-credit">
+            <div class="container footer-credit-inner">
+                <p>
+                    Powered by
+                    <strong>
+                        BuildFrame Digital System
+                    </strong>
+
+                    <span class="footer-credit-text">
+                        Website, Funnel and Platform Builder
+                    </span>
+                </p>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="family-gallery-upload.js"></script>
+
+</body>
+
+</html>
