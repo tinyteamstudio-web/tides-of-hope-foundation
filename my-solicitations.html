@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Solicitation Requests | Tides of Hope</title>
 
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="style.css" />
 
     <style>
         body {
@@ -120,15 +120,43 @@
 
 <body>
 
+    <header class="site-header">
+        <div class="container header-inner">
+
+            <a href="index.html" class="brand">
+                <img src="round-logo.png" class="brand-logo" alt="Tides of Hope Logo">
+
+                <div class="brand-text">
+                    <span class="brand-title">Tides of Hope</span>
+                    <span class="brand-subtitle">My Solicitation Requests</span>
+                </div>
+            </a>
+
+            <nav class="site-nav">
+                <a href="index.html">Home</a>
+                <a href="documents.html">Documents</a>
+                <a href="contact.html">Contact</a>
+                <a href="donate.html" class="nav-cta">Support Us</a>
+            </nav>
+
+        </div>
+    </header>
+
     <main class="page-wrap">
         <div class="page-header">
             <h1>My Solicitation Requests</h1>
-            <p>Enter your contact number to view and download your generated solicitation letter.</p>
+            <p>
+                Enter the contact number used in your solicitation request to view your generated documents and request
+                status.
+            </p>
         </div>
 
         <div class="search-box">
             <input type="text" id="contactNumberSearch" placeholder="Enter contact number used in the request" />
-            <button type="button" id="searchBtn">Search My Requests</button>
+
+            <button type="button" id="searchBtn">
+                Search My Requests
+            </button>
         </div>
 
         <div id="results"></div>
@@ -138,7 +166,39 @@
         </div>
     </main>
 
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+                <img src="round-logo.png" class="footer-logo" alt="Tides of Hope Logo">
+
+                <h3>Tides of Hope Incorporated</h3>
+
+                <p>
+                    Serving with compassion, building with hope.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="footer-credit">
+            <div class="container footer-credit-inner">
+
+                <p>
+                    Powered by <strong>BuildFrame Digital System</strong>
+                    <span class="footer-credit-text">
+                        Website, Funnel and Platform Builder
+                    </span>
+                </p>
+
+            </div>
+        </div>
+
+    </footer>
+
     <script src="assets/js/my-solicitations.js"></script>
+
 </body>
 
 </html>

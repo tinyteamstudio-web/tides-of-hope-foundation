@@ -4,19 +4,27 @@
 ========================================================= */
 
 const WEBAPP_URL =
-    "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+  "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+
+
+const familyLoggedIn =
+  sessionStorage.getItem("tohFamilyLoggedIn") === "true" ||
+  sessionStorage.getItem("tohVolunteerLoggedIn") === "true";
+
+if (!familyLoggedIn) {
+  window.location.href = "family-login.html";
+}
 
 /* =========================================================
    LOAD PAGE
 ========================================================= */
 
 document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        loadFamilyGallery();
-
-    }
+  "DOMContentLoaded",
+  function () {
+    loadFamilyGallery();
+    loadMyGalleryUploads();
+  }
 );
 
 /* =========================================================
@@ -24,27 +32,27 @@ document.addEventListener(
 ========================================================= */
 
 async function loadFamilyGallery() {
-    const grid = document.getElementById("familyGalleryGrid");
+  const grid = document.getElementById("familyGalleryGrid");
 
-    if (!grid) return;
+  if (!grid) return;
 
-    try {
-        const response = await fetch(
-            WEBAPP_URL + "?action=getApprovedGalleryItems"
-        );
+  try {
+    const response = await fetch(
+      WEBAPP_URL + "?action=getApprovedGalleryItems"
+    );
 
-        const result = await response.json();
+    const result = await response.json();
 
-        renderGallery(result.data || []);
-    } catch (error) {
-        console.error(error);
+    renderGallery(result.data || []);
+  } catch (error) {
+    console.error(error);
 
-        grid.innerHTML = `
+    grid.innerHTML = `
       <div class="gallery-empty">
         Unable to load gallery.
       </div>
     `;
-    }
+  }
 }
 
 /* =========================================================
@@ -52,31 +60,31 @@ async function loadFamilyGallery() {
 ========================================================= */
 
 async function loadMyGalleryUploads() {
-    const container = document.getElementById("myGalleryUploads");
+  const container = document.getElementById("myGalleryUploads");
 
-    if (!container) return;
+  if (!container) return;
 
-    try {
-        const uploaderName =
-            sessionStorage.getItem("tohFamilyName") ||
-            sessionStorage.getItem("tohVolunteerName") ||
-            "Family Member";
+  try {
+    const uploaderName =
+      sessionStorage.getItem("tohFamilyName") ||
+      sessionStorage.getItem("tohVolunteerName") ||
+      "Family Member";
 
-        const result = await sendRequest({
-            action: "getMyGalleryItems",
-            uploaderName: uploaderName
-        });
+    const result = await sendRequest({
+      action: "getMyGalleryItems",
+      uploaderName: uploaderName
+    });
 
-        renderMyGalleryUploads(result.data || []);
-    } catch (error) {
-        console.error(error);
+    renderMyGalleryUploads(result.data || []);
+  } catch (error) {
+    console.error(error);
 
-        container.innerHTML = `
+    container.innerHTML = `
       <div class="gallery-empty">
         Unable to load your uploads.
       </div>
     `;
-    }
+  }
 }
 
 /* =========================================================
@@ -84,24 +92,24 @@ async function loadMyGalleryUploads() {
 ========================================================= */
 
 function renderGallery(items) {
-    const grid = document.getElementById("familyGalleryGrid");
+  const grid = document.getElementById("familyGalleryGrid");
 
-    if (!grid) return;
+  if (!grid) return;
 
-    if (!items || items.length === 0) {
-        grid.innerHTML = `
+  if (!items || items.length === 0) {
+    grid.innerHTML = `
       <div class="gallery-empty">
         🌊 Moments shared by the Tides of Hope Family will appear here.
       </div>
     `;
-        return;
-    }
+    return;
+  }
 
-    grid.innerHTML = items
-        .map(function (item) {
-            return createGalleryCard(item, false);
-        })
-        .join("");
+  grid.innerHTML = items
+    .map(function (item) {
+      return createGalleryCard(item, false);
+    })
+    .join("");
 }
 
 /* =========================================================
@@ -109,16 +117,16 @@ function renderGallery(items) {
 ========================================================= */
 
 function renderMyGalleryUploads(items) {
-    const container = document.getElementById("myGalleryUploads");
+  const container = document.getElementById("myGalleryUploads");
 
-    if (!container) return;
+  if (!container) return;
 
-    if (!items || items.length === 0) {
-        container.innerHTML = "";
-        return;
-    }
+  if (!items || items.length === 0) {
+    container.innerHTML = "";
+    return;
+  }
 
-    container.innerHTML = `
+  container.innerHTML = `
     <div style="grid-column: 1 / -1; margin: 8px 0 4px;">
       <span class="section-tag">My Uploads</span>
       <h2 style="color:#082f49;">Manage My Gallery Uploads</h2>
@@ -127,10 +135,10 @@ function renderMyGalleryUploads(items) {
       </p>
     </div>
   ` + items
-            .map(function (item) {
-                return createGalleryCard(item, true);
-            })
-            .join("");
+      .map(function (item) {
+        return createGalleryCard(item, true);
+      })
+      .join("");
 }
 
 /* =========================================================
@@ -138,33 +146,33 @@ function renderMyGalleryUploads(items) {
 ========================================================= */
 
 function createGalleryCard(item, isMine) {
-    const media = createMedia(item);
+  const media = createMedia(item);
 
-    const title =
-        item.Title ||
-        item.EventTitle ||
-        "Family Moment";
+  const title =
+    item.Title ||
+    item.EventTitle ||
+    "Family Moment";
 
-    const description =
-        item.Description ||
-        item.Caption ||
-        "";
+  const description =
+    item.Description ||
+    item.Caption ||
+    "";
 
-    const uploadedBy =
-        item.UploadedBy ||
-        item.UploaderName ||
-        "Tides of Hope Family";
+  const uploadedBy =
+    item.UploadedBy ||
+    item.UploaderName ||
+    "Tides of Hope Family";
 
-    const status =
-        item.ApprovalStatus ||
-        "APPROVED";
+  const status =
+    item.ApprovalStatus ||
+    "APPROVED";
 
-    const mediaId =
-        item.MediaID ||
-        "";
+  const mediaId =
+    item.MediaID ||
+    "";
 
-    const actions = isMine
-        ? `
+  const actions = isMine
+    ? `
       <div class="gallery-card-actions">
         <button
           type="button"
@@ -183,21 +191,21 @@ function createGalleryCard(item, isMine) {
         </button>
       </div>
     `
-        : "";
+    : "";
 
-    const statusLine = isMine
-        ? `
+  const statusLine = isMine
+    ? `
       <div class="family-gallery-meta">
         Status: <strong>${escapeHtml(status)}</strong>
       </div>
     `
-        : `
+    : `
       <div class="family-gallery-meta">
         Uploaded by ${escapeHtml(uploadedBy)}
       </div>
     `;
 
-    return `
+  return `
     <article class="family-gallery-card">
       <div class="family-gallery-media">
         ${media}
@@ -221,21 +229,21 @@ function createGalleryCard(item, isMine) {
 ========================================================= */
 
 function createMedia(item) {
-    const url =
-        item.FileURL ||
-        item.MediaURL ||
-        item.Photo ||
-        "";
+  const url =
+    item.FileURL ||
+    item.MediaURL ||
+    item.Photo ||
+    "";
 
-    const type =
-        String(
-            item.MediaType ||
-            item.Type ||
-            "image"
-        ).toLowerCase();
+  const type =
+    String(
+      item.MediaType ||
+      item.Type ||
+      "image"
+    ).toLowerCase();
 
-    if (!url) {
-        return `
+  if (!url) {
+    return `
       <div style="
         height:100%;
         display:flex;
@@ -246,17 +254,17 @@ function createMedia(item) {
         No Media
       </div>
     `;
-    }
+  }
 
-    if (type.includes("video")) {
-        return `
+  if (type.includes("video")) {
+    return `
       <video controls>
         <source src="${url}">
       </video>
     `;
-    }
+  }
 
-    return `
+  return `
     <img
       src="${url}"
       alt="Family Gallery Item"
@@ -269,20 +277,20 @@ function createMedia(item) {
 ========================================================= */
 
 async function editGalleryItem(mediaId) {
-    const caption = prompt("Update caption:");
+  const caption = prompt("Update caption:");
 
-    if (!caption) return;
+  if (!caption) return;
 
-    const result = await sendRequest({
-        action: "updateGalleryItem",
-        mediaId: mediaId,
-        caption: caption
-    });
+  const result = await sendRequest({
+    action: "updateGalleryItem",
+    mediaId: mediaId,
+    caption: caption
+  });
 
-    alert(result.message || "Gallery item updated.");
+  alert(result.message || "Gallery item updated.");
 
-    loadMyGalleryUploads();
-    loadFamilyGallery();
+  loadMyGalleryUploads();
+  loadFamilyGallery();
 }
 
 /* =========================================================
@@ -290,19 +298,19 @@ async function editGalleryItem(mediaId) {
 ========================================================= */
 
 async function archiveGalleryItem(mediaId) {
-    const ok = confirm("Archive this gallery item?");
+  const ok = confirm("Archive this gallery item?");
 
-    if (!ok) return;
+  if (!ok) return;
 
-    const result = await sendRequest({
-        action: "archiveGalleryItem",
-        mediaId: mediaId
-    });
+  const result = await sendRequest({
+    action: "archiveGalleryItem",
+    mediaId: mediaId
+  });
 
-    alert(result.message || "Gallery item archived.");
+  alert(result.message || "Gallery item archived.");
 
-    loadMyGalleryUploads();
-    loadFamilyGallery();
+  loadMyGalleryUploads();
+  loadFamilyGallery();
 }
 
 /* =========================================================
@@ -310,12 +318,12 @@ async function archiveGalleryItem(mediaId) {
 ========================================================= */
 
 async function sendRequest(payload) {
-    const response = await fetch(WEBAPP_URL, {
-        method: "POST",
-        body: JSON.stringify(payload)
-    });
+  const response = await fetch(WEBAPP_URL, {
+    method: "POST",
+    body: JSON.stringify(payload)
+  });
 
-    return await response.json();
+  return await response.json();
 }
 
 /* =========================================================
@@ -323,8 +331,8 @@ async function sendRequest(payload) {
 ========================================================= */
 
 function escapeHtml(text) {
-    return String(text || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+  return String(text || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }

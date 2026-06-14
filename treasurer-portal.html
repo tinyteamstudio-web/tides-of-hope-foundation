@@ -1,298 +1,542 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Treasurer Portal | Tides of Hope</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 
   <style>
-    .internal-portal-hero{padding:80px 0 56px;background:linear-gradient(135deg, rgba(238,247,251,0.96), rgba(231,247,247,0.92));}
-    .internal-portal-hero p{max-width:760px;}
-    .internal-portal-section{padding:56px 0 72px;background:#f8fcfd;}
-    .internal-portal-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start;}
-    .internal-portal-card{background:#ffffff;border:1px solid rgba(13,59,102,0.08);border-radius:24px;box-shadow:0 8px 24px rgba(13,59,102,0.06);padding:28px 24px;}
-    .internal-portal-card h2,.internal-portal-card h3{color:#0d3b66;margin-bottom:14px;}
-    .internal-portal-card p{color:#5f7382;margin-bottom:14px;}
-    .portal-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
-    .portal-tab-btn{border:none;border-radius:999px;padding:10px 16px;background:#eef6fa;color:#0d3b66;font-weight:700;cursor:pointer;}
-    .portal-tab-btn.active{background:#2ca3a7;color:#fff;}
-    .portal-panel{display:none;}
-    .portal-panel.active{display:block;}
-    .portal-form{display:flex;flex-direction:column;gap:12px;}
-    .portal-form input,.portal-form textarea,.portal-form select{width:100%;padding:14px 16px;border-radius:14px;border:1px solid #d7e6ec;font:inherit;}
-    .portal-form textarea{min-height:110px;resize:vertical;}
-    .portal-form .btn{margin-top:4px;}
-    .portal-message{min-height:24px;font-weight:600;}
-    .record-list{display:flex;flex-direction:column;gap:14px;}
-    .record-card{padding:16px;border-radius:18px;background:#f8fcfd;border:1px solid rgba(13,59,102,0.08);}
-    .record-card h4{margin:0 0 6px;color:#0d3b66;font-size:1rem;}
-    .record-card p{margin:0 0 6px;color:#5f7382;font-size:0.95rem;}
-    .record-meta{font-size:0.88rem;color:#6f8594;}
-    .dashboard-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
-    .dashboard-card{padding:16px;border-radius:18px;background:#f8fcfd;border:1px solid rgba(13,59,102,0.08);}
-    .dashboard-card strong{display:block;color:#0d3b66;margin-bottom:6px;}
-    .dashboard-card span{color:#2ca3a7;font-size:1.2rem;font-weight:700;}
-    @media (max-width:980px){.internal-portal-grid{grid-template-columns:1fr;}.dashboard-cards{grid-template-columns:1fr;}}
+    .internal-portal-hero {
+      padding: 80px 0 56px;
+      background: linear-gradient(135deg, rgba(238, 247, 251, 0.96), rgba(231, 247, 247, 0.92));
+    }
+
+    .internal-portal-hero p {
+      max-width: 760px;
+    }
+
+    .internal-portal-section {
+      padding: 56px 0 72px;
+      background: #f8fcfd;
+    }
+
+    .internal-portal-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .internal-portal-card {
+      background: #ffffff;
+      border: 1px solid rgba(13, 59, 102, 0.08);
+      border-radius: 24px;
+      box-shadow: 0 8px 24px rgba(13, 59, 102, 0.06);
+      padding: 28px 24px;
+    }
+
+    .internal-portal-card h2,
+    .internal-portal-card h3 {
+      color: #0d3b66;
+      margin-bottom: 14px;
+    }
+
+    .internal-portal-card p {
+      color: #5f7382;
+      margin-bottom: 14px;
+    }
+
+    .portal-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .portal-tab-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 16px;
+      background: #eef6fa;
+      color: #0d3b66;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .portal-tab-btn.active {
+      background: #2ca3a7;
+      color: #fff;
+    }
+
+    .portal-panel {
+      display: none;
+    }
+
+    .portal-panel.active {
+      display: block;
+    }
+
+    .portal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .portal-form input,
+    .portal-form textarea,
+    .portal-form select {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid #d7e6ec;
+      font: inherit;
+    }
+
+    .portal-form textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .portal-form .btn {
+      margin-top: 4px;
+    }
+
+    .portal-message {
+      min-height: 24px;
+      font-weight: 600;
+    }
+
+    .record-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .record-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: #f8fcfd;
+      border: 1px solid rgba(13, 59, 102, 0.08);
+    }
+
+    .record-card h4 {
+      margin: 0 0 6px;
+      color: #0d3b66;
+      font-size: 1rem;
+    }
+
+    .record-card p {
+      margin: 0 0 6px;
+      color: #5f7382;
+      font-size: 0.95rem;
+    }
+
+    .record-meta {
+      font-size: 0.88rem;
+      color: #6f8594;
+    }
+
+    .dashboard-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .dashboard-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: #f8fcfd;
+      border: 1px solid rgba(13, 59, 102, 0.08);
+    }
+
+    .dashboard-card strong {
+      display: block;
+      color: #0d3b66;
+      margin-bottom: 6px;
+    }
+
+    .dashboard-card span {
+      color: #2ca3a7;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    @media (max-width:980px) {
+      .internal-portal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard-cards {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="index.html" class="brand">
-      <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo">
-      <div class="brand-text">
-        <span class="brand-title">Tides of Hope</span>
-        <span class="brand-subtitle">Incorporated</span>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo">
+        <div class="brand-text">
+          <span class="brand-title">Tides of Hope</span>
+          <span class="brand-subtitle">Incorporated</span>
+        </div>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Homepage</a>
+        <a href="office-portal.html">Office Portal</a>
+        <a href="#" id="treasurerLogoutBtn" class="nav-cta">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="internal-portal-hero">
+      <div class="container">
+        <span class="section-tag">Internal Office System</span>
+        <h1>Treasurer Portal</h1>
+        <p>Use secure forms to record donations and expenses without exposing the master sheet.</p>
       </div>
-    </a>
-    <nav class="site-nav">
-      <a href="index.html">Homepage</a>
-      <a href="office-portal.html">Office Portal</a>
-      <a href="#" id="treasurerLogoutBtn" class="nav-cta">Logout</a>
-    </nav>
-  </div>
-</header>
+    </section>
 
-<main>
-  <section class="internal-portal-hero">
-    <div class="container">
-      <span class="section-tag">Internal Office System</span>
-      <h1>Treasurer Portal</h1>
-      <p>Use secure forms to record donations and expenses without exposing the master sheet.</p>
-    </div>
-  </section>
+    <section class="internal-portal-section">
+      <div class="container">
+        <div class="internal-portal-grid">
 
-  <section class="internal-portal-section">
-    <div class="container">
-      <div class="internal-portal-grid">
+          <article class="internal-portal-card">
+            <h2>Treasurer Workspace</h2>
 
-        <article class="internal-portal-card">
-          <h2>Treasurer Workspace</h2>
-
-          <div class="portal-tabs">
-            <button class="portal-tab-btn active" type="button" data-target="donationPanel">Donation</button>
-            <button class="portal-tab-btn" type="button" data-target="expensePanel">Expense</button>
-          </div>
-
-          <div class="portal-panel active" id="donationPanel">
-            <form id="donationForm" class="portal-form">
-              <input type="text" id="donorName" placeholder="Donor Name" required />
-              <input type="number" id="donationAmount" placeholder="Amount" min="0.01" step="0.01" required />
-              <select id="donationPaymentMethod" required>
-                <option value="">Select Payment Method</option>
-                <option value="Cash">Cash</option>
-                <option value="GCash">GCash</option>
-                <option value="Bank Transfer">Bank Transfer</option>
-                <option value="Check">Check</option>
-                <option value="Other">Other</option>
-              </select>
-              <textarea id="donationRemarks" placeholder="Remarks"></textarea>
-              <button type="submit" class="btn btn-primary">Submit Donation Record</button>
-            </form>
-            <p class="portal-message" id="donationMessage"></p>
-          </div>
-
-          <div class="portal-panel" id="expensePanel">
-            <form id="expenseForm" class="portal-form">
-              <input type="text" id="expenseTitle" placeholder="Expense Title" required />
-              <input type="text" id="expenseCategory" placeholder="Category" required />
-              <input type="number" id="expenseAmount" placeholder="Amount" min="0.01" step="0.01" required />
-              <select id="expensePaymentMethod">
-                <option value="">Select Payment Method</option>
-                <option value="Cash">Cash</option>
-                <option value="GCash">GCash</option>
-                <option value="Bank Transfer">Bank Transfer</option>
-                <option value="Check">Check</option>
-                <option value="Other">Other</option>
-              </select>
-              <textarea id="expenseRemarks" placeholder="Remarks"></textarea>
-              <input type="text" id="expenseRecordedBy" placeholder="Recorded By" required />
-              <button type="submit" class="btn btn-primary">Submit Expense Record</button>
-            </form>
-            <p class="portal-message" id="expenseMessage"></p>
-          </div>
-        </article>
-
-        <article class="internal-portal-card">
-          <h3>Recent Treasurer Records</h3>
-
-          <div class="dashboard-cards">
-            <div class="dashboard-card">
-              <strong>Recent Donations</strong>
-              <span id="recentDonationsTotal">₱0.00</span>
+            <div class="portal-tabs">
+              <button class="portal-tab-btn active" type="button" data-target="donationPanel">Donation</button>
+              <button class="portal-tab-btn" type="button" data-target="expensePanel">Expense</button>
             </div>
-            <div class="dashboard-card">
-              <strong>Recent Expenses</strong>
-              <span id="recentExpensesTotal">₱0.00</span>
-            </div>
-            <div class="dashboard-card">
-              <strong>Recent Net</strong>
-              <span id="recentNet">₱0.00</span>
-            </div>
-          </div>
 
-          <div class="record-list" id="treasurerRecentList">
-            <div class="record-card">
-              <p>Loading treasurer records...</p>
+            <div class="portal-panel active" id="donationPanel">
+              <form id="donationForm" class="portal-form">
+                <input type="text" id="donorName" placeholder="Donor Name" required />
+                <input type="number" id="donationAmount" placeholder="Amount" min="0.01" step="0.01" required />
+                <select id="donationPaymentMethod" required>
+                  <option value="">Select Payment Method</option>
+                  <option value="Cash">Cash</option>
+                  <option value="GCash">GCash</option>
+                  <option value="Bank Transfer">Bank Transfer</option>
+                  <option value="Check">Check</option>
+                  <option value="Other">Other</option>
+                </select>
+                <textarea id="donationRemarks" placeholder="Remarks"></textarea>
+                <button type="submit" class="btn btn-primary">Submit Donation Record</button>
+              </form>
+              <p class="portal-message" id="donationMessage"></p>
             </div>
-          </div>
-        </article>
 
+            <div class="portal-panel" id="expensePanel">
+              <form id="expenseForm" class="portal-form">
+                <input type="text" id="expenseTitle" placeholder="Expense Title" required />
+                <input type="text" id="expenseCategory" placeholder="Category" required />
+                <input type="number" id="expenseAmount" placeholder="Amount" min="0.01" step="0.01" required />
+                <select id="expensePaymentMethod">
+                  <option value="">Select Payment Method</option>
+                  <option value="Cash">Cash</option>
+                  <option value="GCash">GCash</option>
+                  <option value="Bank Transfer">Bank Transfer</option>
+                  <option value="Check">Check</option>
+                  <option value="Other">Other</option>
+                </select>
+                <textarea id="expenseRemarks" placeholder="Remarks"></textarea>
+                <input type="text" id="expenseRecordedBy" placeholder="Recorded By" required />
+                <button type="submit" class="btn btn-primary">Submit Expense Record</button>
+              </form>
+              <p class="portal-message" id="expenseMessage"></p>
+            </div>
+          </article>
+
+          <article class="internal-portal-card">
+            <h3>Recent Treasurer Records</h3>
+
+            <div class="dashboard-cards">
+              <div class="dashboard-card">
+                <strong>Recent Donations</strong>
+                <span id="recentDonationsTotal">₱0.00</span>
+              </div>
+              <div class="dashboard-card">
+                <strong>Recent Expenses</strong>
+                <span id="recentExpensesTotal">₱0.00</span>
+              </div>
+              <div class="dashboard-card">
+                <strong>Recent Net</strong>
+                <span id="recentNet">₱0.00</span>
+              </div>
+            </div>
+
+            <div class="record-list" id="treasurerRecentList">
+              <div class="record-card">
+                <p>Loading treasurer records...</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo">
+        <h3>Tides of Hope Incorporated</h3>
+        <p>Serving with compassion, building with hope.</p>
       </div>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo">
-      <h3>Tides of Hope Incorporated</h3>
-      <p>Serving with compassion, building with hope.</p>
-    </div>
-  </div>
-</footer>
+  <script>
+    const WEB_APP_URL =
+      "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
 
-<script>
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
-
-if (sessionStorage.getItem("tohAdminLoggedIn") !== "true") {
-  window.location.href = "admin-login.html";
-}
-
-const treasurerRole = sessionStorage.getItem("tohAdminRole") || "";
-if (!["admin", "treasurer"].includes(treasurerRole)) {
-  alert("You do not have access to this page.");
-  window.location.href = "office-portal.html";
-}
-
-document.getElementById("treasurerLogoutBtn").addEventListener("click", function(e) {
-  e.preventDefault();
-  sessionStorage.clear();
-  window.location.href = "admin-login.html";
-});
-
-document.querySelectorAll(".portal-tab-btn").forEach(btn => {
-  btn.addEventListener("click", function() {
-    document.querySelectorAll(".portal-tab-btn").forEach(b => b.classList.remove("active"));
-    document.querySelectorAll(".portal-panel").forEach(panel => panel.classList.remove("active"));
-    btn.classList.add("active");
-    document.getElementById(btn.dataset.target).classList.add("active");
-  });
-});
-
-async function postOfficeData(payload) {
-  const response = await fetch(WEB_APP_URL, {
-    method: "POST",
-    body: JSON.stringify(payload)
-  });
-  return response.json();
-}
-
-function setMsg(id, text, ok) {
-  const el = document.getElementById(id);
-  el.textContent = text;
-  el.style.color = ok ? "green" : "red";
-}
-
-document.getElementById("donationForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
-  setMsg("donationMessage", "Submitting...", true);
-
-  const result = await postOfficeData({
-    action: "submitDonationRecord",
-    donorName: document.getElementById("donorName").value.trim(),
-    amount: document.getElementById("donationAmount").value,
-    paymentMethod: document.getElementById("donationPaymentMethod").value,
-    remarks: document.getElementById("donationRemarks").value.trim(),
-    submittedBy: sessionStorage.getItem("tohAdminEmail") || "admin@tidesofhopeinc.org"
-  });
-
-  if (result.success) {
-    this.reset();
-    setMsg("donationMessage", result.message, true);
-    loadTreasurerDashboard();
-  } else {
-    setMsg("donationMessage", result.message || "Submission failed.", false);
-  }
-});
-
-document.getElementById("expenseForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
-  setMsg("expenseMessage", "Submitting...", true);
-
-  const result = await postOfficeData({
-    action: "submitExpenseRecord",
-    expenseTitle: document.getElementById("expenseTitle").value.trim(),
-    category: document.getElementById("expenseCategory").value.trim(),
-    amount: document.getElementById("expenseAmount").value,
-    paymentMethod: document.getElementById("expensePaymentMethod").value,
-    remarks: document.getElementById("expenseRemarks").value.trim(),
-    recordedBy: document.getElementById("expenseRecordedBy").value.trim(),
-    submittedBy: sessionStorage.getItem("tohAdminEmail") || "admin@tidesofhopeinc.org"
-  });
-
-  if (result.success) {
-    this.reset();
-    setMsg("expenseMessage", result.message, true);
-    loadTreasurerDashboard();
-  } else {
-    setMsg("expenseMessage", result.message || "Submission failed.", false);
-  }
-});
-
-async function loadTreasurerDashboard() {
-  const list = document.getElementById("treasurerRecentList");
-
-  try {
-    const response = await fetch(`${WEB_APP_URL}?action=getTreasurerDashboard`);
-    const data = await response.json();
-
-    if (!data.success) {
-      list.innerHTML = `<div class="record-card"><p>Unable to load records.</p></div>`;
-      return;
+    if (sessionStorage.getItem("tohAdminLoggedIn") !== "true") {
+      window.location.href = "admin-login.html";
     }
 
-    document.getElementById("recentDonationsTotal").textContent = data.cards.recentDonationsTotal || "₱0.00";
-    document.getElementById("recentExpensesTotal").textContent = data.cards.recentExpensesTotal || "₱0.00";
-    document.getElementById("recentNet").textContent = data.cards.recentNet || "₱0.00";
+    const treasurerRole =
+      (
+        sessionStorage.getItem("tohAdminRole") || ""
+      )
+        .trim()
+        .toLowerCase();
 
-    const merged = [
-      ...(data.recent.donations || []).map(item => ({
-        type: "Donation",
-        title: item.DonorName || "Donation",
-        meta: "Amount: ₱" + Number(item.Amount || 0).toLocaleString(),
-        status: item.Status || ""
-      })),
-      ...(data.recent.expenses || []).map(item => ({
-        type: "Expense",
-        title: item.ExpenseTitle || "Expense",
-        meta: "Amount: ₱" + Number(item.Amount || 0).toLocaleString(),
-        status: item.Status || ""
-      }))
-    ].slice(0, 6);
-
-    if (!merged.length) {
-      list.innerHTML = `<div class="record-card"><p>No treasurer records yet.</p></div>`;
-      return;
+    if (!["admin", "treasurer"].includes(treasurerRole)) {
+      alert("You do not have access to this page.");
+      window.location.href = "office-portal.html";
     }
 
-    list.innerHTML = merged.map(item => `
-      <div class="record-card">
-        <h4>${item.type}: ${item.title}</h4>
-        <p>${item.meta}</p>
-        <div class="record-meta">Status: ${item.status || ""}</div>
-      </div>
-    `).join("");
-  } catch (error) {
-    list.innerHTML = `<div class="record-card"><p>Failed to load treasurer records.</p></div>`;
-  }
-}
+    const treasurerLogoutBtn =
+      document.getElementById("treasurerLogoutBtn");
 
-document.addEventListener("DOMContentLoaded", loadTreasurerDashboard);
-</script>
+    if (treasurerLogoutBtn) {
+      treasurerLogoutBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        sessionStorage.clear();
+        window.location.href = "admin-login.html";
+      });
+    }
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    document.querySelectorAll(".portal-tab-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll(".portal-tab-btn").forEach(function (button) {
+          button.classList.remove("active");
+        });
+
+        document.querySelectorAll(".portal-panel").forEach(function (panel) {
+          panel.classList.remove("active");
+        });
+
+        btn.classList.add("active");
+
+        const targetPanel =
+          document.getElementById(btn.dataset.target);
+
+        if (targetPanel) {
+          targetPanel.classList.add("active");
+        }
+      });
+    });
+
+    async function postOfficeData(payload) {
+      const response =
+        await fetch(WEB_APP_URL, {
+          method: "POST",
+          body: JSON.stringify(payload)
+        });
+
+      return await response.json();
+    }
+
+    function setMsg(id, text, ok) {
+      const el =
+        document.getElementById(id);
+
+      if (!el) return;
+
+      el.textContent =
+        text;
+
+      el.style.color =
+        ok ? "green" : "red";
+    }
+
+    const donationForm =
+      document.getElementById("donationForm");
+
+    if (donationForm) {
+      donationForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        setMsg("donationMessage", "Submitting...", true);
+
+        try {
+          const result =
+            await postOfficeData({
+              action: "submitDonationRecord",
+              donorName: document.getElementById("donorName").value.trim(),
+              amount: document.getElementById("donationAmount").value,
+              paymentMethod: document.getElementById("donationPaymentMethod").value,
+              remarks: document.getElementById("donationRemarks").value.trim(),
+              submittedBy: sessionStorage.getItem("tohAdminEmail") || "admin@tidesofhopeinc.org"
+            });
+
+          if (result.success) {
+            this.reset();
+            setMsg("donationMessage", result.message || "Donation submitted successfully.", true);
+            loadTreasurerDashboard();
+          } else {
+            setMsg("donationMessage", result.message || "Submission failed.", false);
+          }
+
+        } catch (error) {
+          setMsg("donationMessage", "Connection error. Please try again.", false);
+        }
+      });
+    }
+
+    const expenseForm =
+      document.getElementById("expenseForm");
+
+    if (expenseForm) {
+      expenseForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        setMsg("expenseMessage", "Submitting...", true);
+
+        try {
+          const result =
+            await postOfficeData({
+              action: "submitExpenseRecord",
+              expenseTitle: document.getElementById("expenseTitle").value.trim(),
+              category: document.getElementById("expenseCategory").value.trim(),
+              amount: document.getElementById("expenseAmount").value,
+              paymentMethod: document.getElementById("expensePaymentMethod").value,
+              remarks: document.getElementById("expenseRemarks").value.trim(),
+              recordedBy: document.getElementById("expenseRecordedBy").value.trim(),
+              submittedBy: sessionStorage.getItem("tohAdminEmail") || "admin@tidesofhopeinc.org"
+            });
+
+          if (result.success) {
+            this.reset();
+            setMsg("expenseMessage", result.message || "Expense submitted successfully.", true);
+            loadTreasurerDashboard();
+          } else {
+            setMsg("expenseMessage", result.message || "Submission failed.", false);
+          }
+
+        } catch (error) {
+          setMsg("expenseMessage", "Connection error. Please try again.", false);
+        }
+      });
+    }
+
+    async function loadTreasurerDashboard() {
+      const list =
+        document.getElementById("treasurerRecentList");
+
+      if (!list) return;
+
+      try {
+        const response =
+          await fetch(WEB_APP_URL + "?action=getTreasurerDashboard");
+
+        const data =
+          await response.json();
+
+        if (!data.success) {
+          list.innerHTML =
+            '<div class="record-card"><p>Unable to load records.</p></div>';
+          return;
+        }
+
+        const cards =
+          data.cards || {};
+
+        document.getElementById("recentDonationsTotal").textContent =
+          cards.recentDonationsTotal || "₱0.00";
+
+        document.getElementById("recentExpensesTotal").textContent =
+          cards.recentExpensesTotal || "₱0.00";
+
+        document.getElementById("recentNet").textContent =
+          cards.recentNet || "₱0.00";
+
+        const recent =
+          data.recent || {};
+
+        const merged = [
+          ...(recent.donations || []).map(function (item) {
+            return {
+              type: "Donation",
+              title: item.DonorName || "Donation",
+              meta: "Amount: ₱" + Number(item.Amount || 0).toLocaleString(),
+              status: item.Status || ""
+            };
+          }),
+
+          ...(recent.expenses || []).map(function (item) {
+            return {
+              type: "Expense",
+              title: item.ExpenseTitle || "Expense",
+              meta: "Amount: ₱" + Number(item.Amount || 0).toLocaleString(),
+              status: item.Status || ""
+            };
+          })
+        ].slice(0, 6);
+
+        if (!merged.length) {
+          list.innerHTML =
+            '<div class="record-card"><p>No treasurer records yet.</p></div>';
+          return;
+        }
+
+        list.innerHTML =
+          merged
+            .map(function (item) {
+              return (
+                '<div class="record-card">' +
+                '<h4>' +
+                escapeHtml(item.type) +
+                ': ' +
+                escapeHtml(item.title) +
+                '</h4>' +
+                '<p>' + escapeHtml(item.meta) + '</p>' +
+                '<div class="record-meta">Status: ' +
+                escapeHtml(item.status || "") +
+                '</div>' +
+                '</div>'
+              );
+            })
+            .join("");
+
+      } catch (error) {
+        list.innerHTML =
+          '<div class="record-card"><p>Failed to load treasurer records.</p></div>';
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadTreasurerDashboard);
+  </script>
 
 </body>
+
 </html>

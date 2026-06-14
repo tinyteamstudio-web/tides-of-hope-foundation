@@ -1,111 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>System Check | Tides of Hope</title>
+  <title>System Check | Tides of Hope</title>
 
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="system-check.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="system-check.css">
 
 </head>
+
 <body>
 
-<header class="site-header">
-  <div class="container header-inner">
+  <header class="site-header">
+    <div class="container header-inner">
 
-    <a href="index.html" class="brand">
-      <img src="round-logo.png" class="brand-logo">
-      <div class="brand-text">
-        <span class="brand-title">Tides of Hope</span>
-        <span class="brand-subtitle">System Diagnostics</span>
+      <a href="index.html" class="brand">
+        <img src="round-logo.png" class="brand-logo" alt="Tides of Hope Logo">
+        <div class="brand-text">
+          <span class="brand-title">Tides of Hope</span>
+          <span class="brand-subtitle">System Diagnostics</span>
+        </div>
+      </a>
+
+    </div>
+  </header>
+
+  <main class="system-page">
+
+    <section class="system-hero">
+
+      <div class="container">
+
+        <span class="section-tag">
+          BuildFrame Diagnostics
+        </span>
+
+        <h1>
+          System Check Dashboard
+        </h1>
+
+        <p>
+          Verify connections, deployment status,
+          session information, and Apps Script connectivity.
+        </p>
+
       </div>
-    </a>
 
-  </div>
-</header>
+    </section>
 
-<main class="system-page">
+    <section class="system-section">
 
-<section class="system-hero">
+      <div class="container">
 
-<div class="container">
+        <div class="system-grid">
 
-<span class="section-tag">
-BuildFrame Diagnostics
-</span>
+          <div class="system-card">
+            <h3>Apps Script</h3>
+            <p id="appsScriptStatus">
+              Checking...
+            </p>
+          </div>
 
-<h1>
-System Check Dashboard
-</h1>
+          <div class="system-card">
+            <h3>Logged User</h3>
+            <p id="loggedUserStatus">
+              Checking...
+            </p>
+          </div>
 
-<p>
-Verify connections, deployment status,
-session information, and Apps Script connectivity.
-</p>
+          <div class="system-card">
+            <h3>Volunteer Session</h3>
+            <p id="volunteerStatus">
+              Checking...
+            </p>
+          </div>
 
-</div>
+          <div class="system-card">
+            <h3>Browser URL</h3>
+            <p id="urlStatus">
+              Checking...
+            </p>
+          </div>
 
-</section>
+          <div class="system-card">
+            <h3>Browser</h3>
+            <p id="browserStatus">
+              Checking...
+            </p>
+          </div>
 
-<section class="system-section">
+          <div class="system-card">
+            <h3>Session Storage</h3>
+            <p id="sessionStatus">
+              Checking...
+            </p>
+          </div>
 
-<div class="container">
+        </div>
 
-<div class="system-grid">
+      </div>
 
-<div class="system-card">
-<h3>Apps Script</h3>
-<p id="appsScriptStatus">
-Checking...
-</p>
-</div>
+    </section>
 
-<div class="system-card">
-<h3>Logged User</h3>
-<p id="loggedUserStatus">
-Checking...
-</p>
-</div>
+  </main>
 
-<div class="system-card">
-<h3>Volunteer Session</h3>
-<p id="volunteerStatus">
-Checking...
-</p>
-</div>
-
-<div class="system-card">
-<h3>Browser URL</h3>
-<p id="urlStatus">
-Checking...
-</p>
-</div>
-
-<div class="system-card">
-<h3>Browser</h3>
-<p id="browserStatus">
-Checking...
-</p>
-</div>
-
-<div class="system-card">
-<h3>Session Storage</h3>
-<p id="sessionStatus">
-Checking...
-</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-<script src="system-check.js"></script>
+  <script src="system-check.js"></script>
 
 </body>
+
 </html>

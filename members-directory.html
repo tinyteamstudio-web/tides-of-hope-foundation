@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -60,361 +61,379 @@
 
 <body>
 
-<header class="site-header">
-  <div class="container header-inner">
+  <header class="site-header">
+    <div class="container header-inner">
 
-    <a href="index.html" class="brand">
-      <img src="round-logo.png" class="brand-logo" alt="Tides of Hope Logo" />
+      <a href="index.html" class="brand">
+        <img src="round-logo.png" class="brand-logo" alt="Tides of Hope Logo" />
 
-      <div class="brand-text">
-        <span class="brand-title">Tides of Hope</span>
-        <span class="brand-subtitle">Incorporated</span>
-      </div>
-    </a>
-
-    <nav class="site-nav">
-      <a href="index.html">Homepage</a>
-      <a href="office-portal.html">Office Portal</a>
-      <a href="#" id="logoutBtn" class="nav-cta">Logout</a>
-    </nav>
-
-  </div>
-</header>
-
-<main class="office-portal-page">
-
-  <section class="office-portal-hero">
-    <div class="container">
-      <span class="section-tag">Member Directory</span>
-
-      <h1>Tides of Hope Members & Incorporators</h1>
-
-      <p>
-        View officers, board members, incorporators, registered members,
-        and Tides of Hope family members.
-      </p>
-    </div>
-  </section>
-
-  <section class="office-portal-section">
-    <div class="container">
-
-      <div class="office-portal-topbar">
-        <div>
-          <h2>Directory Overview</h2>
-          <p id="directoryWelcomeText">Logged in</p>
+        <div class="brand-text">
+          <span class="brand-title">Tides of Hope</span>
+          <span class="brand-subtitle">Incorporated</span>
         </div>
+      </a>
+
+      <nav class="site-nav">
+        <a href="index.html">Homepage</a>
+        <a href="office-portal.html">Office Portal</a>
+        <a href="#" id="logoutBtn" class="nav-cta">Logout</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="office-portal-page">
+
+    <section class="office-portal-hero">
+      <div class="container">
+        <span class="section-tag">Member Directory</span>
+
+        <h1>Tides of Hope Members & Incorporators</h1>
+
+        <p>
+          View officers, board members, incorporators, registered members,
+          and Tides of Hope family members.
+        </p>
       </div>
+    </section>
 
-      <div class="office-portal-grid">
+    <section class="office-portal-section">
+      <div class="container">
 
-        <article class="office-card directory-filter-card active" data-filter="all">
-          <div class="office-card-icon">📇</div>
-          <h3>All Profiles</h3>
-          <p>View everyone listed in the Tides of Hope directory.</p>
-        </article>
-
-        <article class="office-card directory-filter-card" data-filter="officers">
-          <div class="office-card-icon">👑</div>
-          <h3>Officers</h3>
-          <p>President, Vice President, Secretary, Treasurer and Internal Auditor.</p>
-        </article>
-
-        <article class="office-card directory-filter-card" data-filter="board">
-          <div class="office-card-icon">🤝</div>
-          <h3>Board of Trustees</h3>
-          <p>View official Board of Trustee members.</p>
-        </article>
-
-        <article class="office-card directory-filter-card" data-filter="incorporators">
-          <div class="office-card-icon">📜</div>
-          <h3>Incorporators</h3>
-          <p>View registered incorporators of Tides of Hope.</p>
-        </article>
-
-        <article class="office-card directory-filter-card" data-filter="members">
-          <div class="office-card-icon">👥</div>
-          <h3>Members & Family</h3>
-          <p>View registered members and Tides of Hope family profiles.</p>
-        </article>
-
-        <article class="office-card directory-filter-card" data-filter="search">
-          <div class="office-card-icon">🔎</div>
-          <h3>Search Directory</h3>
-          <p>Search members, officers, incorporators and family members.</p>
-        </article>
-
-      </div>
-
-      <div class="office-portal-topbar" style="margin-top: 42px;">
-        <div>
-          <h2 id="directorySectionTitle">Registered Directory</h2>
-          <p>Private emails and passwords are hidden from this view.</p>
-          <p id="directoryCountText" class="directory-count"></p>
+        <div class="office-portal-topbar">
+          <div>
+            <h2>Directory Overview</h2>
+            <p id="directoryWelcomeText">Logged in</p>
+          </div>
         </div>
-      </div>
 
-      <div class="directory-search-wrap">
-        <input
-          type="search"
-          id="directorySearchInput"
-          class="directory-search-input"
-          placeholder="Search by name, role, designation, or bio..."
-        />
-      </div>
+        <div class="office-portal-grid">
 
-      <div id="membersContainer" class="office-portal-grid">
-        <article class="office-card">
-          <div class="office-card-icon">⏳</div>
-          <h3>Loading Members...</h3>
-          <p>Please wait while the directory loads.</p>
-        </article>
-      </div>
+          <article class="office-card directory-filter-card active" data-filter="all">
+            <div class="office-card-icon">📇</div>
+            <h3>All Profiles</h3>
+            <p>View everyone listed in the Tides of Hope directory.</p>
+          </article>
 
-      <div class="center-action">
-        <a href="office-portal.html" class="btn btn-secondary">
-          Back to Office Portal
-        </a>
+          <article class="office-card directory-filter-card" data-filter="officers">
+            <div class="office-card-icon">👑</div>
+            <h3>Officers</h3>
+            <p>President, Vice President, Secretary, Treasurer and Internal Auditor.</p>
+          </article>
+
+          <article class="office-card directory-filter-card" data-filter="board">
+            <div class="office-card-icon">🤝</div>
+            <h3>Board of Trustees</h3>
+            <p>View official Board of Trustee members.</p>
+          </article>
+
+          <article class="office-card directory-filter-card" data-filter="incorporators">
+            <div class="office-card-icon">📜</div>
+            <h3>Incorporators</h3>
+            <p>View registered incorporators of Tides of Hope.</p>
+          </article>
+
+          <article class="office-card directory-filter-card" data-filter="members">
+            <div class="office-card-icon">👥</div>
+            <h3>Members & Family</h3>
+            <p>View registered members and Tides of Hope family profiles.</p>
+          </article>
+
+          <article class="office-card directory-filter-card" data-filter="search">
+            <div class="office-card-icon">🔎</div>
+            <h3>Search Directory</h3>
+            <p>Search members, officers, incorporators and family members.</p>
+          </article>
+
+        </div>
+
+        <div class="office-portal-topbar" style="margin-top: 42px;">
+          <div>
+            <h2 id="directorySectionTitle">Registered Directory</h2>
+            <p>Private emails and passwords are hidden from this view.</p>
+            <p id="directoryCountText" class="directory-count"></p>
+          </div>
+        </div>
+
+        <div class="directory-search-wrap">
+          <input type="search" id="directorySearchInput" class="directory-search-input"
+            placeholder="Search by name, role, designation, or bio..." />
+        </div>
+
+        <div id="membersContainer" class="office-portal-grid">
+          <article class="office-card">
+            <div class="office-card-icon">⏳</div>
+            <h3>Loading Members...</h3>
+            <p>Please wait while the directory loads.</p>
+          </article>
+        </div>
+
+        <div class="center-action">
+          <a href="office-portal.html" class="btn btn-secondary">
+            Back to Office Portal
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+        <img src="round-logo.png" class="footer-logo" alt="Tides of Hope Logo" />
+
+        <h3>Tides of Hope Incorporated</h3>
+
+        <p>
+          Serving with compassion, building with hope.
+        </p>
       </div>
 
     </div>
-  </section>
 
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-grid">
-
-    <div class="footer-brand">
-      <img src="round-logo.png" class="footer-logo" alt="Tides of Hope Logo" />
-
-      <h3>Tides of Hope Incorporated</h3>
-
-      <p>
-        Serving with compassion, building with hope.
-      </p>
+    <div class="footer-credit">
+      <div class="container footer-credit-inner">
+        <p>
+          Powered by <strong>BuildFrame Digital System</strong>
+          <span class="footer-credit-text">
+            Website, Funnel and Platform Builder
+          </span>
+        </p>
+      </div>
     </div>
+  </footer>
 
-  </div>
+  <script>
+    const WEB_APP_URL =
+      "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
 
-  <div class="footer-credit">
-    <div class="container footer-credit-inner">
-      <p>
-        Powered by <strong>BuildFrame Digital System</strong>
-        <span class="footer-credit-text">
-          Website, Funnel and Platform Builder
-        </span>
-      </p>
-    </div>
-  </div>
-</footer>
+    const isLoggedIn =
+      sessionStorage.getItem("tohLoggedIn") === "true" ||
+      sessionStorage.getItem("tohAdminLoggedIn") === "true";
 
-<script>
-const WEB_APP_URL =
-  "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+    if (!isLoggedIn) {
+      window.location.href = "admin-login.html";
+    }
 
-const isLoggedIn =
-  sessionStorage.getItem("tohLoggedIn") === "true" ||
-  sessionStorage.getItem("tohAdminLoggedIn") === "true";
+    const userEmail =
+      sessionStorage.getItem("tohUserEmail") ||
+      sessionStorage.getItem("tohAdminEmail") ||
+      "";
 
-if (!isLoggedIn) {
-  window.location.href = "admin-login.html";
-}
+    const userRole =
+      sessionStorage.getItem("tohUserRole") ||
+      sessionStorage.getItem("tohAdminRole") ||
+      "Member";
 
-const userEmail =
-  sessionStorage.getItem("tohUserEmail") ||
-  sessionStorage.getItem("tohAdminEmail") ||
-  "";
+    const directoryWelcomeText =
+      document.getElementById("directoryWelcomeText");
 
-const userRole =
-  sessionStorage.getItem("tohUserRole") ||
-  sessionStorage.getItem("tohAdminRole") ||
-  "Member";
+    const directoryCountText =
+      document.getElementById("directoryCountText");
 
-const directoryWelcomeText =
-  document.getElementById("directoryWelcomeText");
+    const directorySectionTitle =
+      document.getElementById("directorySectionTitle");
 
-const directoryCountText =
-  document.getElementById("directoryCountText");
+    const searchInput =
+      document.getElementById("directorySearchInput");
 
-const directorySectionTitle =
-  document.getElementById("directorySectionTitle");
+    const filterCards =
+      document.querySelectorAll(".directory-filter-card");
 
-const searchInput =
-  document.getElementById("directorySearchInput");
+    let allMembers = [];
+    let activeFilter = "all";
 
-const filterCards =
-  document.querySelectorAll(".directory-filter-card");
+    if (directoryWelcomeText) {
+      directoryWelcomeText.textContent =
+        "Logged in as " + userEmail + " (" + userRole + ")";
+    }
 
-let allMembers = [];
-let activeFilter = "all";
+    const logoutBtn =
+      document.getElementById("logoutBtn");
 
-if (directoryWelcomeText) {
-  directoryWelcomeText.textContent =
-    "Logged in as " + userEmail + " (" + userRole + ")";
-}
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", function (e) {
+        e.preventDefault();
 
-const logoutBtn =
-  document.getElementById("logoutBtn");
+        sessionStorage.clear();
 
-if (logoutBtn) {
-  logoutBtn.addEventListener("click", function(e) {
-    e.preventDefault();
+        window.location.href = "admin-login.html";
+      });
+    }
 
-    sessionStorage.clear();
+    function safeText(value) {
+      return String(value || "").trim();
+    }
 
-    window.location.href = "admin-login.html";
-  });
-}
+    function escapeHtml(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
 
-function safeText(value) {
-  return String(value || "").trim();
-}
+    function escapeAttribute(value) {
+      return escapeHtml(value);
+    }
 
-function getDesignation(member) {
-  return [
-    member.PrimaryRole,
-    member.Designation1,
-    member.Designation2,
-    member.Designation3
-  ]
-    .filter(Boolean)
-    .join(" • ");
-}
+    function getDesignation(member) {
+      return [
+        member.PrimaryRole,
+        member.Designation1,
+        member.Designation2,
+        member.Designation3
+      ]
+        .filter(Boolean)
+        .join(" • ");
+    }
 
-function getSearchText(member) {
-  return [
-    member.FullName,
-    member.PrimaryRole,
-    member.Designation1,
-    member.Designation2,
-    member.Designation3,
-    member.Bio
-  ]
-    .map(value => safeText(value).toLowerCase())
-    .join(" ");
-}
+    function getSearchText(member) {
+      return [
+        member.FullName,
+        member.PrimaryRole,
+        member.Designation1,
+        member.Designation2,
+        member.Designation3,
+        member.Bio
+      ]
+        .map(value => safeText(value).toLowerCase())
+        .join(" ");
+    }
 
-function memberBelongsToFilter(member, filter) {
-  const roleText =
-    getSearchText(member);
+    function memberBelongsToFilter(member, filter) {
+      const roleText =
+        getSearchText(member);
 
-  if (filter === "all") {
-    return true;
-  }
+      if (filter === "all") {
+        return true;
+      }
 
-  if (filter === "officers") {
-    return (
-      roleText.includes("president") ||
-      roleText.includes("vice president") ||
-      roleText.includes("secretary") ||
-      roleText.includes("treasurer") ||
-      roleText.includes("auditor")
-    );
-  }
+      if (filter === "officers") {
+        return (
+          roleText.includes("president") ||
+          roleText.includes("vice president") ||
+          roleText.includes("secretary") ||
+          roleText.includes("treasurer") ||
+          roleText.includes("auditor")
+        );
+      }
 
-  if (filter === "board") {
-    return (
-      roleText.includes("board") ||
-      roleText.includes("trustee") ||
-      roleText.includes("director")
-    );
-  }
+      if (filter === "board") {
+        return (
+          roleText.includes("board") ||
+          roleText.includes("trustee") ||
+          roleText.includes("director")
+        );
+      }
 
-  if (filter === "incorporators") {
-    return roleText.includes("incorporator");
-  }
+      if (filter === "incorporators") {
+        return roleText.includes("incorporator");
+      }
 
-  if (filter === "members") {
-    return (
-      roleText.includes("member") ||
-      roleText.includes("family") ||
-      roleText.includes("volunteer") ||
-      (
-        !roleText.includes("president") &&
-        !roleText.includes("secretary") &&
-        !roleText.includes("treasurer") &&
-        !roleText.includes("auditor") &&
-        !roleText.includes("board") &&
-        !roleText.includes("trustee") &&
-        !roleText.includes("incorporator")
-      )
-    );
-  }
+      if (filter === "members") {
+        return (
+          roleText.includes("member") ||
+          roleText.includes("family") ||
+          roleText.includes("volunteer") ||
+          (
+            !roleText.includes("president") &&
+            !roleText.includes("secretary") &&
+            !roleText.includes("treasurer") &&
+            !roleText.includes("auditor") &&
+            !roleText.includes("board") &&
+            !roleText.includes("trustee") &&
+            !roleText.includes("incorporator")
+          )
+        );
+      }
 
-  if (filter === "search") {
-    return true;
-  }
+      if (filter === "search") {
+        return true;
+      }
 
-  return true;
-}
+      return true;
+    }
 
-function getFilterTitle(filter) {
-  if (filter === "officers") return "Officers";
-  if (filter === "board") return "Board of Trustees";
-  if (filter === "incorporators") return "Incorporators";
-  if (filter === "members") return "Members & Family";
-  if (filter === "search") return "Search Directory";
-  return "Registered Directory";
-}
+    function getFilterTitle(filter) {
+      if (filter === "officers") return "Officers";
+      if (filter === "board") return "Board of Trustees";
+      if (filter === "incorporators") return "Incorporators";
+      if (filter === "members") return "Members & Family";
+      if (filter === "search") return "Search Directory";
+      return "Registered Directory";
+    }
 
-function renderMembersDirectory() {
-  const container =
-    document.getElementById("membersContainer");
+    function renderMembersDirectory() {
+      const container =
+        document.getElementById("membersContainer");
 
-  if (!container) return;
+      if (!container) return;
 
-  const searchTerm =
-    safeText(searchInput ? searchInput.value : "").toLowerCase();
+      const searchTerm =
+        safeText(searchInput ? searchInput.value : "").toLowerCase();
 
-  const filtered =
-    allMembers.filter(member => {
-      const matchesFilter =
-        memberBelongsToFilter(member, activeFilter);
+      const filtered =
+        allMembers.filter(member => {
+          const matchesFilter =
+            memberBelongsToFilter(member, activeFilter);
 
-      const matchesSearch =
-        !searchTerm ||
-        getSearchText(member).includes(searchTerm);
+          const matchesSearch =
+            !searchTerm ||
+            getSearchText(member).includes(searchTerm);
 
-      return matchesFilter && matchesSearch;
-    });
+          return matchesFilter && matchesSearch;
+        });
 
-  if (directorySectionTitle) {
-    directorySectionTitle.textContent =
-      getFilterTitle(activeFilter);
-  }
+      if (directorySectionTitle) {
+        directorySectionTitle.textContent =
+          getFilterTitle(activeFilter);
+      }
 
-  if (directoryCountText) {
-    directoryCountText.textContent =
-      filtered.length + " profile(s) shown";
-  }
+      if (directoryCountText) {
+        directoryCountText.textContent =
+          filtered.length + " profile(s) shown";
+      }
 
-  if (!filtered.length) {
-    container.innerHTML = `
+      if (!filtered.length) {
+        container.innerHTML = `
       <article class="office-card">
         <div class="office-card-icon">📭</div>
         <h3>No Profiles Found</h3>
         <p>No matching profiles are available in this section yet.</p>
       </article>
     `;
-    return;
-  }
+        return;
+      }
 
-  container.innerHTML =
-    filtered.map(member => {
-      const photo =
-        safeText(member.ProfilePhoto) || "round-logo.png";
+      container.innerHTML =
+        filtered.map(member => {
 
-      const fullName =
-        safeText(member.FullName) || "Unnamed Member";
+          const photo =
+            escapeAttribute(
+              safeText(member.ProfilePhoto) || "round-logo.png"
+            );
 
-      const designation =
-        getDesignation(member) || "Member";
+          const fullName =
+            escapeHtml(
+              safeText(member.FullName) || "Unnamed Member"
+            );
 
-      const bio =
-        safeText(member.Bio) || "No bio added yet.";
+          const designation =
+            escapeHtml(
+              getDesignation(member) || "Member"
+            );
 
-      return `
+          const bio =
+            escapeHtml(
+              safeText(member.Bio) || "No bio added yet."
+            );
+
+          return `
         <article class="office-card">
           <div class="office-card-icon">
             <img
@@ -436,80 +455,81 @@ function renderMembersDirectory() {
           </p>
         </article>
       `;
-    }).join("");
-}
+        }).join("");
+    }
 
-async function loadMembersDirectory() {
-  const container =
-    document.getElementById("membersContainer");
+    async function loadMembersDirectory() {
+      const container =
+        document.getElementById("membersContainer");
 
-  if (!container) return;
+      if (!container) return;
 
-  try {
-    const response =
-      await fetch(WEB_APP_URL + "?action=getCommunityDirectory");
+      try {
+        const response =
+          await fetch(WEB_APP_URL + "?action=getCommunityDirectory");
 
-    const data =
-      await response.json();
+        const data =
+          await response.json();
 
-    if (
-      !data.success ||
-      !Array.isArray(data.data) ||
-      data.data.length === 0
-    ) {
-      container.innerHTML = `
+        if (
+          !data.success ||
+          !Array.isArray(data.data) ||
+          data.data.length === 0
+        ) {
+          container.innerHTML = `
         <article class="office-card">
           <div class="office-card-icon">📭</div>
           <h3>No Members Found</h3>
           <p>No active members are available in the directory yet.</p>
         </article>
       `;
-      return;
-    }
+          return;
+        }
 
-    allMembers =
-      data.data;
+        allMembers =
+          data.data;
 
-    renderMembersDirectory();
+        renderMembersDirectory();
 
-  } catch (error) {
-    container.innerHTML = `
+      } catch (error) {
+        container.innerHTML = `
       <article class="office-card">
         <div class="office-card-icon">⚠️</div>
         <h3>Unable to Load Directory</h3>
         <p>Please check the Web App deployment or internet connection.</p>
       </article>
     `;
-  }
-}
-
-filterCards.forEach(card => {
-  card.addEventListener("click", function() {
-    activeFilter =
-      this.dataset.filter || "all";
-
-    filterCards.forEach(item => {
-      item.classList.remove("active");
-    });
-
-    this.classList.add("active");
-
-    if (activeFilter === "search" && searchInput) {
-      searchInput.focus();
+      }
     }
 
-    renderMembersDirectory();
-  });
-});
+    filterCards.forEach(card => {
+      card.addEventListener("click", function () {
+        activeFilter =
+          this.dataset.filter || "all";
 
-if (searchInput) {
-  searchInput.addEventListener("input", function() {
-    renderMembersDirectory();
-  });
-}
+        filterCards.forEach(item => {
+          item.classList.remove("active");
+        });
 
-loadMembersDirectory();
-</script>
+        this.classList.add("active");
+
+        if (activeFilter === "search" && searchInput) {
+          searchInput.focus();
+        }
+
+        renderMembersDirectory();
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener("input", function () {
+        renderMembersDirectory();
+      });
+    }
+
+    loadMembersDirectory();
+  </script>
 
 </body>
+
 </html>

@@ -4,178 +4,249 @@
 ========================================================= */
 
 const WEBAPP_URL =
-    "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+  "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+
+/* =========================================================
+   LOGIN CHECK
+========================================================= */
+
+const familyLoggedIn =
+  sessionStorage.getItem("tohFamilyLoggedIn") === "true" ||
+  sessionStorage.getItem("tohVolunteerLoggedIn") === "true";
+
+if (!familyLoggedIn) {
+  window.location.href = "family-login.html";
+}
+
+/* =========================================================
+   LOAD PAGE
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
-    loadMyGalleryUploads();
+  loadMyGalleryUploads();
 });
 
+/* =========================================================
+   LOAD MY UPLOADS
+========================================================= */
+
 async function loadMyGalleryUploads() {
-    const container = document.getElementById("myGalleryUploads");
-    if (!container) return;
+  const container =
+    document.getElementById("myGalleryUploads");
 
-    try {
-        const uploaderName =
-            sessionStorage.getItem("tohFamilyName") ||
-            sessionStorage.getItem("tohVolunteerName") ||
-            "Family Member";
+  if (!container) return;
 
-        const result = await sendRequest({
-            action: "getMyGalleryItems",
-            uploaderName: uploaderName
-        });
+  try {
+    const uploaderName =
+      sessionStorage.getItem("tohFamilyName") ||
+      sessionStorage.getItem("tohVolunteerName") ||
+      "Family Member";
 
-        renderMyGalleryUploads(result.data || []);
-    } catch (error) {
-        console.error(error);
+    const result =
+      await sendRequest({
+        action: "getMyGalleryItems",
+        uploaderName: uploaderName
+      });
 
-        container.innerHTML = `
-      <div class="gallery-empty">
-        Unable to load your gallery uploads.
-      </div>
-    `;
-    }
+    renderMyGalleryUploads(result.data || []);
+
+  } catch (error) {
+    console.error(error);
+
+    container.innerHTML =
+      '<div class="gallery-empty">Unable to load your gallery uploads.</div>';
+  }
 }
+
+/* =========================================================
+   RENDER UPLOADS
+========================================================= */
 
 function renderMyGalleryUploads(items) {
-    const container = document.getElementById("myGalleryUploads");
-    if (!container) return;
+  const container =
+    document.getElementById("myGalleryUploads");
 
-    if (!items.length) {
-        container.innerHTML = `
-      <div class="gallery-empty">
-        You have no gallery uploads yet.
-      </div>
-    `;
-        return;
-    }
+  if (!container) return;
 
-    container.innerHTML = items
-        .map(function (item) {
-            return createMyGalleryCard(item);
-        })
-        .join("");
+  if (!items.length) {
+    container.innerHTML =
+      '<div class="gallery-empty">You have no gallery uploads yet.</div>';
+    return;
+  }
+
+  container.innerHTML =
+    items
+      .map(createMyGalleryCard)
+      .join("");
 }
+
+/* =========================================================
+   CREATE CARD
+========================================================= */
 
 function createMyGalleryCard(item) {
-    const mediaId = item.MediaID || "";
-    const title = item.EventTitle || "Family Moment";
-    const caption = item.Caption || "";
-    const status = item.ApprovalStatus || "APPROVED";
-    const media = createMedia(item);
+  const mediaId =
+    escapeAttribute(item.MediaID || "");
 
-    return `
-    <article class="family-gallery-card">
-      <div class="family-gallery-media">
-        ${media}
-      </div>
+  const title =
+    escapeHtml(item.EventTitle || "Family Moment");
 
-      <div class="family-gallery-body">
-        <h3>${escapeHtml(title)}</h3>
+  const caption =
+    escapeHtml(item.Caption || "");
 
-        <p>${escapeHtml(caption)}</p>
+  const status =
+    escapeHtml(item.ApprovalStatus || "APPROVED");
 
-        <p>
-          Status:
-          <strong>${escapeHtml(status)}</strong>
-        </p>
+  const media =
+    createMedia(item);
 
-        <div class="gallery-buttons">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            onclick="editGalleryItem('${mediaId}')"
-          >
-            Edit Caption
-          </button>
+  return (
+    '<article class="family-gallery-card">' +
+    '<div class="family-gallery-media">' +
+    media +
+    '</div>' +
 
-          <button
-            type="button"
-            class="btn btn-secondary"
-            onclick="archiveGalleryItem('${mediaId}')"
-          >
-            Archive
-          </button>
-        </div>
-      </div>
-    </article>
-  `;
+    '<div class="family-gallery-body">' +
+    '<h3>' + title + '</h3>' +
+    '<p>' + caption + '</p>' +
+
+    '<p>Status: <strong>' + status + '</strong></p>' +
+
+    '<div class="gallery-buttons">' +
+    '<button type="button" class="btn btn-secondary" onclick="editGalleryItem(\'' + mediaId + '\')">' +
+    'Edit Caption' +
+    '</button>' +
+
+    '<button type="button" class="btn btn-secondary" onclick="archiveGalleryItem(\'' + mediaId + '\')">' +
+    'Archive' +
+    '</button>' +
+    '</div>' +
+    '</div>' +
+    '</article>'
+  );
 }
+
+/* =========================================================
+   CREATE MEDIA
+========================================================= */
 
 function createMedia(item) {
-    const url = item.MediaURL || "";
-    const type = String(item.MediaType || "image").toLowerCase();
+  const url =
+    item.MediaURL || "";
 
-    if (!url) {
-        return `
-      <div style="
-        height:100%;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        color:#64748b;
-      ">
-        No Media
-      </div>
-    `;
-    }
+  const safeUrl =
+    escapeAttribute(url);
 
-    if (type.includes("video")) {
-        return `
-      <video controls>
-        <source src="${url}">
-      </video>
-    `;
-    }
+  const type =
+    String(item.MediaType || "image").toLowerCase();
 
-    return `
-    <img src="${url}" alt="Gallery Upload">
-  `;
+  if (!url) {
+    return (
+      '<div style="height:100%;display:flex;align-items:center;justify-content:center;color:#64748b;">' +
+      'No Media' +
+      '</div>'
+    );
+  }
+
+  if (type.includes("video")) {
+    return (
+      '<video controls>' +
+      '<source src="' + safeUrl + '">' +
+      'Your browser does not support video.' +
+      '</video>'
+    );
+  }
+
+  return (
+    '<img src="' + safeUrl + '" alt="Gallery Upload" onerror="this.style.display=\'none\';">'
+  );
 }
 
+/* =========================================================
+   EDIT ITEM
+========================================================= */
+
 async function editGalleryItem(mediaId) {
-    const caption = prompt("Update caption:");
+  const caption =
+    prompt("Update caption:");
 
-    if (!caption) return;
+  if (!caption) return;
 
-    const result = await sendRequest({
+  try {
+    const result =
+      await sendRequest({
         action: "updateGalleryItem",
         mediaId: mediaId,
         caption: caption
-    });
+      });
 
     alert(result.message || "Gallery item updated.");
 
     loadMyGalleryUploads();
+
+  } catch (error) {
+    console.error(error);
+    alert("Unable to update gallery item.");
+  }
 }
 
+/* =========================================================
+   ARCHIVE ITEM
+========================================================= */
+
 async function archiveGalleryItem(mediaId) {
-    const ok = confirm("Archive this gallery item?");
+  const ok =
+    confirm("Archive this gallery item?");
 
-    if (!ok) return;
+  if (!ok) return;
 
-    const result = await sendRequest({
+  try {
+    const result =
+      await sendRequest({
         action: "archiveGalleryItem",
         mediaId: mediaId
-    });
+      });
 
     alert(result.message || "Gallery item archived.");
 
     loadMyGalleryUploads();
+
+  } catch (error) {
+    console.error(error);
+    alert("Unable to archive gallery item.");
+  }
 }
+
+/* =========================================================
+   API
+========================================================= */
 
 async function sendRequest(payload) {
-    const response = await fetch(WEBAPP_URL, {
+  const response =
+    await fetch(
+      WEBAPP_URL,
+      {
         method: "POST",
         body: JSON.stringify(payload)
-    });
+      }
+    );
 
-    return await response.json();
+  return await response.json();
 }
 
+/* =========================================================
+   HELPERS
+========================================================= */
+
 function escapeHtml(text) {
-    return String(text || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+  return String(text || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function escapeAttribute(text) {
+  return escapeHtml(text);
 }

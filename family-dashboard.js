@@ -103,6 +103,14 @@ async function loadDashboardCounters() {
         fullName: familyName
       });
 
+    console.log("Dashboard counters result:", result);
+    console.log("Dashboard session:", {
+      familyId: familyId,
+      email: familyEmail,
+      username: familyUsername,
+      fullName: familyName
+    });
+
     if (!result.success) {
       throw new Error(result.message || "Unable to load counters.");
     }

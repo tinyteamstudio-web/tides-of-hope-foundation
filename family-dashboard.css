@@ -180,3 +180,145 @@
         border-radius: 18px;
     }
 }
+
+/* =========================================================
+   FAMILY PROFILE
+========================================================= */
+
+#familyProfileForm {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    gap: 18px;
+}
+
+#familyProfileForm label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 600;
+    color: #12385b;
+}
+
+#familyProfileForm input,
+#familyProfileForm textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d7e4eb;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+#familyProfileForm textarea {
+    resize: vertical;
+}
+
+#familyProfileForm input:focus,
+#familyProfileForm textarea:focus {
+    outline: none;
+    border-color: #2da5a5;
+}
+
+#profilePreview {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 20px;
+    font-size: 48px;
+}
+
+#profileMessage {
+    text-align: center;
+    font-weight: 600;
+    color: #2da5a5;
+}
+
+#familyProfileForm button {
+    border: none;
+    cursor: pointer;
+}
+
+#familyProfileForm a {
+    text-align: center;
+    color: #2da5a5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#familyProfileForm a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   FAMILY GRATITUDE WALL
+========================================================= */
+
+#gratitudeForm {
+    max-width: 820px;
+    margin: 0 auto 40px;
+    display: grid;
+    gap: 18px;
+    text-align: left;
+}
+
+#gratitudeForm h2 {
+    text-align: center;
+    color: #082f49;
+    margin-bottom: 8px;
+}
+
+#gratitudeForm label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 700;
+    color: #12385b;
+}
+
+#gratitudeForm input,
+#gratitudeForm textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #d7e4eb;
+    border-radius: 14px;
+    font-size: 15px;
+    font-family: inherit;
+    background: #ffffff;
+}
+
+#gratitudeForm textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+#gratitudeForm input:focus,
+#gratitudeForm textarea:focus {
+    outline: none;
+    border-color: #2da5a5;
+}
+
+#gratitudeMessageStatus {
+    text-align: center;
+    font-weight: 700;
+    color: #0f9aa8;
+}
+
+#gratitudeForm button {
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 14px 20px;
+}
+
+#gratitudeWall {
+    margin-top: 30px;
+}
+
+#gratitudeWall .dashboard-action-card {
+    min-height: 220px;
+}
+
+#gratitudeWall strong {
+    margin-top: auto;
+    color: #0f766e;
+}

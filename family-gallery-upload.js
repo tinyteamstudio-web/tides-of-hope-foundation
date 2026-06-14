@@ -8,6 +8,14 @@ const WEBAPP_URL =
 
 const MAX_FILES = 30;
 
+const familyLoggedIn =
+    sessionStorage.getItem("tohFamilyLoggedIn") === "true" ||
+    sessionStorage.getItem("tohVolunteerLoggedIn") === "true";
+
+if (!familyLoggedIn) {
+    window.location.href = "family-login.html";
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     loadEvents();
     initializeUpload();
@@ -47,16 +55,21 @@ function initializeUpload() {
 }
 
 function initializeFileCounter() {
-    const mediaFile = document.getElementById("mediaFile");
-    const counter = document.getElementById("selectedFileCount");
+    const galleryFiles =
+        document.getElementById("galleryFiles");
 
-    if (!mediaFile || !counter) return;
+    const counter =
+        document.getElementById("selectedFileCount");
 
-    mediaFile.addEventListener("change", function () {
-        const count = mediaFile.files.length;
+    if (!galleryFiles || !counter) return;
+
+    galleryFiles.addEventListener("change", function () {
+        const count = galleryFiles.files.length;
 
         if (count > MAX_FILES) {
-            counter.textContent = "You selected " + count + " files. Maximum is 30.";
+            counter.textContent =
+                "You selected " + count + " files. Maximum is 30.";
+
             counter.style.color = "#b42318";
             return;
         }
@@ -65,6 +78,7 @@ function initializeFileCounter() {
             count === 0
                 ? ""
                 : count + " file(s) selected.";
+
         counter.style.color = "#0b6d88";
     });
 }
@@ -74,13 +88,15 @@ async function submitGalleryUploads() {
     const eventSelect = document.getElementById("eventId");
     const mediaType = document.getElementById("mediaType");
     const caption = document.getElementById("caption");
-    const mediaFile = document.getElementById("mediaFile");
+    const galleryFiles = document.getElementById("galleryFiles");
     const counter = document.getElementById("selectedFileCount");
+
+    if (!message || !eventSelect || !caption || !galleryFiles) return;
 
     const selectedOption =
         eventSelect.options[eventSelect.selectedIndex];
 
-    const files = Array.from(mediaFile.files || []);
+    const files = Array.from(galleryFiles.files || []);
 
     if (!eventSelect.value) {
         message.textContent = "Please select an event.";
@@ -128,7 +144,7 @@ async function submitGalleryUploads() {
                 eventTitle: selectedOption.dataset.title || selectedOption.textContent,
 
                 caption: caption.value.trim(),
-                mediaType: detectedType || mediaType.value,
+                mediaType: detectedType || (mediaType ? mediaType.value : "image"),
 
                 fileName: file.name,
                 mimeType: file.type,
@@ -151,11 +167,7 @@ async function submitGalleryUploads() {
 
                 uploadOrder: i + 1,
                 batchTotal: files.length
-
-
             };
-
-
 
             const result = await sendRequest(payload);
 
@@ -175,8 +187,12 @@ async function submitGalleryUploads() {
 
         if (successCount > 0) {
             caption.value = "";
-            mediaFile.value = "";
-            if (counter) counter.textContent = "";
+            galleryFiles.value = "";
+
+            if (counter) {
+                counter.innerHTML = "<strong>0</strong> files selected";
+                counter.style.color = "#0b6d88";
+            }
 
             setTimeout(function () {
                 window.location.href = "family-gallery.html";

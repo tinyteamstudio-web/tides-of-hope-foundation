@@ -25,6 +25,14 @@ const familyEmail =
     sessionStorage.getItem("tohVolunteerEmail") ||
     "";
 
+const familyLoggedIn =
+    sessionStorage.getItem("tohFamilyLoggedIn") === "true" ||
+    sessionStorage.getItem("tohVolunteerLoggedIn") === "true";
+
+if (!familyLoggedIn) {
+    window.location.href = "family-login.html";
+}
+
 /* =========================================================
    LOAD
 ========================================================= */
@@ -276,13 +284,13 @@ function createPostCard(post, isMine) {
 
     const image =
         post.Photo
-            ? `<img src="${post.Photo}" class="feed-image">`
+            ? `<img src="${escapeHtml(post.Photo)}" class="feed-image">
             : "";
 
     const actions =
         isMine
             ? `
-<div class="post-actions">
+            < div class="post-actions" >
 
 <button
 onclick="editPost('${post.PostID}')">
@@ -294,13 +302,13 @@ onclick="archivePost('${post.PostID}')">
 Archive
 </button>
 
-</div>
-`
+</div >
+        `
             : "";
 
     return `
 
-<article class="feed-card">
+        < article class="feed-card" >
 
 <div class="feed-author">
 
@@ -326,13 +334,13 @@ ${formatDate(post.Timestamp)}
 ${escapeHtml(post.PostText)}
 </p>
 
-${image}
+${ image }
 
-${actions}
+${ actions }
 
-</article>
+</article >
 
-`;
+        `;
 
 }
 

@@ -17,7 +17,7 @@ if (volunteerRegisterForm) {
 
   volunteerRegisterForm.addEventListener(
     "submit",
-    async function(e) {
+    async function (e) {
 
       e.preventDefault();
 
@@ -71,7 +71,7 @@ if (volunteerRegisterForm) {
 
           volunteerRegisterForm.reset();
 
-          setTimeout(function() {
+          setTimeout(function () {
 
             window.location.href =
               "family-login.html";
@@ -105,7 +105,7 @@ if (volunteerLoginForm) {
 
   volunteerLoginForm.addEventListener(
     "submit",
-    async function(e) {
+    async function (e) {
 
       e.preventDefault();
 
@@ -142,6 +142,16 @@ if (volunteerLoginForm) {
           sessionStorage.setItem(
             "tohVolunteerLoggedIn",
             "true"
+          );
+
+          sessionStorage.setItem(
+            "tohFamilyEmail",
+            result.volunteer.Email || ""
+          );
+
+          sessionStorage.setItem(
+            "tohVolunteerEmail",
+            result.volunteer.Email || ""
           );
 
           sessionStorage.setItem(

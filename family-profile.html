@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>My Profile | Tides of Hope</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="family-dashboard.css" />
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+
+            <a href="family-dashboard.html" class="brand">
+                <img src="round-logo.png" class="brand-logo" alt="Tides of Hope Logo">
+
+                <div class="brand-text">
+                    <span class="brand-title">Tides of Hope</span>
+                    <span class="brand-subtitle">My Family Profile</span>
+                </div>
+            </a>
+
+            <nav class="site-nav">
+                <a href="family-dashboard.html">Dashboard</a>
+                <a href="family-feed.html">Family Feed</a>
+                <a href="family-gallery.html">Gallery</a>
+                <a href="#" id="familyLogoutBtn" class="nav-cta">Logout</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="volunteer-dashboard-page">
+
+        <section class="volunteer-dashboard-hero">
+            <div class="container">
+
+                <span class="section-tag">Family Community Profile</span>
+
+                <h1>My Profile</h1>
+
+                <p>
+                    Update your profile photo, bio, skills, interests,
+                    availability, and contact information for the Tides of Hope Family Community.
+                </p>
+
+            </div>
+        </section>
+
+        <section class="volunteer-dashboard-section">
+            <div class="container">
+
+                <form id="familyProfileForm" class="dashboard-profile-card">
+
+                    <div id="profilePreview" class="dashboard-avatar">F</div>
+
+                    <label>
+                        Profile Photo
+                        <input type="file" id="profilePhoto" accept="image/*" />
+                    </label>
+
+                    <label>
+                        Full Name
+                        <input type="text" id="fullName" readonly />
+                    </label>
+
+                    <label>
+                        Username
+                        <input type="text" id="username" readonly />
+                    </label>
+
+                    <label>
+                        Email
+                        <input type="email" id="email" readonly />
+                    </label>
+
+                    <label>
+                        Contact Number
+                        <input type="text" id="contactNumber" />
+                    </label>
+
+                    <label>
+                        Address
+                        <textarea id="address" rows="3"></textarea>
+                    </label>
+
+                    <label>
+                        Skills
+                        <textarea id="skills" rows="3"></textarea>
+                    </label>
+
+                    <label>
+                        Interests
+                        <textarea id="interests" rows="3"></textarea>
+                    </label>
+
+                    <label>
+                        Availability
+                        <input type="text" id="availability" />
+                    </label>
+
+                    <label>
+                        Bio
+                        <textarea id="bio" rows="5"></textarea>
+                    </label>
+
+                    <p id="profileMessage"></p>
+
+                    <button type="submit" class="nav-cta">
+                        Save Profile
+                    </button>
+
+                    <a href="family-dashboard.html">
+                        Back to Dashboard
+                    </a>
+
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+                <img src="round-logo.png" class="footer-logo" alt="Tides of Hope Logo">
+
+                <h3>Tides of Hope Incorporated</h3>
+
+                <p>
+                    Serving with compassion, building with hope.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="footer-credit">
+            <div class="container footer-credit-inner">
+                <p>
+                    Powered by <strong>BuildFrame Digital System</strong>
+                    <span class="footer-credit-text">
+                        Website, Funnel and Platform Builder
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="family-profile.js"></script>
+
+</body>
+
+</html>

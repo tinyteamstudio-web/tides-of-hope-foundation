@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,7 +66,12 @@
     .president-photo-frame img {
       width: 100%;
       aspect-ratio: 4 / 5;
-      object-fit: cover;
+
+      object-fit: contain;
+      object-position: center center;
+
+      padding: 10px;
+
       border-radius: 14px;
       display: block;
       background: #ffffff;
@@ -219,425 +225,414 @@
 
 <body>
 
-<header class="site-header">
-  <div class="container header-inner">
+  <header class="site-header">
+    <div class="container header-inner">
 
-    <a href="index.html" class="brand">
-      <img
-        src="round-logo.png"
-        class="brand-logo"
-        alt="Tides of Hope Logo"
-      >
+      <a href="index.html" class="brand">
+        <img src="round-logo.png" class="brand-logo" alt="Tides of Hope Logo">
 
-      <div class="brand-text">
-        <span class="brand-title">Tides of Hope</span>
-        <span class="brand-subtitle">Incorporated</span>
+        <div class="brand-text">
+          <span class="brand-title">Tides of Hope</span>
+          <span class="brand-subtitle">Incorporated</span>
+        </div>
+      </a>
+
+      <nav class="site-nav">
+        <a href="index.html">Homepage</a>
+        <a href="office-portal.html">Office Portal</a>
+        <a href="family-corner.html">Family Corner</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="president-magazine-page">
+
+    <section class="president-cover">
+      <div class="container">
+
+        <article class="president-cover-card">
+
+          <div class="president-cover-top">
+            <span>Tides of Hope Leadership Journal</span>
+            <span id="presidentIssueDate">Current Edition</span>
+          </div>
+
+          <div class="president-cover-body">
+
+            <aside class="president-photo-panel">
+
+              <div class="president-photo-frame">
+                <img id="presidentFeaturedPhoto" src="round-logo.png" alt="President's featured photo">
+              </div>
+
+              <div class="president-caption">
+                <h3 id="presidentAuthorName">
+                  Agnes Desiree Escaño Desquitado
+                </h3>
+
+                <p>
+                  President<br>
+                  Tides of Hope Incorporated
+                </p>
+
+                <p>
+                  “Hope grows when compassion becomes action.”
+                </p>
+              </div>
+
+              <div class="president-archive">
+
+                <h4>Leadership Journal</h4>
+
+                <div id="presidentArchiveList">
+                  Loading archive...
+                </div>
+
+              </div>
+
+            </aside>
+
+            <section class="president-main-story">
+
+              <span class="president-category" id="presidentCategory">
+                President's Message
+              </span>
+
+              <h1 id="presidentTitle" class="president-title">
+                Loading...
+              </h1>
+
+              <p class="president-deck">
+                A leadership message for the Tides of Hope family, partners,
+                supporters, and communities we serve.
+              </p>
+
+              <div class="president-meta">
+                <div>
+                  By <span id="presidentAuthor">Office of the President</span>
+                </div>
+
+                <div>
+                  Published <span id="presidentDate">—</span>
+                </div>
+              </div>
+
+              <div id="presidentMessage" class="president-content">
+                Loading...
+              </div>
+
+              <div class="president-journal-controls">
+                <button class="btn btn-secondary" id="prevPresidentBtn" type="button">
+                  ← Previous Message
+                </button>
+
+                <div class="president-count" id="presidentCounter">
+                  Message 1 of 1
+                </div>
+
+                <button class="btn btn-primary" id="nextPresidentBtn" type="button">
+                  Next Message →
+                </button>
+              </div>
+
+            </section>
+
+          </div>
+
+        </article>
+
       </div>
-    </a>
+    </section>
 
-    <nav class="site-nav">
-      <a href="index.html">Homepage</a>
-      <a href="office-portal.html">Office Portal</a>
-      <a href="family-corner.html">Family Corner</a>
-    </nav>
+  </main>
 
-  </div>
-</header>
+  <footer class="site-footer">
+    <div class="container footer-grid">
 
-<main class="president-magazine-page">
+      <div class="footer-brand">
+        <img src="round-logo.png" class="footer-logo" alt="Tides of Hope Logo">
 
-  <section class="president-cover">
-    <div class="container">
+        <h3>Tides of Hope Incorporated</h3>
 
-      <article class="president-cover-card">
-
-        <div class="president-cover-top">
-          <span>Tides of Hope Leadership Journal</span>
-          <span id="presidentIssueDate">Current Edition</span>
-        </div>
-
-        <div class="president-cover-body">
-
-          <aside class="president-photo-panel">
-
-            <div class="president-photo-frame">
-              <img
-                id="presidentFeaturedPhoto"
-                src="round-logo.png"
-                alt="President's featured photo"
-              >
-            </div>
-
-            <div class="president-caption">
-              <h3 id="presidentAuthorName">
-                Agnes Desiree Escaño Desquitado
-              </h3>
-
-              <p>
-                President<br>
-                Tides of Hope Incorporated
-              </p>
-
-              <p>
-                “Hope grows when compassion becomes action.”
-              </p>
-            </div>
-
-            <div class="president-archive">
-
-  <h4>Leadership Journal</h4>
-
-  <div id="presidentArchiveList">
-    Loading archive...
-  </div>
-
-</div>
-
-          </aside>
-
-          <section class="president-main-story">
-
-            <span class="president-category" id="presidentCategory">
-              President's Message
-            </span>
-
-            <h1 id="presidentTitle" class="president-title">
-              Loading...
-            </h1>
-
-            <p class="president-deck">
-              A leadership message for the Tides of Hope family, partners,
-              supporters, and communities we serve.
-            </p>
-
-            <div class="president-meta">
-              <div>
-                By <span id="presidentAuthor">Office of the President</span>
-              </div>
-
-              <div>
-                Published <span id="presidentDate">—</span>
-              </div>
-            </div>
-
-            <div id="presidentMessage" class="president-content">
-              Loading...
-            </div>
-
-            <div class="president-journal-controls">
-              <button class="btn btn-secondary" id="prevPresidentBtn" type="button">
-                ← Previous Message
-              </button>
-
-              <div class="president-count" id="presidentCounter">
-                Message 1 of 1
-              </div>
-
-              <button class="btn btn-primary" id="nextPresidentBtn" type="button">
-                Next Message →
-              </button>
-            </div>
-
-          </section>
-
-        </div>
-
-      </article>
+        <p>
+          Serving with compassion, building with hope.
+        </p>
+      </div>
 
     </div>
-  </section>
 
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-grid">
-
-    <div class="footer-brand">
-      <img
-        src="round-logo.png"
-        class="footer-logo"
-        alt="Tides of Hope Logo"
-      >
-
-      <h3>Tides of Hope Incorporated</h3>
-
-      <p>
-        Serving with compassion, building with hope.
-      </p>
+    <div class="footer-credit">
+      <div class="container footer-credit-inner">
+        <p>
+          Powered by <strong>BuildFrame Digital System</strong>
+          <span class="footer-credit-text">
+            Website, Funnel and Platform Builder
+          </span>
+        </p>
+      </div>
     </div>
+  </footer>
 
-  </div>
+  <script>
+    const WEB_APP_URL =
+      "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
 
-  <div class="footer-credit">
-    <div class="container footer-credit-inner">
-      <p>
-        Powered by <strong>BuildFrame Digital System</strong>
-        <span class="footer-credit-text">
-          Website, Funnel and Platform Builder
-        </span>
-      </p>
-    </div>
-  </div>
-</footer>
+    let presidentMessages = [];
+    let currentPresidentIndex = 0;
 
-<script>
-const WEB_APP_URL =
-  "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+    function formatDate(value) {
+      if (!value) return "—";
 
-let presidentMessages = [];
-let currentPresidentIndex = 0;
+      const date = new Date(value);
 
-function formatDate(value) {
-  if (!value) return "—";
+      if (isNaN(date.getTime())) {
+        return value;
+      }
 
-  const date = new Date(value);
-
-  if (isNaN(date.getTime())) {
-    return value;
-  }
-
-  return date.toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "long",
-    day: "numeric"
-  });
-}
-
-function getField(item, keys, fallback) {
-  for (const key of keys) {
-    if (item && item[key] !== undefined && item[key] !== null && item[key] !== "") {
-      return item[key];
-    }
-  }
-
-  return fallback;
-}
-
-function renderPresidentMessage() {
-  const titleEl = document.getElementById("presidentTitle");
-  const authorEl = document.getElementById("presidentAuthor");
-  const authorNameEl = document.getElementById("presidentAuthorName");
-  const dateEl = document.getElementById("presidentDate");
-  const issueDateEl = document.getElementById("presidentIssueDate");
-  const messageEl = document.getElementById("presidentMessage");
-  const categoryEl = document.getElementById("presidentCategory");
-  const photoEl = document.getElementById("presidentFeaturedPhoto");
-  const counterEl = document.getElementById("presidentCounter");
-  const prevBtn = document.getElementById("prevPresidentBtn");
-  const nextBtn = document.getElementById("nextPresidentBtn");
-
-  if (!presidentMessages.length) {
-    categoryEl.textContent = "President's Message";
-    titleEl.textContent = "President’s Message";
-    authorEl.textContent = "Office of the President";
-    authorNameEl.textContent = "Agnes Desiree Escaño Desquitado";
-    dateEl.textContent = "—";
-    issueDateEl.textContent = "Current Edition";
-    messageEl.innerHTML = "No message available yet.";
-    photoEl.src = "round-logo.png";
-    counterEl.textContent = "No messages yet";
-    prevBtn.disabled = true;
-    nextBtn.disabled = true;
-    return;
-  }
-
-  const item = presidentMessages[currentPresidentIndex];
-
-  const title =
-    getField(item, ["Title", "title"], "President’s Message");
-
-  const author =
-    getField(item, ["Author", "author"], "Office of the President");
-
-  const category =
-    getField(item, ["Category", "category"], "President's Message");
-
-  const message =
-    getField(item, ["Message", "message"], "No message available yet.");
-
-  const rawDate =
-    getField(
-      item,
-      ["PublishDate", "publishDate", "Timestamp", "timestamp"],
-      ""
-    );
-
-  const publishDate = formatDate(rawDate);
-
-  const featuredPhoto =
-    getField(item, ["FeaturedPhoto", "featuredPhoto"], "");
-
-  categoryEl.textContent = category;
-  titleEl.textContent = title;
-  authorEl.textContent = author;
-  authorNameEl.textContent =
-    author === "Office of the President"
-      ? "Agnes Desiree Escaño Desquitado"
-      : author;
-
-  dateEl.textContent = publishDate;
-  issueDateEl.textContent = publishDate;
-  messageEl.innerHTML = message;
-
-  photoEl.src = featuredPhoto || "round-logo.png";
-
-  photoEl.onerror = function() {
-    this.src = "round-logo.png";
-  };
-
-  counterEl.textContent =
-    presidentMessages.length <= 1
-  ? "Current Journal Entry"
-  : "Message " + (currentPresidentIndex + 1) +
-    " of " + presidentMessages.length;
-
-  prevBtn.disabled = presidentMessages.length <= 1;
-  nextBtn.disabled = presidentMessages.length <= 1;
-
-  prevBtn.style.display =
-  presidentMessages.length <= 1 ? "none" : "inline-flex";
-
-nextBtn.style.display =
-  presidentMessages.length <= 1 ? "none" : "inline-flex";
-}
-
-function renderPresidentArchive() {
-  const archive =
-    document.getElementById("presidentArchiveList");
-
-  if (!archive) return;
-
-  if (!presidentMessages.length) {
-    archive.innerHTML = "No journal entries yet.";
-    return;
-  }
-
-  archive.innerHTML = "";
-
-  presidentMessages.forEach(function(item, index) {
-    const button = document.createElement("button");
-
-    button.type = "button";
-    button.className = "president-archive-item";
-
-    button.innerHTML =
-      "<strong>" +
-      (item.Title || "President Message") +
-      "</strong>" +
-      "<span>" +
-      formatDate(item.PublishDate || item.Timestamp || "") +
-      "</span>";
-
-    button.addEventListener("click", function() {
-      currentPresidentIndex = index;
-      renderPresidentMessage();
-    });
-
-    archive.appendChild(button);
-  });
-}
-
-async function loadPresidentMessages() {
-  try {
-    let response =
-      await fetch(WEB_APP_URL + "?action=getPresidentMessages");
-
-    let result =
-      await response.json();
-
-    let items =
-      result.items ||
-      result.data ||
-      result.messages ||
-      result.presidentMessages ||
-      [];
-
-    if (!Array.isArray(items) || !items.length) {
-      response =
-        await fetch(WEB_APP_URL + "?action=getPresidentMessage");
-
-      result =
-        await response.json();
-
-      const singleItem =
-        result.item ||
-        result.data ||
-        result.message ||
-        result.presidentMessage ||
-        null;
-
-      items = singleItem ? [singleItem] : [];
+      return date.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
     }
 
-    presidentMessages = items.filter(function(item) {
-      const status =
-        String(item.Status || item.status || "Published")
-          .trim()
-          .toLowerCase();
+    function getField(item, keys, fallback) {
+      for (const key of keys) {
+        if (item && item[key] !== undefined && item[key] !== null && item[key] !== "") {
+          return item[key];
+        }
+      }
 
-      return status !== "draft" && status !== "archived";
-    });
-
-    presidentMessages.sort(function(a, b) {
-      const dateA =
-        new Date(a.PublishDate || a.Timestamp || 0);
-
-      const dateB =
-        new Date(b.PublishDate || b.Timestamp || 0);
-
-      return dateB - dateA;
-    });
-
-    currentPresidentIndex = 0;
-
-    renderPresidentMessage();
-    renderPresidentArchive();
-
-  } catch (error) {
-    console.error("President messages error:", error);
-
-    presidentMessages = [];
-
-    renderPresidentMessage();
-
-    const archive =
-      document.getElementById("presidentArchiveList");
-
-    if (archive) {
-      archive.innerHTML = "Unable to load archive.";
+      return fallback;
     }
-  }
-}
 
-document
-  .getElementById("prevPresidentBtn")
-  .addEventListener("click", function() {
-    if (!presidentMessages.length) return;
+    function renderPresidentMessage() {
+      const titleEl = document.getElementById("presidentTitle");
+      const authorEl = document.getElementById("presidentAuthor");
+      const authorNameEl = document.getElementById("presidentAuthorName");
+      const dateEl = document.getElementById("presidentDate");
+      const issueDateEl = document.getElementById("presidentIssueDate");
+      const messageEl = document.getElementById("presidentMessage");
+      const categoryEl = document.getElementById("presidentCategory");
+      const photoEl = document.getElementById("presidentFeaturedPhoto");
+      const counterEl = document.getElementById("presidentCounter");
+      const prevBtn = document.getElementById("prevPresidentBtn");
+      const nextBtn = document.getElementById("nextPresidentBtn");
 
-    currentPresidentIndex =
-      currentPresidentIndex === 0
-        ? presidentMessages.length - 1
-        : currentPresidentIndex - 1;
+      if (!presidentMessages.length) {
+        categoryEl.textContent = "President's Message";
+        titleEl.textContent = "President’s Message";
+        authorEl.textContent = "Office of the President";
+        authorNameEl.textContent = "Agnes Desiree Escaño Desquitado";
+        dateEl.textContent = "—";
+        issueDateEl.textContent = "Current Edition";
+        messageEl.innerHTML = "No message available yet.";
+        photoEl.src = "round-logo.png";
+        counterEl.textContent = "No messages yet";
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        return;
+      }
 
-    renderPresidentMessage();
-  });
+      const item = presidentMessages[currentPresidentIndex];
 
-document
-  .getElementById("nextPresidentBtn")
-  .addEventListener("click", function() {
-    if (!presidentMessages.length) return;
+      const title =
+        getField(item, ["Title", "title"], "President’s Message");
 
-    currentPresidentIndex =
-      currentPresidentIndex === presidentMessages.length - 1
-        ? 0
-        : currentPresidentIndex + 1;
+      const author =
+        getField(item, ["Author", "author"], "Office of the President");
 
-    renderPresidentMessage();
-  });
+      const category =
+        getField(item, ["Category", "category"], "President's Message");
 
-loadPresidentMessages();
+      const message =
+        getField(item, ["Message", "message"], "No message available yet.");
 
-</script>
+      const rawDate =
+        getField(
+          item,
+          ["PublishDate", "publishDate", "Timestamp", "timestamp"],
+          ""
+        );
+
+      const publishDate = formatDate(rawDate);
+
+      const featuredPhoto =
+        getField(item, ["FeaturedPhoto", "featuredPhoto"], "");
+
+      categoryEl.textContent = category;
+      titleEl.textContent = title;
+      authorEl.textContent = author;
+      authorNameEl.textContent =
+        author === "Office of the President"
+          ? "Agnes Desiree Escaño Desquitado"
+          : author;
+
+      dateEl.textContent = publishDate;
+      issueDateEl.textContent = publishDate;
+      messageEl.innerHTML = message;
+
+      photoEl.src = featuredPhoto || "round-logo.png";
+
+      photoEl.onerror = function () {
+        this.src = "round-logo.png";
+      };
+
+      counterEl.textContent =
+        presidentMessages.length <= 1
+          ? "Current Journal Entry"
+          : "Message " + (currentPresidentIndex + 1) +
+          " of " + presidentMessages.length;
+
+      prevBtn.disabled = presidentMessages.length <= 1;
+      nextBtn.disabled = presidentMessages.length <= 1;
+
+      prevBtn.style.display =
+        presidentMessages.length <= 1 ? "none" : "inline-flex";
+
+      nextBtn.style.display =
+        presidentMessages.length <= 1 ? "none" : "inline-flex";
+    }
+
+    function renderPresidentArchive() {
+      const archive =
+        document.getElementById("presidentArchiveList");
+
+      if (!archive) return;
+
+      if (!presidentMessages.length) {
+        archive.innerHTML = "No journal entries yet.";
+        return;
+      }
+
+      archive.innerHTML = "";
+
+      presidentMessages.forEach(function (item, index) {
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.className = "president-archive-item";
+
+        button.innerHTML =
+          "<strong>" +
+          (item.Title || "President Message") +
+          "</strong>" +
+          "<span>" +
+          formatDate(item.PublishDate || item.Timestamp || "") +
+          "</span>";
+
+        button.addEventListener("click", function () {
+          currentPresidentIndex = index;
+          renderPresidentMessage();
+        });
+
+        archive.appendChild(button);
+      });
+    }
+
+    async function loadPresidentMessages() {
+      try {
+        let response =
+          await fetch(WEB_APP_URL + "?action=getPresidentMessages");
+
+        let result =
+          await response.json();
+
+        let items =
+          result.items ||
+          result.data ||
+          result.messages ||
+          result.presidentMessages ||
+          [];
+
+        if (!Array.isArray(items) || !items.length) {
+          response =
+            await fetch(WEB_APP_URL + "?action=getPresidentMessage");
+
+          result =
+            await response.json();
+
+          const singleItem =
+            result.item ||
+            result.data ||
+            result.message ||
+            result.presidentMessage ||
+            null;
+
+          items = singleItem ? [singleItem] : [];
+        }
+
+        presidentMessages = items.filter(function (item) {
+          const status =
+            String(item.Status || item.status || "Published")
+              .trim()
+              .toLowerCase();
+
+          return status !== "draft" && status !== "archived";
+        });
+
+        presidentMessages.sort(function (a, b) {
+          const dateA =
+            new Date(a.PublishDate || a.Timestamp || 0);
+
+          const dateB =
+            new Date(b.PublishDate || b.Timestamp || 0);
+
+          return dateB - dateA;
+        });
+
+        currentPresidentIndex = 0;
+
+        renderPresidentMessage();
+        renderPresidentArchive();
+
+      } catch (error) {
+        console.error("President messages error:", error);
+
+        presidentMessages = [];
+
+        renderPresidentMessage();
+
+        const archive =
+          document.getElementById("presidentArchiveList");
+
+        if (archive) {
+          archive.innerHTML = "Unable to load archive.";
+        }
+      }
+    }
+
+    document
+      .getElementById("prevPresidentBtn")
+      .addEventListener("click", function () {
+        if (!presidentMessages.length) return;
+
+        currentPresidentIndex =
+          currentPresidentIndex === 0
+            ? presidentMessages.length - 1
+            : currentPresidentIndex - 1;
+
+        renderPresidentMessage();
+      });
+
+    document
+      .getElementById("nextPresidentBtn")
+      .addEventListener("click", function () {
+        if (!presidentMessages.length) return;
+
+        currentPresidentIndex =
+          currentPresidentIndex === presidentMessages.length - 1
+            ? 0
+            : currentPresidentIndex + 1;
+
+        renderPresidentMessage();
+      });
+
+    loadPresidentMessages();
+
+  </script>
 
 </body>
+
 </html>

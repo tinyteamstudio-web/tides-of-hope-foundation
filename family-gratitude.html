@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Family Gratitude Wall | Tides of Hope</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="family-dashboard.css" />
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+
+            <a href="family-dashboard.html" class="brand">
+                <img src="round-logo.png" class="brand-logo" alt="Tides of Hope Logo">
+
+                <div class="brand-text">
+                    <span class="brand-title">Tides of Hope</span>
+                    <span class="brand-subtitle">Family Gratitude Wall</span>
+                </div>
+            </a>
+
+            <nav class="site-nav">
+                <a href="family-dashboard.html">Dashboard</a>
+                <a href="family-gallery.html">Gallery</a>
+                <a href="family-feed.html">Family Feed</a>
+                <a href="#" id="familyLogoutBtn" class="nav-cta">Logout</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="volunteer-dashboard-page">
+
+        <section class="volunteer-dashboard-hero">
+            <div class="container">
+                <span class="section-tag">Family Gratitude Wall</span>
+
+                <h1>Share a Message of Gratitude</h1>
+
+                <p>
+                    Post appreciation messages, photos, and videos that celebrate
+                    kindness, service, hope, and the people who make Tides of Hope meaningful.
+                </p>
+            </div>
+        </section>
+
+        <section class="volunteer-dashboard-section">
+            <div class="container">
+
+                <form id="gratitudeForm" class="dashboard-profile-card">
+
+                    <h2>Create Gratitude Post</h2>
+
+                    <label>
+                        Title
+                        <input type="text" id="gratitudeTitle" required />
+                    </label>
+
+                    <label>
+                        Message
+                        <textarea id="gratitudeMessage" rows="5" required></textarea>
+                    </label>
+
+                    <label>
+                        Photo or Video
+                        <input type="file" id="gratitudeFile" accept="image/*,video/*" />
+                    </label>
+
+                    <p id="gratitudeMessageStatus"></p>
+
+                    <button type="submit" class="nav-cta">
+                        Publish Gratitude
+                    </button>
+
+                </form>
+
+                <div class="dashboard-card-grid" id="gratitudeWall">
+                    <article class="dashboard-action-card">
+                        <h3>Loading gratitude posts...</h3>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+                <img src="round-logo.png" class="footer-logo" alt="Tides of Hope Logo">
+
+                <h3>Tides of Hope Incorporated</h3>
+
+                <p>
+                    Serving with compassion, building with hope.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="footer-credit">
+            <div class="container footer-credit-inner">
+                <p>
+                    Powered by <strong>BuildFrame Digital System</strong>
+                    <span class="footer-credit-text">
+                        Website, Funnel and Platform Builder
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="family-gratitude.js"></script>
+
+</body>
+
+</html>

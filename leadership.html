@@ -1,211 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leadership · Tides of Hope Inc.</title>
+
+  <title>Leadership | Tides of Hope Incorporated</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <div class="logo-text">
-        <h1>TIDES OF HOPE</h1>
-        <p>INCORPORATED</p>
-      </div>
+  <header class="site-header">
+    <div class="container header-inner">
 
-      <div class="menu-toggle" id="menu-toggle">☰</div>
+      <a href="index.html" class="brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-title">Tides of Hope</span>
+          <span class="brand-subtitle">Leadership</span>
+        </div>
+      </a>
 
-      <nav id="nav-menu">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav">
         <a href="index.html">Home</a>
-        <a href="membership.html">Membership</a>
-        <a href="donate.html">Donate</a>
+        <a href="incorporators.html">Incorporators</a>
+        <a href="documents.html">Documents</a>
         <a href="contact.html">Contact</a>
-        <a href="index.html#get-involved" class="highlight-btn">Be Part of Our Journey</a>
+        <a href="donate.html" class="nav-cta">Support Us</a>
       </nav>
+
     </div>
   </header>
 
-  <!-- PAGE HERO -->
-  <section class="page-hero">
-    <h2>Leadership & Officers</h2>
-    <p>
-      Meet the people behind Tides of Hope Inc. — committed to service, integrity,
-      and community-driven impact.
-    </p>
-  </section>
+  <main>
 
-  <!-- CAROUSEL -->
-  <section class="leadership-section">
-    <div class="leadership-shell">
-      <div class="leadership-header">
-        <h3>Our Officers & Board</h3>
-        <p class="leadership-sub">
-          Leadership profiles are presented here for transparency. Names and official details will be finalized and updated.
+    <section class="subpage-hero">
+      <div class="container subpage-hero-content">
+        <span class="section-tag">Leadership</span>
+        <h1>Leadership & Officers</h1>
+        <p>
+          Meet the leaders, officers, board members, and incorporators helping guide
+          Tides of Hope Incorporated with service, integrity, and compassion.
         </p>
       </div>
+    </section>
 
-      <div class="carousel" aria-label="Leadership Carousel">
-        <button class="carousel-btn prev" type="button" aria-label="Previous">‹</button>
+    <section class="leadership-section">
+      <div class="container">
 
-        <div class="carousel-viewport" id="carousel-viewport">
-          <div class="carousel-track" id="carousel-track"></div>
+        <div class="section-heading center">
+          <span class="section-tag">Our Officers & Board</span>
+          <h2>Leadership Directory</h2>
+          <p>
+            Leadership profiles are presented for transparency and organizational reference.
+          </p>
         </div>
 
-        <button class="carousel-btn next" type="button" aria-label="Next">›</button>
+        <div class="carousel" aria-label="Leadership Carousel">
+
+          <button class="carousel-btn prev" type="button" aria-label="Previous">
+            ‹
+          </button>
+
+          <div class="carousel-viewport" id="carouselViewport">
+            <div class="carousel-track" id="carouselTrack"></div>
+          </div>
+
+          <button class="carousel-btn next" type="button" aria-label="Next">
+            ›
+          </button>
+
+        </div>
+
+        <div class="carousel-dots" id="carouselDots" aria-label="Carousel Pagination"></div>
+
+        <div class="section-action center-action">
+          <a href="contact.html?topic=general" class="btn btn-secondary">
+            Request Verification
+          </a>
+        </div>
+
+        <p class="fineprint" style="text-align:center;">
+          SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-layout">
+
+      <div class="footer-brand">
+        <img src="round-logo.png" alt="Tides of Hope Logo" class="footer-logo" />
+        <h3>Tides of Hope Incorporated</h3>
+        <p>
+          Serving with compassion, building with hope, and creating pathways
+          toward stronger communities.
+        </p>
       </div>
 
-      <div class="carousel-dots" id="carousel-dots" aria-label="Carousel Pagination"></div>
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="incorporators.html">Incorporators</a></li>
+          <li><a href="documents.html">Documents</a></li>
+          <li><a href="donate.html">Donate</a></li>
+        </ul>
+      </div>
 
-      <div class="leadership-note">
-        <a class="btn" href="contact.html?topic=general">Request Verification</a>
-        <p class="fineprint">
-          SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
+      <div class="footer-column">
+        <h4>Office & Access</h4>
+        <ul class="footer-links">
+          <li><a href="admin-login.html">Office Login</a></li>
+          <li><a href="family-corner.html">Family Corner</a></li>
+          <li><a href="verify.html">Verify</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p>Email: admin@tidesofhopeinc.org</p>
+
+        <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener noreferrer"
+          class="footer-facebook-link">
+          <img src="facebook-logo.png" alt="Facebook" class="footer-facebook-icon" />
+          <span>Tides of Hope Official Page</span>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer-credit">
+      <div class="container footer-credit-inner">
+        <p>
+          Powered by <strong>BuildFrame Digital System</strong>
+          <span class="footer-credit-text">
+            Website, Funnel and Platform Builder
+          </span>
         </p>
       </div>
     </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-links">
-      <a href="leadership.html">Leadership</a>
-      <a href="documents.html">Legal & Documents</a>
-      <a href="contact.html">Contact</a>
-    </div>
-
-    <div class="socials">
-      <a href="https://www.facebook.com/profile.php?id=61582551795734" target="_blank" rel="noopener">
-        <img src="facebook-logo.png" alt="Facebook" class="social-icon" />
-      </a>
-    </div>
-
-    <p class="fineprint">
-      SEC Registration No.: 2025120229353-01 · Non-stock, Non-profit Organization
-    </p>
-
-    <p>© 2025 Tides of Hope Inc. All Rights Reserved.</p>
   </footer>
 
+  <button class="bubble-chat-button" id="bubbleChatButton" aria-label="Contact Tides of Hope">
+    <img src="round-logo.png" alt="Tides of Hope Logo" class="bubble-chat-logo" />
+  </button>
+
   <script>
-    // Mobile menu
-    const toggle = document.getElementById("menu-toggle");
-    const nav = document.getElementById("nav-menu");
-    if (toggle && nav) toggle.addEventListener("click", () => nav.classList.toggle("active"));
-
-    // Officers list (photos assumed to exist; fallback to placeholder.jpg)
     const officers = [
-      { name: "To be updated", role: "President", img: "officers/president.jpg" },
-      { name: "To be updated", role: "Vice President", img: "officers/vice-president.jpg" },
-      { name: "To be updated", role: "Secretary", img: "officers/secretary.jpg" },
-      { name: "To be updated", role: "Treasurer", img: "officers/treasurer.jpg" },
-      { name: "To be updated", role: "Auditor", img: "officers/auditor.jpg" },
-
-      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-01.jpg" },
-      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-02.jpg" },
-      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-03.jpg" },
-      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-04.jpg" },
-      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-05.jpg" },
-      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-06.jpg" },
-      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-07.jpg" },
-      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-08.jpg" },
-      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-09.jpg" },
-      { name: "To be updated", role: "Board of Trustees", img: "officers/trustee-10.jpg" }
+      {
+        name: "To be updated",
+        role: "President",
+        img: "officers/president.jpg"
+      },
+      {
+        name: "To be updated",
+        role: "Vice President",
+        img: "officers/vice-president.jpg"
+      },
+      {
+        name: "To be updated",
+        role: "Secretary",
+        img: "officers/secretary.jpg"
+      },
+      {
+        name: "To be updated",
+        role: "Treasurer",
+        img: "officers/treasurer.jpg"
+      },
+      {
+        name: "To be updated",
+        role: "Internal Auditor",
+        img: "officers/auditor.jpg"
+      },
+      {
+        name: "To be updated",
+        role: "Board Member",
+        img: "officers/trustee-01.jpg"
+      },
+      {
+        name: "To be updated",
+        role: "Board Member",
+        img: "officers/trustee-02.jpg"
+      },
+      {
+        name: "To be updated",
+        role: "Board Member",
+        img: "officers/trustee-03.jpg"
+      }
     ];
 
-    const track = document.getElementById("carousel-track");
-    const viewport = document.getElementById("carousel-viewport");
-    const dotsWrap = document.getElementById("carousel-dots");
+    const menuToggle = document.getElementById("menuToggle");
+    const siteNav = document.getElementById("siteNav");
+
+    if (menuToggle && siteNav) {
+      menuToggle.addEventListener("click", function () {
+        siteNav.classList.toggle("active");
+      });
+
+      siteNav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          siteNav.classList.remove("active");
+        });
+      });
+    }
+
+    const track = document.getElementById("carouselTrack");
+    const viewport = document.getElementById("carouselViewport");
+    const dotsWrap = document.getElementById("carouselDots");
     const prevBtn = document.querySelector(".carousel-btn.prev");
     const nextBtn = document.querySelector(".carousel-btn.next");
+    const bubbleChatButton = document.getElementById("bubbleChatButton");
+
+    let currentIndex = 0;
+    let pageCount = 1;
+    let autoplay;
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function escapeAttribute(value) {
+      return escapeHtml(value);
+    }
 
     function renderCards() {
-      track.innerHTML = officers.map(o => `
-        <article class="leader-card">
-          <div class="leader-photo">
-            <img src="${o.img}" alt="${o.role}" onerror="this.src='officers/placeholder.jpg';" />
-          </div>
-          <div class="leader-info">
-            <h4>${o.name}</h4>
-            <p class="leader-role">${o.role}</p>
-          </div>
-        </article>
-      `).join("");
+      if (!track) return;
+
+      track.innerHTML = officers
+        .map(function (officer) {
+          return (
+            '<article class="leader-card">' +
+            '<div class="leader-photo">' +
+            '<img src="' +
+            escapeAttribute(officer.img) +
+            '" alt="' +
+            escapeAttribute(officer.role) +
+            '" onerror="this.src=\'officers/placeholder.jpg\';">' +
+            '</div>' +
+            '<div class="leader-info">' +
+            '<h4>' + escapeHtml(officer.name) + '</h4>' +
+            '<p class="leader-role">' + escapeHtml(officer.role) + '</p>' +
+            '</div>' +
+            '</article>'
+          );
+        })
+        .join("");
     }
 
     function cardsPerView() {
-      const w = window.innerWidth;
-      if (w <= 520) return 1;
-      if (w <= 1024) return 2;
+      const width = window.innerWidth;
+
+      if (width <= 520) return 1;
+      if (width <= 1024) return 2;
+
       return 4;
     }
 
-    let index = 0;
-    let pageCount = 1;
+    function calculatePages() {
+      const perView = cardsPerView();
 
-    function calcPages() {
-      const per = cardsPerView();
-      pageCount = Math.ceil(officers.length / per);
-      index = Math.min(index, pageCount - 1);
-      index = Math.max(index, 0);
+      pageCount = Math.ceil(officers.length / perView);
+
+      currentIndex = Math.min(currentIndex, pageCount - 1);
+      currentIndex = Math.max(currentIndex, 0);
+
       renderDots();
       snapToIndex();
     }
 
     function renderDots() {
+      if (!dotsWrap) return;
+
       dotsWrap.innerHTML = "";
+
       for (let i = 0; i < pageCount; i++) {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.className = "dot" + (i === index ? " active" : "");
-        b.setAttribute("aria-label", `Go to slide ${i + 1}`);
-        b.addEventListener("click", () => { index = i; snapToIndex(); });
-        dotsWrap.appendChild(b);
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.className = "dot" + (i === currentIndex ? " active" : "");
+        button.setAttribute("aria-label", "Go to slide " + (i + 1));
+
+        button.addEventListener("click", function () {
+          currentIndex = i;
+          snapToIndex();
+        });
+
+        dotsWrap.appendChild(button);
       }
     }
 
     function snapToIndex() {
-      const per = cardsPerView();
-      const first = track.querySelector(".leader-card");
-      if (!first) return;
+      if (!track) return;
+
+      const perView = cardsPerView();
+      const firstCard = track.querySelector(".leader-card");
+
+      if (!firstCard) return;
 
       const gap = parseFloat(getComputedStyle(track).gap || "0");
-      const cardWidth = first.getBoundingClientRect().width;
-      const shift = index * (per * (cardWidth + gap));
+      const cardWidth = firstCard.getBoundingClientRect().width;
+      const shift = currentIndex * (perView * (cardWidth + gap));
 
-      track.style.transform = `translateX(${-shift}px)`;
+      track.style.transform = "translateX(" + (-shift) + "px)";
 
-      prevBtn.disabled = index <= 0;
-      nextBtn.disabled = index >= pageCount - 1;
+      if (prevBtn) {
+        prevBtn.disabled = currentIndex <= 0;
+      }
 
-      const dots = dotsWrap.querySelectorAll(".dot");
-      dots.forEach((d, i) => d.classList.toggle("active", i === index));
+      if (nextBtn) {
+        nextBtn.disabled = currentIndex >= pageCount - 1;
+      }
+
+      if (dotsWrap) {
+        dotsWrap.querySelectorAll(".dot").forEach(function (dot, index) {
+          dot.classList.toggle("active", index === currentIndex);
+        });
+      }
     }
 
-    prevBtn.addEventListener("click", () => { index = Math.max(0, index - 1); snapToIndex(); });
-    nextBtn.addEventListener("click", () => { index = Math.min(pageCount - 1, index + 1); snapToIndex(); });
+    function startAutoplay() {
+      stopAutoplay();
 
-    // Autoplay (pause on hover)
-    let autoplay = setInterval(() => {
-      index = (index + 1) % pageCount;
-      snapToIndex();
-    }, 4500);
+      autoplay = setInterval(function () {
+        if (pageCount <= 1) return;
 
-    viewport.addEventListener("mouseenter", () => clearInterval(autoplay));
-    viewport.addEventListener("mouseleave", () => {
-      autoplay = setInterval(() => {
-        index = (index + 1) % pageCount;
+        currentIndex = (currentIndex + 1) % pageCount;
         snapToIndex();
       }, 4500);
-    });
+    }
 
-    window.addEventListener("resize", calcPages);
+    function stopAutoplay() {
+      if (autoplay) {
+        clearInterval(autoplay);
+      }
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function () {
+        currentIndex = Math.max(0, currentIndex - 1);
+        snapToIndex();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function () {
+        currentIndex = Math.min(pageCount - 1, currentIndex + 1);
+        snapToIndex();
+      });
+    }
+
+    if (viewport) {
+      viewport.addEventListener("mouseenter", stopAutoplay);
+      viewport.addEventListener("mouseleave", startAutoplay);
+    }
+
+    if (bubbleChatButton) {
+      bubbleChatButton.addEventListener("click", function () {
+        window.open(
+          "https://www.facebook.com/profile.php?id=61582551795734",
+          "_blank"
+        );
+      });
+    }
+
+    window.addEventListener("resize", calculatePages);
 
     renderCards();
-    calcPages();
+    calculatePages();
+    startAutoplay();
   </script>
 
 </body>
+
 </html>
