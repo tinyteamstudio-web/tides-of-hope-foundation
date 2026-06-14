@@ -826,7 +826,8 @@ async function loadHomepageGallery() {
       return;
     }
 
-    albums.slice(0, 3).forEach(function (album) {
+   albums.slice(0, 9).forEach(function (album) {
+
       const eventId =
         encodeURIComponent(album.EventID || album.eventId || "");
 
