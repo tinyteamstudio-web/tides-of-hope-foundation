@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Activities Manager | Tides of Hope</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        .activities-manager-page {
+            background: #f8fcfd;
+            min-height: 100vh;
+        }
+
+        .activities-manager-hero {
+            padding: 80px 0 50px;
+            background: linear-gradient(135deg, #eef9fb, #ffffff);
+        }
+
+        .activities-manager-section {
+            padding: 50px 0 80px;
+        }
+
+        .activities-manager-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 26px;
+            align-items: start;
+        }
+
+        .activities-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 10px 28px rgba(13, 59, 102, 0.08);
+            border: 1px solid rgba(13, 59, 102, 0.08);
+        }
+
+        .activities-card h2,
+        .activities-card h3 {
+            color: #0d3b66;
+            margin-bottom: 14px;
+        }
+
+        .activities-form {
+            display: grid;
+            gap: 14px;
+        }
+
+        .activities-form input,
+        .activities-form select,
+        .activities-form textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 1px solid #d7e6ec;
+            font: inherit;
+            box-sizing: border-box;
+        }
+
+        .activities-form textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .activities-message {
+            min-height: 24px;
+            font-weight: 700;
+        }
+
+        .activities-help {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .activities-preview-box {
+            background: #f4fbfd;
+            border-radius: 18px;
+            padding: 20px;
+            border: 1px dashed #b9dbe4;
+        }
+
+        @media (max-width: 900px) {
+            .activities-manager-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+
+            <a href="index.html" class="brand">
+                <img src="round-logo.png" class="brand-logo" alt="Tides of Hope Logo">
+
+                <div class="brand-text">
+                    <span class="brand-title">Tides of Hope</span>
+                    <span class="brand-subtitle">Activities Manager</span>
+                </div>
+            </a>
+
+            <nav class="site-nav">
+                <a href="office-portal.html">Office Portal</a>
+                <a href="upcoming-activities.html">Upcoming Activities</a>
+                <a href="gallery.html">Event Albums</a>
+                <a href="#" id="activitiesLogoutBtn" class="nav-cta">Logout</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="activities-manager-page">
+
+        <section class="activities-manager-hero">
+            <div class="container">
+                <span class="section-tag">Office Tool</span>
+
+                <h1>
+                    Activities & Events Manager
+                </h1>
+
+                <p>
+                    Create official Tides of Hope activities, missions, programs,
+                    and event albums. Once created, the activity can appear on
+                    the Upcoming Activities page and accept gallery uploads.
+                </p>
+            </div>
+        </section>
+
+        <section class="activities-manager-section">
+            <div class="container">
+
+                <div class="activities-manager-grid">
+
+                    <article class="activities-card">
+                        <h2>Create Event / Activity</h2>
+
+                        <p class="activities-help">
+                            One event created here becomes one official event album.
+                            Members, family, volunteers, and admins may upload photos
+                            and videos into this event album later.
+                        </p>
+
+                        <form id="activitiesForm" class="activities-form">
+
+                            <input type="text" id="eventTitle" placeholder="Event / Activity Title" required>
+
+                            <input type="date" id="eventDate">
+
+                            <input type="time" id="eventTime">
+
+                            <input type="text" id="eventLocation" placeholder="Location">
+
+                            <select id="eventType">
+                                <option value="Activity">Activity</option>
+                                <option value="Medical Mission">Medical Mission</option>
+                                <option value="Feeding Program">Feeding Program</option>
+                                <option value="Relief Operation">Relief Operation</option>
+                                <option value="Orientation">Orientation</option>
+                                <option value="Community Program">Community Program</option>
+                                <option value="Fundraising Event">Fundraising Event</option>
+                                <option value="Other">Other</option>
+                            </select>
+
+                            <textarea id="eventDescription"
+                                placeholder="Official mission story / event narrative"></textarea>
+
+                            <input type="url" id="coverPhoto" placeholder="Cover Photo URL (optional)">
+
+                            <select id="eventStatus">
+                                <option value="UPCOMING">UPCOMING</option>
+                                <option value="ACTIVE">ACTIVE</option>
+                                <option value="COMPLETED">COMPLETED</option>
+                                <option value="ARCHIVED">ARCHIVED</option>
+                            </select>
+
+                            <button type="submit" class="btn btn-primary">
+                                Create Event / Activity
+                            </button>
+
+                            <p id="activitiesMessage" class="activities-message"></p>
+
+                        </form>
+                    </article>
+
+                    <article class="activities-card">
+                        <h3>How This Works</h3>
+
+                        <div class="activities-preview-box">
+                            <p>
+                                <strong>Step 1:</strong>
+                                Admin creates an official event here.
+                            </p>
+
+                            <p>
+                                <strong>Step 2:</strong>
+                                The event is saved in the EVENTS sheet.
+                            </p>
+
+                            <p>
+                                <strong>Step 3:</strong>
+                                If status is UPCOMING or ACTIVE, it appears on
+                                the Upcoming Activities page.
+                            </p>
+
+                            <p>
+                                <strong>Step 4:</strong>
+                                The same EventID appears in the Gallery Upload dropdown.
+                            </p>
+
+                            <p>
+                                <strong>Step 5:</strong>
+                                Admins, family members, and volunteers upload photos,
+                                videos, and captions into the same event album.
+                            </p>
+                        </div>
+
+                        <br>
+
+                        <a href="gallery-upload.html" class="btn btn-secondary">
+                            Upload Media to Event Album
+                        </a>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+                <img src="round-logo.png" class="footer-logo" alt="Tides of Hope Logo">
+
+                <h3>Tides of Hope Incorporated</h3>
+
+                <p>
+                    Serving with compassion, building with hope.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="footer-credit">
+            <div class="container footer-credit-inner">
+                <p>
+                    Powered by <strong>BuildFrame Digital System</strong>
+                    <span class="footer-credit-text">
+                        Website, Funnel and Platform Builder
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const WEB_APP_URL =
+            "https://script.google.com/macros/s/AKfycbyKlI9CcRZsXWGTJd_34e09U7SwZi81oVZTtSoL-t-g_K9-qlOwiQLOsGyu8FktkKCN/exec";
+
+        const isLoggedIn =
+            sessionStorage.getItem("tohAdminLoggedIn") === "true" ||
+            sessionStorage.getItem("tohLoggedIn") === "true";
+
+        if (!isLoggedIn) {
+            window.location.href = "admin-login.html";
+        }
+
+        const role =
+            (
+                sessionStorage.getItem("tohAdminRole") ||
+                sessionStorage.getItem("tohUserRole") ||
+                ""
+            )
+                .trim()
+                .toLowerCase();
+
+        if (
+            role &&
+            !["admin", "president", "secretary"].includes(role)
+        ) {
+            alert("You do not have access to this page.");
+            window.location.href = "office-portal.html";
+        }
+
+        const logoutBtn =
+            document.getElementById("activitiesLogoutBtn");
+
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                sessionStorage.clear();
+                window.location.href = "admin-login.html";
+            });
+        }
+
+        const form =
+            document.getElementById("activitiesForm");
+
+        const message =
+            document.getElementById("activitiesMessage");
+
+        function showMessage(text, type) {
+            if (!message) return;
+
+            message.textContent = text;
+
+            message.style.color =
+                type === "success"
+                    ? "green"
+                    : type === "error"
+                        ? "red"
+                        : "#0d3b66";
+        }
+
+        if (form) {
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                const eventTitle =
+                    document.getElementById("eventTitle").value.trim();
+
+                const eventDate =
+                    document.getElementById("eventDate").value.trim();
+
+                const eventTime =
+                    document.getElementById("eventTime").value.trim();
+
+                const eventLocation =
+                    document.getElementById("eventLocation").value.trim();
+
+                const eventType =
+                    document.getElementById("eventType").value.trim();
+
+                const eventDescription =
+                    document.getElementById("eventDescription").value.trim();
+
+                const coverPhoto =
+                    document.getElementById("coverPhoto").value.trim();
+
+                const status =
+                    document.getElementById("eventStatus").value.trim();
+
+                if (!eventTitle) {
+                    showMessage("Event title is required.", "error");
+                    return;
+                }
+
+                showMessage("Creating event/activity...", "");
+
+                try {
+                    const payload = {
+                        action: "createEvent",
+                        eventTitle: eventTitle,
+                        eventDate: eventDate,
+                        eventTime: eventTime,
+                        eventLocation: eventLocation,
+                        eventType: eventType,
+                        eventDescription: eventDescription,
+                        coverPhoto: coverPhoto,
+                        status: status,
+                        createdBy:
+                            sessionStorage.getItem("tohAdminEmail") ||
+                            sessionStorage.getItem("tohUserEmail") ||
+                            "office@tidesofhopeinc.org"
+                    };
+
+                    const response =
+                        await fetch(WEB_APP_URL, {
+                            method: "POST",
+                            body: JSON.stringify(payload)
+                        });
+
+                    const result =
+                        await response.json();
+
+                    if (!result.success) {
+                        showMessage(
+                            result.message || "Unable to create event.",
+                            "error"
+                        );
+                        return;
+                    }
+
+                    showMessage(
+                        "Event/activity created successfully.",
+                        "success"
+                    );
+
+                    form.reset();
+
+                    setTimeout(function () {
+                        window.location.href =
+                            "event-album.html?id=" + encodeURIComponent(result.eventId || "");
+                    }, 1200);
+
+                } catch (error) {
+                    showMessage(
+                        "Connection error. Please check your Web App deployment.",
+                        "error"
+                    );
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
